@@ -1,0 +1,78 @@
+body {
+	margin-top: 0px;
+	margin-right: 0px; 
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px; 
+	padding-bottom: 0px;
+	padding-left: 0px; 
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+}
+
+br {
+	font-size: 12px;
+	line-height: 15px;
+}
+
+td {
+	font-size: 12px;
+	line-height: 15px;
+}
+
+a {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #005EBC;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+.topMenu {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #99B1CC;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.topMenu:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.footer {
+	color: #000000;
+	text-decoration: none;
+	font-size: 10px;
+}
+
+A.footer:hover {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	color: #000000;
+	text-decoration: underline;
+	font-size: 10px;
+}
+
+.footer {
+	color: #000000;
+	text-decoration: none;
+	font-size: 10px;
+}
+
+.frameContent (
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	color: #000000;
+	text-decoration: none;
+	font-size: 12px;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0050)https://txn01.hkjc.com/BetSlipIB/popup.aspx?lang=1 -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+</head>
+
+<body onunload="CloseAllPopup();TryLogout();">
+    <script type="text/javascript">
+    document.domain = 'hkjc.com';
+    </script>
+    <script type="text/javascript" src="js/json2(3).js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2(1).js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+    <script type="text/javascript" src="js/datastore_func.js"></script>
+    <script type="text/javascript" src="js/common_func.js"></script>
+    <script type="text/javascript" src="js/proxy(1).js"></script>
+    <script type="text/javascript" src="js/index_str_table(1).js"></script>
+    <script type="text/javascript" src="js/svc.js"></script>
+    <script type="text/javascript" src="js/logDataAccessor.js"></script>
+    <script type="text/javascript">
+    var oPopup = new Array();
+    var sCurURL = [];
+    var currentWindow;
+    var nextFunctionName;
+
+    SetDataStore('language', '1');
+    $j = jQuery.noConflict();
+    $j(function() {
+        proxy.init(parent, {
+                POPUP: new PopupPlugin(false),
+                SESSION_STORE: new SessionStorePlugin()
+            },
+            'http://txn01.hkjc.com', ['http://txn01.hkjc.com']);
+        logDataAccessor.Init();
+
+    });
+
+    svc.init(GetError);
+
+    function GetDataStoreValue(x, win, fn) {
+        currentWindow = win;
+        nextFunctionName = fn;
+        //$post("popup:::GetDataStore:::" + x, indexContext);
+        proxy.sendMessage('SESSION_STORE', 'GetValue', {
+            Keys: x
+        }, function(msg) {
+            fn(msg.content);
+        });
+    }
+
+    function WATrack(key) {
+        //$post("popup:::WATrack:::" + key, indexContext);
+        proxy.sendMessage('WA_TRACK', key, {}, proxy.NO_CALLBACK);
+    }
+
+    function OpenPopup(popupIndex, sURL, sFeatures) {
+        var isSVCBusy = svc && svc.IsBusy();
+        if (isSVCBusy) {
+            setTimeout(function() {
+                OpenPopup(popupIndex, sURL, sFeatures);
+            }, 200);
+            return;
+        }
+
+        if (CloseOrFocus(popupIndex, sURL)) {
+            oPopup[popupIndex] = window.open(sURL, '_blank', sFeatures);
+            if (!oPopup[popupIndex] || oPopup[popupIndex].closed || typeof oPopup[popupIndex] == 'undefined') {
+                window.alert(popMsgCh + '\n' + popMsgEn);
+            }
+        }
+        sCurURL[popupIndex] = sURL;
+    }
+
+    function CloseOrFocus(popupIndex, sURL) {
+        if (CheckPopupOpened(popupIndex)) {
+            if (sURL == sCurURL[popupIndex]) {
+                oPopup[popupIndex].focus();
+                return false;
+            } else {
+                oPopup[popupIndex].close();
+            }
+        }
+        return true;
+    }
+
+    function CheckPopupOpened(popupIndex) {
+        var popupOpened = false;
+        if (oPopup[popupIndex] != null) {
+            popupOpened = !oPopup[popupIndex].closed;
+        }
+        return popupOpened;
+    }
+
+
+    function CloseAllPopup() {
+        for (var i = 0; i < oPopup.length + 1; i++) {
+            try {
+                if (oPopup[i] != null && !oPopup[i].closed) {
+                    oPopup[i].close();
+                }
+            } catch (e) {}
+        }
+    }
+
+    function TryLogout() {
+        acc = GetDataStore('account');
+        gu_id = GetDataStore('gu_id');
+        doneLogout = GetDataStore('doneLogout');
+        if (acc != "" && gu_id != "" && doneLogout != "") {
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhr.open("GET", "https://txn01.hkjc.com/BetSlipIB/forcelogout.aspx" + "?a=" + acc + "&g=" + gu_id, false);
+            xhr.send();
+            var dummy = xhr.responseText;
+            //alert(dummy);
+            SetDataStore('account', '');
+            SetDataStore('gu_id', '');
+            SetDataStore('doneLogout', '');
+        }
+    }
+    </script>
+</body>
+
+</html>

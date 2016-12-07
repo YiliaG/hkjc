@@ -1,0 +1,9 @@
+﻿html, body, table, input
+{
+	font-family:MingLiU, MingLiU_HKSCS;
+	font-size:12px;
+}
+.tblResults .lastOddsValue
+{
+	font-family:Arial;
+}

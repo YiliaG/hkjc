@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0043)https://txn01.hkjc.com/BetSlipIB/proxy.aspx -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+</head>
+
+<body onunload="unloadProxy();">
+    <script type="text/javascript" src="js/json2(3).js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2(1).js"></script>
+    <script type="text/javascript" src="js/proxy(1).js"></script>
+    <script type="text/javascript" src="js/svc.js"></script>
+    <script type="text/javascript" src="js/datastore_func.js"></script>
+    <script type="text/javascript" src="js/BetPreview(1).js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+    <script type="text/javascript" src="js/pphwPlugin.js"></script>
+    <script type="text/javascript" src="js/index_str_table(1).js"></script>
+    <script type="text/javascript">
+    $j(function() {
+        document.domain = 'hkjc.com';
+        svc.init(GetError);
+        proxy.init(parent, {
+                SVC: {
+                    exec: function(funcName, data, callback, formatter, source, timeoutInSec) {
+                        svc.sendReq(funcName, data,
+                            function(msg) {
+                                callback(formatter(true, msg), source);
+                            },
+                            function(msg) {
+                                callback(formatter(false, msg), source);
+                            },
+                            timeoutInSec
+                        );
+                    },
+                    para: function() {
+                        var retObj = {};
+                        for (name in svc.supportedSvcs) {
+                            retObj[name] = svc.supportedSvcs[name].paraKeys;
+                        }
+                        return retObj;
+                    }
+                },
+                SESSION_STORE: new SessionStorePlugin(),
+                BET_PREVIEW: new BetPreviewPlugin(true, 'previewFrame'),
+                POPUP: new PopupPlugin(true, 'popupFrame'),
+                PPHW: new pphwPlugin()
+            },
+            'http://txn01.hkjc.com', ['http://txn01.hkjc.com']
+        );
+        proxy.sendMessage('PING', 'FrameLoaded', {
+            FrameName: 'proxy'
+        }, proxy.NO_CALLBACK);
+    });
+
+    function unloadProxy() {
+        //clear HTTPS sessionStore onunload
+        sessionStorage.clear();
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+﻿
+#multiplePanel table  
+{
+	width: 100%; 
+	background-color: rgb(192,192,192); 
+	border-collapse: collapse;
+}
+.inactivePanel
+{
+	font-size: 8pt; 
+	background-color: #efefef; 
+	text-align: center; 
+	color: gray; 
+	border: solid 1px gray;
+}
+#multiplePanel td:hover  
+{
+	/*background-color: #efdddd; */
+	cursor: pointer; 
+}
+
+.activePanel
+{
+	font-size: 8pt; 
+	font-weight: bold;
+	background-color: #fff; 
+	text-align: center; 
+	color: #000; 
+	border: solid 1px #000; 
+	border-bottom:solid 1px #fff; 
+}
+
+
+.LinkButton{
+	display:inline-block;
+	overflow: hidden;
+	width: 71px;
+	height: 22px;
+	text-align: center;
+	padding-top: 3px;margin-top:3px;
+	background: url(../images/btn_bg.gif) no-repeat;
+	text-decoration: none;
+	color: #fff;
+	cursor: pointer;
+}
+.LinkButton:hover {
+	background-image: url(../images/btn_bg_over.gif);
+	text-decoration: none;
+	color: #000;
+}
+
+.LinkButton1{
+	display:inline-block;
+	overflow: hidden;
+	width: 71px;
+	height: 22px;
+	text-align: center;
+	padding-top: 3px;margin-top:3px;
+	background: url(../images/btn_gray_bg.gif) no-repeat;
+	text-decoration: none;
+	color: #fff;
+	cursor: pointer;
+}
+.LinkButton1:hover {
+	background-image: url(../images/btn_gray_bg_over.gif);
+	text-decoration: none;
+	color: #000;
+}

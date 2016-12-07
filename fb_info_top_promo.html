@@ -1,0 +1,152 @@
+<!-- saved from url=(0068)http://special.hkjc.com/root2/football/info/ch/fb_info_top_promo.asp -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>香港賽馬會</title>
+    <link href="css/styles(3).css" rel="stylesheet" type="text/css">
+    <link href="css/home.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/jquery.simplyscroll.css" media="all" type="text/css">
+    <!--[if lte IE 9]>
+<style>
+#scrollerHolder { margin-left:0px; left:420px; }
+table #scrollerHolder { margin-left:-110px; left:auto;  display:block; position:relative; z-index:99999; float:left; }
+.vert .simply-scroll-list li {
+	padding: 0 15px 25px 15px;	
+}
+</style>
+<![endif]-->
+    <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.simplyscroll.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cycle2.min.js"></script>
+    <script type="text/javascript">
+    var banner_time = new Date(2016, 11, 6, 17, 26, 14, 0);
+
+    (function($) {
+        $(function() {
+            //sortBanner();
+            prePath = "images/";
+
+            for (i = 0; i < 4; i++) {
+                if (typeof bannerBig[i] != "undefined") {
+                    if (i == 0) {
+                        active = "active";
+                    } else {
+                        active = "";
+                    }
+                    $(".jcSlideshows").append('<div class="p' + i + '"><a href="' + bannerBig[i][2] + '"><img src="' + prePath + bannerBig[i][1] + '" /></a></div>');
+                    $("#scroller").append('<li><a href="javascript:;" class="p' + i + ' ' + active + '"><img src="' + prePath + bannerBig[i][5] + '" /></a></li>');
+                }
+            }
+
+            $("#scroller").simplyScroll({
+                orientation: 'vertical',
+                customClass: 'vert'
+            });
+            $("#scroller a").click(function() {
+                var slideClick = $(this).attr('class').split("p")[1];
+                $('.jcSlideshows').cycle('goto', slideClick);
+            })
+
+            $('.jcSlideshows').cycle();
+            $('.jcSlideshows').on('cycle-after', function(e, opts, API) {
+                $("#scroller a").removeClass("active");
+                $("#scroller a.p" + opts.nextSlide).addClass("active");
+            });
+        });
+    })(jQuery);
+    </script>
+    <script type="text/javascript" src="js/jq.jcbw-hightlight-banner.js"></script>
+    <script type="text/javascript" src="js/include.jcbw.football.top.banner.2010.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/openBetPage.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/common(3).js"></script>
+    <script language="javaScript" type="text/javascript" src="js/genNews.js"></script>
+</head>
+
+<body>
+    <div class="jcSlideshows" data-cycle-timeout="15000" data-cycle-slides="&gt; div" data-cycle-log="false" style="position: relative;">
+        <div class="p0 cycle-slide cycle-sentinel" style="position: static; top: 0px; left: 0px; z-index: 100; opacity: 1; visibility: hidden; display: block;">
+            <a href="javascript:MM_openBrWindow(&#39;/redir/banner_redir.asp?l=BFT2010&amp;c=1617FBM_BGGOD&amp;t=http://football.hkjc.com/football/i-love-football/chinese/blogs-index.aspx&#39;,&#39;&#39;,&#39;&#39;);" style="visibility: hidden;">
+                <img src="images/f_expert_godtips161205_530x180_c.jpg" style="visibility: hidden;">
+            </a>
+        </div>
+        <div class="p0 cycle-slide" style="position: absolute; top: 0px; left: 0px; z-index: 96; opacity: 0; display: none;">
+            <a href="javascript:MM_openBrWindow(&#39;/redir/banner_redir.asp?l=BFT2010&amp;c=1617FBM_BGGOD&amp;t=http://football.hkjc.com/football/i-love-football/chinese/blogs-index.aspx&#39;,&#39;&#39;,&#39;&#39;);">
+                <img src="images/f_expert_godtips161205_530x180_c.jpg">
+            </a>
+        </div>
+        <div class="p1 cycle-slide" style="position: absolute; top: 0px; left: 0px; z-index: 100; display: none; opacity: 0;">
+            <a href="javascript:openBetPage(&#39;/redir/banner_redir.asp?l=BFT2010&amp;c=1617FBC_UECHA&amp;t=http://bet.hkjc.com/football/odds/odds_allodds.aspx?ref=banner&amp;tmatchid=109660&amp;tdate=07-12-2016&amp;tday=tue&amp;tnum=3&amp;lang=ch&#39;);">
+                <img src="images/f_ucl161206b_530x180_c.jpg">
+            </a>
+        </div>
+        <div class="p2 cycle-slide cycle-slide-active" style="position: absolute; top: 0px; left: 0px; z-index: 99; display: block; opacity: 1;">
+            <a href="javascript:MM_openBrWindow(&#39;/redir/banner_redir.asp?l=BFT2010&amp;c=f_20161206_01&amp;t=http://football.hkjc.com/football/special/chinese/win-magazine/win-magazine.aspx&#39;,&#39;&#39;,&#39;&#39;);">
+                <img src="images/winmagazine_20161206_530x180.jpg">
+            </a>
+        </div>
+        <div class="p3 cycle-slide" style="position: absolute; top: 0px; left: 0px; z-index: 97; display: none;">
+            <a href="javascript:MM_openBrWindow(&#39;/redir/banner_redir.asp?l=BFT2010&amp;c=1617FBC_JWAG&amp;t=http://football.hkjc.com/football/special/chinese/jumppage/apple-multiple.aspx&#39;,&#39;&#39;,&#39;&#39;);">
+                <img src="images/f_JWApple_Generic_2016Nov_530x180.jpg">
+            </a>
+        </div>
+    </div>
+    <div id="scrollerHolder">
+        <div class="vert simply-scroll-container">
+            <div class="simply-scroll-clip">
+                <ul id="scroller" class="simply-scroll-list" style="height: 560px;">
+                    <li>
+                        <a href="javascript:;" class="p0">
+                            <img src="images/f_expert_godtips161205_80x50_c.jpg">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="p1">
+                            <img src="images/f_ucl161206b_80x50_c.jpg">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="p2 active">
+                            <img src="images/winmagazine_20161206_80x50.jpg">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="p3">
+                            <img src="images/f_JWApple_Generic_2016Nov_80x50.jpg">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="p0">
+                            <img src="images/f_expert_godtips161205_80x50_c.jpg">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="p1">
+                            <img src="images/f_ucl161206b_80x50_c.jpg">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="p2 active">
+                            <img src="images/winmagazine_20161206_80x50.jpg">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="bannerPromo"></div>
+    <script language="JavaScript" type="text/javascript">
+    function NewWindow(mypage, myname, w, h, scroll, resizable) {
+        var winl = (screen.width - w) / 2;
+        var wint = (screen.height - h) / 2;
+        winprops = 'toolbar=no,menubar=no,location=no,height=' + h + ',width=' + w + ',top=' + wint + ',left=' + winl + ',scrollbars=' + scroll + ',resizable=' + resizable + ''
+        win = window.open(mypage, myname, winprops)
+        win.self.focus()
+        if (parseInt(navigator.appVersion) >= 4) {
+            win.window.focus();
+        }
+    }
+    </script>
+</body>
+
+</html>

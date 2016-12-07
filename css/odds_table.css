@@ -1,0 +1,2515 @@
+﻿/* odds table */
+/* start */
+table.tOdds, table.tCRS, table.tCRSMix, table.tFGS
+{
+    width: 635px;
+    padding: 0;
+    border: none;
+    background-color: #ffffff;
+}
+table.tOdds tr.rhead td.cdAllInplay, table.tOdds tr.rhead td
+{
+    border: none;
+    padding: 0;
+}
+
+table.tOdds tr.rhead td.cinplay
+{
+    color: #ff6600;
+}
+
+table.tOdds td.codds
+{
+    text-align: center;
+}
+.cteaminfo
+{
+    text-align: left;
+}
+/* default indent */
+table.tOdds tr td
+{
+    padding: 2px;
+}
+/*wordwrap for team name*/
+td.cteams
+{
+    white-space: pre; /* CSS2 */
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap; /* HP printers */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+}
+tr.rmidFGS td.codds:not(.cchk)
+{
+    word-wrap: break-word; /* IE */
+}
+table tr.rAlt0 td, table tr.rAlt1 td
+{
+    border-left: solid 1px #ffffff;
+}
+#linkPerformTv
+{
+    position: absolute;
+    padding-left: 5px;
+    margin-top: -2px;
+}
+#ilcMatches #linkPerformTv
+{
+    padding-left: 0px;
+    margin-top: -1px;
+}
+/* ============================================================ */
+table tr.rhead td.cotitle
+{
+    height: 24px;
+    border-bottom: 1px solid #cccccc;
+}
+
+table tr.rhead td.codds
+{
+    height: 20px;
+}
+table tr.rhead td.r3
+{
+    height: 1px;
+}
+
+table.tOdds tr.rhead td
+{
+    text-align: center;
+}
+table.tOdds tr.rhead td.cday
+{
+    text-align: left;
+    padding: 2px 5px 2px 5px;
+}
+
+table.tOdds tr.rAlt0 td, table.tOdds tr.rAlt1 td
+{
+    text-align: left;
+}
+table.tHIL tr.rAlt0 td, table.tHIL tr.rAlt1 td, table.tHIL tr.rAlt0 td, table.tHIL tr.rAlt1 td, 
+table.tCHL tr.rAlt0 td, table.tCHL tr.rAlt1 td, table.tCHL tr.rAlt0 td, table.tCHL tr.rAlt1 td, 
+table.tFHL tr.rAlt0 td, table.tFHL tr.rAlt1 td, table.tFHL tr.rAlt0 td, table.tFHL tr.rAlt1 td,
+table.ilcOdds tr.rcont td
+{
+    vertical-align: top;
+    padding: 1px;
+    padding-top: 3px;
+}
+table.tHIL tr.rAlt0 td.cline, table.tHIL tr.rAlt1 td.cline, table.tHIL tr.rAlt0 td.codds, table.tHIL tr.rAlt1 td.codds, 
+table.tCHL tr.rAlt0 td.cline, table.tCHL tr.rAlt1 td.cline, table.tCHL tr.rAlt0 td.codds, table.tCHL tr.rAlt1 td.codds, 
+table.tFHL tr.rAlt0 td.cline, table.tFHL tr.rAlt1 td.cline, table.tFHL tr.rAlt0 td.codds, table.tFHL tr.rAlt1 td.codds,
+table.ilcOdds tr.rcont td.cline, table.ilcOdds tr.rcont td.codds
+{
+    vertical-align: top;
+	padding: 0px;
+}
+table.ilcOdds tr.rcont td .mlMainRow, table.ilcOdds tr.rcont td  .mlSubRow
+{
+    padding: 0px 1px 3px 1px;
+}
+/*
+table.tHIL tr.rAlt0 td.codds, table.tHIL tr.rAlt1 td.codds, table.tCHL tr.rAlt0 td.codds, table.tCHL tr.rAlt1 td.codds, table.tFHL tr.rAlt0 td.codds, table.tFHL tr.rAlt1 td.codds
+{
+    vertical-align: top;
+	padding: 0px;
+}*/
+
+table.tOdds tr.rAlt0, table.tOdds tr.rAlt1
+{
+    height: 20px;
+    text-align: center;
+}
+table.tOdds tr.rAlt0, table.tCRS tr.rAlt0, table.tFGS tr.rAlt0, table.tblTourn tr.rAlt0, table.tOdds tr td.altCell
+{
+    background-color: #ebebeb;
+}
+table.tOdds tr td span.sOpen, table.tOdds tr td span.sClose
+{
+    color:#386220;
+}
+table tr td.tdPageText
+{
+    width: 305px;
+    text-align: left;
+}
+table tr td.tdPageRight
+{
+    width: 310px;
+    text-align: right;
+}
+table tr td.tdPage
+{
+    height: 20px;
+    padding: 10px 0 0 5px;
+}
+table tr td.cInplayLnk a
+{
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+table tr td.codds span.ref
+{
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+/* ============================================================ */
+
+/* general column width start */
+/* day col */
+table.tOdds tr td.cday
+{
+    width: 75px;
+}
+
+/* flag col */
+table.tOdds tr td.cflag
+{
+    width: 20px;
+    text-align: center;
+}
+
+/* venue col */
+table.tOdds tr td.cvenue
+{
+    width: 30px;
+    border-left: none;
+    border-bottom: none;
+}
+
+/* esst col */
+table.tOdds tr td.cesst
+{
+    width: 85px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* odds column */
+table.tOdds tr td.codds
+{
+    width: 63px;
+    white-space: nowrap; /*	text-indent:2px;*/
+}
+
+/* inplay column */
+table.tOdds tr td.cInplayLnk
+{
+    width: 189px;
+}
+table tr td.cteams
+{
+    padding: 1px 0 1px 0;
+    margin: 0;
+    text-align: left;
+}
+table tr.rhead td.cteams
+{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+/* general column width end */
+
+/* ============================================================ */
+
+/* coupon row */
+table.tOdds tr.rchead .tgCoupon, table.tCRS tr.rchead .tgCoupon, div.oddsTourn div.tgCoupon, div.oddsMixAllup .tgCoupon, div.tgCoupon
+{
+    cursor: pointer;
+    width: 100%;
+    height: 25px;
+    background-color: #c1dda8;
+}
+div.tgCoupon span.esst
+{
+    width: auto;
+    display: inline-block;
+    text-align: right;
+}
+/* page specific css */
+/* odds Index start */
+/* day col */
+
+table.tINDEX tr td.cday
+{
+    width: 90px;
+}
+
+/* flag 2 */
+table.tINDEX tr td.cflag
+{
+    width: 20px;
+}
+
+/* teams 3 */
+table.tINDEX tr td.cteams
+{
+    width: 190px;
+}
+
+/* venue 4 */
+table.tINDEX tr td.cvenue
+{
+    width: 22px;
+}
+
+/* esst 5 */
+table.tINDEX tr td.cesst
+{
+    width: 90px;
+    text-align: center;
+}
+
+/* inplay 6 */
+table.tINDEX tr td.cinplay
+{
+    width: 60px;
+    text-align: center;
+}
+
+/* tv 7 */
+table.tINDEX tr td.ctv
+{
+    width: 30px;
+    text-align: center;
+}
+
+/* odds 8, 9, 10 */
+table.tINDEX tr td.codds
+{
+    width: 30px;
+    padding: 3px;
+    text-align: center;
+}
+table.tINDEX tr td.codds .oddsLink
+{
+}
+/* inplay link col */
+table.tINDEX tr td.cInplayLnk
+{
+    width: 105px;
+    text-align: left;
+}
+
+/* nts col */
+table.tINDEX tr td.cnts, /* handi col */ table.tINDEX tr td.chd, /* 6HF col */ table.tINDEX tr td.c6HF, /* double hf col */ table.tINDEX tr td.cdhf
+{
+    width: 18px;
+    text-align: center;
+}
+/* odds Index end */
+
+/* ============================================================ */
+
+
+
+/* ============================================================ */
+
+/* schedule page start */
+
+table.tSCHEDULE tbody > tr:first-child
+{
+    height: 10px;
+}
+table.tSCHEDULE tr td.cteams
+{
+    width: 280px;
+}
+
+table.tSCHEDULE tr td.ctv
+{
+    width: 140px;
+    text-align: center;
+}
+
+
+/* schedule page end */
+
+/* ============================================================ */
+
+/* odds HAD start */
+/* HAD team col */
+table.tHAD tr td.cteams
+{
+    width: 185px;
+    border-right: none;
+}
+
+/* HAD Inplay col */
+table.tHAD tr td.cinplay
+{
+    width: 38px;
+    text-align: center;
+}
+/* odds HAD end */
+
+/* ============================================================ */
+/* odds Pari start */
+/* Pari team col */
+table.tblPari tr td.matchTeam
+{
+    border-right: none;
+}
+
+/* ============================================================ */
+
+/* odds FHA start */
+/* FHA team col */
+table.tFHA tr td.cteams
+{
+    width: 223px;
+    border-right: none;
+}
+table.tFHA tr td.cflag
+{
+    width: 18px;
+}
+
+/* odds FHA end */
+
+/* ============================================================ */
+
+/* odds HHA start */
+table.tHHA tr td.cinplay
+{
+    width: 25px;
+    text-align: center;
+}
+/* HHA team col */
+table.tHHA tr td.cteams
+{
+    width: 253px;
+    border-right: none;
+}
+
+/* odds HHA end */
+
+/* ============================================================ */
+
+/* odds HDC start */
+/* HDC team col */
+table.tHDC tr td.cteams
+{
+    width: 316px;
+}
+
+/* odds HDC end */
+
+/* ============================================================ */
+
+/* odds HIL start */
+/* HIL team col */
+table.tHIL tr td.cteams
+{
+    width: 216px;
+}
+
+/* HIL line col */
+table.tHIL tr td.cline
+{
+    width: 62px;
+    text-align: center;
+}
+
+/* HAD Inplay col */
+table.tHIL tr td.cinplay
+{
+    width: 38px;
+    text-align: center;
+}
+
+/* odds HIL end */
+
+/* ============================================================ */
+
+/* odds CHL start */
+/* CHL team col */
+table.tCHL tr td.cteams
+{
+    width: 216px;
+}
+
+/* CHL corner_line col */
+table.tCHL tr td.cline
+{
+    width: 62px;
+    text-align: center;
+}
+
+/* CHL Inplay col */
+table.tCHL tr td.cinplay
+{
+    width: 38px;
+    text-align: center;
+}
+
+/* odds CHL end */
+
+/* ============================================================ */
+/* odds FHL start */
+/* tFHL team col */
+table.tFHL tr td.cteams
+{
+    width: 216px;
+}
+
+/* tFHL line col */
+table.tFHL tr td.cline
+{
+    width: 62px;
+    text-align: center;
+}
+
+/* tFHL Inplay col */
+table.tFHL tr td.cinplay
+{
+    width: 38px;
+    text-align: center;
+}
+
+/* odds tFHL end */
+
+/* ============================================================ */
+
+/* odds OOE start */
+/* OOE team col */
+table.tOOE tr td.cteams
+{
+    width: 254px;
+}
+table.tOOE tr td.codds
+{
+    width: 95px;
+    text-align: center;
+}
+table.tOOE tr.rAlt0 td.codds, table.tOOE tr.rAlt1 td.codds
+{
+    text-align: left;
+    padding-left: 20px;
+}
+/* odds OOE end */
+
+/* ============================================================ */
+
+/* odds TQL start */
+/* TQL team col */
+table.tTQL tr td.cday
+{
+    width: 75px;
+}
+table.tTQL tr td.cflag
+{
+    width: 30px;
+}
+table.tTQL tr td.cteams
+{
+    width: 240px;
+}
+table.tTQL tr td.cinplay
+{
+    width: 30px;
+    text-align: center;
+}
+table.tTQL tr.rAlt0 td.codds, table.tTQL tr.rAlt1 td.codds
+{
+    width: 80px;
+}
+/* odds OOE end */
+
+/* ============================================================ */
+
+/* odds HFT start */
+/* HFT team col */
+table.tHFT tr.rhead td.cday
+{
+    height: 72px;
+}
+table.tHFT tr td.cday
+{
+    width: 78px;
+}
+table.tHFT tr td.cflag
+{
+    width: 20px;
+}
+table.tHFT tr td.cteams
+{
+    width: 125px;
+}
+table.tHFT tr td.cinplay
+{
+    width: 28px;
+    text-align: center;
+}
+table.tHFT tr td.cesst
+{
+    width: 60px;
+    text-align: center;
+}
+
+table.tHFT tr td.codds
+{
+    width: 35px;
+    text-align: center;
+}
+table.tHFT tr td.codds input
+{
+    display: block;
+    margin-left: 6px;
+    padding-left: 5px;
+}
+table.tHFT tr td.codds span
+{
+    display: block;
+    text-align: center;
+}
+
+div#dHFT table tr td.codds
+{
+    white-space: nowrap;
+    width: 70px;
+}
+table.tHFT tr td.codds span input
+{
+}
+table.tHFT tr td span span.oddsLink
+{
+    text-align: left;
+}
+table.tHFT tr.rhead td.hftd
+{
+    background-color: #ebebeb;
+}
+
+/* odds HFT end */
+
+/* ============================================================ */
+
+/* odds TTG start */
+/* TTG team col */
+
+table.tTTG tbody > tr.rhead:first-child
+{
+    height: 24px;
+}
+table.tTTG tr.rhead td.cotitle
+{
+    height: 24px;
+    border: none;
+}
+table.tTTG tr.rhead td.cday
+{
+    height: 60px;
+    border: none;
+    border-left: solid 1px #ffffff;
+}
+table.tTTG tr td.cday
+{
+    width: 70px;
+    text-align: left;
+    border: none;
+    border-left: solid 1px #ffffff;
+}
+table.tTTG tr td.cflag
+{
+    width: 18px;
+    border: none;
+    border-left: solid 1px #ffffff;
+}
+table.tTTG tr td.cteams
+{
+    width: 172px;
+    border: none;
+    border-left: solid 1px #ffffff;
+}
+table.tTTG tr td.cesst
+{
+    width: 60px;
+    text-align: center;
+    border: none;
+    border-left: solid 1px #ffffff;
+}
+table.tTTG tr td.codds, table.tTTG tr td.cttg
+{
+    width: 36px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+table.tTTG tr td.codds span
+{
+    display: block;
+    text-align: center;
+}
+table.tTTG tr td.codds input
+{
+    display: block;
+    margin-left: 6px;
+}
+table.tTTG tr td span span.oddsLink
+{
+    text-align: left;
+}
+/* delimiter for ttg odds */
+table.tTTG tr td.codds span.dl
+{
+    display: block;
+    padding: 0;
+    text-align: center;
+}
+table.tTTG tr td.codds span input
+{
+}
+table.tTTG tr.rAlt0 td.cday, table.tTTG tr.rAlt0 td.cflag, table.tTTG tr.rAlt0 td.cteams, table.tTTG tr.rAlt0 td.cesst
+{
+    background-color: #ebebeb;
+}
+
+table.tTTG tr td.cday span, table.tTTG tr td.cflag span, table.tTTG tr td.cteams span a, table.tTTG tr td.cteams span .refteam, table.tTTG tr td.cesst span
+{
+    position: relative;
+    top: -10px;
+}
+table.tTTG tr.rhead td.cotitle
+{
+    height: 24px;
+}
+table.tTTG tr td.cinplay
+{
+    width: 25px;
+    text-align: center;
+}
+table.tTTG tr.rAlt0 td.cinplay
+{
+    border: none;
+}
+/* odds TTG end */
+
+/* ============================================================ */
+
+/* odds In Play HAD start */
+/* In Play HAD odds col */
+table.tINPLAYHAD tr td.cday
+{
+    white-space: nowrap;
+}
+table.tHALFTIME tr td.cteams, table.tINPLAYHAD tr td.cteams
+{
+    width: 205px;
+    text-align: center;
+    white-space: nowrap;
+}
+table.tHALFTIME tr td.cteams .teamname, table.tINPLAYHAD tr td.cteams .teamname
+{
+    display: inline-block;
+    white-space: normal;
+    text-align: center;
+    width: 65px;
+    vertical-align: top;
+}
+table.tINPLAYHAD tr td.cteams .matchresult
+{
+    text-align: center;
+    display: inline-block;
+}
+table.tINPLAYHAD tr td.codds
+{
+    font-size: 11px;
+    text-align: center;
+    width: 76px;
+    white-space: nowrap;
+}
+table.tINPLAYHAD tr td.cdAllInplay
+{
+    width: 34px;
+    white-space: nowrap;
+}
+table.tINPLAYHAD tr td.cesst
+{
+    width: 85px;
+    white-space: normal;
+}
+table.tINPLAYHAD tr td.ctv
+{    
+    text-align: center;
+}
+table.tHALFTIME tr td.cdAllIn, table.tINPLAYHAD tr td.cdAllIn
+{
+    width: 40px;
+    text-align: center;
+}
+table.tINPLAYHAD tr td.cflag
+{
+    width: 16px;
+    text-align: center;
+}
+table.tINPLAYHAD tr td .hadstopsell
+{
+    text-align: center;
+    height: 30px;
+    margin: 5px 0 5px 0;
+}
+/* odds In Play HAD end */
+
+/* ============================================================ */
+
+/* odds CRS start */
+
+div.oddsCRS table.tCRSHead
+{
+    width: 635px;
+    background-color: #ffffff;
+}
+
+div.oddsCRS table.tCRSHead tr td.esst
+{
+    width: 300px;
+    text-align: left;
+    color: #666666;
+}
+div.oddsCRS table.tCRSHead tr td.m_ddl
+{
+    width: 330px;
+    text-align: right;
+}
+div.oddsCRS div.divRemarks div.inplay
+{
+    width: 635px;
+    height: 110px;
+    display: block;
+    background-color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+}
+div.oddsCRS table.tCRS tr.head td.teamheader
+{
+    text-align: center;
+    width: 210px;
+    height: 20px;
+    padding: 5px 0 5px 0;
+}
+div.oddsCRS table.tCRS tr td.codds
+{
+    width: 100px;
+    height: 22px;
+    text-align: center;
+}
+div.oddsCRS table.tCRS tr td.cchk
+{
+    text-align: left;
+}
+
+div.oddsCRS table.tCRS tr td.cchk input
+{
+    width: 35px;
+}
+
+div.oddsCRS table.tCRS tr td.cchk .labelWrapper
+{
+    width: 35px;
+    text-align: center;
+    display: inline-block;
+    padding: 0 3px;
+  
+}
+/* CRS Mix */
+table.tCRSMix tr td.cdcrs
+{
+    width: 45px;
+    text-align: center;
+}
+table.tCRSMix tr td.teamheader
+{
+    text-align: center;
+    width: 315px;
+    height: 20px;
+    padding: 5px 0 5px 0;
+}
+table.tCRSMix tr.rAlt0 td
+{
+    background-color: #ebebeb;
+    height: 20px;
+}
+table.tCRSMix tr td.cdcrsothers, table.tCRSMix tr td.cdcrsdothers
+{
+    width: 62px;
+    text-align: center;
+}
+table.tCRSMix tr td.cdcrsd
+{
+    width: 135px;
+    text-align: center;
+}
+table.tCRSMix tr td.cdcrs input
+{
+    width: 30px;
+}
+/*
+table.tCRSMix tr td.cdcrsd input
+{
+	width:120px;
+}
+*/
+table.tCRSMix tr td.cdcrsothers input, table.tCRSMix tr td.cdcrsdothers input
+{
+    width: 45px;
+}
+
+table.tCRSMix tr td input
+{
+    display: inline-block;
+    padding-left: 5px;
+    text-align: center;
+}
+
+table.dMixHeaderTable tr td.tdMixAllupHeaderTableLeftCell
+{
+    width: 26%;
+}
+
+table.dMixHeaderTable tr td.tdMixAllupHeaderTableRightCell
+{
+    text-align: right;
+}
+
+div.oMixSel
+{
+}
+.cCalContent, .cCalContentBottom
+{
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+}
+.tblMixSel tr td, .tblMixCalHead tr td
+{
+    text-align: left;
+}
+.tblMixSel .cCalContent, .tblMixSel .cCalContent .oMixCal table td
+{
+    background-color: #ffffff;
+}
+
+div.cCalContentBottom
+{
+    width: 635px;
+    padding: 0;
+}
+div.oMixCal table.tblMixCalHead
+{
+    padding: 5px;
+    width: 620px;
+    cursor: pointer;
+    height: 40px;
+    background-color: #ffffff;
+}
+div.oMixCal table.tblMixCalHead tr td
+{
+    padding: 5px;    
+}
+div.oMixCal table.tblMixCalHead tr td.calToggle
+{
+    width: 280px;
+}
+div.oMixCal table.tblMixCalHead tr td input
+{
+    width: 60px;
+}
+div.oMixCal table.tblMixCalHead tr td.calMix
+{
+    width: 66px;
+    text-align: right;
+}
+div.oMixCal table.tblMixCalHead tr td.calUnitbet
+{
+    width: 80px;
+}
+div.oMixCal table.tblMixCalHead tr td.calButton
+{
+    width: 152px;
+}
+
+div.oMixCal div table.tblMixCal
+{
+    padding: 5px;
+    width: 620px;
+    text-align: center;
+}
+div.oMixCal div table.tblMixCal tr td
+{
+    width: 120px;
+    text-align: center;
+}
+div.oMixCal div table.tblMixCal tr.rhead td
+{
+    background-color: #ebebeb;
+}
+table.tblMixSel
+{
+    width: 635px;
+    padding: 0;
+    background-color: #e5e5e5;
+}
+table.tblMixSel tr td
+{
+    background-color: #e5e5e5;
+    padding: 5px;
+}
+table.tblMixBottom tr td
+{
+    background-color: #ffffff;
+}
+table.tblMixSel tr td.cAllup
+{
+    text-align: right;
+    width: 550px;
+}
+table.tblMixSel tr td.cAddSlip
+{
+    text-align: right;
+    width: 70px;
+}
+table.tblMixSel tr td.cAllup select
+{
+    width: 50px;
+}
+div.oMixMatches
+{
+}
+div.dMixHeader
+{
+    padding: 10px 0 5px 0;
+    text-align: left;
+}
+div.dOdds
+{
+    padding: 5px 0 5px 0;
+}
+
+/* ============================================================ */
+
+
+/* ============================================================ */
+
+/* odds FGS start */
+
+div.oddsFGS table.tFGSHead, div.oddsFGS table.tFGS
+{
+    width: 635px;
+    background-color: #ffffff;
+}
+
+div.oddsFGS table.tFGSHead tr td.esst
+{
+    width: 300px;
+    color: #666666;
+    text-align: left;
+}
+div.oddsFGS table.tFGSHead tr td.m_ddl
+{
+    width: 330px;
+    text-align: right;
+}
+
+div.oddsFGS table.tFGSHead tr td.cmatchno
+{
+    width: 80px;
+    text-align: center;
+}
+div.oddsFGS table.tFGSHead tr td.cday
+{
+    width: 90px;
+}
+div.oddsFGS table.tFGSHead tr td.cteams
+{
+    width: 250px;
+}
+div.oddsFGS table.tFGSHead tr td.cinplay
+{
+    width: 30px;
+}
+div.oddsFGS table.tFGSHead tr td.ctv
+{
+    width: 185px;
+    text-align: left;
+}
+div.oddsFGS div.divRemarks div.inplay
+{
+    width: 630px;
+    height: 110px;
+    display: block;
+    background-color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+}
+div.oddsFGS table.tFGS tr.head td.teamheader
+{
+    text-align: center;
+    width: 315px;
+    height: 20px;
+    padding: 5px 0 5px 0;
+}
+div.oddsFGS table.tFGS tr td.nofgs
+{
+    border-top: 1px solid #cccccc;
+    padding-top: 5px;
+    text-align: center;
+    height: 20px;
+}
+
+div.oddsFGS table.tFGS tr td
+{
+    vertical-align: middle;
+}
+div.oddsFGS table.tFGS tr td.codds
+{
+    width: 222px;
+    text-align: left;
+    height: 25px;
+}
+div.oddsFGS table.tFGS tr td.cchk
+{
+    width: 94px;
+    text-align: left;
+}
+div.oddsFGS table.tFGS tr td.cchk input
+{
+    width: 35px;
+}
+div.oddsFGS table.tFGS tr td.cchk .labelWrapper
+{
+    width: 35px;
+    text-align: center;
+    display: inline-block;
+    padding: 0 3px;
+}
+div.oddsFGS table.tFGS tr.noFGSRow td.codds
+{
+    text-align: center;
+    height: 20px;
+    width: 630px;
+}
+div.oddsFGS table.tFGS tr.noFGSRow td.codds
+{
+    white-space: normal;
+}
+/* ============================================================ */
+
+/* odds table SPC start */
+.oSPC .byItem, .oSPC .byMatch
+{
+    margin: 3px 0 3px 0;
+    text-align: left;
+}
+.oSPC .byMatch .ipspcstatus
+{
+    width: 630px;
+    padding-left: 2px;
+    text-align: left;
+}
+.oSPC .byItem .tSPC tr td.citemno
+{
+    text-align: left;
+    width: 60px;
+}
+.oSPC .byItem .tSPC tr td.cflag
+{
+    width: 20px;
+}
+.oSPC .byItem .tSPC tr td.cteams
+{
+    width: 135px;
+    text-align: left;
+}
+.oSPC .byItem .tSPC tr.rhead td.citemno, .oSPC .byItem .tSPC tr.rhead td.cteams
+{
+    text-align: center;
+}
+.oSPC .byItem .tSPC tr td.cesst, .oSPC .byMatch .tSPC tr td.cesst
+{
+    width: 62px;
+}
+.oSPC .byMatch .tSPC tr td.citemno
+{
+    width: 32px;
+}
+.oSPC .byMatch .tSPC tr td.citem
+{
+    width: 150px;
+}
+.oSPC .byMatch .tSPC tr td.codds
+{
+    white-space: normal;
+}
+.oSPC .byMatch .tSPC tr.rAlt0 td.citem, .oSPC .byMatch .tSPC tr.rAlt1 td.citem
+{
+    text-align: left;
+}
+
+.oSPC .byMatch .tSPC tr td.cinplay
+{
+    width: 32px;
+    color: #ff6600;
+}
+.oSPC .byItem .tSPC tr td, .oSPC .byMatch .tSPC tr td
+{
+    text-align: center;
+    padding: 2px 0 2px 0;
+}
+.oSPC .byItem .tSPC tr td.cmatchno
+{
+    width: 60px;
+    text-align: left;
+    padding: 2px 5px 2px 5px;
+}
+
+/* odds table SPC end */
+
+/* ============================================================ */
+
+/* all odds start */
+
+div.oddsAll table tr td.esst
+{
+    color: #666666;
+    text-align: left;
+}
+div.oddsAll table tr td.m_ddl
+{
+    width: 330px;
+    text-align: right;
+}
+div.oddsAll div.tgCoupon, div.oddsTourn div.tgCoupon, div.oddsMixAllup div.tgCoupon, div.oSPC div.tgCoupon
+{
+    width: 635px;
+    height: 25px;
+    margin: 3px 0 0 0;
+    padding: 5px 0 0 0;
+}
+div.oddsAll label, div.oddsMixAllup label
+{
+    margin: 0 2px 0 2px;
+}
+
+div.oddsAll table, div.oddsMixAllup table
+{
+    width: 635px;
+    border: none;
+    padding: 0;
+    background-color: #ffffff;
+}
+div.oddsAll div table tr td.codds, div.oddsMixAllup div table tr td.codds
+{
+    text-align: center;
+    height: 25px;
+}
+div.oddsAll div.oddsHAD table tr td, div.oddsAll div.oddsFTS table tr td, div.oddsAll div.oddsFHA table tr td, div.oddsAll div.oddsHHA table tr td, div.oddsAll div.oddsHDC table tr td, div.oddsAll div.oddsHIL table tr td, div.oddsAll div.oddsCHL table tr td, div.oddsAll div.oddsFHL table tr td, div.oddsAll div.oddsNTS table tr td, div.oddsMixAllup div.oddsHAD table tr td, div.oddsMixAllup div.oddsFTS table tr td, div.oddsMixAllup div.oddsFHA table tr td, div.oddsMixAllup div.oddsHHA table tr td, div.oddsMixAllup div.oddsHDC table tr td, div.oddsMixAllup div.oddsHIL table tr td, div.oddsMixAllup div.oddsCHL table tr td, div.oddsMixAllup div.oddsFHL table tr td, div.oddsMixAllup div.oddsNTS table tr td
+{
+    width: 210px;
+}
+
+table.tblResults {
+	table-layout: fixed;
+}
+
+div.oddsAll div.oddsOOE table tr td, div.oddsAll div.oddsTQL table tr td, div.oddsMixAllup div.oddsOOE table tr td
+{
+    width: 315px;
+}
+div.oddsAll div.oddsHFT table tr td, div.oddsMixAllup div.oddsHFT table tr td
+{
+    width: 70px;
+}
+div.oddsAll div.oddsTTG table tr td, div.oddsMixAllup div.oddsTTG table tr td
+{
+    width: 78px;
+}
+div.oddsAll div.oddsHDC table tr td.chdc, div.oddsMixAllup div.oddsHDC table tr td.chdc
+{
+    height: 40px;
+    text-align: center;
+}
+div.oddsAll div.oddsHDC table tr td.chdc div, div.oddsMixAllup div.oddsHDC table tr td.chdc div
+{
+    text-align: left;
+    width: 140px;
+}
+
+div.oddsAll div.oddsHFT table tr.rhft td.codds, div.oddsMixAllup div.oddsHFT table tr.rhft td.codds
+{
+    height: 16px;
+}
+
+div.oddsMixAllup table tr td.cvenue
+{
+    border: none;
+}
+
+/* all odds end */
+
+/* ============================================================ */
+
+/* inplay all odds start */
+table.tinplayallHead tr td.ctext, table.tinplayallHead tr td.ctext nolnk
+{
+    font-weight: bold;
+    color: #666666;
+}
+table.tinplayallHead tr td.esst
+{
+}
+table.tinplayallHead tr td.m_ddl
+{
+}
+table.tinplayallHead tr td.cteaminfo
+{
+    width: 600px;
+}
+table.tinplayallHead tr td .stagemsg
+{
+    font-weight: normal;
+    color: #000000;
+    white-space: nowrap;
+}
+table.tinplayallHead tr td .spntsinfo
+{
+    width: 100px;
+    display: inline-block;
+    text-align: left;
+}
+table.tinplayallHead tr td .spntsinfo #ntsinfo_panel
+{
+    position: absolute;
+    top: 215px;
+    left: 255px;
+    z-index: 100;
+    height: auto;
+    padding: 10px;
+    border: solid 1px #cccccc;
+    background-color: #ebebeb;
+}
+table.tinplayallHead tr td .spntsinfo #ntsinfo_panel table
+{
+    white-space: nowrap;
+    width: 180px;
+    background-color: #ebebeb;
+}
+table.tinplayallHead tr td .spntsinfo #ntsinfo_panel table tr.rhead td
+{
+    font-weight: bold;
+    color: #4d822d;
+}
+table.tinplayallHead tr td .spntsinfo #ntsinfo_panel table tr td.cgoal
+{
+    width: 45px;
+}
+table.tinplayallHead tr td .spntsinfo #ntsinfo_panel table tr td.cgoaldiv
+{
+    padding-right: 10px;
+}
+.lblSup
+{
+    /* super script */
+    position: relative;
+    bottom: 0.4em;
+    left: -0.2em;
+    font-size: 8pt;
+}
+/* inplay all odds end */
+
+/* ============================================================ */
+
+/* oddsMixAllup start */
+
+div.oddsMixAllup
+{
+}
+div.tgCoupon span.scoutext
+{
+    width: 280px;
+    display: inline-block;
+}
+div.tgCoupon span.next
+{
+    width: 300px;
+    display: inline-block;
+    text-align: right;
+}
+div.oddsGreenHR span.next
+{
+    width: 595px;
+    display: inline-block;
+    text-align: right;
+}
+div.oddsGreenHR
+{
+    padding: 5px 0 5px 0;
+    margin: 5px 0 5px 0;
+}
+div.mixupHeaderText
+{
+    height: 15px;
+    width: 635px;
+    padding: 6px 0 6px 0;
+    text-align: left;
+}
+
+table.tOdds tr.rmixHeader td
+{
+    height: 40px;
+}
+table.tblMix
+{
+    padding: 0;
+    background-color: #ffffff;
+}
+table.tblMix tr td
+{
+    text-align: left;
+}
+table.tblMix tr.rAlt0 td
+{
+    background-color: #ebebeb;
+}
+table.tOdds tr.rmixHeader td.cchk, table.tblMix tr td.cchk
+{
+    width: 35px;
+    text-align: center;
+}
+table.tOdds tr.rmixHeader td.cday
+{
+    text-align: left;
+    width: 72px;
+}
+table.tblMix tr td.cday
+{
+    width: 75px;
+}
+
+table.tOdds tr.rmixHeader td.cflag, table.tblMix tr td.cflag
+{
+    width: 32px;
+    text-align: center;
+}
+
+table.tOdds tr.rmixHeader td.cteams
+{
+    width: 180px;
+    text-align: center;
+}
+table.tblMix tr td.cteams
+{
+    width: 150px;
+    text-align: left;
+}
+table.tblMix tr td.cvenue
+{
+    width: 20px;
+}
+/* oddsMixAllup end */
+
+/* ============================================================ */
+
+/* tournament start */
+div.oddsTourn table tr td
+{
+    height: 20px;
+}
+div.oddsTourn div.tgCoupon
+{
+    height: 22px;
+    display: block;
+    vertical-align: bottom;
+}
+
+div.oddsCHP table.tblCHP, div.oddsCHP table.tblCHPHead, div.oddsGPF table.tblGPF, div.oddsGPW table.tblGPW, div.oddsADTP table.tblADTP
+{
+    width: 635px;
+    padding: 0;
+    background-color: #ffffff;
+}
+table.tblTournContainer
+{
+}
+table.tblTournContainer tr td
+{
+    width: 155px;
+}
+
+div.oddsTourn span.spoddsheader
+{
+    display: inline-block;
+    width: auto;
+}
+/**** added by kevin *****/
+div.oddsTourn span.spoddsheader1
+{
+    display: inline-block;
+    width: 280px;
+}
+
+/* CHP */
+div.oddsCHP table.tblCHP tr td
+{
+    border: none;
+}
+div.oddsCHP table.tblCHPHeader tr td
+{
+    text-align: center;
+}
+.chpEsst
+{
+    height: 25px;
+    width: 620px;
+    padding: 2px;
+    text-align: right;
+}
+div.oddsCHP table.tblCHPHeader tr td
+{
+    text-align: center;
+    width: 72px;
+}
+div.oddsCHP table tr td.esst
+{
+    width: 630px;
+    text-align: right;
+    color: #000000;
+}
+div.oddsCHP table tr td.cteams
+{
+    width: 86px;
+}
+div.oddsCHP table tr td.cteams span
+{
+    padding-left: 2px;
+}
+div.oddsCHP table.tblCHP tr td.codds
+{
+    text-align: left;
+    width: 85px;
+}
+div.oddsCHP table tr td.codds input.cLSE
+{
+    vertical-align: middle; /*margin-top:8px;*/
+    display: inline-block;
+}
+div.oddsCHP table tr td.codds span.cLSE
+{
+    width: 30px;
+    text-align: center; /*padding:3px 0 2px 0;*/
+}
+
+div.oddsCHP table.tblCHP tr td.cteams
+{
+    border-left: solid 1px #cccccc;
+    white-space: normal;
+}
+div.oddsCHP table.tblCHP tr td.codds
+{
+    border-left: solid 1px #ffffff;
+}
+div.oddsCHP table.tblCHP tr td.cteams0
+{
+    border-left: none;
+}
+/* CHP with two teams only*/
+div.oddsCHP table.tblCHP tr td.c2odds
+{    
+	width: 144px;
+}
+div.oddsCHP table.tblCHP tr td.c2teams
+{    
+	width: 172px;
+}
+div.oddsCHP table.tblCHPHeader tr td.c2odds
+{    
+    width: 144px;
+}
+div.oddsCHP table.tblCHPHeader tr td.c2teams
+{    
+    width: 172px;
+}
+div.oddsCHP table.tblCHPHeader tr td.c2oddsInv
+{    
+    display:none;
+}
+div.oddsCHP table.tblCHPHeader tr td.c2teamsInv
+{    
+    display:none;
+}
+/* GPF */
+div.oddsGPF div.dhead
+{
+    /* height: 20px; */
+	min-height: 20px;
+    margin: 5px 0 1px 0;
+}
+div.oddsGPF div.dhead span.grp
+{
+    /* width: 120px; */
+    display: inline-block;
+	max-width: inherit;
+}
+div.oddsGPF div.dhead span.esst
+{
+    /* width: 480px; */
+    display: inline-block;
+    text-align: right;
+	float: right;
+	padding-right: 35px;
+}
+div.oddsGPF table.tblGPF tr.rhead td.cteams
+{
+    padding-left: 2px;
+}
+div.oddsGPF table.tblGPF tr td.gpf12
+{
+    width: 70px;
+    height: 50px;
+    background-image: url("/football/info/images/topfbg.gif");
+    background-repeat: no-repeat;
+    text-align: left;
+}
+div.oddsGPF table.tblGPF tr td.gpf12 div.blk1
+{
+    position: relative;
+    top: -8px;
+    left: 35px;
+}
+div.oddsGPF table.tblGPF tr td.gpf12 div.blk2
+{
+    position: relative;
+    top: 5px;
+    left: 5px;
+}
+div.oddsGPF table.tblGPF tr td.cteams
+{
+    padding-left: 2px;
+}
+div.oddsGPF table.tblGPF tr td.codds
+{
+    text-align: left;
+    padding-left: 5px;
+    width: auto;
+}
+div.oddsGPF table.tblGPF tr td.ncodds
+{
+    width: auto;
+    text-align: center;
+    color: #cc0000;
+}
+div.oddsGPF table.tblGPF tr td.codds0
+{
+    border-left: none;
+}
+/* GPW */
+div.oddsGPW table.tblGPW tr.gpwHead td
+{
+    height: 20px;
+    text-align: center;
+}
+div.oddsGPW table.tblGPW tr td.cteams
+{
+    min-height: 20px;
+    width: 102px;
+}
+div.oddsGPW table.tblGPW tr td.codds
+{
+    min-height: 20px;
+    width: 125px;
+}
+/* ADTP */
+div.oddsADTP div.dADTPGroups
+{
+    width: 630px;
+    height: 25px;
+    padding: 5px 0 0 5px;
+    border-bottom: solid 1px #cccccc;
+    text-align: left;
+}
+div.oddsADTP span.spevent
+{
+    vertical-align: top;
+    padding-top: 2px;
+    height: 25px;
+    display: inline-block;
+    width: 250px;
+}
+div.oddsADTP span.spinvest
+{
+    vertical-align: top;
+    padding-top: 2px;
+    height: 25px;
+    display: inline-block;
+    width: 120px;
+}
+div.oddsADTP span.spesst
+{
+    vertical-align: top;
+    padding-top: 2px;
+    height: 25px;
+    display: inline-block;
+    width: 250px;
+    text-align: right;
+}
+div.oddsADTP table.tblADTP tr td.cteams1, div.oddsADTP table.tblADTP tr td.cteams2, div.oddsADTP table.tblADTP tr td.cteams3
+{
+    border-left: none;
+}
+div.oddsADTP table.tblADTP tr td.codds3
+{
+    border-right: none;
+}
+div.oddsADTP table.tblADTP tr.rhead td.cteams
+{
+    width: 158px;
+}
+div.oddsADTP table.tblADTP tr.tournrows td.cteams
+{
+    width: 83px;
+    padding: 1px 0 1px 5px;
+}
+div.oddsADTP table.tblADTP tr.tournrows td.codds
+{
+    width: 68px;
+    padding-left: 2px;
+    text-align: left;
+}
+/* TOFP */
+div.oddsTOFP table.tblTOFP tr td
+{
+    border: none;
+}
+div.oddsTOFP div.TOFPHead
+{
+    height: 25px;
+    width: 630px;
+    padding: 5px 0 0 5px;
+    text-align: left;
+    border-bottom: solid 1px #cccccc;
+}
+div.oddsTOFP div.TOFPHead span.spevent
+{
+    vertical-align: top;
+    padding-top: 2px;
+    height: 25px;
+    display: inline-block;
+    width: 250px;
+}
+div.oddsTOFP div.TOFPHead span.spinvest
+{
+    vertical-align: top;
+    padding-top: 2px;
+    height: 25px;
+    display: inline-block;
+    width: 120px;
+}
+div.oddsTOFP div.TOFPHead span.spesst
+{
+    vertical-align: top;
+    padding-top: 2px;
+    height: 25px;
+    display: inline-block;
+    width: 250px;
+    text-align: right;
+}
+div.oddsTOFP table.tblTOFPTeam tr td.ctopfTeam
+{
+    border-left: solid 1px #cccccc;
+    width: 154px;
+    padding-left: 5px;
+    text-align: left;
+}
+
+div.oddsTOFP table.tblTOFPOddsHeader tr td.cteams
+{
+    text-align: center;
+    width: 87px;
+    height: 20px;
+    padding: 5px 0 5px 0;
+    border-top: solid 1px #cccccc;
+    border-bottom: solid 1px #cccccc;
+}
+div.oddsTOFP table.tblTOFPOddsHeader tr td.codds
+{
+    text-align: center;
+    width: 71px;
+    border-top: solid 1px #cccccc;
+    border-bottom: solid 1px #cccccc;
+    padding-left: 2px;
+}
+div.oddsTOFP table.tblTOFPOdds tr td.cteams
+{
+    width: 83px;
+    text-align: left;
+    padding-left: 5px;
+    border-left: solid 1px #cccccc;
+}
+div.oddsTOFP table.tblTOFPOdds tr td.codds
+{
+    width: 68px;
+    text-align: left;
+    border-left: solid 1px #ffffff;
+}
+div.oddsTOFP table.tblTOFPTeam tr td.cteams0
+{
+    border-left: none;
+}
+div.oddsTOFP table.tblTOFPOdds tr td.cteams0
+{
+    border-left: none;
+}
+/* GPW */
+div.oddsGPW table.tblGPW tr.gpwHead td, div.oddsGPW table.tblGPW tr.rhead td
+{
+    padding: 5px 0 5px 0;
+}
+div.oddsGPW table.tblGPW tr.tournrows td.cteams
+{
+    border-left: solid 1px #cccccc;
+    padding-left: 5px;
+}
+div.oddsGPW table.tblGPW tr.tournrows td.cteams0
+{
+    border-left: none;
+}
+div.oddsGPW table.tblGPW tr.tournrows td.codds
+{
+    text-align: left;
+    padding-left: 2px;
+    width: 54px;
+}
+/* TPS */
+div.oddsTPS table.tblTPS tr td
+{
+    border: none;
+}
+div.oddsTPS table.tblTPSHeader tr td.cteams
+{
+    width: 98px;
+    text-align: center;
+    padding: 5px 0 5px 0;
+}
+div.oddsTPS table.tblTPSHeader tr td.codds
+{
+    width: 53px;
+    text-align: center;
+    padding: 5px 0 5px 0;
+}
+div.oddsTPS table.tblTPSHeader
+{
+    width: 635px;
+}
+div.oddsTPS table.tblTPS tr td.cteams
+{
+    border-left: solid 1px #cccccc;
+    width: 93px;
+    white-space: normal;
+    padding-left: 5px;
+}
+div.oddsTPS table.tblTPS tr td.codds
+{
+    width: 57px;
+    border-left: solid 1px #ffffff;
+    text-align: left;
+}
+div.oddsTPS table.tblTPS tr td.cteams0
+{
+    border-left: none;
+}
+div.oddsTPS div.esst
+{
+    color: #000000;
+    text-align: right;
+    width: 630px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+/* SPC */
+div.oddsSPC table.tblSPC
+{
+    width: 635px;
+}
+div.oddsSPC div.spcEsst
+{
+    width: 635px;
+    height: 25px;
+    vertical-align: top;
+    padding: 8px 0 0 0;
+    text-align: right;
+    border-bottom: solid 1px #cccccc;
+    background-color: #fcf3d9;
+}
+div.oddsSPC div.spcQuestion
+{
+    width: 635px;
+    height: 25px;
+    padding: 10px 0 0 0;
+    border-bottom: solid 1px #cccccc;
+    text-align: left;
+}
+div.oddsSPC table.tblSPC tr td.cAns
+{
+    text-align: center;
+    padding: 8px 0 8px 0;
+    width: auto;
+}
+div.oddsSPC table.tblSPC tr td.codds
+{
+    text-align: center;
+    padding: 5px 0 5px 0;
+    width: auto;
+}
+.finalistimg img, .finalistimg2 img
+{
+    display: inline-block;
+    vertical-align: bottom;
+}
+/* tournament end */
+
+/* pre schedule */
+.tPreSchedule .tableContent1
+{
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #333333;
+    line-height: 15px;
+    text-decoration: none;
+    border-right: #FFFFFF 1px solid;
+    padding: 2px 5px 2px 5px;
+    background-color: #FFFFFF;
+}
+
+.tPreSchedule .tableContent2
+{
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #333333;
+    line-height: 15px;
+    text-decoration: none;
+    border-right: #FFFFFF 1px solid;
+    padding: 2px 5px 2px 5px;
+    background-color: #EEEEEE;
+}
+
+/* focus match */
+.focusMatch
+{
+}
+.focusMatch .focus_addslip
+{
+    text-align: right;
+}
+.focusMatch .main
+{
+    width: 240px;
+    border-collapse: collapse;
+    padding: none;
+}
+.focusMatch .main td
+{
+    padding: 1px 0 1px 0;
+    height: 16px;
+}
+.focusMatch .main .rhead td
+{
+    font-weight: bold;
+}
+.focusMatch .main .leftCell
+{
+    width: 130px;
+    text-align: left;
+    color: #4d822d;
+}
+.focusMatch .main .rightCell
+{
+    width: 110px;
+    text-align: right;
+}
+.focusMatch .main .infoCol span
+{
+    width: 26px;
+    padding: 0 2px 0 2px;
+    height: 33px;
+}
+.focusMatch .main .infoCol .cday
+{
+    width: 80px;
+    padding: 0 2px 0 2px;
+    height: 33px;
+}
+.focusMatch .main .infoCol .cteams
+{
+    width: 160px;
+    padding: 0px 2px 0px 2px;
+    white-space: normal;
+    height: 33px;
+}
+.focusMatch .main .coddsCol .codds
+{
+    width: auto;
+    text-align: left;
+    padding: none;
+    vertical-align: top;
+}
+.focusMatch .main .coddsCol .codds .oddssel
+{
+    display: inline-block;
+    margin: 1px;
+    padding-top: 2px;
+    vertical-align: top;
+    height: 22px;
+}
+
+.focusMatch .main .coddsCol .codds .oddsLink
+{
+    color: #cc0000;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 1px;
+    margin: 1px;
+}
+.focusMatch .main .addedslip
+{
+    font-weight: bold;
+}
+.focusMatch .main .cInplayMsg
+{
+    height: 50px;
+    text-align: center;
+}
+
+.focusMatch .main .focusMatchNoInfo
+{
+    height: 60px;
+    padding: 0px 2px 0px 2px;
+}
+
+
+/* Turober  */
+.tblResults
+{
+    margin-bottom: 2px;
+}
+.tblResults .tableContent1
+{
+    /*width*/
+    color: #333333;
+    line-height: 15px;
+    text-decoration: none;
+    border-right: #FFFFFF 1px solid;
+    padding: 2px 5px 2px 5px;
+    background-color: #FFFFFF;
+}
+
+.tblResults .tableContent2
+{
+    color: #333333;
+    line-height: 15px;
+    text-decoration: none;
+    border-right: #FFFFFF 1px solid;
+    padding: 2px 5px 2px 5px;
+    background-color: #EBEBEB;
+}
+
+.tblResults .tableContentHead
+{
+    color: #333333;
+    line-height: 15px;
+    text-decoration: none;
+    padding: 5px 5px 5px 5px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+}
+
+.tblResults .subTitleBar
+{
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333333;
+    line-height: 25px;
+    padding: 2px 7px 2px 10px;
+    background-color: #C6DFAD;
+    border-bottom: 1px solid #FFFFFF;
+    height: 25px;
+}
+
+.LastOddsHeader
+{
+    color: #333333;
+    height: 25px;
+    padding-top: 5px;
+}
+.chpRes .tblResults .tableContent1, .chpRes .tblResults .tableContent2
+{
+    vertical-align: top;
+    padding-top: 5px;
+    height: 20px;
+}
+
+.tblSPCRes .tblResults .subTitleBar .btn_toggle
+{
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+/*live center*/
+#divLoading
+{
+    float: right;
+}
+#ilcMatches
+{
+    width: 100%;
+    height: auto;
+    float: left;
+}
+/*subBar begin*/
+#subBar
+{
+    float: left;
+    width: 100%;
+    height: 30px;
+    background-color: #65ab3b;
+    margin-top: 5px;
+    color: #fff;
+}
+#subBar a
+{
+    color: #fff;
+}
+#subBar ul
+{
+    float: right;
+}
+#ulTitle, #subBar ul
+{
+    margin: 0 0;
+    padding: 0;
+}
+#subBar li.selLeague select
+{
+    _position: relative;
+    _top: 3px;
+}
+#subBar span
+{
+    display: inline-block;
+}
+#subBar li.refresh img
+{
+    display: block;
+    margin-top: 7px;
+}
+#subBar li.addSlip img
+{
+    display: block;
+    margin-top: 3px;
+}
+/*subBar end*/
+
+/*ulTitle begin*/
+#ulTitle
+{
+    width: 450px;
+    float: left;
+}
+#ulTitle li, #subBar ul li
+{
+    list-style: none;
+    float: left;
+    line-height: 30px;
+    padding: 0 10px;
+}
+#ulTitle li a.button
+{
+    text-decoration: none;
+    display: block;
+    padding: 0 5px;
+}
+/*ulTitle end*/
+
+/*odds table begin*/
+#divOddsType
+{
+    width: 100%;
+    float: left;
+}
+#divOddsType select
+{
+    width: 100%;
+}
+#ilcOdds
+{
+    width: 100%;
+    float: left;
+    clear: both;
+}
+table.ilcOdds
+{
+    width: 630px;
+    border: none;
+    background-color: #ffffff;
+}
+table.ilcOdds tr td
+{
+    word-wrap: break-word;
+}
+table.ilcOdds tr.rAlt0, table.ilcOdds tr.rAlt1
+{
+    height: 20px;
+}
+table.ilcOdds tr.rAlt0
+{
+    background-color: #ebebeb;
+}
+table.ilcOdds tr.rchead .tgCoupon
+{
+    cursor: pointer;
+    width: 100%;
+    height: 25px;
+    background-color: #c1dda8;
+}
+/*
+table.ilcOdds tr.rhead td.ctv,table.ilcOdds tr.rhead td.clive-cast
+{
+	text-align:left;
+	padding:0 5px;
+}*/
+table.ilcOdds tr.rhead td, table.ilcOdds tr.rcont td
+{
+    text-align: center;
+}
+table.ilcOdds tr.rhead td.cchk
+{
+    width: 17px;
+}
+table.ilcOdds tr.rcont td.cchk
+{
+    width: 16px;
+}
+table.ilcOdds tr.rcont td.cselect input, table.ilcOdds tr.rcont td.codds input
+{
+    width: 14px;
+    height: 14px;
+    margin-left: 0;
+}
+table.ilcOdds tr.rhead td.cday
+{
+    width: 40px;
+}
+table.ilcOdds tr.rcont td.cday
+{
+    width: 43px; /*padding:0 5px;	*/
+    text-align: left;
+    white-space: normal;
+}
+table.ilcOdds tr.rhead td.cesst
+{
+    width: 40px;
+}
+table.ilcOdds tr.rcont td.cesst
+{
+    width: 39px;
+    white-space: normal;
+}
+table.ilcOdds tr.rhead td.cteams
+{
+    width: 230px;
+}
+table.ilcOdds tr.rcont td.cteams
+{
+    width: 229px; /*padding:0 5px;*/
+    text-align: left;
+}
+table.ilcOdds tr td.cteams .teamname
+{
+    display: inline-block;
+    white-space: normal;
+    text-align: center;
+    width: 84px;
+    vertical-align: middle;
+}
+table.ilcOdds tr td.teamname
+{
+    color: #386220;
+}
+.mOver
+{
+    text-decoration:underline;
+}
+table.ilcOdds tr td .span_vs
+{
+    display: inline-block;
+    white-space: normal;
+    text-align: center;
+    color: #333333;
+    vertical-align: middle;
+}
+table.ilcOdds tr td.cteams .home_team
+{
+    margin-left:2px;
+    width:10px;
+    vertical-align: middle;
+}
+table.ilcOdds tr td.cteams .away_team
+{
+    margin-right:2px;
+    width:10px;
+    vertical-align: middle;
+}
+table.ilcOdds tr td.cteams .neutral_ground
+{
+    vertical-align: middle;
+}
+table.ilcOdds tr.rhead td.cscore
+{
+    width: 40px;
+}
+table.ilcOdds tr.rcont td.cscore
+{
+    width: 39px;
+}
+.pointer
+{
+    cursor: pointer;
+}
+table.ilcOdds tr.rhead td.ctv
+{
+    width: 35px;
+    text-align: left;
+}
+table.ilcOdds tr.rcont td.ctv
+{
+    width: 34px;
+}
+table.ilcOdds tr.rhead td.clive-cast
+{
+    width: 35px;
+    text-align: left;
+}
+table.ilcOdds tr.rcont td.clive-cast
+{
+    width: 34px;
+}
+table.ilcOdds tr.rhead td.cgoal
+{
+    width: 25px;
+}
+table.ilcOdds tr.rcont td.cgoal
+{
+    width: 20px;
+}
+table.ilcOdds tr.rhead td.codds-had, table.ilcOdds tr.rhead td.codds-hil, table.ilcOdds tr.rhead td.codds-chl
+{
+    width: 63px;
+}
+table.ilcOdds tr.rcont td.codds-had, table.ilcOdds tr.rcont td.codds-hil, table.ilcOdds tr.rcont td.codds-chl
+{
+    width: 62px; /*padding:0 5px;*/
+    text-align: left;
+}
+table.ilcOdds tr.rhead td.codds-nts
+{
+    width: 58px;
+}
+table.ilcOdds tr.rcont td.codds-nts
+{
+    width: 57px; /*padding:0 5px;*/
+    text-align: left;
+}
+table.ilcOdds tr.rhead td.cline
+{
+    width: 30px;
+}
+table.ilcOdds tr.rcont td.cline
+{
+    width: 29px;
+}
+table.ilcOdds tr.rhead td.cselect
+{
+    width: 189px;
+}
+/*odds table end*/
+
+/*dropdown list begin*/
+.lnk-dropdown
+{
+    background-image: url("/football/info/images/icon_arrow_down.gif");
+    background-repeat: no-repeat;
+    background-position: right center;
+    width: 100%;
+    display: inline-block;
+    cursor: pointer;
+}
+#liveCast-content ul, #channel-content ul
+{
+    margin: 0 0;
+    padding: 0;
+    float: left;
+    width: 100%;
+}
+#liveCast-content ul li, #channel-content ul li
+{
+    list-style: none;
+    padding: 0;
+    _height: 1em;
+}
+#liveCast-content ul a, #channel-content ul a
+{
+    display: block;
+    width: 100%;
+    margin: 0 0;
+    padding: 4px 0 4px 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+#liveCast-content ul a:hover, #channel-content ul a:hover
+{
+    background-color: #C1DDA8;
+}
+/*dropdown list end*/
+
+/*event popup begin*/
+#divDetails table
+{
+    border: solid 1px #B2B2B2;
+    text-align: center;
+}
+#divDetails table td
+{
+    line-height: 2em;
+}
+#divDetails table .cbutton, #divDetails table .crefresh
+{
+    background-color: #65AB3B;
+    color: #fff;
+}
+#divDetails table .crefresh
+{
+    height: 2em;
+    line-height: 2em;
+}
+#divDetails table .crefresh span
+{
+    display: inline-block;
+    float: right;
+    margin-left: 10px;
+}
+#divDetails table .crefresh img
+{
+    display: inline-block;
+    margin-top: 4px !important;
+    margin-top: 3px;
+}
+#divDetails table .crefresh a
+{
+    text-decoration: none;
+    color: #fff;
+}
+#divDetails table .cbutton
+{
+    width: 20px;
+    cursor: pointer;
+}
+#divDetails table .cevent
+{
+    width: 36px;
+}
+#divDetails table tr.rhead td, #divDetails table tr.rcont td
+{
+    border-bottom: solid 1px #E0E1E6;
+}
+#divDetails table tr.rcont td, #divDetails table tr.rlast td
+{
+    border-left: solid 1px #E0E1E6;
+}
+#divDetails table tr.rhead td.no-leftBorder, #divDetails table tr.rcont td.no-leftBorder, #divDetails table tr.rlast td.no-leftBorder
+{
+    border-left: none;
+}
+#divDetails table tr.rhead .cmin
+{
+    background-color: #CCE6BB;
+    font-weight: bold;
+}
+#divDetails table tr.rcont .cmin, #divDetails table tr.rlast .cmin
+{
+    background-color: #EFF5E9;
+}
+#divDetails table .cmin
+{
+    width: 80px;
+}
+#divDetails table .cplayer
+{
+    width: 150px;
+}
+#divDetails table tr.rhead .cteam
+{
+    background-color: #D6F3B7;
+    color: #6A960C;
+    font-weight: bold;
+}
+#divDetails table .cteam
+{
+    width: 186px;
+}
+/*event popup end*/
+.redColor
+{
+    color: Red;
+}
+#divPager
+{
+    width: 100%;
+    padding-top: 20px;
+}
+
+.mlMainRow, .mlSubRow {
+	height: 19px;
+    padding: 3px 1px 1px 1px;
+}
+
+div.oddsSCMixAllup .tgCoupon
+{
+    cursor: default;
+}
+div.oddsSCMixAllup  div.dMixHeader
+{
+    padding: 10px 0 0px 0;
+}
+
+table.dMixHeaderTable tr td.tdMixAllupHeaderTableRightCell {
+    text-align: right;
+    padding-right: 5px;
+}
+
+.oddsSCMixAllup table tr.rAlt0 td, .oddsSCMixAllup  table tr.rAlt1 td {
+	border: 0;
+}
+
+#dHIL table tr td.cchk,
+#dCHL table tr td.cchk,
+#dFHL table tr td.cchk {
+	text-align: left;
+}
+#dHIL table tr td.cchk>span,
+#dCHL table tr td.cchk>span,
+#dFHL table tr td.cchk>span {
+	margin-left: 84px;
+}
+
+table .rmidHIL td.codds span.ref, table .rmidCHL td.codds span.ref, table .rmidFHL td.codds span.ref {
+	margin-left: -84px;
+}

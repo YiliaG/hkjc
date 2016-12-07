@@ -1,0 +1,35 @@
+.pp_pen_btn_closed{
+	background:url('../images/pphw.png');
+	background-repeat:no-repeat;
+	height:23px;
+	width:23px;
+	padding:0;
+	cursor:pointer;
+	border: medium none;
+	margin:0;
+	vertical-align:middle
+}
+
+.pp_pen_btn_closed_highlight{
+	background:url('../images/pphw1.png');
+	background-repeat:no-repeat;
+	height:23px;
+	width:23px;
+	padding:0;
+	cursor:pointer;
+	border: medium none;
+	margin:0;
+	vertical-align:middle
+}
+
+.pp_pen_btn_opened{
+	background:url('../images/pphw2.png');
+	background-repeat:no-repeat;
+	height:23px;
+	width:23px;
+	padding:0;
+	cursor:default;
+	border: medium none;
+	margin:0;
+	vertical-align:middle
+}

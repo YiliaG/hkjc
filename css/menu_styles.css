@@ -1,0 +1,41 @@
+.menu_nav {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #999999;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.menu_nav:hover {
+	text-decoration: none;
+}
+
+.menu_menuTxt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #002E65;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.menu_menuTxt:hover {
+	color: #005EBC;
+	text-decoration: none;
+}
+
+.menu_title {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #102E5F;
+	font-weight: bold;
+	line-height: 170%;
+	text-decoration: none;
+}
+
+.menu_gray {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	line-height: 170%;
+	text-decoration: none;
+}

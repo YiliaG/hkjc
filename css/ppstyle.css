@@ -1,0 +1,280 @@
+#pphw-panel {
+	display: none;
+}
+
+#pphw-panel {
+	position: absolute;
+	left: 0;
+	top: 0;
+    width: 250px;
+    height: 250px;
+    z-index: 2;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFFFFF), to(#E6E6DC));
+    background-image: -webkit-linear-gradient(#FFFFFF 0%, #E6E6DC 100%);
+    background-image: -moz-linear-gradient(#FFFFFF 0%, #E6E6DC 100%);
+    background-image: -o-linear-gradient(#FFFFFF 0%, #E6E6DC 100%);
+    background-image: linear-gradient(#FFFFFF 0%, #E6E6DC 100%);
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#E6E6DC', GradientType=0);*/
+    background-image: url('../images/pphw_bg.gif');
+}
+
+/*Top and Bottom Yellow Bar*/
+#pphw-panel .yellowTop,
+#pphw-panel .yellowBottom {
+    position: absolute;
+    width: 250px;
+    height: 2px;
+    background-color: #FDDD00;
+    line-height: 1px;
+    font-size: 1px;
+}
+
+#pphw-panel .yellowTop {
+    top: 0;
+    left: 0;
+    line-height: 1px;
+    font-size: 1px;
+}
+
+#pphw-panel .yellowBottom {
+    left: 0;
+    bottom: 0;
+    line-height: 1px;
+    font-size: 1px;
+}
+
+/*Handwrite Body*/
+#pphw-panel .hwBody {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 248px;
+    height: 244px;
+    border: 1px solid #C0C0C0;
+}
+
+/*Left Part*/
+#pphw-panel .hwBody .hwBody-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 244px;
+}
+
+/*Right Part*/
+#pphw-panel .hwBody .hwBody-right {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 188px;
+    height: 244px;
+    /*background-color: blue;*/
+}
+
+/*Candidate Button*/
+#pphw-panel .hwBody .hwBody-left .pphw-candidate {
+    position: absolute;
+    top: 0;
+    left: 14px;
+    width: 32px;
+    height: 32px;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #C0C0C0;
+    padding: 3px 6px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 19px;
+}
+
+#pphw-panel .hwBody .hwBody-left .pphw-candidate:hover {
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFFFFF), to(#00FFFF));
+    background-image: -webkit-linear-gradient(#FFFFFF 0%, #00FFFF 100%);
+    background-image: -moz-linear-gradient(#FFFFFF 0%, #00FFFF 100%);
+    background-image: -o-linear-gradient(#FFFFFF 0%, #00FFFF 100%);
+    background-image: linear-gradient(#FFFFFF 0%, #00FFFF 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#00FFFF', GradientType=0);
+}
+
+#pphw-panel .hwBody .hwBody-left .pphw-candidate:disabled {
+    background-color: #FFFFFF;
+    background-image: none;
+    color: #000000;
+}
+
+#pphw-panel .hwBody .hwBody-left .pphw-candidate#hwCand1 {
+    top: 22px;
+}
+
+#pphw-panel .hwBody .hwBody-left .pphw-candidate#hwCand2 {
+    top: 54px;
+}
+
+#pphw-panel .hwBody .hwBody-left .pphw-candidate#hwCand3 {
+    top: 86px;
+}
+
+#pphw-panel .hwBody .hwBody-left .pphw-candidate#hwCand4 {
+    top: 118px;
+}
+
+#pphw-panel .hwBody .hwBody-left .pphw-candidate#hwCand5 {
+    top: 150px;
+}
+
+#pphw-panel .hwBody .hwBody-left .pphw-candidate#hwCand6 {
+    top: 182px;
+}
+
+/*Product Label*/
+#pphw-panel .hwBody .hwBody-right .pphw-productLabel {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 138px;
+    height: 19px;
+    color: #2F6BA6;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 19px;
+}
+
+/*Company Label*/
+#pphw-panel .hwBody .hwBody-right .pphw-companyLabel {
+    position: absolute;
+    top: 229px;
+    right: 7px;
+    width: 84px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #C0C0C0;
+    text-align: right;
+}
+
+/*Icon Button*/
+#pphw-panel .hwBody .hwBody-right .pphw-iconButton {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #C0C0C0;
+    padding: 3px 6px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 19px;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-iconButton#qmarkbtn {
+    background: url(../images/btn_pphw_questionmark.png) no-repeat;
+    top: 3px;
+    right: 21px;
+    border: 0px solid #C0C0C0;
+    padding: 0px;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-iconButton#xmarkbtn {
+    background: url(../images/btn_pphw_cross.png) no-repeat;
+    top: 3px;
+    right: 4px;
+    border: 0px solid #C0C0C0;
+    padding: 0px;
+}
+
+/*Canvas*/
+#pphw-panel .hwBody .hwBody-right .pphw-canvas-container {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 24px;
+    left: 0;
+    border: 1px solid #C0C0C0;
+    background-color: #FFFFFF;
+    cursor:default;
+}
+
+/*Function Button*/
+#pphw-panel .hwBody .hwBody-right .pphw-function {
+    position: absolute;
+    width: 57px;
+    height: 21px;
+    line-height: 15px;    
+    color: #FFFFFF;
+    border: 0px;
+    padding: 0px;    
+    font-size: 13px;
+    vertical-align:middle;
+    background: url(../images/btn_pphw_dim.gif) no-repeat;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-function:hover {
+    background: url(../images/btn_pphw_on.gif) no-repeat;
+    color: #808080;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-function:active {
+    background: url(../images/btn_pphw_dim.gif) no-repeat;
+    color: #FFFFFF;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-function:disabled {
+    background: url(../images/btn_pphw_dim.gif) no-repeat;
+    color: #D3D3D3;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-function#undobtn {
+    top: 209px;
+    left: 16px;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-function#rewritebtn {
+    top: 209px;
+    right: 26px;
+}
+
+.pphw-function-hover {
+	position: absolute;
+    width: 57px;
+    height: 21px;
+    line-height: 15px;        
+    border: 0px;
+    padding: 0px;    
+    font-size: 13px;
+    vertical-align:middle;
+    background: url(../images/btn_pphw_on.gif) no-repeat;    
+    color: #808080;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-function-hover#undobtn {
+    top: 209px;
+    left: 16px;
+}
+
+#pphw-panel .hwBody .hwBody-right .pphw-function-hover#rewritebtn {
+    top: 209px;
+    right: 26px;
+}
+
+#pphw-panel #warning-panel {
+	position: absolute;
+	width: 248px;
+	height: 244px;
+	top: 2px;
+	left: 0;
+	z-index: 3;
+	border: 1px solid #c0c0c0;
+	background: white;
+}
+
+#pphw-panel #warning-panel img {
+	border: 0;
+}
+
+#pphw-panel #warning-panel .msgContent {
+	font-size: 14px;
+}

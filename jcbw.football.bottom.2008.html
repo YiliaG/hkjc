@@ -1,0 +1,335 @@
+<!-- saved from url=(0064)http://special.hkjc.com/include/ch/jcbw.football.bottom.2008.asp -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>翠辽皑穦</title>
+    <script language="JavaScript" src="js/include.domain(1).js" type="text/javascript"></script>
+    <script language="JavaScript">
+    <!--
+    function MM_swapImgRestore() { //v3.0
+        var i, x, a = document.MM_sr;
+        for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++) x.src = x.oSrc;
+    }
+
+    function MM_preloadImages() { //v3.0
+        var d = document;
+        if (d.images) {
+            if (!d.MM_p) d.MM_p = new Array();
+            var i, j = d.MM_p.length,
+                a = MM_preloadImages.arguments;
+            for (i = 0; i < a.length; i++)
+                if (a[i].indexOf("#") != 0) {
+                    d.MM_p[j] = new Image;
+                    d.MM_p[j++].src = a[i];
+                }
+        }
+    }
+
+    function MM_swapImage() { //v3.0
+        var i, j = 0,
+            x, a = MM_swapImage.arguments;
+        document.MM_sr = new Array;
+        for (i = 0; i < (a.length - 2); i += 3)
+            if ((x = MM_findObj(a[i])) != null) {
+                document.MM_sr[j++] = x;
+                if (!x.oSrc) x.oSrc = x.src;
+                x.src = a[i + 2];
+            }
+    }
+
+    function MM_findObj(n, d) { //v4.01
+        var p, i, x;
+        if (!d) d = document;
+        if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+            d = parent.frames[n.substring(p + 1)].document;
+            n = n.substring(0, p);
+        }
+        if (!(x = d[n]) && d.all) x = d.all[n];
+        for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
+        for (i = 0; !x && d.layers && i < d.layers.length; i++) x = MM_findObj(n, d.layers[i].document);
+        if (!x && d.getElementById) x = d.getElementById(n);
+        return x;
+    }
+
+    function MM_openBrWindow(theURL, winName, features) { //v2.0
+        window.open(theURL, winName, features);
+    }
+
+    function MM_showHideLayers() { //v6.0
+        var i, p, v, obj, args = MM_showHideLayers.arguments;
+        for (i = 0; i < (args.length - 2); i += 3)
+            if ((obj = MM_findObj(args[i])) != null) {
+                v = args[i + 2];
+                if (obj.style) {
+                    obj = obj.style;
+                    v = (v == 'show') ? 'visible' : (v == 'hide') ? 'hidden' : v;
+                }
+                obj.visibility = v;
+            }
+    }
+
+    //-->
+    </script>
+    <script language="JavaScript">
+    winDomain = "http://special.hkjc.com";
+    </script>
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onload="initialize_banner()">
+    <script language="JavaScript1.2">
+    var curSlot = 1;
+    var maxSlot = 6;
+    var maxBanners = 12;
+    var usedBanners = 0;
+    SlotUsed = new Array
+
+    var banner_time = new Date(2016, 11, 6, 17, 25, 21, 0);
+
+    function initialize_banner() {
+        randombanner();
+        startTime();
+    }
+
+    banner1_num = 0
+    links1 = new Array
+    banner1 = new Array
+    current_banner1 = 1;
+    defaultIMG1 = "images/spacer.gif";
+    defaultLink1 = "javascript:;";
+
+    banner2_num = 0
+    links2 = new Array
+    banner2 = new Array
+    current_banner2 = 1;
+    defaultIMG2 = "images/spacer.gif";
+    defaultLink2 = "javascript:;";
+
+    banner3_num = 0 // no need to modify anymore
+    links3 = new Array
+    banner3 = new Array
+    current_banner3 = 1;
+    defaultIMG3 = "images/spacer.gif";
+    defaultLink3 = "javascript:;";
+
+    banner4_num = 0
+    links4 = new Array
+    banner4 = new Array
+    current_banner4 = 1;
+    defaultIMG4 = "images/spacer.gif";
+    defaultLink4 = "javascript:;";
+
+    banner5_num = 0 // no need to modify anymore
+    links5 = new Array
+    banner5 = new Array
+    current_banner5 = 1;
+    defaultIMG5 = "images/spacer.gif";
+    defaultLink5 = "javascript:;";
+
+    banner6_num = 0
+    links6 = new Array
+    banner6 = new Array
+    current_banner6 = 1;
+    defaultIMG6 = "images/spacer.gif";
+    defaultLink6 = "javascript:;";
+
+    function setBanner(var0, var1, var2, var3, var4) {
+        var banner_id;
+        var banner_pri = var0;
+        var tempStart = new Date(var3);
+        var tempEnd = new Date(var4);
+        if ((tempStart < banner_time) && (tempEnd > banner_time)) {
+            banner_id = curSlot
+            if (banner_pri != 13) {
+                SlotUsed[banner_id] = true;
+            }
+
+            if ((banner_pri != 13) || ((banner_pri == 13) && (SlotUsed[banner_id] != true)) || usedBanners <= maxBanners) {
+                eval("banner" + banner_id + "_num = banner" + banner_id + "_num + 1;");
+                eval("current_banner" + banner_id + " = banner" + banner_id + "_num;");
+                eval("banner" + banner_id + "[current_banner" + banner_id + "] = var1;");
+                if (var2.indexOf(chkPath) > -1) {
+                    var2 = var2.substr(0, var2.indexOf(chkPath)) + prePath + var2.substr(var2.indexOf(chkPath) + chkPath.length);
+                } else if (var2.indexOf(chkPath2) > -1) {
+                    var2 = var2.substr(0, var2.indexOf(chkPath2)) + var2.substr(var2.indexOf(chkPath2) + chkPath2.length);
+                }
+                eval("links" + banner_id + "[current_banner" + banner_id + "] = var2;");
+
+                if (curSlot == maxSlot) {
+                    curSlot = 1;
+                } else {
+                    usedBanners = usedBanners + 1;
+                    curSlot = curSlot + 1;
+                }
+            }
+        }
+    }
+
+    function randombanner() {
+        //  var randomnumber = Math.random();
+        //  i = Math.round( (i - 1) * randomnumber) + 1;
+        document.banner1.src = banner1[1];
+        document.banner2.src = banner2[1];
+        document.banner3.src = banner3[1];
+        document.banner4.src = banner4[1];
+        document.banner5.src = banner5[1];
+        document.banner6.src = banner6[1];
+        current_banner1 = 1;
+        current_banner2 = 1;
+        current_banner3 = 1;
+        current_banner4 = 1;
+        current_banner5 = 1;
+        current_banner6 = 1;
+    }
+
+    function startTime() {
+        var time = new Date();
+        hours = time.getHours();
+        mins = time.getMinutes();
+        secs = time.getSeconds();
+        closeTime = hours * 3600 + mins * 60 + secs;
+        closeTime += 15; // How many seconds til the next rotation
+        Timer();
+    }
+
+    function Timer() {
+        var time = new Date();
+        hours = time.getHours();
+        mins = time.getMinutes();
+        secs = time.getSeconds();
+        curTime = hours * 3600 + mins * 60 + secs
+        if (curTime >= closeTime) {
+            if (current_banner1 < banner1_num) {
+                current_banner1++;
+                document.banner1.src = banner1[current_banner1];
+            } else {
+                current_banner1 = 1;
+                document.banner1.src = banner1[current_banner1];
+            }
+            if (current_banner2 < banner2_num) {
+                current_banner2++;
+                document.banner2.src = banner2[current_banner2];
+            } else {
+                current_banner2 = 1;
+                document.banner2.src = banner2[current_banner2];
+            }
+            if (current_banner3 < banner3_num) {
+                current_banner3++;
+                document.banner3.src = banner3[current_banner3];
+            } else {
+                current_banner3 = 1;
+                document.banner3.src = banner3[current_banner3];
+            }
+            if (current_banner4 < banner4_num) {
+                current_banner4++;
+                document.banner4.src = banner4[current_banner4];
+            } else {
+                current_banner4 = 1;
+                document.banner4.src = banner4[current_banner4];
+            }
+            if (current_banner5 < banner5_num) {
+                current_banner5++;
+                document.banner5.src = banner5[current_banner5];
+            } else {
+                current_banner5 = 1;
+                document.banner5.src = banner5[current_banner5];
+            }
+            if (current_banner6 < banner6_num) {
+                current_banner6++;
+                document.banner6.src = banner6[current_banner6];
+            } else {
+                current_banner6 = 1;
+                document.banner6.src = banner6[current_banner6];
+            }
+            startTime();
+        } else {
+            window.setTimeout("Timer()", 1500)
+        }
+    }
+
+    function clickLink(banner_id) {
+        eval("linkStr = links" + banner_id + "[current_banner" + banner_id + "];");
+        if (linkStr.indexOf("javascript:") == -1)
+            parent.location.href = linkStr;
+        else
+            location.href = linkStr;
+    }
+    </script>
+    <script language="JavaScript1.2" src="js/include.football.banner.2008.js"></script>
+    <script language="javascript">
+    if (banner1_num == 0) {
+        setBanner(1, defaultIMG1, defaultLink1, "Feb 28, 2004 20:30:00", "Sept 1, 2100 20:30:00");
+    }
+    if (banner2_num == 0) {
+        setBanner(2, defaultIMG2, defaultLink2, "Feb 28, 2004 20:30:00", "Sept 1, 2100 20:30:00");
+    }
+    if (banner3_num == 0) {
+        setBanner(3, defaultIMG3, defaultLink3, "Feb 28, 2004 20:30:00", "Sept 1, 2100 20:30:00");
+    }
+    if (banner4_num == 0) {
+        setBanner(4, defaultIMG4, defaultLink4, "Feb 28, 2004 20:30:00", "Sept 1, 2100 20:30:00");
+    }
+    if (banner5_num == 0) {
+        setBanner(5, defaultIMG3, defaultLink5, "Feb 28, 2004 20:30:00", "Sept 1, 2100 20:30:00");
+    }
+    if (banner6_num == 0) {
+        setBanner(6, defaultIMG4, defaultLink6, "Feb 28, 2004 20:30:00", "Sept 1, 2100 20:30:00");
+    }
+    </script>
+    <!-- 
+Please use inc/include.index.banner.js to change banners
+-->
+    <table width="745" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr valign="top">
+                <td width="120">
+                    <a href="Javascript:;" onclick="clickLink(1);return false;">
+                        <img name="banner1" id="banner1" src="images/M6_Blue161206_120x50_c.gif" border="0" width="120" height="50">
+                    </a>
+                </td>
+                <td width="21">
+                    <img src="images/spacer(8).gif" width="5" height="50">
+                </td>
+                <td width="120">
+                    <a href="Javascript:;" onclick="clickLink(2);return false;">
+                        <img name="banner2" id="banner2" src="images/120x50-LONGINES-World-Ranking-c.gif" border="0" width="120" height="50">
+                    </a>
+                </td>
+                <td width="22">
+                    <img src="images/spacer(8).gif" width="5" height="50">
+                </td>
+                <td width="120">
+                    <a href="Javascript:;" onclick="clickLink(3);return false;">
+                        <img name="banner3" id="banner3" src="images/NewHorses_JCBW_120x50_c.jpg" border="0" width="120" height="50">
+                    </a>
+                </td>
+                <td width="21">
+                    <img src="images/spacer(8).gif" width="5" height="50">
+                </td>
+                <td width="120">
+                    <a href="Javascript:;" onclick="clickLink(4);return false;">
+                        <img name="banner4" id="banner4" src="images/RacedayFocus_JCBW_120x50_c.jpg" border="0" width="120" height="50">
+                    </a>
+                </td>
+                <td width="22">
+                    <img src="images/spacer(8).gif" width="5" height="50">
+                </td>
+                <td width="120">
+                    <a href="Javascript:;" onclick="clickLink(5);return false;">
+                        <img name="banner5" id="banner5" src="images/2016-hkir-race-120-50-c.gif" border="0" width="120" height="50">
+                    </a>
+                </td>
+                <td width="21">
+                    <img src="images/spacer(8).gif" width="5" height="50">
+                </td>
+                <td width="120">
+                    <a href="Javascript:;" onclick="clickLink(6);return false;">
+                        <img name="banner6" id="banner6" src="images/qtt_mergepool_120x50_c.gif" border="0" width="120" height="50">
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

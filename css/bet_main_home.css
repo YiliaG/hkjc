@@ -1,0 +1,463 @@
+
+.racingLink {
+	color: #004B96;
+	text-decoration:none;
+}
+
+.racingLink:hover {
+	text-decoration:underline;
+}
+
+.footballLink {
+	color: #4D822D;
+	text-decoration:none;
+}
+
+.footballLink:hover {
+	text-decoration:underline;
+}
+
+.marksixLink {
+	color: #CC2C2C;
+	text-decoration:none;
+}
+
+.marksixLink:hover {
+	text-decoration:underline;
+}
+
+.racingTitle {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #083564;
+	line-height: 15px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.footballTitle {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #4D822D;
+	line-height: 15px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.marksixTitle {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #CC2B30;
+	line-height: 15px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.racingBtn {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #80AED3;
+	line-height: 15px;
+	padding: 3px 1px 1px 4px;
+	border: 1px solid #C8DCEC;
+	border-bottom: none;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.racingBtnOver {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #175087;
+	line-height: 15px;
+	padding: 5px 1px 1px 4px;
+	border: 1px solid #4A8CC1;
+	border-bottom: none;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.racing2Btn {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #80AED3;
+	line-height: 15px;
+	padding: 3px 1px 1px 4px;
+	border: 1px solid #C8DCEC;
+	border-bottom: none;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.racing2BtnOver {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #175087;
+	line-height: 15px;
+	padding: 5px 1px 1px 4px;
+	border: 1px solid #4A8CC1;
+	border-bottom: none;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.footballBtn {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #99B27F;
+	line-height: 15px;
+	padding: 3px 1px 1px 4px;
+	border: 1px solid #B2D59D;
+	border-bottom: none;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.footballBtnOver {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #4D822D;
+	line-height: 15px;
+	padding: 5px 1px 1px 4px;
+	border: 1px solid #65AB3B;
+	border-bottom: none;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.marksixBtn {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #EB9B99;
+	line-height: 15px;
+	padding: 3px 1px 1px 4px;
+	border: 1px solid #EB9B99;
+	border-bottom: none;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.marksixBtnOver {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #CC2B30;
+	line-height: 15px;
+	padding: 5px 1px 1px 4px;
+	border: 1px solid #D83834;
+	border-bottom: none;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.racingBotLine {
+	border-bottom: 1px solid #4A8CC1;
+}
+
+.footballBotLine {
+	border-bottom: 1px solid #65AB3B;
+}
+
+.marksixBotLine {
+	border-bottom: 1px solid #D83834;
+}
+
+.racingBotLineOver {
+	border-bottom: 1px solid #C8DCEC;
+}
+
+.footballBotLineOver {
+	border-bottom: 1px solid #B2D59D;
+}
+
+.marksixBotLineOver {
+	border-bottom: 1px solid #EB9B99;
+}
+
+.redNum1 {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 15px;
+	color: #CC0000;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.topTitleBar {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 15px;
+	padding: 0px 5px 0px 5px;
+	background-color: #4A8CC1;
+	border-bottom: 1px solid #FFFFFF;
+	height: 31px;
+}
+
+.titleBar {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 15px;
+	padding: 5px 5px 5px 10px;
+	background-color: #4A8CC1;
+}
+
+.subTitleBar {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	padding: 3px 7px 3px 10px;
+	background-color: #DBE8F3;
+	border-top: 1px solid #FFFFFF;
+}
+
+.subTitleBar2 {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	padding: 2px 7px 2px 10px;
+	background-color: #FFFFFF;
+	border-top: 1px solid #FFFFFF;
+}
+
+.tdColor1 {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 15px;
+	padding: 1px 1px 1px 1px;
+	background-color: #4A8CC1;
+}
+
+.tdColor2 {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	padding: 1px 1px 1px 1px;
+	background-color: #DBE8F3;
+}
+
+#mainTable {
+	border-bottom: 3px solid #4A8CC1;
+}
+
+.pulldownTxt {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	width: 100%;
+	padding: 3px 5px 3px 0px;
+	text-decoration: none;
+}
+
+.pulldownTxt:hover {
+	color: #175087;
+	text-decoration: none;
+}
+
+.leftNav {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	padding: 7px 0px 7px 0px;
+	text-decoration: none;
+}
+
+.leftNav:hover {
+	color: #083564;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.leftNavOver {
+	color: #083564;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.leftNavOver:hover {
+	text-decoration: none;
+}
+
+.leftBg{
+	background-color:#DBE7F3;
+}
+
+.highlightBrown {	
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	color: #FFFFFF;
+	background-color:#993300;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+.highlightGreen {
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	color: #FFFFFF;
+	background-color:#2AA216;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+.highlightRed {
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	color: #FFFFFF;
+	background-color:#C80000;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+.tdColorNum1 {
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-size:10px;
+	color: #FFFFFF;
+	background-color:#4A8CC1;
+	line-height:14px;
+	vertical-align:middle;
+	padding: 3px 1px 3px 1px;
+}
+
+.tdColorNum2 {
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-size:10px;
+	color: #333333;
+	background-color:#FFFFFF;
+	line-height:14px;
+	vertical-align:middle;
+	padding: 3px 0px 3px 0px;
+}
+
+.tdColorHead {
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-size:11px;
+	color: #333333;
+	background-color:#DBE8F3;
+	line-height:14px;
+	padding: 3px 1px 3px 1px;
+}
+
+.toolbarBg {
+	background-color:#B7D1E6;
+}
+
+.toolbarLine {
+	border-top:#A4C5E0 1px solid; 
+	border-bottom:#A4C5E0 1px solid; 
+	padding:1px 0px 1px 0px;
+}
+
+.toolbarTxt {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.toolbarTxt:hover {
+	color: #175087;
+	text-decoration: none;
+}
+
+.toolbarTxtOn {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #175087;
+	font-weight: bold;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.toolbarTxtOn:hover {
+	text-decoration: none;
+}
+
+.toolbarPulldown {
+	border: #4A8CC1 2px solid;
+	padding: 8px 0px 8px 8px;
+	background-color: #E6EEF7;
+}
+
+
+.subTitleBar3 {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	height: 31px;
+	text-decoration: none;
+	padding:5px 5px 5px 5px;
+	background-color:#DBE8F3;
+}
+
+.blue {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #175087;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.blue2 {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #2B86B5;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.blueBg {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	background-color:#DBE8F3;
+	line-height:14px;
+	padding: 3px 5px 3px 5px;
+	border-bottom: 1px solid #F8F8F8;
+}
+
+.grayBg {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height:14px;
+	padding: 3px 5px 3px 5px;
+	border-bottom: 1px solid #F8F8F8;
+}
+
+.divBtn {
+	width: 100%; 
+	text-align: center; 
+	display: block; 
+	cursor: pointer;
+}
+
+.footballScrollbar {
+	background-color: transparent;
+	
+	scrollbar-face-color: #DDEBD4;
+	scrollbar-base-color: #DDEBD4;
+	scrollbar-highlight-color: #B2D59D;
+	scrollbar-shadow-color: #B2D59D;
+	scrollbar-3dlight-color: #F3F8F0;
+	scrollbar-darkshadow-color: #F3F8F0; 
+	scrollbar-arrow-color:  #4D822D;
+	scrollbar-track-color: #F3F8F0;
+	overflow-x:hidden; 
+	overflow-y:auto;
+}

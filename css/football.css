@@ -1,0 +1,160 @@
+
+a {
+	color: #4D822D;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+
+.red {
+	color: #CC0000;
+	text-decoration:none;
+}
+
+.red:hover {
+	text-decoration:underline;
+}
+
+.vs {
+	color: #333333;
+}
+
+.vs:hover {
+	text-decoration:underline;
+}
+
+.title {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #4D822D;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.topTitleBar {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 15px;
+	padding: 4px 5px 4px 5px;
+	background-color: #65AB3B;
+	height: 30px;
+}
+
+.titleBar {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 15px;
+	padding: 7px 5px 7px 10px;
+	background-color: #65AB3B;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+.subTitleBar {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	padding: 2px 7px 2px 10px;
+	background-color: #DDEBD4;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+#mainTable {
+	border-bottom: 3px solid #65AB3B;
+}
+
+.pulldownTxt {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	width: 100%;
+	padding: 3px 5px 3px 0px;
+	text-decoration: none;
+}
+
+.pulldownTxt:hover {
+	color: #4D822D;
+	text-decoration: none;
+}
+
+.leftNav {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	padding: 7px 0px 7px 0px;
+	text-decoration: none;
+}
+
+.leftNav:hover {
+	color: #4D822D;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.leftNavOver {
+	color: #4D822D;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.leftNavOver:hover {
+	text-decoration: none;
+}
+
+.leftBg{
+	background-color:#DDEAD8;
+}
+
+.toolbarBg {
+	background-color:#DDEBD4;
+}
+
+.toolbarLine {
+	border-top:#65AB3B 1px solid; 
+	border-bottom:#65AB3B 1px solid; 
+	padding:1px 0px 1px 0px;
+}
+
+.toolbarTxt {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.toolbarTxt:hover, .toolbarTxt.hovered {
+	color: #65AB3B;
+	text-decoration: none;
+}
+
+.toolbarTxtOn {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #175087;
+	font-weight: bold;
+	line-height: 15px;
+	text-decoration: none;
+}
+
+.toolbarTxtOn:hover {
+	text-decoration: none;
+}
+
+.toolbarPulldown {
+	border: #65AB3B 2px solid;
+	padding: 8px 0px 8px 8px;
+	background-color: #E7F1E0;
+}
+
+.tgMl {
+	/*width: 80px;*/
+	float: right;
+}

@@ -1,0 +1,80 @@
+<!-- saved from url=(0068)http://special.hkjc.com/root2/football/info/ch/fb_info_top_block.asp -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>香港賽馬會</title>
+    <link href="css/styles(3).css" rel="stylesheet" type="text/css">
+    <link href="css/home.css" rel="stylesheet" type="text/css">
+    <script language="javaScript">
+    var isInternetExplorer = navigator.appName.indexOf("Microsoft") != -1;
+    // Handle all the FSCommand messages in a Flash movie.
+    function flashBanner_DoFSCommand(command, args) {
+
+        var bannerObj = isInternetExplorer ? document.all.flashBanner : document.flashBanner;
+
+        //alert(command + " : " + args);
+        crazyFlashAction(command, args);
+    }
+    // Hook for Internet Explorer.
+
+    if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 && navigator.userAgent.indexOf("Windows") != -1 && navigator.userAgent.indexOf("Windows 3.1") == -1) {
+        document.write('<sc');
+        document.write('ript language=\"VBScript\"\>\n');
+        document.write('On Error Resume Next\n');
+        document.write('Sub flashBanner_FSCommand(ByVal command, ByVal args)\n');
+        document.write('	Call flashBanner_DoFSCommand(command, args)\n');
+        document.write('End Sub\n');
+        document.write('</sc');
+        document.write('ript\>\n');
+    }
+    </script>
+    <script language="JavaScript" type="text/javascript" src="js/common(4).js"></script>
+    <style type="text/css">
+    body {
+        background-color: #FFFFFF;
+    }
+    </style>
+</head>
+
+<body style="background-color: transparent;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td height="28" valign="bottom">
+                    <!-- Football menu starts -->
+                    <script language="javaScript" type="text/javascript">
+                    var tempArray = new Array("網上足球直播", "足智焦點", "服務提示");
+                    var footballSect = 1;
+                    genSubMenu('football', tempArray);
+                    </script>
+                   
+                    <!-- Football menu ends -->
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="position: relative; padding: 8px 0px 0px 0px;">
+                        <!-- Football Live Webcast starts -->
+                        <div id="div_1" style="position: absolute; width: 203px; height: 130px; overflow: hidden;">
+                            <iframe src="fb_bet_block_1_webcast.html" frameborder="0" marginwidth="0" marginheight="0" id="fb_block_1" name="fb_block_1" scrolling="no" width="203px" height="130"></iframe>
+                        </div>
+                        <!-- Football Live Webcast ends -->
+                        <!-- Race Day Info starts -->
+                        <div id="div_2" style="position: absolute; width: 203px; height: 130px; overflow: hidden; visibility: hidden;">
+                            <iframe src="fb_bet_block_1_wc2010.html" frameborder="0" marginwidth="0" marginheight="0" id="fb_block_2" name="fb_block_2" scrolling="no" width="203px" height="130"></iframe>
+                        </div>
+                        <!-- Race Day Info ends -->
+                        <!-- Bet Info starts -->
+                        <div id="div_3" style="position: absolute; width: 203px; height: 130px; overflow: hidden; visibility: hidden;">
+                            <iframe src="fb_bet_block_3_wc2010.html" frameborder="0" marginwidth="0" marginheight="0" id="fb_block_3" name="fb_block_3" scrolling="no" width="203px" height="130"></iframe>
+                        </div>
+                        <!-- Bet Info ends -->
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

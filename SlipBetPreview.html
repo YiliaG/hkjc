@@ -1,0 +1,1564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0059)https://txn01.hkjc.com/BetSlipIB/SlipBetPreview.aspx?lang=1 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Bet Transaction</title>
+    <script type="text/javascript">
+    document.domain = 'hkjc.com';
+    var staticCache = '?cv=L2.06R1';
+    </script>
+    <script type="text/javascript" src="js/jquery-1.10.2(1).js"></script>
+    <script type="text/javascript" src="js/proxy(1).js"></script>
+    <script type="text/javascript" src="js/BetPreview(1).js"></script>
+    <script type="text/javascript" src="js/svc.js"></script>
+    <script type="text/javascript" src="js/logDataAccessor.js"></script>
+    <script type="text/javascript" src="js/common_func.js"></script>
+    <script type="text/javascript" src="js/index_str_table(1).js"></script>
+    <script type="text/javascript">
+    svc.init(GetError);
+    $j = jQuery.noConflict();
+    $j(function() {
+        proxy.init(parent, {
+                BET_PREVIEW: new BetPreviewPlugin(false)
+            },
+            'http://txn01.hkjc.com', ['http://txn01.hkjc.com']);
+
+
+    });
+    </script>
+    <script type="text/javascript">
+    String.prototype.startsWith = function(str) {
+        return (this.match("^" + str) == str)
+    };
+
+    var sendbetResult = null;
+
+
+    var jcbwLeaguePath = 'https://txn01.hkjc.com/BetSlipIB/images/flag/';
+    var inplayDelayTime = '0';
+    var inplayDelayRetryTime = 4;
+    var previewTableDefault = 285;
+    var previewTable800x600 = 135;
+    var replyTable800x600 = 143;
+    var replyTableBuffer = 0;
+    var replyTableDefault = 293;
+
+    var betlines = new Array();
+    var totalBetLine = 0;
+    var isProcessing = true;
+    var previewDeleteMultipleBets = false;
+    var getDelayReplyOnce = false;
+    var getDelayReply2nd = false;
+    var originHeight = document.documentElement.clientHeight;
+    var unknownAmount = '<span style="font-weight:bold">$ ---</span>';
+    var anyUnknownRow = false;
+
+    var sendBet_delayRequest;
+    var sendBet_BetMessage;
+
+    // Support SSO
+    var sendBet_knownSSOGUID;
+
+    var deleteBetlineArray = "";
+    var showXsellBanner = false;
+
+    var ssoEnabled = true;
+
+    var unknownReply = "@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||@@@UNKNOWN||||||||||||";
+
+    var replyTimeoutInSec = 16;
+
+    // this function gets the cookie, if it exists
+    // don't use this, it's weak and does not handle some cases
+    // correctly, this is just to maintain legacy information
+    function Get_Cookie(name) {
+
+        var start = document.cookie.indexOf(name + "=");
+        var len = start + name.length + 1;
+        if ((!start) && (name != document.cookie.substring(0, name.length))) {
+            return null;
+        }
+        if (start == -1) return null;
+        var end = document.cookie.indexOf(";", len);
+        if (end == -1) end = document.cookie.length;
+        return unescape(document.cookie.substring(len, end));
+    }
+
+
+    function Delete_Cookie(name, path, domain) {
+        if (Get_Cookie(name)) document.cookie = name + "=" +
+            ((path) ? ";path=" + path : "") +
+            ((domain) ? ";domain=" + domain : "") +
+            ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+    }
+
+    // delete the cookies before cookie communication
+    var cookieNames = ["HttpToHttpsCookie", "HttpsToHttpCookie", "HttpsRequestCookie", "CookieCompleteInfo"];
+    for (var i = 0; i < cookieNames.length; i++) {
+        Delete_Cookie(cookieNames[i], "/");
+    }
+    </script>
+    <script type="text/javascript" src="js/clientfx(2).js"></script>
+    <script type="text/javascript" src="js/json2(3).js"></script>
+    <script type="text/javascript" src="js/index_str_table(1).js"></script>
+    <script type="text/javascript" src="js/stringbuffer.js"></script>
+    <script type="text/javascript" src="js/datastore_func.js"></script>
+    <script type="text/javascript" src="js/mobile_util(1).js"></script>
+    <script type="text/javascript">
+    var pwdField = new ReEnterPwdField('savePwd', '1');
+
+    function heightReduct() {
+        if (screen.height < 768 && !(isMobileIE())) {
+            if (768 - screen.height > 150)
+                return 150;
+            else
+                return 768 - screen.height;
+        }
+        return 0;
+    }
+
+    function refreshFrameHeight(isXsell) {
+        var replyTableXsellHeight = 101;
+        if (!isXsell && !showXsellBanner)
+            replyTableXsellHeight = 0;
+        else if (isXsell)
+            showXsellBanner = true;
+        $('replyTable').style.height = (replyTableDefault - heightReduct() - replyTableXsellHeight - replyTableBuffer - $j("#replyBetSummary").outerHeight() - ($j("#replyBetSummary").innerHeight() - 16)) + 'px';
+        ResetPreviewBetHeight();
+    }
+
+    function GetLeagueFlagHTML(JCBWLeagueFlagPath, leagueShort) {
+        if (leagueShort == undefined || leagueShort == null || leagueShort == "" || leagueShort == "0")
+            return "";
+        var leagueHTML = "<img src='" + JCBWLeagueFlagPath + "/flag_" + leagueShort + ".gif" + "' " + "width=16 height=16 border=0 style='position:relative;top:1'>";
+        return leagueHTML;
+    }
+
+    function OnPageLoad() {
+        $('divPrint').innerHTML = '';
+        //cache images in case of network error
+        preloadImages('pic_txn_rec,pic_txn_rec_on,pic_back,pic_back_on,pic_send_bet,pic_send_bet_on,pic_del_bet,pic_del_bet_on,pic_delete_bet_off');
+    }
+
+    function InitBetPreview(dsValues) {
+
+
+        SetDataStore('language', dsValues.Language);
+
+        setActiveStyleSheetByLang();
+        $('msgColumn').style.visibility = 'hidden';
+        $('passwordErrorTxt').style.display = 'none';
+        $('inplayMsg').style.visibility = 'hidden';
+        $('txtPreviewBet').innerHTML = GetText('alt_preview_bet');
+        $('txtItemNo').innerHTML = GetText('fld_item_no');
+        $('txtBetType').innerHTML = GetText('fld_bet_type');
+        $('txtBetDetail').innerHTML = GetText('fld_bet_detail');
+        $('txtBetAmount').innerHTML = GetText('fld_bet_amount');
+        $('txtBetTotal').innerHTML = GetText('fld_total');
+        $('pic_back').src = GetImageURL('pic_back');
+        $('pic_send_bet').src = GetImageURL('pic_send_bet');
+        $('pic_del_bet').src = GetImageURL('pic_delete_bet_off');
+        $('previewTable').innerHTML = '';
+        $('replyTable').innerHTML = '';
+        $('divBetReply').style.display = 'none';
+        $('recallBtn').style.display = 'none';
+        $('doneBtn').style.display = 'none';
+
+        showXsellBanner = false;
+
+        var savePassword = '1' == dsValues.SavePassword;
+        SetDataStore('savePassword', dsValues.SavePassword);
+
+        GetJsonBetlinesObj(dsValues.JsonBetlinesObj);
+
+        if (savePassword) {
+            var alreadyDisable = ("0" == GetDataStore("EnterPassword"));
+
+            if (!alreadyDisable) {
+                var getEnterPSStatus = svc.sendReq('PARA_GetEnterPSStatus', {},
+                    function(msg) {
+                        var replyValue = msg.value;
+                        SetDataStore("EnterPassword", replyValue);
+                        if ("0" != replyValue) {
+                            GetSavePasswordFlagForDS(savePassword);
+                        } else {
+                            GetSavePasswordFlagForDS(false);
+                            ResetPreviewBetHeightManually();
+                        }
+                    },
+                    function(msg) {
+                        GetSavePasswordFlagForDS(savePassword);
+                    },
+                    1
+                );
+            } else {
+                GetSavePasswordFlagForDS(false);
+                ResetPreviewBetHeightManually();
+            }
+        } else {
+            GetSavePasswordFlagForDS(savePassword);
+        }
+        // make sure the UI can be displayed normally even the ajax call failed
+        ResetPreviewBetHeightManually();
+
+        $('divBetPreview').style.display = '';
+        deleteBetlineArray = '';
+        isProcessing = false;
+
+        $j('#previewTable').scrollTop(0);
+
+
+        if (isAndroidDevice())
+            scrollUtil.init('.scroll1,.scrollReply');
+    }
+
+    function GetJsonBetlinesObj(dsValue, dsName) {
+        var tmpArr = dsValue.split('|||');
+        for (var i = 1; i < tmpArr.length; i++) {
+            betlines[i - 1] = JSON.parse(tmpArr[i]);
+        }
+        totalBetLine = tmpArr.length - 1;
+
+        var totalBetAmount = 0;
+
+        for (var i = 0; i < totalBetLine; i++) {
+            if (betlines[i].betMethod == 1)
+                totalBetAmount += parseInt(betlines[i].unitBet, 10);
+            else
+                totalBetAmount += betlines[i].numOfSelection * betlines[i].unitBet;
+        }
+
+        $('valueBetTotal').innerHTML = FormatCurrency(totalBetAmount);
+        $('previewTable').innerHTML = CreatePreviewBetTable(totalBetLine);
+        $('tbPreviewButton').style.display = '';
+    }
+
+    function GetSavePasswordFlagForDS(savePassword) {
+        if (savePassword) {
+            $('previewPassword').style.visibility = 'visible';
+            $('previewPassword').style.display = 'block';
+            var lang = GetDataStore('language');
+            $('passwordField').innerHTML = pwdField.genHtml(lang);
+        } else {
+            $('previewPassword').style.visibility = 'hidden';
+            $('previewPassword').style.display = 'none';
+        }
+        ResetPreviewBetHeight();
+    }
+
+    function ResetPreviewBetHeight() {
+        var savePassword = GetDataStore('savePassword');
+        var pwdFieldHeight = 0;
+        if (savePassword != '0') {
+            pwdFieldHeight = 40;
+        } else {
+            pwdFieldHeight = 0;
+        }
+
+        var isMacOSX = !!navigator.userAgent.match(/Mac OS X/ig);
+        var ovrHeight = isMacOSX && $$.safari ? 65 : 0;
+        $('previewTable').style.height = (previewTableDefault - heightReduct() - pwdFieldHeight - ovrHeight) + 'px';
+    }
+
+    function ResetPreviewBetHeightManually() {
+        var savePassword = GetDataStore('savePassword');
+        var enterPasswordDisabled = (GetDataStore("EnterPassword") == "0");
+        var pwdFieldHeight = 0;
+        if (savePassword != '0' && !enterPasswordDisabled) {
+            pwdFieldHeight = 40;
+        } else {
+            pwdFieldHeight = 0;
+        }
+
+        var isMacOSX = !!navigator.userAgent.match(/Mac OS X/ig);
+        var ovrHeight = isMacOSX && $$.safari ? 65 : 0;
+        $('previewTable').style.height = (previewTableDefault - heightReduct() - pwdFieldHeight - ovrHeight) + 'px';
+    }
+
+    function FormatCurrency(amount) {
+        if (isNaN(amount)) {
+            return amount;
+        }
+        return "$ " + CommaFormatted(CurrencyFormatted(amount));
+    }
+
+    function CurrencyFormatted(amount) {
+        var i = parseFloat(amount);
+        if (isNaN(i)) {
+            i = 0.00;
+        }
+        var minus = '';
+        if (i < 0) {
+            minus = '-';
+        }
+        i = Math.abs(i);
+        i = parseInt((i + .005) * 100);
+        i = i / 100;
+        s = new String(i);
+        if (s.indexOf('.') < 0) {
+            s += '.00';
+        }
+        if (s.indexOf('.') == (s.length - 2)) {
+            s += '0';
+        }
+        s = minus + s;
+        return s;
+    }
+
+    function CommaFormatted(amount) {
+        var delimiter = ","; // replace comma if desired
+        var a = amount.split('.', 2)
+        var d = a[1];
+        var i = parseInt(a[0]);
+        var j = parseFloat(amount);
+        if (isNaN(i) || isNaN(j)) {
+            return '';
+        }
+        var minus = '';
+        if (j < 0) {
+            minus = '-';
+        }
+        i = Math.abs(i);
+        var n = new String(i);
+        var a = [];
+        while (n.length > 3) {
+            var nn = n.substr(n.length - 3);
+            a.unshift(nn);
+            n = n.substr(0, n.length - 3);
+        }
+        if (n.length > 0) {
+            a.unshift(n);
+        }
+        n = a.join(delimiter);
+        if (d.length < 1) {
+            amount = n;
+        } else {
+            amount = n + '.' + d;
+        }
+        amount = minus + amount;
+        return amount;
+    }
+
+    function CreatePreviewBetTable(totalBetlines) {
+        $('pic_del_bet').src = GetImageURL('pic_delete_bet_off');
+        var strStyle = new Array('tdGray', 'tdWhite');
+
+        var buf = new StringBuffer();
+        buf.append('<table id="previewBetTb" width="99%" border="0" cellspacing="0" cellpadding="0">');
+        for (var i = 0; i < totalBetlines; i++) {
+            buf.append('<tr onclick="selectPreviewRow(this)">');
+            buf.append('<td width="14%" align="right" valign="top" class="')
+                .append(strStyle[i % 2]).append('">')
+                .append(i + 1).append('</td>');
+            buf.append('<td width="17%" valign="top" class="')
+                .append(strStyle[i % 2]).append('">')
+                .append(GetDispBetType(betlines[i].type, betlines[i].match, betlines[i].typeDescription))
+                .append('</td>');
+            buf.append('<td width="43%" valign="top" class="')
+                .append(strStyle[i % 2]).append('" style="width:150px;max-width:150px;word-wrap:break-word">')
+                .append(betlines[i].description.replace(/\[flag\]/g, GetLeagueFlagHTML(jcbwLeaguePath, betlines[i].league)));
+
+            if (betlines[i].m6UnitBetAmountType == 0)
+                buf.append(' (').append(GetText('m6unit_name')).append(')');
+
+            buf.append('<br>');
+
+            buf.append(FormatCurrency(betlines[i].unitBet));
+            //if (betlines[i].isFlexiBet()) { // flexibet
+            if (betlines[i].betMethod == 1) { // flexibet
+                buf.append(' (').append(GetText('flexibet_name')).append(')');
+            }
+
+            buf.append('</td>');
+            buf.append('<td width="25%" align="right" valign="top" class="')
+                .append(strStyle[i % 2]).append('" style="padding-right: 20px;">');
+
+            //if (betlines[i].isFlexiBet()) // flexibet
+            if (betlines[i].betMethod == 1) // flexibet
+                buf.append(FormatCurrency(betlines[i].unitBet));
+            else
+                buf.append(FormatCurrency(betlines[i].unitBet * betlines[i].numOfSelection));
+
+            buf.append('</td>');
+            buf.append('</tr>');
+        }
+        buf.append('</table>');
+
+        return buf.toString();
+    }
+
+    function GetDispBetType(betType, match, typeDescription) {
+        if (betType.indexOf("ALUP") < 0) {
+            if (isCWinPool(betType) && typeDescription) {
+                return GetText(betType) + " (" + typeDescription + ")";
+            }
+            return GetText(betType);
+        }
+
+        var isXPool = false;
+        var last_type = "";
+        var dummy = betType.split("|");
+        var dummy2 = match.split("|");
+        var sub_types = "";
+        var typeDescriptions = [];
+        if (typeDescription)
+            typeDescriptions = typeDescription.split(";;");
+
+        for (var i = 1; i < dummy.length; i++) {
+            if (i == 1) {
+                last_type = dummy[i];
+            } else if (last_type != dummy[i] && !(isCWinPool(last_type) && isCWinPool(dummy[i]))) {
+                isXPool = true;
+            }
+            sub_types += "<BR>" + GetText(dummy[i]);
+            if (typeDescriptions[i - 1])
+                sub_types += " (" + typeDescriptions[i - 1] + ")";
+        }
+
+        if (!isXPool) {
+            // Special case for handling cwin allup case
+            if (isCWinPool(dummy[1])) {
+                if (GetLanguage() == cLangENG) {
+                    return (GetText("txt_ALUP") + " " + GetText("CW") + " " + dummy[0].substring(5) + sub_types);
+                } else {
+                    return (GetText("CW") + GetText("txt_ALUP") + " " + dummy[0].substring(5) + sub_types);
+                }
+            }
+
+            if (GetLanguage() == cLangENG) {
+                return (GetText("txt_ALUP") + " " + GetText(dummy[1]) + " " + dummy[0].substring(5));
+            } else {
+                return (GetText(dummy[1]) + GetText("txt_ALUP") + " " + dummy[0].substring(5));
+            }
+        }
+        if (GetLanguage() == cLangENG) {
+            return (GetText("txt_cross_pool") + " " + GetText("txt_ALUP") + " " + dummy[0].substring(5) + sub_types);
+        }
+        return (GetText("txt_cross_pool") + GetText("txt_ALUP") + " " + dummy[0].substring(5) + sub_types);
+    }
+
+    function getSelectedRowCount() {
+        var cnt = 0;
+        var obj = $('previewBetTb');
+        var trs = obj.getElementsByTagName('tr');
+        for (var i = 0; i < trs.length; i++) {
+            if (trs[i].clicked)
+                cnt++;
+        }
+        return cnt;
+    }
+
+    function selectPreviewRow(obj) {
+        if (isProcessing)
+            return;
+
+        if (!obj.clicked && !previewDeleteMultipleBets)
+            resetPreviewRow();
+
+        $('pic_del_bet').src = GetImageURL('pic_delete_bet_off');
+        var tds = obj.getElementsByTagName('td');
+        for (var i = 0; i < tds.length; i++) {
+            if (!obj.clicked)
+                tds[i].style.backgroundColor = '#FFFADC';
+            else
+                tds[i].style.backgroundColor = '';
+        }
+        obj.clicked = !obj.clicked;
+
+        if (getSelectedRowCount() > 0)
+            $('pic_del_bet').src = GetImageURL('pic_delete_bet');
+    }
+
+    function resetPreviewRow() {
+        var obj = $('previewBetTb');
+        var trs = obj.getElementsByTagName('tr');
+        for (var i = 0; i < trs.length; i++) {
+            var tds = trs[i].getElementsByTagName('td');
+            for (var j = 0; j < tds.length; j++) {
+                tds[j].style.backgroundColor = '';
+            }
+            trs[i].clicked = false
+        }
+    }
+
+    function OnClickConfirmBet() {
+        if (isProcessing || totalBetLine <= 0)
+            return;
+
+        isProcessing = true;
+
+        var savePassword = GetDataStore('savePassword');
+        var enterPasswordDisabled = (GetDataStore("EnterPassword") == "0");
+        if (savePassword != '0' && !enterPasswordDisabled) {
+            if (!pwdField.validate()) {
+                ShowError(3, GetError("wrong_password2"), true, 5000);
+                pwdField.clearInput();
+                isProcessing = false;
+                return;
+            }
+
+            pwdField.disableBoxes(true);
+        }
+
+        ProcessConfirmBet();
+    }
+
+    function ProcessConfirmBet() {
+        resetPreviewRow();
+        disablePreviewButton();
+        $('divPrint').innerHTML = '';
+
+        proxy.sendMessage('PRE_TXN', 'PRE_TXN', {},
+            ProcessConfirmBet2
+        );
+    }
+
+    function ProcessConfirmBet2() {
+        sendBet_BetMessage = CreateBetMsg();
+        SubmitBet();
+    }
+
+    function ShowInplayMsg() {
+        $('msgColumn').style.visibility = 'hidden';
+        $('passwordErrorTxt').style.display = 'none';
+        $('inplayMsg').style.visibility = 'visible';
+        $('inplayMsgTxt').innerHTML = GetText("txt_in_play_game");
+    }
+
+    function SubmitBet() {
+        /* For Debug Use
+          alert("Lang: " + GetLanguage());
+          alert("Acc: " + sendBet_Account);
+          alert("sid: " + sendBet_SessionID);
+          alert("SeqNo: " + sendBet_SeqNo);
+          alert("Betlines: " + sendBet_BetMessage);
+          Debug End*/
+        //GenBetlinesMessage();
+        SetDataStore('sendbet_reply', '');
+        SetDataStore('sendbet_status', '');
+        SetDataStore('sendbet_error', '');
+        SetDataStore('new_balance', '');
+        SetDataStore('bet_total', '');
+        SetDataStore('trans_time', '');
+
+        var sendSuccess = svc.sendReq('SENDBET_DoSendBet', {
+                betlines: sendBet_BetMessage,
+                lang: GetLanguage(),
+                delayReq: 0,
+                password: GetPasswordForSendBet()
+            }, ProcessSendBetResult,
+            function() {
+                ProcessSendBetResult({
+                    sendbet_reply: unknownReply
+                });
+            }, replyTimeoutInSec);
+
+        if (!sendSuccess) {
+            OnCancelSendBet();
+        }
+    }
+
+    function SendDelayRequest(seqNo, betlines) {
+        /* For Debug Use
+          alert("Lang: " + GetLanguage());
+          alert("Acc: " + sendBet_Account);
+          alert("sid: " + sendBet_SessionID);
+          alert("SeqNo: " + sendBet_SeqNo);
+          alert("Betlines: " + sendBet_BetMessage);
+          Debug End*/
+        SetDataStore('sendbet_reply', '');
+        SetDataStore('sendbet_status', '');
+        SetDataStore('sendbet_error', '');
+        SetDataStore('new_balance', '');
+        SetDataStore('bet_total', '');
+        SetDataStore('trans_time', '');
+
+
+
+        svc.sendReq('SENDBET_DoSendBet', {
+                seqNo: seqNo, //overwrite existing seqNo
+                betlines: betlines,
+                lang: GetLanguage(),
+                delayReq: 1,
+                password: ''
+            }, ProcessSendBetResult,
+            function() {
+                ProcessSendBetResult({
+                    sendbet_reply: unknownReply
+                });
+            }, replyTimeoutInSec);
+    }
+
+    function GetPasswordForSendBet() {
+        return GetDataStore('savePassword') == '0' ? '' : pwdField.getInput();
+    }
+
+    function CreateBetMsg() {
+        var betmsg = "";
+        var haveInPlay = false;
+
+        for (var i = 0; i < totalBetLine; i++) {
+            betmsg += betlines[i].betline;
+            if ((betlines[i].xsellLogId != '') == 1) {
+                betmsg += " X";
+            }
+            if (betlines[i].isInPlay == 1) {
+                betmsg += " I$" + betlines[i].unitBet + "\\";
+            } else {
+                var partial = "";
+
+                // Q310
+                if (betlines[i].m6UnitBetAmountType == 0)
+                    partial = "P";
+
+                var rg = "";
+                if (betlines[i].isRandGen == 1 && (betlines[i].type == "MK6" || betlines[i].type == "T-T" || betlines[i].type == "QTT"))
+                    rg = "(RG)";
+                var sb = "";
+                if (betlines[i].isAdvSB == 1 && betlines[i].type == "MK6")
+                    sb = "S";
+                var unitBet = betlines[i].unitBet;
+
+                betmsg += " " + partial + rg + sb;
+
+                // Q308
+                //if (betlines[i].isFlexiBet())
+                if (betlines[i].betMethod == 1)
+                    betmsg += "$";
+
+                betmsg += "$" + unitBet + "\\";
+            }
+        }
+
+        return betmsg;
+    }
+
+    function ProcessSendBetResult(result) {
+        //After Send Bet, eWinTXNCTRL will fire this Function.
+        /* For Debug Use
+            alert("is_delay_reply: " + GetDataStore("is_delay_reply"));
+            alert("delay_time_in_seconds: " + GetDataStore("delay_time_in_seconds"));
+            alert("sendbet_status: " + GetDataStore("sendbet_status"));
+            alert("sendbet_error: " + GetDataStore("sendbet_error"));
+            alert("new_balance: " + GetDataStore("new_balance"));
+            alert("trans_time: " + GetDataStore("trans_time"));
+            alert("bet_total: " + GetDataStore("bet_total"));
+            alert("sendbet_reply: " + GetDataStore("sendbet_reply"));
+            //sendbet_reply Format: @@@status|||Trans No \ Error Message|||Amount|||Max Pay|||Flex Bet Flag
+            */
+        sendbetResult = result;
+
+        var is_delay_reply = result.is_delay_reply;
+        var sendbet_status = result.sendbet_status;
+        var sendbet_error = result.sendbet_error;
+        var delay_request_seq_no = result.delay_request_seq_no || "";
+        var betlines = result.betlines || "";
+
+        //check hashed pwd first
+        if (sendbet_status == '-3') {
+            //Wrong hashed password detected
+            ShowError(3, GetError("wrong_password"), true, 5000);
+            pwdField.clearInput();
+            pwdField.disableBoxes(false);
+            enablePreviewButton();
+            isProcessing = false;
+            return;
+        }
+
+        //check IW available first
+        if (sendbet_status == '-4') {
+            //Wrong hashed password detected
+            pwdField.clearInput();
+            pwdField.disableBoxes(false);
+            enablePreviewButton();
+            isProcessing = false;
+            alert(GetError("IW CANNOT ACCESS"));
+            return;
+        }
+
+        // if hashed pwd correct, clear input();
+
+        var savePassword = GetDataStore('savePassword');
+        var enterPasswordDisabled = (GetDataStore("EnterPassword") == "0");
+        if (savePassword != '0' && !enterPasswordDisabled) {
+            try {
+                pwdField.clearInput();
+            } catch (e) {};
+        }
+
+        if (sendbet_error && sendbet_error.indexOf('159') >= 0 && !getDelayReply2nd) { // retry 1 more
+            getDelayReply2nd = true;
+            ShowInplayMsg();
+            setTimeout(
+                function() {
+                    SendDelayRequest(delay_request_seq_no, betlines);
+                }, inplayDelayRetryTime * 1000);
+        } else if (is_delay_reply == "1" && !getDelayReplyOnce && sendbet_status == "0") {
+            var delay_time_in_seconds = result.delay_time_in_seconds;
+            getDelayReplyOnce = true;
+            ShowInplayMsg();
+            setTimeout(
+                function() {
+                    SendDelayRequest(delay_request_seq_no, betlines);
+                }, parseInt(delay_time_in_seconds, 10) * 1000);
+        }
+        // Support SSO
+        else if (sendbet_status == '-2') {
+            isProcessing = false;
+            processSSOExtendResult(result); // Support SSO
+            $('previewTable').innerHTML = '';
+            $('replyTable').innerHTML = '';
+            $('divBetPreview').style.display = 'none';
+            //            $('doneBtn').style.display = '';
+            //            $('pic_done').src = GetImageURL('pic_done');
+            //            $('divBetReply').style.display = 'block';
+            $('divBetReply').style.display = 'none';
+            return;
+        }
+        // End Support SSO        
+        else {
+            getDelayReplyOnce = false;
+            getDelayReply2nd = false;
+            ProcessNormalBetResult(result);
+        }
+
+        $j('#replyTable').scrollTop(0);
+    }
+
+    function GetCurrentSessionRecord(dsValue, dsName) {
+        alert("Current Session Record: " + dsValue);
+    }
+
+    function ProcessNormalBetResult(result) {
+        $('replyHeader').innerHTML = CreateBetReplyHeader(result);
+        $('replySubHeader').innerHTML = CreateBetReplySubHeader();
+
+        $('divBetPreview').style.display = "none";
+        $('replyTable').innerHTML = "";
+        $('divBetReply').style.display = "block";
+
+        $('replyBetSummary').innerHTML = CreateBetSummary(false, false, result);
+        $('replyTable').innerHTML = CreateBetReplyTable(false, false, result);
+        $('replyBetAmount').innerHTML = CreateBetReplyAmount(result);
+
+
+        // update balance
+        var long_new_balance = -1;
+        var bet_total = result.bet_total;
+        if (typeof bet_total != 'undefined' && bet_total != "" && bet_total != "0") {
+            var new_balance = result.new_balance;
+            if (typeof new_balance != 'undefined' && new_balance != "" && new_balance.toUpperCase() != "NA" && new_balance.toUpperCase() != "N/A") {
+                long_new_balance = parseFloat(new_balance) - parseFloat(bet_total);
+            } else {
+                long_new_balance = parseFloat(balance) - parseFloat(bet_total);
+            }
+        }
+
+        if (typeof result.sendbet_reply != "undefined") {
+            logDataAccessor.LogRecord(result.sendbet_reply, totalBetLine, betlines);
+        }
+
+        proxy.sendMessage('BET_PREVIEW', 'PostSendBetAction', {
+            LongNewBalance: long_new_balance,
+            BetReply: result.sendbet_reply,
+            DeleteBetlineArray: deleteBetlineArray,
+            ShowUnknownAmount: anyUnknownRow
+        }, proxy.NO_CALLBACK);
+
+        //          isProcessing = false;
+        refreshFrameHeight(false);
+
+        if (anyUnknownRow)
+            $('recallBtn').style.display = '';
+        else
+            $('doneBtn').style.display = '';
+        $('pic_done').src = GetImageURL('pic_done');
+
+        setTimeout("disableBlocking()", 100);
+    } // ProcessNormalBetResult()
+
+    function disableBlocking() {
+        isProcessing = false;
+    }
+
+    function CreateBetReplyHeader(result) {
+        var buf = new StringBuffer();
+        buf.append('<table width="100%" border="0" cellspacing="0" cellpadding="0">');
+        buf.append('<tr>');
+        buf.append('<td width="65" class="titleBlue"><strong>')
+            .append(GetText('fld_bet_reply')).append('</strong></td>');
+        buf.append('<td class="content">').append(GetText('acc_logon_time')).append('</td>');
+        buf.append('<td width="300" class="content">')
+            .append(GetTxnTime(result)).append('</td>');
+        buf.append('<td align="right"><a href="javascript:;" onclick="betReplyPrint();" class="content">')
+            .append(GetText('print')).append('&nbsp;<img src="images/icon_print.gif" title="')
+            .append(GetText('print')).append('" width="15" height="15" border="0" align="absmiddle">').append('</a></td>');
+        buf.append('</tr>');
+        buf.append('</table>');
+        return buf.toString();
+    }
+
+    function GetTxnTime(result) {
+        var txnTime = '';
+        var sendbet_status = result.sendbet_status;
+        replyTableBuffer = 0;
+        if (sendbet_status == "0") {
+            txnTime = result.trans_time;
+        } else if (sendbet_status == "-21") {
+            txnTime = GetError("system_return21");
+            replyTableBuffer = 15;
+        } else if (undefined == sendbet_status || sendbet_status == "") {
+            txnTime = result.trans_time;
+        } else {
+            txnTime = GetError(result.sendbet_error);
+            replyTableBuffer = 15;
+        }
+
+        return txnTime;
+    }
+
+    function CreateBetReplySubHeader() {
+        var buf = new StringBuffer();
+        buf.append('<table width="100%" border="0" cellpadding="0" cellspacing="0">');
+        buf.append('<tr>');
+        buf.append('<td width="27" align="right" valign="top" class="content" style="padding:0px 5px 0px 7px;">')
+            .append(GetText('fld_item_no_reply')).append('</td>');
+        buf.append('<td width="53" valign="top" class="content" style="padding:0px 0px 5px 10px;">')
+            .append(GetText('fld_reply_status')).append('</td>');
+        buf.append('<td width="70" valign="top" class="content" style="padding:0px 0px 5px 0px;">')
+            .append(GetText('fld_reply_ref_no')).append('</td>');
+        buf.append('<td width="65" valign="top" class="content" style="padding:0px 0px 5px 0px;">')
+            .append(GetText('fld_bet_type')).append('</td>');
+        buf.append('<td valign="top" class="content" style="padding:0px 0px 5px 10px;">')
+            .append(GetText('fld_bet_detail')).append('</td>');
+        buf.append('<td align="right" valign="top" class="content" style="padding:0px 45px 5px 0px;">')
+            .append(GetText('fld_bet_amount')).append('</td>');
+        buf.append('</tr>');
+        buf.append('<tr>');
+        buf.append('<td colspan="6" valign="top" bgcolor="#A2A5AA" style="padding:0px 0px 0px 0px;"><img src="images/spacer.gif" width="1" height="1"></td>');
+        buf.append('</tr>');
+        buf.append('</table>');
+        return buf.toString();
+    }
+
+    function IsAllBetsAccepted() {
+        var betReply = GetDataStore("sendbet_reply");
+        if (betReply == '')
+            return false;
+        else if ((betReply.indexOf("REJECTED") < 0) && (betReply.indexOf("UNKNOWN") < 0))
+            return true;
+        else
+            return false;
+    }
+
+    function CreateBetSummary(isPrint, isXsell, result) {
+        var allBetReply_Message = result.sendbet_reply;
+        var aryBetReply_Message = allBetReply_Message.split("@@@");
+
+        var isLowerResolution = screen.height < 768;
+
+        var acceptedCount = 0;
+        var rejectedCount = 0;
+        var unknownCount = 0;
+
+        for (var i = 1; i < totalBetLine + 1; i++) {
+            if (aryBetReply_Message[i] != undefined) {
+                tmp = aryBetReply_Message[i].split("|||");
+            }
+
+            var record_status = (tmp.length < 1 || tmp[0] == '' || tmp[0] == ' ') ? 'UNKNOWN' : tmp[0];
+
+            switch (record_status) {
+                case "ACCEPTED":
+                    acceptedCount++;
+                    break;
+                case "REJECTED":
+                    rejectedCount++
+                    break;
+                case "UNKNOWN":
+                    unknownCount++;
+                    break
+            }
+        }
+
+        var buf = new StringBuffer();
+        buf.append('<table id="betConfirmationSummary" cellspacing="0" cellpadding="0" border="0" width="98%" style="padding-bottom:5px;' +
+            (isPrint ? 'padding-top:5px;' : '') + '"><tbody>');
+        if (isLowerResolution) {
+            buf.append("<tr>");
+        }
+        if (acceptedCount > 0) {
+            buf.append(
+                CreateBetSummaryItem(
+                    "s_icon_yes.gif",
+                    GetText("BET_ACCEPTED"),
+                    acceptedCount,
+                    "#009900",
+                    isLowerResolution
+                )
+            );
+        }
+
+        if (rejectedCount > 0) {
+            buf.append(
+                CreateBetSummaryItem(
+                    "s_icon_no.gif",
+                    GetText("BET_REJECTED"),
+                    rejectedCount,
+                    "#ff0000",
+                    isLowerResolution
+                )
+            );
+
+        }
+
+        if (unknownCount > 0) {
+            buf.append(
+                CreateBetSummaryItem(
+                    "s_icon_unknown.gif",
+                    GetText("BET_UNKNOWN"),
+                    unknownCount,
+                    "#ffae00",
+                    isLowerResolution
+                )
+            );
+        }
+        if (isLowerResolution) {
+            buf.append("</tr>");
+        }
+        buf.append("</tbody></table>");
+
+        return buf.toString();
+    }
+
+    function CreateBetSummaryItem(icon, status, amount, color, isLowerResolution) {
+        var buf = new StringBuffer();
+
+        if (amount <= 0) {
+            return buf.toString();
+        }
+
+        if (!isLowerResolution) {
+            buf.append("<tr>");
+        }
+
+        var content = "<td " + (isLowerResolution ? "style='padding-right:7px'" : "style='padding-bottom:3px'") +
+            "><img src='images/" + icon + "' style='padding-right:10px;vertical-align:middle' />" +
+            "<span style='color:" + color + "'>" + status + " : " + amount + "</span></td>";
+
+        buf.append(content);
+
+        if (!isLowerResolution) {
+            buf.append("</tr>");
+        }
+
+        return buf.toString();
+    }
+
+    function CreateBetReplyTable(isPrint, isXsell, result) {
+        var strStyle = new Array('tdGray', 'tdWhite');
+
+        anyUnknownRow = false;
+
+        var allBetReply_Message = result.sendbet_reply;
+        var aryBetReply_Message = allBetReply_Message.split("@@@");
+        var buf = new StringBuffer();
+        buf.append('<table width="98%" border="0" cellspacing="0" cellpadding="0">');
+
+        var start_index = 1;
+
+        var styleIdx = 0;
+        var x = 0;
+        var y = 0;
+        var betdetail_temp = [];
+
+        for (var i = 1; i < totalBetLine + 1; i++) {
+            var tmp = new Array();
+            if (aryBetReply_Message[i] != undefined) {
+                tmp = aryBetReply_Message[i].split("|||");
+            }
+
+            var record_status = (tmp.length < 1 || tmp[0] == '' || tmp[0] == ' ') ? 'UNKNOWN' : tmp[0];
+            var trans_no = (tmp.length < 2) ? '' : tmp[1];
+            var maxpay = (tmp.length < 4) ? '' : tmp[3];
+            var flexibet = (tmp.length < 5) ? '' : tmp[4];
+            var bet_type = GetDispBetType(betlines[i - 1].type, betlines[i - 1].match, betlines[i - 1].typeDescription);
+            var betdetail = betlines[i - 1].description.replace(/\[flag\]/g, GetLeagueFlagHTML(jcbwLeaguePath, betlines[i - 1].league));
+            var unitbet = betlines[i - 1].unitBet;
+
+            if (betlines[i - 1].m6UnitBetAmountType == 0)
+                betdetail += ' (' + GetText('m6unit_name') + ')';
+
+            if (flexibet != '') {
+                var flexiComb = flexibet.split('/');
+                if (flexiComb.length > 1)
+                    betdetail += '<br>' + FormatCurrency(flexiComb[0]) + '/' + flexiComb[1];
+                else
+                    betdetail += '<br>';
+                var flexiStr = ' (' + GetText('flexibet_name') + ')';
+                if (betdetail.indexOf(flexiStr) < 0)
+                    betdetail += flexiStr;
+            } else {
+                betdetail += '<br>' + FormatCurrency(unitbet);
+            }
+            if (maxpay != '') {
+                betdetail += '<br>' + GetText('max_payout') + '&nbsp;' + FormatCurrency(maxpay);
+            }
+
+            var amount = aryBetReply_Message[i].split("|||")[2];
+            amount = amount.toString(10);
+            amount = FormatCurrency(amount);
+
+            buf.append('<tr>');
+            buf.append('<td width="9%" align="right" valign="top" class="')
+                .append(strStyle[styleIdx % 2]).append('">').append(i - start_index + 1).append('</td>');
+
+            var isUnknownRow = false;
+            var tmp = GetText(record_status);
+            if (record_status == "UNKNOWN" || record_status == "INPLAY_UNKNOWN" || record_status == "UNKNOWN_SPECIAL") {
+                tmp = "<font color=#FF0000>" + GetText(record_status) + "*</font>";
+                isUnknownRow = true;
+                anyUnknownRow = true;
+                $('pic_txn_rec').src = GetImageURL('pic_txn_rec');
+
+                tmp = "<font color=#ffae00>" + GetText(record_status) + "*</font>" + "<div style='display:block;padding-top:5px'>" +
+                    "<img src='images/icon_unknown.gif' /></div>";
+                isUnknownRow = true;
+                anyUnknownRow = true;
+                $('pic_txn_rec').src = GetImageURL('pic_txn_rec');
+            } else if (record_status == "ACCEPTED") {
+                tmp = "<font color=#009900>" + GetText(record_status) + "</font>" + "<div style='display:block;padding-top:5px'>" +
+                    "<img src='images/icon_yes.gif' /></div>";;
+            } else if (record_status == "REJECTED") {
+                tmp = "<font color=#ff0000>" + GetText(record_status) + "</font>" + "<div style='display:block;padding-top:5px'>" +
+                    "<img src='images/icon_no.gif' /></div>";;
+
+            }
+
+            buf.append('<td width="11%" valign="top" class="')
+                .append(strStyle[styleIdx % 2]).append('">').append(tmp).append('</td>');
+
+            tmp = trans_no;
+            if (record_status == "UNKNOWN")
+                tmp = GetError("901");
+            buf.append('<td width="15%" valign="top" class="')
+                .append(strStyle[styleIdx % 2]).append('">').append(tmp).append('</td>');
+
+            buf.append('<td width="15%" valign="top" class="')
+                .append(strStyle[styleIdx % 2]).append('">').append(bet_type).append('</td>');
+            buf.append('<td width="30%" valign="top" class="')
+                .append(strStyle[styleIdx % 2]).append('" style="width:120px;max-width:120px;word-wrap:break-word">').append(betdetail).append('</td>');
+            buf.append('<td width="20%" align="right" valign="top" class="')
+                .append(strStyle[styleIdx % 2]).append('"><nobr>');
+            if (isUnknownRow) {
+                buf.append(unknownAmount);
+            } else {
+                buf.append(amount);
+            }
+            buf.append('</nobr></td>');
+            buf.append('</tr>');
+
+            if (isUnknownRow) {
+                buf.append('<tr><td colspan="6" class="')
+                    .append(strStyle[styleIdx % 2]).append('" style="border-top:1px solid #FFFFFF; padding:0px;">');
+                buf.append('<table width="100%" border="0" cellspacing="0" cellpadding="0">');
+                buf.append('<tr><td style="padding:7px 7px 20px 7px;" class="content"><font color="#ffae00"><span>*</span></font> <a href="javascript:;" onclick="OnClickRecall()" style="color:#ffae00">');
+                buf.append(GetText('text_unknown_message')).append('</a></td></tr></table></td></tr>');
+            }
+
+            styleIdx++;
+        } // for each transaction
+
+        buf.append('</table>');
+
+        return buf.toString();
+    } // CreateBetReplyTable()
+
+    function CreateBetReplyAmount(result) {
+        var buf = new StringBuffer();
+        buf.append('<table width="100%" border="0" cellspacing="0" cellpadding="0">');
+        buf.append('<tr>');
+        buf.append('<td colspan="3" align="right">');
+        buf.append('<table border="0" cellspacing="0" cellpadding="0">');
+        buf.append('<tr>');
+        buf.append('<td width="35" class="content" style="padding:4px 0px 4px 0px;">')
+            .append(GetText('fld_total')).append('</td>');
+        buf.append('<td width="85" align="right" class="content" style="padding:4px 34px 4px 0px;"><nobr><strong>');
+        if (anyUnknownRow)
+            buf.append(unknownAmount);
+        else
+            buf.append(FormatCurrency(result.bet_total));
+        buf.append('</strong></nobr></td>');
+        buf.append('</tr>');
+        buf.append('</table>');
+        buf.append('</td>');
+        buf.append('</tr>');
+        buf.append('</table>');
+        return buf.toString();
+    }
+
+    function disablePreviewButton() {
+        $('pic_back').src = GetImageURL('pic_back_off');
+        $('pic_send_bet').src = GetImageURL('pic_send_bet_off');
+        $('pic_del_bet').src = GetImageURL('pic_delete_bet_off');
+    }
+
+    function enablePreviewButton() {
+        $('pic_back').src = GetImageURL('pic_back');
+        $('pic_send_bet').src = GetImageURL('pic_send_bet');
+    }
+
+    function ShowError(containerId, message, isFormated, timeoutMSec) {
+        var strHTML;
+
+        if (isFormated)
+            strHTML = message;
+        else
+            strHTML = "<table border=1 bordercolor=#000000 width=100% cellspacing=0 cellpadding=0 style='table-layout:fixed'>" + "<tr><td align=center style='left:0px;width:100%;word-wrap:break-word'>" + "<div style='background-color:#ffff00'>" + "<font size=-1 color=blue>" + message + "</font>" + "</div>" + "</td></tr>" + "</table>";
+
+        switch (containerId) {
+            case 3: // slipFrame preview bet
+                $('txtPreviewWrongPassword').innerHTML = strHTML;
+                $('msgColumn').style.visibility = "visible";
+                $('passwordErrorTxt').style.display = "block";
+                break;
+        }
+
+        timeIdError = setTimeout("HideError(" + containerId + ", true)", timeoutMSec);
+    }
+
+    function HideError(containerId, callerIsTimer) {
+        if (callerIsTimer)
+            clearTimeout(timeIdError);
+
+        switch (containerId) {
+            case 3: // slipFrame preview bet
+                $('msgColumn').style.visibility = "hidden";
+                $('passwordErrorTxt').style.display = "none";
+                break;
+        }
+    }
+
+    // End of Confirm Bet
+    function OnClickClosePreview() {
+        if (isProcessing)
+            return;
+        isProcessing = true;
+        $('previewTable').innerHTML = '';
+        $('replyTable').innerHTML = '';
+        $('divBetPreview').style.display = 'none';
+        $('divBetReply').style.display = 'none';
+        $('previewTable').style.height = '1px';
+        $('replyTable').style.height = '1px';
+        proxy.sendMessage('BET_PREVIEW', 'OnClickClosePreview', {
+            DeleteBetlineArray: deleteBetlineArray
+        }, proxy.NO_CALLBACK);
+    }
+
+    function OnClickClose() {
+        isProcessing = true;
+        $('previewTable').innerHTML = '';
+        $('replyTable').innerHTML = '';
+        $('divBetPreview').style.display = 'none';
+        $('divBetReply').style.display = 'none';
+        $('previewTable').style.height = '1px';
+        $('replyTable').style.height = '1px';
+        proxy.sendMessage('BET_PREVIEW', 'OnClickClose', {}, proxy.NO_CALLBACK);
+
+    }
+
+    function OnClickRecall() {
+        $('previewTable').innerHTML = '';
+        $('replyTable').innerHTML = '';
+        $('divBetPreview').style.display = 'none';
+        $('divBetReply').style.display = 'none';
+        $('previewTable').style.height = '1px';
+        $('replyTable').style.height = '1px';
+        proxy.sendMessage('BET_PREVIEW', 'OnClickCloseAndRecall', {}, proxy.NO_CALLBACK);
+
+    }
+
+    function OnCancelSendBet() {
+        enablePreviewButton();
+        isProcessing = false;
+
+        var savePassword = GetDataStore('savePassword');
+        if (savePassword != '0') {
+            pwdField.disableBoxes(false);
+        }
+    }
+
+    //Starting of On Click Delete Bet
+
+    function OnClickDeleteBet() {
+        if (getSelectedRowCount() <= 0) {
+            alert(GetError("Please click on a bet before delete."));
+            return;
+        }
+
+        if (isProcessing)
+            return;
+        isProcessing = true;
+
+        var truthBeTold = confirm(GetText("confirm_delete"));
+        if (truthBeTold) {
+            Bet_DeleteItem();
+        } else {
+            isProcessing = false;
+        }
+    }
+
+    function Bet_DeleteItem() {
+        var obj = document.getElementById('previewBetTb');
+        var trs = obj.getElementsByTagName('tr');
+        for (var i = trs.length - 1; i >= 0; i--) {
+            if (trs[i].clicked)
+                DeleteBetlineWithIndex(i, false);
+        }
+
+        isProcessing = false;
+        if (totalBetLine < 1) {
+            proxy.sendMessage('BET_PREVIEW', 'OnClickClosePreview', {
+                DeleteBetlineArray: deleteBetlineArray
+            }, proxy.NO_CALLBACK);
+        } else {
+            var totalBetAmount = 0;
+            for (var i = 0; i < totalBetLine; i++) {
+                //if (betlines[i].isFlexiBet())
+                if (betlines[i].betMethod == 1)
+                    totalBetAmount += parseInt(betlines[i].unitBet, 10);
+                else
+                    totalBetAmount += betlines[i].numOfSelection * betlines[i].unitBet;
+            }
+            $('valueBetTotal').innerHTML = FormatCurrency(totalBetAmount);
+            $('previewTable').innerHTML = CreatePreviewBetTable(totalBetLine);
+            resetPreviewRow();
+        }
+    }
+
+    function DeleteBetlineWithIndex(index, refreshBetTable) {
+        if (deleteBetlineArray == "") {
+            deleteBetlineArray = index + "";
+        } else {
+            deleteBetlineArray += "|||" + index;
+        }
+
+        for (var i = index; i < totalBetLine; i++) {
+            if (i == totalBetLine - 1)
+                betlines[i] = null;
+            else
+                betlines[i] = betlines[i + 1];
+        }
+        totalBetLine--;
+
+        //   if (getBetClickCount() == 0)
+        //   $post("slipClose()", slipContext);
+
+        // if (refreshBetTable)
+        //    slipFrame.RedrawBetlineTable();
+    }
+
+    function getBetClickCount() {
+        var cnt = 0;
+        for (var i = 0; i < totalBetLine; i++) {
+            if (betlines[i].descOpen)
+                cnt++;
+        }
+        return cnt;
+    }
+
+    //End of On Click Delete Bet End
+
+    //Start of Bet Reply Print
+
+    function betReplyPrint() {
+        if ($('divPrint').innerHTML == '') {
+            var buf = new StringBuffer();
+            buf.append(CreateBetReplyHeader(sendbetResult));
+            buf.append(CreateBetSummary(true, false, sendbetResult));
+            buf.append(CreateBetReplySubHeader());
+            buf.append(CreateBetReplyTable(true, false, sendbetResult));
+            buf.append(CreateBetReplyAmount(sendbetResult));
+            $('divPrint').innerHTML = buf.toString();
+        }
+        window.print();
+    }
+
+    //End of Bet Reply Print
+
+    // Support SSO
+    function processSSOExtendResult(msg) {
+        if (ssoEnabled) {
+            if (msg.sso_last_extend_status != undefined && msg.sso_last_extend_status != "") {
+                /*
+                  var command = "ReceiveSendBetTicketExtendResults('" + GetDataStore('sso_last_extend_status') + "','" + GetDataStore('sso_last_extend_error') + "','" + GetDataStore('sso_check_return_status') + "','" + GetDataStore('sso_sign_in_level') + "','" + GetDataStore('sso_web_id') + "','" + GetDataStore('sso_guid') + "')";
+                  AsyncStart(function() {
+                    $post(command, slipContext);
+                  });
+                  */
+                proxy.sendMessage('BET_PREVIEW', 'ReceiveSendBetTicketExtendResults', {
+                        SSOLastExtendStatus: msg.sso_last_extend_status,
+                        SSOLastExtendError: msg.sso_last_extend_error,
+                        SSOCheckReturnStatus: msg.sso_check_return_status,
+                        SSOSignInLevel: msg.sso_sign_in_level,
+                        SSOWebId: msg.sso_web_id,
+                        SSOGuid: msg.sso_guid
+                    },
+                    proxy.NO_CALLBACK);
+            }
+        }
+    }
+
+    //For support loadMouseEventImage
+    function get_image_lang(inval) {
+        return GetImageURL(inval);
+    }
+
+    function setActiveStyleSheetByLang() {
+        var lang = GetDataStore('language');
+
+        for (var i = 0;
+            (a = document.getElementsByTagName("link")[i]); i++) {
+            var lHref = a.getAttribute('href');
+            if (lang != '0') {
+                lHref = lHref.replace('_en', '_ch');
+                lHref = lHref.replace('_0', '_1');
+            } else {
+                lHref = lHref.replace('_ch', '_en');
+                lHref = lHref.replace('_1', '_0');
+            }
+            a.setAttribute('href', lHref);
+        }
+    }
+
+    function isCWinPool(betType) {
+        if ($j.inArray(betType, ["CWA", "CWB", "CWC"]) >= 0) {
+            return true;
+        }
+        return false;
+    }
+    </script>
+    <link href="css/styles_1.css" rel="stylesheet" type="text/css">
+    <link href="css/styles_ch_q308.css" rel="stylesheet" type="text/css">
+</head>
+
+<body style="background-color: rgb(255, 255, 255);" oncontextmenu="return false" onkeydown="return onKeyDown(event);" onload="OnPageLoad();" marginwidth="0" marginheight="0">
+    <div id="divBetPreview" style="width:100%;height:100%;display:block;z-index:100;">
+        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #A2A5AA; border-left:1px solid #A2A5AA; border-bottom:1px solid #A2A5AA; background-color:#FFFFFF;">
+            <tbody>
+                <tr>
+                    <td height="26" class="titleBlue" style="padding:7px 7px 5px 7px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td class="titleBlue" style="padding:0px 0px 7px 13px; border-bottom:1px solid #A2A5AA;">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="titleBlue"><strong><span id="txtPreviewBet"></span></strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="content" style="padding:0px 7px 0px 7px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="57" align="right" valign="top" class="content" style="padding:0px 5px 0px 10px;">
+                                        <span id="txtItemNo"></span>
+                                    </td>
+                                    <td width="86" valign="top" class="content" style="padding:0px 0px 5px 7px;">
+                                        <span id="txtBetType"></span>
+                                    </td>
+                                    <td width="204" valign="top" class="content" style="padding:0px 0px 5px 10px;">
+                                        <span id="txtBetDetail"></span>
+                                    </td>
+                                    <td width="135" align="right" valign="top" class="content" style="padding:0px 45px 5px 0px;">
+                                        <span id="txtBetAmount"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" valign="top" bgcolor="#A2A5AA" style="padding:0px 0px 0px 0px;">
+                                        <img src="images/spacer(6).gif" width="1" height="1">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" class="content" style="padding:0px 7px 0px 7px;">
+                        <div id="previewTable" class="scroll1" style="position:relative; width:485px; overflow-y:scroll; overflow-x:hidden;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="tbPreviewButton" style="display:none;padding:7px 7px 7px 7px; border-top:1px solid #A2A5AA;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td valign="bottom" style="padding-bottom:1px">
+                                        <a href="javascript:;" onclick="OnClickDeleteBet();" onmouseout="if ( getSelectedRowCount() &gt; 0 ) {  loadMouseEventImage(&#39;pic_del_bet&#39;, &#39;pic_delete_bet&#39;); }" onmouseover="if ( getSelectedRowCount() &gt; 0 ) { loadMouseEventImage(&#39;pic_del_bet&#39;, &#39;pic_delete_bet_on&#39;); }">
+                                            <img id="pic_del_bet" border="0">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <table id="inplayMsg" style="visibility:hidden" border="0" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td bgcolor="#FFDE00" class="important" style="padding:8px 8px 8px 8px;"><strong><span id="inplayMsgTxt"></span></strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td align="right">
+                                        <!--password error start-->
+                                        <table id="msgColumn" style="visibility:hidden" border="0" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr id="passwordErrorTxt" style="display:none">
+                                                    <td bgcolor="#FFDE00" class="important" style="padding:8px 8px 8px 8px;" nowrap=""><strong><span id="txtPreviewWrongPassword"></span></strong></td>
+                                                    <td width="7" align="right" style="padding:0px 10px 0px 0px;">
+                                                        <img src="images/bg_yellow.gif" width="7" height="27">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--password error end-->
+                                    </td>
+                                    <td width="147" valign="top">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="35" class="content"><strong><span id="txtBetTotal"></span></strong></td>
+                                                                    <td align="right" class="content" style="padding:0px 31px 0px 0px;">
+                                                                        <nobr><strong><span id="valueBetTotal"></span></strong></nobr>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <table id="previewPassword" style="visibility:hidden" width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <img src="images/spacer(6).gif" width="1" height="5px">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="30" class="content" style="padding:7px 0px 7px 0px;">
+                                                                        <span id="txtPreviewPassword"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span id="passwordField"></span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <img src="images/spacer(6).gif" width="1" height="2px">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right" width="75" style="padding-right:5px">
+                                                        <a href="javascript:;" onclick="OnClickClosePreview();" onmouseout="if (!isProcessing) loadMouseEventImage(&#39;pic_back&#39;, &#39;pic_back&#39;);" onmouseover="if (!isProcessing) loadMouseEventImage(&#39;pic_back&#39;, &#39;pic_back_on&#39;);">
+                                                            <img id="pic_back" border="0">
+                                                        </a>
+                                                    </td>
+                                                    <td align="right">
+                                                        <a href="javascript:;" onclick="OnClickConfirmBet();" onmouseout="if (!isProcessing) loadMouseEventImage(&#39;pic_send_bet&#39;,&#39;pic_send_bet&#39;);" onmouseover="if (!isProcessing) loadMouseEventImage(&#39;pic_send_bet&#39;, &#39;pic_send_bet_on&#39;);">
+                                                            <img id="pic_send_bet" border="0">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="noPrint">
+        <div id="divBetReply" width="100%" height="100%" style="display:none;z-index:100;">
+            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #A2A5AA; border-left:1px solid #A2A5AA; border-bottom:1px solid #A2A5AA; background-color:#FFFFFF;">
+                <tbody>
+                    <tr>
+                        <td height="26" class="titleBlue" style="padding:7px 7px 5px 7px;">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                    <tr>
+                                        <td id="replyHeader" class="titleBlue" style="padding:0px 0px 7px 7px; border-bottom:1px solid #A2A5AA;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="replyBetSummary" style="padding:0px 7px; border-bottom:solid 1px #A2A5AA">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="replySubHeader" valign="top" class="content" style="padding:7px 7px 0px 7px;"></td>
+                        <td id="replySubHeader" valign="top" class="content" style="padding:0px 7px 0px 7px;"></td>
+                    </tr>
+                    <tr>
+                        <td valign="top" class="content" style="padding:0px 7px 0px 7px;">
+                            <div id="replyTable" class="scrollReply" style="position:relative; width:485px">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="replyBetAmount" align="right" style="padding:0px 4px 4px 4px; border-top:1px solid #A2A5AA;"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" style="padding:0px 4px 4px 4px;">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                    <tr>
+                                        <td id="recallBtn" style="display:none" align="right">
+                                            <a href="javascript:;" onclick="OnClickRecall()" onmouseout="loadMouseEventImage(&#39;pic_txn_rec&#39;, &#39;pic_txn_rec&#39;);" onmouseover="loadMouseEventImage(&#39;pic_txn_rec&#39;, &#39;pic_txn_rec_on&#39;);">
+                                                <img id="pic_txn_rec" border="0">
+                                            </a>
+                                        </td>
+                                        <td style="width:2px">
+                                            <img src="images/spacer(6).gif" width="2" height="1">
+                                        </td>
+                                        <td id="doneBtn" style="display:none">
+                                            <a href="javascript:;" onclick="OnClickClose();" onmouseout="loadMouseEventImage(&#39;pic_done&#39;, &#39;pic_done&#39;);" onmouseover="loadMouseEventImage(&#39;pic_done&#39;, &#39;pic_done_on&#39;);">
+                                                <img id="pic_done" border="0">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="divPrint" class="noDisplay"></div>
+</body>
+
+</html>
