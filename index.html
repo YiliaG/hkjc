@@ -844,9 +844,9 @@
                         </script>
                         <div id="1" style="DISPLAY:none"></div>
                         <iframe scrolling="no" frameborder="0" allowtransparency="true" width="100%" height="39" id="homeSNFrame" name="homeSNFrame" src="importantNotices.html">&amp;nbsp;</iframe>
-                        <script type="text/javascript">
+                        <!-- <script type="text/javascript">
                         function LoadImportantNote() {
-                            document.getElementById('homeSNFrame').src = "/importantNotices.aspx?type=football&lang=CH";
+                            document.getElementById('homeSNFrame').src = "importantNotices.html";
                         }
                         if (window.addEventListener) {
                             window.addEventListener("load", LoadImportantNote, false);
@@ -855,7 +855,7 @@
                         } else {
                             document.addEventListener("load", LoadImportantNote, false);
                         }
-                        </script>
+                        </script> -->
                         <div id="thirdMenu">
                             <table width="776" border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
@@ -1424,43 +1424,6 @@
                                                     </td>
                                                     <td width="635" class="content">
                                                         <div id="footballmaincontent" class="footballmaincontent">
-                                                            <!-- odds table starts -->
-                                                            <script type="text/javascript">
-                                                            window["cacheVersion"] = '?CV=L206R1b';
-                                                            </script>
-                                                            <!-- odds header starts -->
-                                                            <script type="text/javascript">
-                                                            window["cacheVersion"] = '?CV=L206R1b';
-                                                            </script>
-                                                            <script language="javascript" type="text/javascript">
-                                                            function refreshOddsPageScript() {
-                                                                autoRefreshAll(60, 12, 'INDEX');
-                                                            }
-
-                                                            function executeAutoRefreshByPushScript() {
-                                                                var isLiveBetting = "False";
-                                                                if (isLiveBetting.toLowerCase() == "true") {
-                                                                    isLiveBetting = true;
-                                                                } else {
-                                                                    isLiveBetting = false;
-                                                                }
-                                                                autoRefreshByPush(isLiveBetting, 'INDEX');
-                                                            }
-                                                            $(document).ready(function() {
-                                                                var updatePerformTvVisibility = function() {
-                                                                    if ($("#linkPerformTv").length > 0 && top.betSlipFrame && typeof(top.betSlipFrame.showWebTVIcon) == "function" && top.betSlipFrame.showWebTVIcon()) {
-                                                                        $("#linkPerformTv").css("display", "inline");
-                                                                    } else {
-                                                                        $("#linkPerformTv").hide();
-                                                                    }
-                                                                }
-                                                                if (top.betSlipFrame && typeof(top.betSlipFrame.regWebTVStatusCallback) == "function") {
-                                                                    top.betSlipFrame.regWebTVStatusCallback(updatePerformTvVisibility);
-                                                                }
-                                                                updatePerformTvVisibility();
-                                                                isMainlineDisplayOnTop = parseBoolean("True");
-                                                            });
-                                                            </script>
                                                             <div class="oHeader" id="oHeader_INDEX">
                                                                 <table class="tblHeader" border="0" cellspacing="0" cellpadding="0">
                                                                     <tbody>
@@ -1695,26 +1658,14 @@
                                                                         <td class="cinplay">
                                                                             <a href="javascript:goPTUrl();">
                                                                                 <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
+                                                                                    <img src="images/clock_off.gif" alt="" title="" onerror="errImg(this);">
                                                                                 </div>
                                                                             </a>
                                                                         </td>
                                                                         <td class="ctv">
                                                                             <span class="tv">
                                                                                 <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-C64.gif" alt="C64-有線球彩台 
-203-有線高清203台" title="C64-有線球彩台 
-203-有線高清203台" onerror="errImg(this);">
+                                                                                    <img src="images/icon_tv-C64.gif" alt="" title="" onerror="errImg(this);">
                                                                                 </span>
                                                                             </span>
                                                                         </td>
@@ -1746,35 +1697,17 @@
                                                                         </td>
                                                                         <td class="chd">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
+                                                                                <img src="images/icon_HHAHDC.gif" title="" alt="" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
                                                                         <td class="c6HF">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_2.gif" title="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" alt="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" onerror="errImg(this);">
+                                                                                <img src="images/icon_hfmp6_2.gif" title="" alt="" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
                                                                         <td class="cdhf">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_dhcp_3.gif" title="孖寶半全膽 
-星期二 3 
-星期二 8" alt="孖寶半全膽 
-星期二 3 
-星期二 8" onerror="errImg(this);">
+                                                                                <img src="images/icon_dhcp_3.gif" title="" alt="" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -1802,26 +1735,14 @@
                                                                         <td class="cinplay">
                                                                             <a href="javascript:goPTUrl();">
                                                                                 <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
+                                                                                    <img src="images/clock_off.gif" alt="" title="" onerror="errImg(this);">
                                                                                 </div>
                                                                             </a>
                                                                         </td>
                                                                         <td class="ctv">
                                                                             <span class="tv">
                                                                                 <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-C61.gif" alt="C61-有線足球台 
-201-有線高清201台" title="C61-有線足球台 
-201-有線高清201台" onerror="errImg(this);">
+                                                                                    <img src="images/icon_tv-C61.gif" alt="" title="" onerror="errImg(this);">
                                                                                 </span>
                                                                             </span>
                                                                         </td>
@@ -1853,26 +1774,12 @@
                                                                         </td>
                                                                         <td class="chd">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
+                                                                                <img src="images/icon_HHAHDC.gif" title="" alt="" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
                                                                         <td class="c6HF">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_2.gif" title="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" alt="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" onerror="errImg(this);">
+                                                                                <img src="images/icon_hfmp6_2.gif" title="" alt="" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
                                                                         <td class="cdhf"></td>
@@ -1885,7 +1792,7 @@
                                                                         </td>
                                                                         <td class="cflag ttgR2">
                                                                             <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
+                                                                                <img src="images/flag_UCL.gif" alt="" title="" class="cfUCL" onerror="errImg(this);">
                                                                             </span>
                                                                         </td>
                                                                         <td class="cteams ttgR2">
@@ -1901,17 +1808,7 @@
                                                                         <td class="cinplay">
                                                                             <a href="javascript:goPTUrl();">
                                                                                 <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
+                                                                                    <img src="images/clock_off.gif" alt="" title="" onerror="errImg(this);">
                                                                                 </div>
                                                                             </a>
                                                                         </td>
@@ -1950,456 +1847,7 @@
                                                                         </td>
                                                                         <td class="chd">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF"></td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt0 cou1 tgCou1" id="rmid109663">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109663&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=6" title="所有賠率">星期二 6</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=6&#39;)" title="對賽往績">曼城
-                                                                                    <label class="lblvs">對</label> 些路迪</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>07/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-C62.gif" alt="C62-有線體育台 
-202-有線高清202台" title="C62-有線體育台 
-202-有線高清202台" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109663&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109663_HAD_H">1.20</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109663&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109663_HAD_D">5.70</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109663&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109663_HAD_A">9.50</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_2.gif" title="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" alt="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt1 cou1 tgCou1" id="rmid109664">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109664&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=7" title="所有賠率">星期二 7</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=7&#39;)" title="對賽往績">巴塞隆拿
-                                                                                    <label class="lblvs">對</label> 慕遜加柏</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>07/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-ICM.gif" alt="ICM-有線流動版" title="ICM-有線流動版" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109664&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109664_HAD_H">1.34</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109664&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109664_HAD_D">4.75</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109664&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109664_HAD_A">6.40</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_2.gif" title="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" alt="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt0 cou1 tgCou1" id="rmid109665">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109665&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=8" title="所有賠率">星期二 8</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=8&#39;)" title="對賽往績">拜仁慕尼黑
-                                                                                    <label class="lblvs">對</label> 馬德里體育會</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>07/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-ICM.gif" alt="ICM-有線流動版" title="ICM-有線流動版" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109665&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109665_HAD_H">1.52</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109665&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109665_HAD_D">3.65</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109665&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109665_HAD_A">5.50</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_2.gif" title="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" alt="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_dhcp_3.gif" title="孖寶半全膽 
-星期二 3 
-星期二 8" alt="孖寶半全膽 
-星期二 3 
-星期二 8" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="rAlt1 cou1 tgCou1" id="rmid109666">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109666&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=9" title="所有賠率">星期二 9</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=9&#39;)" title="對賽往績">巴黎聖日耳門
-                                                                                    <label class="lblvs">對</label> 盧多格德斯</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>07/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-ICM.gif" alt="ICM-有線流動版" title="ICM-有線流動版" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109666&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109666_HAD_H">1.08</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109666&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109666_HAD_D">7.50</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109666&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109666_HAD_A">18.00</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_2.gif" title="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" alt="6寶半全場 
-星期二 3 
-星期二 4 
-星期二 6 
-星期二 7 
-星期二 8 
-星期二 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt0 cou1 tgCou1" id="rmid109667">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109667&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=10" title="所有賠率">星期二 10</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=10&#39;)" title="對賽往績">燕豪芬
-                                                                                    <label class="lblvs">對</label> 羅斯托夫</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>07/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv"></td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109667&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109667_HAD_H">1.49</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109667&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109667_HAD_D">3.75</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109667&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109667_HAD_A">5.65</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts"></td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
+                                                                                <img src="images/icon_HHAHDC.gif" title="" alt="" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
                                                                         <td class="c6HF"></td>
@@ -2747,689 +2195,26 @@
                                                                         <td class="c6HF"></td>
                                                                         <td class="cdhf"></td>
                                                                     </tr>
-                                                                    <tr id="ctl00_cm_u_ucodds_lv_ctrl16_trcHdr" class="rchead rTopBorder">
-                                                                        <td class="tgCoupon whiteBottomBorder" colspan="14">
-                                                                            <div id="ctl00_cm_u_ucodds_lv_ctrl16_divTgCoupon" onclick="tgCoupon(this, &#39;tgCou2&#39;);">
-                                                                                <span class="spBtnMinus"></span>周三賽事
-                                                                                <span id="ctl00_cm_u_ucodds_lv_ctrl16_mlHeader" style="display: none; text-align: right; width: 100px;"></span>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="rAlt1 cou2 tgCou2" id="rmid109675">
+                                                                    <tr class="rAlt1 cou1 tgCou1" id="rmid109674">
                                                                         <td class="cday ttgR2">
                                                                             <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109675&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=2" title="所有賠率">星期三 2</a>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109670&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=13" title="所有賠率">星期二 13</a>
                                                                             </span>
                                                                         </td>
                                                                         <td class="cflag ttgR2">
                                                                             <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
                                                                             </span>
                                                                         </td>
                                                                         <td class="cteams ttgR2">
                                                                             <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=2&#39;)" title="對賽往績">皇家馬德里
-                                                                                    <label class="lblvs">對</label> 多蒙特</a>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=13&#39;)" title="對賽往績">修安聯
+                                                                                    <label class="lblvs">對</label> 牛津聯</a>
                                                                             </span>
                                                                         </td>
                                                                         <td class="cvenue"></td>
                                                                         <td class="cesst ttgR2">
-                                                                            <span>08/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-C61.gif" alt="C61-有線足球台 
-201-有線高清201台" title="C61-有線足球台 
-201-有線高清201台" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109675&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109675_HAD_H">1.70</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109675&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109675_HAD_D">3.90</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109675&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109675_HAD_A">3.70</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_3.gif" title="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" alt="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_dhcp_4.gif" title="孖寶半全膽 
-星期三 2 
-星期三 9" alt="孖寶半全膽 
-星期三 2 
-星期三 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="rAlt0 cou2 tgCou2" id="rmid109676">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109676&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=3" title="所有賠率">星期三 3</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=3&#39;)" title="對賽往績">里昂
-                                                                                    <label class="lblvs">對</label> 西維爾</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>08/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-C62.gif" alt="C62-有線體育台 
-202-有線高清202台" title="C62-有線體育台 
-202-有線高清202台" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109676&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109676_HAD_H">2.18</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109676&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109676_HAD_D">3.30</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109676&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109676_HAD_A">2.85</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_3.gif" title="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" alt="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt1 cou2 tgCou2" id="rmid109677">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109677&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=4" title="所有賠率">星期三 4</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=4&#39;)" title="對賽往績">波圖
-                                                                                    <label class="lblvs">對</label> 李斯特城</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>08/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-C64.gif" alt="C64-有線球彩台 
-203-有線高清203台" title="C64-有線球彩台 
-203-有線高清203台" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109677&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109677_HAD_H">1.28</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109677&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109677_HAD_D">4.65</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109677&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109677_HAD_A">8.50</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_3.gif" title="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" alt="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt0 cou2 tgCou2" id="rmid109678">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109678&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=5" title="所有賠率">星期三 5</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=5&#39;)" title="對賽往績">熱刺
-                                                                                    <label class="lblvs">對</label> 莫斯科中央陸軍</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue">
-                                                                            <span class="ng">
-                                                                                <img src="images/icon_neutral.gif" alt="此球賽將於 倫敦溫布萊球場 舉行。" title="此球賽將於 倫敦溫布萊球場 舉行。" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>08/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-C63.gif" alt="C63-有線63台" title="C63-有線63台" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109678&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109678_HAD_H">1.42</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109678&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109678_HAD_D">4.05</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109678&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109678_HAD_A">6.20</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_3.gif" title="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" alt="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt1 cou2 tgCou2" id="rmid109679">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109679&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=6" title="所有賠率">星期三 6</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=6&#39;)" title="對賽往績">祖雲達斯
-                                                                                    <label class="lblvs">對</label> 薩格勒布戴拿模</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>08/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-ICM.gif" alt="ICM-有線流動版" title="ICM-有線流動版" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109679&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109679_HAD_H">1.04</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109679&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109679_HAD_D">9.25</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109679&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109679_HAD_A">25.00</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF"></td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt0 cou2 tgCou2" id="rmid109680">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109680&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=7" title="所有賠率">星期三 7</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=7&#39;)" title="對賽往績">歷基亞
-                                                                                    <label class="lblvs">對</label> 士砵亭</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>08/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-ICM.gif" alt="ICM-有線流動版" title="ICM-有線流動版" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109680&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109680_HAD_H">4.60</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109680&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109680_HAD_D">3.80</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109680&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109680_HAD_A">1.58</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF"></td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt1 cou2 tgCou2" id="rmid109681">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109681&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=8" title="所有賠率">星期三 8</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=8&#39;)" title="對賽往績">利華古遜
-                                                                                    <label class="lblvs">對</label> 摩納哥</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>08/12 03:45</span>
-                                                                        </td>
-                                                                        <td class="cinplay">
-                                                                            <a href="javascript:goPTUrl();">
-                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" title="將接受即場投注: 
-主客和, 
-入球大細, 
-下一隊入球, 
-波膽" onerror="errImg(this);">
-                                                                                </div>
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="ctv">
-                                                                            <span class="tv">
-                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/icon_tv-ICM.gif" alt="ICM-有線流動版" title="ICM-有線流動版" onerror="errImg(this);">
-                                                                                </span>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109681&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109681_HAD_H">1.70</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109681&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109681_HAD_D">3.65</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="codds">
-                                                                            <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109681&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109681_HAD_A">4.00</span>
-                                                                                </a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cnts">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="chd">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="c6HF">
-                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_3.gif" title="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" alt="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" onerror="errImg(this);">
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="cdhf"></td>
-                                                                    </tr>
-                                                                    <tr class="rAlt0 cou2 tgCou2" id="rmid109682">
-                                                                        <td class="cday ttgR2">
-                                                                            <span>
-                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109682&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=9" title="所有賠率">星期三 9</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cflag ttgR2">
-                                                                            <span>
-                                                                                <img src="images/flag_UCL.gif" alt="歐洲聯賽冠軍盃" title="歐洲聯賽冠軍盃" class="cfUCL" onerror="errImg(this);">
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cteams ttgR2">
-                                                                            <span>
-                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=9&#39;)" title="對賽往績">布魯日
-                                                                                    <label class="lblvs">對</label> 哥本哈根</a>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td class="cvenue"></td>
-                                                                        <td class="cesst ttgR2">
-                                                                            <span>08/12 03:45</span>
+                                                                            <span>07/12 03:45</span>
                                                                         </td>
                                                                         <td class="cinplay">
                                                                             <a href="javascript:goPTUrl();">
@@ -3439,57 +2224,496 @@
                                                                         <td class="ctv"></td>
                                                                         <td class="codds">
                                                                             <span class="s1">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109682&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109682_HAD_H">3.50</span>
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109670&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109670_HAD_H">2.57</span>
                                                                                 </a>
                                                                             </span>
                                                                         </td>
                                                                         <td class="codds">
                                                                             <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109682&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109682_HAD_D">3.50</span>
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109670&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109670_HAD_D">3.15</span>
                                                                                 </a>
                                                                             </span>
                                                                         </td>
                                                                         <td class="codds">
                                                                             <span class="dl">
-                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109682&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
-                                                                                    <span id="109682_HAD_A">1.85</span>
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109670&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109670_HAD_A">2.40</span>
                                                                                 </a>
                                                                             </span>
                                                                         </td>
                                                                         <td class="cnts"></td>
                                                                         <td class="chd">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
-                                                                        <td class="c6HF">
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt0 cou1 tgCou1" id="rmid109675">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109671&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=14" title="所有賠率">星期二 14</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=14&#39;)" title="對賽往績">史雲頓
+                                                                                    <label class="lblvs">對</label> 盧頓</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>07/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109671&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109671_HAD_H">2.20</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109671&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109671_HAD_D">3.25</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109671&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109671_HAD_A">2.75</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_hfmp6_3.gif" title="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" alt="6寶半全場 
-星期三 2 
-星期三 3 
-星期三 4 
-星期三 5 
-星期三 8 
-星期三 9" onerror="errImg(this);">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
-                                                                        <td class="cdhf">
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt1 cou1 tgCou1" id="rmid109676">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109672&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=15" title="所有賠率">星期二 15</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=15&#39;)" title="對賽往績">伊奧維
+                                                                                    <label class="lblvs">對</label> 米爾頓凱恩斯</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>07/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109672&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109672_HAD_H">3.15</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109672&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109672_HAD_D">3.30</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109672&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109672_HAD_A">1.98</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_dhcp_4.gif" title="孖寶半全膽 
-星期三 2 
-星期三 9" alt="孖寶半全膽 
-星期三 2 
-星期三 9" onerror="errImg(this);">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt0 cou1 tgCou1" id="rmid109677">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109673&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=16" title="所有賠率">星期二 16</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_SPL.gif" alt="蘇格蘭超級聯賽" title="蘇格蘭超級聯賽" class="cfSPL" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=16&#39;)" title="對賽往績">鴨巴甸
+                                                                                    <label class="lblvs">對</label> 基爾馬諾克</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>07/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_H">1.23</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_D">4.90</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_A">9.25</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt0 cou1 tgCou1" id="rmid109678">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109673&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=16" title="所有賠率">星期二 16</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_SPL.gif" alt="蘇格蘭超級聯賽" title="蘇格蘭超級聯賽" class="cfSPL" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=16&#39;)" title="對賽往績">鴨巴甸
+                                                                                    <label class="lblvs">對</label> 基爾馬諾克</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>07/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_H">1.23</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_D">4.90</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_A">9.25</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt1 cou1 tgCou1" id="rmid109679">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109670&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=13" title="所有賠率">星期二 13</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=13&#39;)" title="對賽往績">修安聯
+                                                                                    <label class="lblvs">對</label> 牛津聯</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>07/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109670&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109670_HAD_H">2.57</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109670&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109670_HAD_D">3.15</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109670&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109670_HAD_A">2.40</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt0 cou1 tgCou1" id="rmid109680">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109671&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=14" title="所有賠率">星期二 14</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=14&#39;)" title="對賽往績">史雲頓
+                                                                                    <label class="lblvs">對</label> 盧頓</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>07/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109671&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109671_HAD_H">2.20</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109671&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109671_HAD_D">3.25</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109671&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109671_HAD_A">2.75</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt1 cou1 tgCou1" id="rmid109681">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109672&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=15" title="所有賠率">星期二 15</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=15&#39;)" title="對賽往績">伊奧維
+                                                                                    <label class="lblvs">對</label> 米爾頓凱恩斯</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>07/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109672&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109672_HAD_H">3.15</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109672&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109672_HAD_D">3.30</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109672&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109672_HAD_A">1.98</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt0 cou1 tgCou1" id="rmid109682">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109673&amp;tdate=07-12-2016&amp;tday=TUE&amp;tnum=16" title="所有賠率">星期二 16</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_SPL.gif" alt="蘇格蘭超級聯賽" title="蘇格蘭超級聯賽" class="cfSPL" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=07-12-2016&amp;tday=TUE&amp;tnum=16&#39;)" title="對賽往績">鴨巴甸
+                                                                                    <label class="lblvs">對</label> 基爾馬諾克</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>07/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_H">1.23</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_D">4.90</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109673&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109673_HAD_A">9.25</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+
+                                                                    <tr id="ctl00_cm_u_ucodds_lv_ctrl16_trcHdr" class="rchead rTopBorder">
+                                                                        <td class="tgCoupon whiteBottomBorder" colspan="14">
+                                                                            <div id="ctl00_cm_u_ucodds_lv_ctrl16_divTgCoupon" onclick="tgCoupon(this, &#39;tgCou2&#39;);">
+                                                                                <span class="spBtnMinus"></span>周三賽事
+                                                                                <span id="ctl00_cm_u_ucodds_lv_ctrl16_mlHeader" style="display: none; text-align: right; width: 100px;"></span>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -3688,19 +2912,7 @@
                                                                         <td class="cinplay">
                                                                             <a href="javascript:goPTUrl();">
                                                                                 <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                    <img src="images/clock_off.gif" alt="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽, 
-冠軍" title="將接受即場投注: 
-主客和, 
-入球大細, 
-角球大細, 
-下一隊入球, 
-波膽, 
-冠軍" onerror="errImg(this);">
+                                                                                    <img src="images/clock_off.gif" alt="" title="" onerror="errImg(this);">
                                                                                 </div>
                                                                             </a>
                                                                         </td>
@@ -3739,9 +2951,247 @@
                                                                         </td>
                                                                         <td class="chd">
                                                                             <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
-                                                                                <img src="images/icon_HHAHDC.gif" title="讓球主客和 
-讓球" alt="讓球主客和 
-讓球" onerror="errImg(this);">
+                                                                                <img src="images/icon_HHAHDC.gif" title="" alt="" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt1 cou2 tgCou2" id="rmid109687">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109683&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=10" title="所有賠率">星期三 10</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=10&#39;)" title="對賽往績">巴拉福特
+                                                                                    <label class="lblvs">對</label> 劍橋聯</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>08/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109683&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109683_HAD_H">1.53</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109683&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109683_HAD_D">3.60</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109683&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109683_HAD_A">5.15</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt0 cou2 tgCou2" id="rmid109688">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109684&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=11" title="所有賠率">星期三 11</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=11&#39;)" title="對賽往績">高雲地利
+                                                                                    <label class="lblvs">對</label> 卡維尼</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>08/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109684&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109684_HAD_H">1.50</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109684&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109684_HAD_D">3.80</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109684&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109684_HAD_A">5.10</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt1 cou2 tgCou2" id="rmid109689">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109685&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=12" title="所有賠率">星期三 12</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_ELT.gif" alt="英格蘭聯賽錦標" title="英格蘭聯賽錦標" class="cfELT" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=12&#39;)" title="對賽往績">米禾爾
+                                                                                    <label class="lblvs">對</label> 韋甘比</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>08/12 03:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;"></div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv"></td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109685&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109685_HAD_H">1.60</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109685&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109685_HAD_D">3.70</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109685&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109685_HAD_A">4.35</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts"></td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHA.gif" title="讓球主客和" alt="讓球主客和" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="c6HF"></td>
+                                                                        <td class="cdhf"></td>
+                                                                    </tr>
+                                                                    <tr class="rAlt0 cou2 tgCou2" id="rmid109690">
+                                                                        <td class="cday ttgR2">
+                                                                            <span>
+                                                                                <a href="http://bet.hkjc.com/football/odds/odds_allodds.aspx?lang=CH&amp;tmatchid=109686&amp;tdate=08-12-2016&amp;tday=WED&amp;tnum=13" title="所有賠率">星期三 13</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cflag ttgR2">
+                                                                            <span>
+                                                                                <img src="images/flag_BDC.gif" alt="巴西盃" title="巴西盃" class="cfBDC" onerror="errImg(this);">
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cteams ttgR2">
+                                                                            <span>
+                                                                                <a href="javascript:;" onclick="callMatchInfo(&#39;?tdate=08-12-2016&amp;tday=WED&amp;tnum=13&#39;)" title="對賽往績">甘美奧
+                                                                                    <label class="lblvs">對</label> 明尼路</a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cvenue"></td>
+                                                                        <td class="cesst ttgR2">
+                                                                            <span>08/12 07:45</span>
+                                                                        </td>
+                                                                        <td class="cinplay">
+                                                                            <a href="javascript:goPTUrl();">
+                                                                                <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                    <img src="images/clock_off.gif" alt="" title="" onerror="errImg(this);">
+                                                                                </div>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="ctv">
+                                                                            <span class="tv">
+                                                                                <span onclick="javascript:goTVUrl();" style="cursor: pointer;">
+                                                                                    <img src="images/icon_tv-LE.gif" alt="LE-LeSports HK 應用程式" title="LE-LeSports HK 應用程式" onerror="errImg(this);">
+                                                                                </span>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="s1">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109686&#39;,&#39;HAD&#39;,&#39;H&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109686_HAD_H">2.10</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109686&#39;,&#39;HAD&#39;,&#39;D&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109686_HAD_D">3.20</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="codds">
+                                                                            <span class="dl">
+                                                                                <a class="oddsLink" href="javascript:calBet(this,&#39;109686&#39;,&#39;HAD&#39;,&#39;A&#39;,&#39;&#39;);" title="過關計算機">
+                                                                                    <span id="109686_HAD_A">3.00</span>
+                                                                                </a>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="cnts">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_NTS.gif" title="下一隊入球" alt="下一隊入球" onerror="errImg(this);">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="chd">
+                                                                            <div onclick="javascript:goPTUrl();" style="cursor: pointer;">
+                                                                                <img src="images/icon_HHAHDC.gif" title="" alt="" onerror="errImg(this);">
                                                                             </div>
                                                                         </td>
                                                                         <td class="c6HF"></td>

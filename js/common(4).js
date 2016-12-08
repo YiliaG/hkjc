@@ -284,10 +284,10 @@ function genSubMenu(sect, array)
 		tempHtml += '</td>';
 		
 		if ( i >= (array.length-1) ) break;
-		tempHtml += '<td width="2" class="'+sect+'BotLine"><img src="/info/include/images/spacer.gif" width="2" height="1"></td>';
+		tempHtml += '<td width="2" class="'+sect+'BotLine"><img src="images/spacer.gif" width="2" height="1"></td>';
 	}
 	
-	tempHtml += '<td width="100%" class="'+sect+'BotLine"><img src="/info/include/images/spacer.gif" width="2" height="1"></td>';
+	tempHtml += '<td width="100%" class="'+sect+'BotLine"><img src="images/spacer.gif" width="2" height="1"></td>';
 	
 	tempHtml += '	</tr>';
 	tempHtml += '</table>';

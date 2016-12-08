@@ -38,13 +38,13 @@
 	height: 22px;
 	text-align: center;
 	padding-top: 3px;margin-top:3px;
-	background: url(../images/btn_bg.gif) no-repeat;
+	background: url(/images/btn_bg.gif) no-repeat;
 	text-decoration: none;
 	color: #fff;
 	cursor: pointer;
 }
 .LinkButton:hover {
-	background-image: url(../images/btn_bg_over.gif);
+	background-image: url(/images/btn_bg_over.gif);
 	text-decoration: none;
 	color: #000;
 }
@@ -56,13 +56,13 @@
 	height: 22px;
 	text-align: center;
 	padding-top: 3px;margin-top:3px;
-	background: url(../images/btn_gray_bg.gif) no-repeat;
+	background: url(/images/btn_gray_bg.gif) no-repeat;
 	text-decoration: none;
 	color: #fff;
 	cursor: pointer;
 }
 .LinkButton1:hover {
-	background-image: url(../images/btn_gray_bg_over.gif);
+	background-image: url(/images/btn_gray_bg_over.gif);
 	text-decoration: none;
 	color: #000;
 }

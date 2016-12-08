@@ -158,9 +158,9 @@ var enableBSinDev=false;
 var enableAutoRefresh=true;
 
 var cv="L206R1b";
-var commonImagePath="/info/include/images/";
-var nasImagePath="/nas/jcbwinfo/football/info/images/";
-var footImagePath="/football/info/images/";
+var commonImagePath="/images/";
+var nasImagePath="/images/";
+var footImagePath="/images/";
 var liveCastUrl = 'http://livescore.betradar.com'
 var jsTournShowAll = "所有選項";
 var jsSellingOnly = "受注選項";

@@ -1600,7 +1600,7 @@ var AMS = {
         top.status = "push";
         var engine_frame = top.document.getElementById('div_engine');
         if (engine_frame != null && engine_frame.innerHTML == "") {
-            engine_frame.innerHTML = "<iframe src=\"/info/Include/js/commons/custom/engine_container.html\" id=\"push_engine\" style=\"display:none\" /></iframe>";
+            engine_frame.innerHTML = "<iframe src=\"engine_container.html\" id=\"push_engine\" style=\"display:none\" /></iframe>";
         }
     },
     disconnect: function() {

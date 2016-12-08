@@ -17,6 +17,18 @@ body {
 	line-height: 15px;	
 }
 
+input::-moz-placeholder {
+    color: #333;
+    opacity: 1
+}
+
+input:-ms-input-placeholder {
+    color: #333
+}
+
+input::-webkit-input-placeholder {
+    color: #333
+}
 @media Print  {
 	#header, #topNav, #leftNav, #footerNav, #topBtn, #treeLink {
 		display: none;
@@ -541,7 +553,7 @@ a:hover {
 }
 
 .minimizeBg {
-  background:url(../images/minimize_ch.gif) no-repeat;
+  background:url(/images/minimize_ch.gif) no-repeat;
   cursor:pointer;
 }
 

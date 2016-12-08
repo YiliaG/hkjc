@@ -34,14 +34,14 @@ table.tOdds tr td
 /*wordwrap for team name*/
 td.cteams
 {
-    white-space: pre; /* CSS2 */
-    white-space: -moz-pre-wrap; /* Mozilla */
-    white-space: -hp-pre-wrap; /* HP printers */
-    white-space: -o-pre-wrap; /* Opera 7 */
-    white-space: -pre-wrap; /* Opera 4-6 */
-    white-space: pre-wrap; /* CSS 2.1 */
-    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
-    word-wrap: break-word; /* IE */
+    /*white-space: pre; /
+    white-space: -moz-pre-wrap; 
+    white-space: -hp-pre-wrap; 
+    white-space: -o-pre-wrap; 
+    white-space: -pre-wrap; 
+    white-space: pre-wrap; 
+    white-space: pre-line; 
+    word-wrap: break-word; */
 }
 tr.rmidFGS td.codds:not(.cchk)
 {
@@ -1573,7 +1573,7 @@ div.oddsGPF table.tblGPF tr td.gpf12
 {
     width: 70px;
     height: 50px;
-    background-image: url("/football/info/images/topfbg.gif");
+    background-image: url("/images/topfbg.gif");
     background-repeat: no-repeat;
     text-align: left;
 }
@@ -2345,7 +2345,7 @@ table.ilcOdds tr.rhead td.cselect
 /*dropdown list begin*/
 .lnk-dropdown
 {
-    background-image: url("/football/info/images/icon_arrow_down.gif");
+    background-image: url("/images/icon_arrow_down.gif");
     background-repeat: no-repeat;
     background-position: right center;
     width: 100%;

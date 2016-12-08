@@ -529,7 +529,7 @@ a:hover {
 }
 
 .minimizeBg {
-  background:url(../images/minimize_ch.gif) no-repeat;
+  background:url(/images/minimize_ch.gif) no-repeat;
   cursor:pointer;
 }
 

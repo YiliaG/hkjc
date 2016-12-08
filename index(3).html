@@ -1,0 +1,994 @@
+<html class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head>
+    
+    <title>BetSlip Main Page</title>
+    <link rel="icon" href="favicon.ico?cv=L2.06R1" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico?cv=L2.06R1" type="image/x-icon">
+    <style type="text/css">
+        html, body
+        {
+            height: 100%;
+            overflow: hidden;
+        }
+        body
+        {
+            padding: 0;
+            margin: 0;
+        }        
+    </style>
+    
+    <script type="text/javascript" language="javascript"><!--
+        window["cacheVersion"] = "?cv=L2.06R1"; 
+    //--></script>
+    <script type="text/javascript">
+        document.domain = 'hkjc.com';
+    </script>
+       
+   
+    <script type="text/javascript" src="js/jquery-1.10.2.js?cv=L2.06R1"></script>        
+    <script type="text/javascript" src="js/proxy.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/clientfx.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_common.js?cv=L2.06R1"></script>        
+    <script>
+        $j = jQuery.noConflict();
+
+        String.prototype.startsWith = function(str) { return (this.match("^" + str) == str) };
+        
+
+    </script>    
+
+
+    <script type="text/javascript" src="./js/datastore_func1.js?cv=L2.06R1"></script>
+
+    <script type="text/javascript">
+        var fullDomain = 'bet_hongkongjockeyclub_com';
+        var isNowLogon = false;
+        var bwId = '273';
+        var asId = '00';
+        var BetSlipPath = 'http://txn02.hkjc.com/BetSlip/';
+        var BetSlipIBPath = 'https://txn02.hkjc.com/BetSlipIB/';
+        var JCBWPath = 'http://bet.hkjc.com/';
+        var JCBWLeagueFlagPath = 'http://bet.hkjc.com/nas/jcbwinfo/football/info/images/';
+        var enableMultiSession = 'false';
+        var enableMultiSlipPanel = 'false';
+        var byPassEOD = false;        
+        var isMobileUser = isMobileDevice();       
+        
+        var registerAppTimer;
+        var init_fail = false;
+       
+        var isLoaded = false;
+        var customerSegment = '';
+
+        var cMaxBetlines = 30; // stage 2a changes from 15 to 30, configurable in web.config
+        var cMaxBetBuffer = 982; // stage 2a changes from 470 to 982, configurable in web.config
+        
+        var ssoEnabled = true;
+        var tightSSOCheck = true;
+        
+        var enableEdit = 'false';
+        var editFamily = 'HB';
+        var preeditTimeout = '60';
+        
+        var enableWebcastAccess = 'false' == 'true';
+        var SSOAuthen4WebcastURLArray = ['https://elogin.hkjc.com/api/SSOWeb/GetToken?UIC=en-US', 'https://elogin.hkjc.com/api/SSOWeb/GetToken?UIC=zh-HK ' ];
+        var fbWebTVURLArray = ['http://football.hkjc.com/football/football/football-live/football-live-player.aspx?ci=en-us', 'http://football.hkjc.com/football/football/football-live/football-live-player.aspx?ci=zh-hk' ];
+        
+    </script>
+
+    
+    <script type="text/javascript" src="./js/common_util.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/block_keys.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_allup.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_betcalc.js?cv=L2.06R1"></script>    
+    <script type="text/javascript" src="./js/index_data.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_frame.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_interface.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_para.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_request.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_setting.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_str_table.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_xml.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/index_edit.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/json2.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/BetPreview.js?cv=L2.06R1"></script>
+    <script type="text/javascript" src="./js/WATrackPlugin.js?cv=L2.06R1"></script>    
+    <script type="text/javascript" src="./js/mobile_util.js?cv=L2.06R1"></script>
+    <script type="text/javascript">
+      $j(function() {
+        proxy.init($j('#frmProxy')[0],
+              {
+                SVC: { preExecCallback:
+                    function(returnVal) {
+                      //add values to data store
+                      if (returnVal.result == proxy.CONST_SUCCESS) {
+                        $j.each(returnVal.content, function(idx, value) {
+                          SetDataStore(idx, value);
+                        });
+                      }
+                    }
+                },
+                SESSION_STORE: new SessionStorePlugin(),
+                PRE_TXN: {
+                  exec: function(funcName, data, callback, formatter, source) {
+                    if ('PRE_TXN' == funcName){
+                      if(data != undefined && typeof data.LoadDummy != 'undefined' && data.LoadDummy == 'true')
+                        PreTxn(true);
+                      else
+                        PreTxn(false);
+                    }
+                    callback(formatter(true, {}), source);
+                  },
+                  para: function() {
+                    return { PRE_TXN: ['LoadDummy'] };
+                  }
+                },
+                BET_PREVIEW: new BetPreviewPlugin(),
+                WA_TRACK: new WATrackPlugin(),
+                SSO: {
+                  exec: function(funcName, data, callback, formatter, source) {
+                    if ('ReceiveAndProcessTicketExtendResults' == funcName)
+                      ReceiveAndProcessTicketExtendResults(data.LastExtendStatus, data.LastExtendError, data.CheckStatus, data.SignInLevel, data.SsoWebID, data.SsoGUID);
+                    callback(formatter(true, {}), source);
+                  },
+                  para: function() {
+                    return { ReceiveAndProcessTicketExtendResults: ['LastExtendStatus', 'LastExtendError', 'CheckStatus', 'SignInLevel', 'SsoWebID', 'SsoGUID'] };
+                  }
+                },
+                PING: {
+                  exec: function(funcName, data, callback, formatter, source) {
+                    if ('FrameLoaded' == funcName && data.FrameName == 'proxy') {
+                      proxyFrameLoaded = true;
+                    }
+                    callback(formatter(true, {}), source);
+                  },
+                  para: function() {
+                    return { FrameLoaded: ['FrameName'] };
+                  }
+                },
+                REFRESH_BAL: {
+                  exec: function(funcName, data, callback, formatter, source) {
+                    if ('RefreshAccBal' == funcName) {
+                      if(isIDevice()){
+                        //fix isbusy flag is not reset due the sendbalance callback is execute when the frame is not focus in iDevice
+                        setTimeout(function(){
+                           if(data.ForceRefresh == 'true')
+                            sendBalanceRequest(true);
+                           else
+                            sendBalanceRequest(false);
+                         }, 0);
+                      }else{
+                        if(data.ForceRefresh == 'true')
+                          sendBalanceRequest(true);
+                        else
+                          sendBalanceRequest(false);
+                      }
+                      callback(formatter(true, {}), source);
+                    }
+                  },
+                  para: function() {
+                    return { RefreshAccBal: ['ForceRefresh'] };
+                  }
+                }
+              },
+              "https://txn02.hkjc.com", ["https://txn02.hkjc.com"]
+            );
+
+
+      });
+              
+
+                
+    
+        var loadBetSlipFrameRetry = 0;
+
+
+        var count_init = 0;
+        
+        function loadIframe(target, url){
+          $j('#'+target).attr('src', url);
+        }
+        
+        function loadIframes(){
+          $j.when(loadIframe('previewFrame', 'https://txn02.hkjc.com/BetSlipIB/SlipBetPreview.aspx?lang=' +  GetLanguage()))
+          .then(loadIframe('popupFrame', 'https://txn02.hkjc.com/BetSlipIB/popup.aspx?lang=' +  GetLanguage()));
+        }
+        
+        function init() {
+          betslipFrame = $j('#betSlipFrame', window.top.document)[0];
+          try {
+              initLeft = parseInt(betslipFrame.style.left);
+              initTop = parseInt(betslipFrame.style.top);            
+          } catch (e) {
+              initLeft = 0;
+              initTop = 0;
+          }
+          slip.startTopBSL = initLeft;
+        
+          $j('#frmProxy').attr('src', 'https://txn02.hkjc.com/BetSlipIB/proxy.aspx');          
+          setActiveStyleSheet(this);                                                                           
+        
+          var betSlipFrame = $$("frame:betSlipFrame");
+          betSlipFrame.style({ visibility: ""});          
+          
+          
+          InitDataStore();
+
+          try {             
+                var loadingFrame = $$("frame:betSlipFrame2");
+                loadingFrame.display(false);
+            } catch (err) {
+            }
+
+        //    if (!IsSupportBrowser()) {
+        //        init_fail = true;
+        //        return;
+        //    }
+
+            loadPara('|||HCSPp###0|||XWINp###1|||FlexiBet_qttp###1|||FORp###1|||WeiBop###0|||AXHFTp###1|||GBmt3p###0|||ShowHBWelcomeMessage###1|||XCWp###1|||AXFTSp###1|||AHADp###1|||FlexiBet_alupp###1|||FlexiBet_ttp###1|||eWinASDetection###192.168.19.14|||MLCSoundAlertEnabled###0|||AXTTGp###1|||SBRegisterIdx###0|||GlobalMaxTransferLimit###0.000000000000000e+000|||AOOEp###1|||ELVAButtons###1|||OnlineStmtRecPerPage###10|||FlexiBet_dblp###0|||HILp###1|||CHJCIntegration###0|||InPlaySpecial###0|||CurKeyGenDate###2016-12-08T02:00:00.893|||FlexiBet###1|||RCyclep###1|||AGPFp###1|||DHCPp###1|||ACRSp###1|||HFMP6p###1|||ELVAMessageID###0|||tblp###1|||AHILp###1|||AFGSp###1|||TBMaxDeposit###500000|||XPLAp###1|||eWinGWDetection###192.168.19.15|||dblp###1|||EFTReplyTimeout###16|||XHDCp###1|||MainPageLoadingTime###0|||MinGBNo###61|||ffp###1|||FlexiBet_winp###0|||AnchorsDisplaying###0|||FlexiBet_ffp###1|||BetReplyXSellMsgOption###1|||InitPage###1|||CRSPp###0|||AXFGSp###1|||MLCEnabled###0|||HHAp###1|||GoldballGame###0|||TTGp###1|||FaceBKp###1|||GBexnp###0|||ChHWp###1|||OnlineStatTimeFrame###8|||Emailp###0|||SessionIdleTime###30|||BannerHyperlink###0|||eWinMDDetection###1|||ANTSp###1|||OnlineStatTimeFrame4SpeedBet###30|||AXFCRSp###1|||AbsMK6Min###47|||WarningTimeout###2|||LSCMainEnabled###0|||plap###1|||HFMP8p###0|||XHHADp###1|||AFTSp###1|||B_Wp###0|||PreKeyGenDate###2016-12-07T02:00:01.050|||AXFHILp###1|||STB###0|||FlexiBet_trip###1|||CHLp###1|||AllowRegistration###1|||Mk6ByProdMulti###1|||InitPageDefault###0|||IsEnablePPSG###1|||GPWp###1|||cwp###1|||mhgp###0|||AXWinPla###1|||LSCEnabled###0|||MaxTransferLimit###0.000000000000000e+000|||BWCp###0|||Mk6PartialUnitBetAmount###5|||HFTPp###0|||TBMinDeposit###300|||XFB###1|||MLCSoundAlertUiAvailable###0|||BetReplyXSellMsgTimeout###5|||MaxBetUnit###999999|||Mk6DefaultUnitBetAmount###10|||MLCKeepAwakeUiAvailable###0|||AXCHLp###1|||FlexiBet_sixupp###1|||CRSp###1|||CHPPp###0|||XTRIp###0|||FlexiBet_qqpp###0|||DDATransferLowerRange###300|||QPTTGame20###1|||OddsRefreshInterval###60|||ExtraTime###1|||FaceBKOption###1|||CertExpiryWarningDays###30|||FlexiBet_qplp###0|||GPFp###1|||MLCRequireLogin###0|||MaxGBNo###88|||ChannelID###4|||AHAFUp###1|||DDATransferUpperRange###500000|||qplp###1|||MLCSpecificMatchEnabled###0|||GBougp###0|||MLCKeepAwakeEnabled###0|||AFHILp###1|||BetReplyTimeout###16|||FlexiBet_tcep###1|||IsEnabledDDA###1|||AHDCp###1|||NewUserDays###79|||AXCRSp###1|||Charge###1.000000000000000e+000|||JKCp###1|||HADp###1|||XRace###1|||InterXBWp###0|||AXNTSp###1|||MinutesAheadForAlert###5|||FlexiBet_plap###0|||RaceSimulator###0|||InPlay###1|||GBmhgp###0|||TBMaxAutoWithdrawal###999999|||LSCSpecificMatchEnabled###0|||CHPp###1|||FlexiBet_tblp###1|||qttp###1|||ShutDownTime###06:00|||exnp###0|||BetSuggestor###0|||CrossTourn###0|||MK6MultipleDraw###1|||mt3p###0|||AHHAp###1|||FBRaceSimulatorSharing###0|||AXFHADp###1|||TBMaxWithdrawal###50000|||HDCp###1|||OOEp###1|||THFPp###0|||ELVA###1|||TransferUpperRange###5.000000000000000e+004|||FlexiBet_qpttp###0|||MaxTransactionLimit###0|||eocp###0|||Speedmap###0|||BWDp###0|||Twitterp###0|||AbsMK6Max###49|||XB_Wp###0|||MK6SBDraw###1|||FlexiBet_dtp###1|||PreKey###10270216102811177|||EnterPassword###1|||qinp###1|||SBp###1|||tcep###1|||LastRunVideo###0|||XHADp###1|||FlexiBet_wpp###0|||mk6p###1|||BWBp###0|||Mk6TotalBetSpend###0|||FHADp###1|||InPlayDelaySec###0|||IsEnableProcessMR###1|||CurKey###00280216102989391|||FBAccountRecordsSharing###0|||MLCMainEnabled###0|||XQPLp###1|||InitPageStart###2012-04-26T06:31:00|||CAPDetection###1|||FCRSp###1|||wpp###1|||eWinLSDetection###1|||TPSp###1|||FHILp###1|||XQINp###1|||AGPWp###1|||TBMinAutoWithdrawal###1|||SPCp###1|||ACHLp###1|||OnlineParaRefreshInterval###25|||sixupp###1|||HFTp###1|||PPSTimeout###300|||FINPp###0|||ATTGp###1|||QPTTGame###1|||AFHADp###1|||AXQinQpl###1|||InitPageEnd###2012-04-26T06:31:00|||ShowSBWelcomeMessage###1|||HROSp###0|||TransferLowerRange###3.000000000000000e+002|||mightpay###0|||TBMinWithdrawal###500|||trip###1|||AFCRSp###1|||MLCAfterMatchEnd###0|||FlexiBet_cwp###0|||Mk6ByProdBanker###1|||GBeocp###0|||CurrentMK6Max###49|||qqpp###1|||AXOOEp###1|||MaxPrimaryNo###38|||winp###1|||ToQualify###1|||ttp###1|||AXHILp###1|||dtp###1|||MLCBeforeKickOff###0|||NTSp###1|||ougp###0|||FGSp###1|||FlexiBet_qinp###0|||PLAoddsAsRange###0|||FTSp###1');
+            loadOnlinePara('0|||||||||1|||5|||2016-12-09 06:05|||10|||1');
+
+            if ( !byPassEOD && (GetPara('eWinASDetection') == '' || GetOnlinePara('OosMsgId') != '0') ) {
+                init_fail = true;
+                langToShow = 1;
+                if (top.getLanguage) {
+                    langToShow = top.getLanguage();
+                }
+                else {                    
+                    langToShow = GetLanguage();
+                }
+                document.location.replace(BetSlipPath + 'bsdimmed.aspx?lang=' + langToShow);
+                return;
+            }            
+
+            registerAppTimer = setInterval("RegisterXSell()", 500);
+
+            requestTimeoutInSec = 16;
+            balTimeoutInSec = 10;
+            warningTimeout = MyParseInt(GetPara("WarningTimeout"), 2);            
+            sessionIdleTime = MyParseInt($$.cookie("sessionIdleTime"), MyParseInt(GetPara("SessionIdleTime"), 30));
+            //test code: sessionIdleTime = 3;
+
+            initPSObj();
+            setMinBet();
+
+            if (isM6MultiDrawEnable() != 1) {
+              var today = new Date();
+              document.cookie = cookieM6DrawNo + '=1;domain=' + document.domain + ';expires=' + today.toGMTString();
+            }
+
+            // sync language with JCBW
+            try {
+              SetLanguage(top.getLanguage());
+            }
+            catch (e) {
+            }
+
+            // Support SSO
+            SetDataStore('sso_enabled', 'true');
+            SetDataStore('sso_check_return_status', 'SSO_NEW_SIGN_IN');
+            SetDataStore('sso_sign_in_level', '1');
+            SetDataStore('sso_guid', '28be9799-8f1a-49e4-98dd-c287826f54fa');
+            SetDataStore('sso_web_id', 'ted6ixlo');
+            // End Support SSO
+            
+            initAccInfo();
+            initSlipFrame();
+
+            renewSession();
+            
+            var panels = $j('#multiplePanel')[0].getElementsByTagName('td');
+            window['multiSlipPanel'] = new MultiSlipPanel(panels);
+
+            init_pos();
+            
+            if(isAndroidDevice())
+              scrollUtil.init('.scroll1');
+              
+            loadIframes();
+                    
+    }   
+
+    var checkChangesEnabled = true;
+
+    function beforeUnload() {
+      var returnValue = undefined;
+      if (checkChangesEnabled) {
+        if (isNowLogon || isInEKBA()) {
+          returnValue = GetError("1303");
+        }
+        else if (totalBetlines > 0 || (typeof (multiSlipPanel) != 'undefined' && multiSlipPanel.getTotalCount() > 0))
+          returnValue = GetError("refresh_warning");
+        disableCheck();
+      }
+      if (returnValue != undefined)
+        return returnValue;
+    }
+
+    function disableCheck() {
+      checkChangesEnabled = false;
+      setTimeout("enableCheck()", "100");
+    }
+
+    function enableCheck() {
+      checkChangesEnabled = true;
+    }
+        
+
+        function unload() {
+          if (isNowLogon || isInEKBA()) {
+            forceLogout();
+          }
+          else if (!init_fail) {
+            ProcessLogoutResult();
+          }
+        }
+
+        function ReloadBalance() {
+            if (isNowLogon && GetDataStore("flag_update_balance") == "1") {
+              SetDataStore("flag_update_balance", "0");
+              OnClickRefreshBalance();
+            }
+         }
+
+        function PreTxn(loadDummy) {            
+            ResetIdleTimer(loadDummy); // Support SSO, reset idle timer for server action (sendbet, statement, recall)
+        }        
+   
+    </script>
+    <link href="css/styles_ch.css?cv=L2.06R1" rel="stylesheet" type="text/css" title="style_ch">
+    <link href="css/styles_ch.css?cv=L2.06R1" rel="alternate stylesheet" type="text/css" title="style_en">
+    <link href="css/overlay.css?cv=L2.06R1" rel="stylesheet" type="text/css" media="screen">
+    <link href="./css/overlay.css?cv=L2.06R1" rel="stylesheet" type="text/css" media="screen">
+    <link href="./css/multiplepanel.css?cv=L2.06R1" rel="stylesheet" type="text/css" media="screen">    
+    <link rel="stylesheet" type="text/css" href="./css/penpower.css?cv=L2.06R1" media="screen">
+    <link rel="stylesheet" type="text/css" href="./css/ppstyle.css?cv=L2.06R1" media="screen">
+</head>
+<body style="background-color: transparent; left: -108px; top: 0px; width: 329px; height: 555px; cursor: auto;" onload="BackgroundImageCache(); isLoaded=true ;init(); index_onload()" onkeydown="return onKeyDown(event, false, '');" oncontextmenu="return false" onmouseover="ReloadBalance()" onbeforeunload="return beforeUnload();" onunload="unload()">            
+    
+
+    <script src="./js/accInfo.js?cv=L2.06R1"></script>
+    <script src="./js/mm_common.js?cv=L2.06R1"></script>
+    <script src="./js/block_keys.js?cv=L2.06R1"></script>   
+    
+    <script language="javascript">   
+    var url_register = new Array();
+    var url_regonline = new Array();
+    var url_applybet = new Array();
+    var url_cannotlogin = new Array();
+    var url_chg_web_pass = new Array();
+    var url_chg_sec_question = new Array();
+    var url_chg_web_profile = new Array();
+    var url_associate_account = new Array();
+    var url_faq = new Array();
+    var url_allup_faq = new Array();
+    var url_logout = new Array();
+    var url_login_timeout = new Array();
+    url_register[0] = 'http://is.hkjc.com/jcbw/ekba/register/en/register_now.asp';
+    url_register[1] = 'http://is.hkjc.com/jcbw/ekba/register/ch/register_now.asp';
+    url_regonline[0] = 'http://special.hkjc.com/infomenu/en/register/regonline.asp';
+    url_regonline[1] = 'http://special.hkjc.com/infomenu/ch/register/regonline.asp';
+    url_applybet[0] = 'http://special.hkjc.com/infomenu/en/register/applybet.asp';
+    url_applybet[1] = 'http://special.hkjc.com/infomenu/ch/register/applybet.asp';
+    url_cannotlogin[0] = 'https://wcip.hkjc.com/inputaccoremail.aspx?UIC=en-US&EP=BS';
+    url_cannotlogin[1] = 'https://wcip.hkjc.com/inputaccoremail.aspx?UIC=zh-HK&EP=BS';
+    url_chg_web_pass[0] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=LDEM&UIC=en-US&EP=BS';
+    url_chg_web_pass[1] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=LDEM&UIC=zh-HK&EP=BS';
+    url_chg_sec_question[0] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=LDEM&UIC=en-US&EP=BS';
+    url_chg_sec_question[1] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=LDEM&UIC=zh-HK&EP=BS';
+    url_chg_web_profile[0] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=BPU&UIC=en-US&EP=BS';
+    url_chg_web_profile[1] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=BPU&UIC=zh-HK&EP=BS';
+    url_associate_account[0] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=PA&UIC=en-US&EP=BS';
+    url_associate_account[1] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=PA&UIC=zh-HK&EP=BS';
+    url_faq[0] = 'http://is.hkjc.com/jcbw/ekba/faq/en/betslipFAQ.asp';
+    url_faq[1] = 'http://is.hkjc.com/jcbw/ekba/faq/ch/betslipFAQ.asp';
+    url_allup_faq[0] = 'http://is.hkjc.com/jcbw/ekba/faq/en/allupFAQ.asp';
+    url_allup_faq[1] = 'http://is.hkjc.com/jcbw/ekba/faq/ch/allupFAQ.asp';
+    url_logout[0] = 'http://is.hkjc.com/jcbw/ekba/promo/betslip_logout/betslip_lpromo.asp?lang=en';
+    url_logout[1] = 'http://is.hkjc.com/jcbw/ekba/promo/betslip_logout/betslip_lpromo.asp?lang=ch';
+    url_login_timeout[0] = 'http://bclient.hkjc.com/OddsServer/bchk/BChk128.aspx?bhcp=1';
+    url_login_timeout[1] = 'http://bclient.hkjc.com/OddsServer/bchk/BChk128c.aspx?bhcp=1';
+
+    var refreshBalInterval = '3';
+    var refreshBalTimeout = '10';
+   
+    
+    </script>
+
+
+
+<div id="divAccInfo" style="background-color: transparent; position: absolute; display: block; z-index: 100; left: 108px; top: 0px; width: 221px;" onkeydown="return onKeyDown(event, true, 'accInfo');">  
+  <span id="errormsg" style="LEFT:0px;TOP:16px;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute;BACKGROUND-COLOR:transparent;TEXT-ALIGN:center" onclick="javascript:HideError(1)"></span>
+  <div id="divAccInfoTop" style="text-align:right; width:221px;"><img id="pic_duelAuthent" src="./images/betslip_top_ch.gif?cv=L2.06R1" alt="" border="0" title="雙重核對登入"></div>
+  <div id="editBetMask">
+  <div id="divAccInfoDefault" style="width:100%; height:100%; display:block">    
+    <table width="221" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
+      <tbody><tr>
+        <td bgcolor="#FFDE00"><img src="images/spacer.gif" height="5"></td>
+      </tr>
+      <tr>
+        <td bgcolor="#C2C2C2"><img src="images/spacer.gif" height="1"></td>
+      </tr>
+      <tr>
+        <td height="97" style="background:url(images/top_bg.gif?cv=L2.06R1) top repeat-x #EBEBEB;">
+          <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr valign="top">
+              <td style="padding:0px 7px 0px 0px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody><tr valign="top">
+                    <td width="59" rowspan="3"><img src="images/logo.gif"><img src="images/spacer.gif" onmouseover="ShowServerId(this)" width="10" height="10"></td>
+                    <td style="padding:8px 0px 0px 3px;">
+                      <input name="account" id="account" type="text" value="" maxlength="15" class="inputField1_disabled" style="width:98px; height:18px;" tabindex="1" disabled="">
+                    </td>
+                    <td style="padding:5px 0px 0px 0px;" align="right"><a href="javascript:;" style="cursor:help;" tabindex="-1"><img id="pic_help" onclick="OnClickHelp();return false;" hspace="3" border="0" align="absmiddle" src="./images/icon_help.gif?cv=L2.06R1" title="「投注區」使用指南"></a><a href="javascript:;" onclick="OnClickMinimize();return false;" tabindex="-1"><img id="pic_minimize" src="images/icon_min.gif?cv=L2.06R1" border="0" align="absmiddle" title="縮小"></a></td>
+                  </tr>
+                  <tr valign="bottom">
+                    <td height="21" style="padding:0px 0px 0px 3px;">
+                      <input type="text" name="passwordInput1" id="passwordInput1" value="" class="inputField1" style="width: 98px; height: 18px; display: none;" tabindex="2" disabled="">
+                      <input type="password" name="password" id="password" maxlength="20" class="inputField1_disabled" style="width: 98px; height: 18px; display: block;" onblur="if (this.value == '') this.style.display = 'none'; if (this.value == '')  $('passwordInput1').style.display = 'block'" tabindex="-1" disabled="">
+                    </td>
+                    <td align="right">
+                        <div id="divAccInfoDefaultLoginButton" style="display: none;"><a href="#" onclick="OnClickLogin();return false;" onmouseout="if ( !isInSSOChecking() &amp;&amp; !isInEKBA() &amp;&amp; EnableAccInfo() ) { loadMouseEventImage('pic_login', 'pic_login'); }" onmouseover="if ( !isInSSOChecking() &amp;&amp; !isInEKBA() &amp;&amp; EnableAccInfo() ) { loadMouseEventImage('pic_login', 'pic_login_on'); }"><img id="pic_login" border="0" src="./images/btn_login_ch.gif?cv=L2.06R1" title="登入"></a></div>
+                        <div id="divAccInfoSSONextButton" style="display: inline;"><a href="#" onclick="OnClickNext();return false;" onmouseout="if ( !isInSSOChecking() &amp;&amp; !isInEKBA() &amp;&amp; EnableAccInfo() ) { loadMouseEventImage('pic_nextSSO', 'pic_next'); }" onmouseover="if ( !isInSSOChecking() &amp;&amp; !isInEKBA() &amp;&amp; EnableAccInfo() ) { loadMouseEventImage('pic_nextSSO', 'pic_next_on'); }"><img id="pic_nextSSO" border="0" src="./images/btn_next_off_ch.gif?cv=L2.06R1" title="下一步"></a></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="graySavePass" id="savePassRow" style="padding:2px 0px 0px 0px;">
+                      <div id="divAccInfoDefaultSavePassword" style="display: none;">
+                        <input name="save_password" id="save_password" type="checkbox">
+                        <label for="save_password"><span id="savePasswordTxt">每次交易再儲入密碼</span></label>
+                      </div>
+                      <div id="divAccInfoSSOSavePassword" style="display: inline;">
+                        <input type="checkbox" disabled="">
+                        <input name="save_passwordSSO" id="save_passwordSSO" type="checkbox" style="display:none" disabled="">
+                        <label for="save_passwordSSO"><span id="savePasswordTxtSSO">每次交易再儲入密碼</span></label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </td>
+            </tr>
+            <tr>
+              <td height="25" style="padding:0px 2px 1px 2px;" valign="bottom">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody><tr valign="middle">
+                    <td align="center" width="38%" id="register_link">
+                        <div id="divAccInfoDefaultRgisterLink" style="display: none;">
+                            <a id="reg_link" onclick="OnClickRegisterNow2(1);return false;" href="javascript:;" class="slip_nav"><span id="txtRegister">新用戶登記</span></a>
+                        </div>
+                    </td>
+                    <td style="padding: 3px 3px 0px 0px;"><img src="images/stroke_gray.gif?cv=L2.06R1"></td>
+                    <td align="center"><a href="javascript:;" class="slip_nav" onclick="OnClickPersonalSettings();return false;"><span id="txtAccInfoPersonalSettings">設定</span></a></td>
+                    <td style="padding: 3px 0px 0px 3px;"><img src="images/stroke_gray.gif?cv=L2.06R1"></td>
+                    <td align="center"><a href="javascript:OnClickCannotLogin();" class="slip_nav"><span id="txtOtherServices">無法登入</span></a></td>
+                  </tr>
+                </tbody></table>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+  
+  <div id="divAccInfoLogin" style="width:100%; height:100%; display:none">
+        <table width="221" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
+            <tbody><tr>
+                <td bgcolor="#FFDE00"><img src="images/spacer.gif" height="5"></td>
+            </tr>
+            <tr>
+                <td bgcolor="#C2C2C2"><img src="images/spacer.gif" height="1"></td>
+            </tr>
+            <tr>
+                <td height="95" style="background:url(images/top_bg.gif?cv=L2.06R1) top repeat-x #EBEBEB;">
+            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
+                <tbody><tr valign="top">
+                    <td style="padding:0px 7px 0px 0px;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr valign="top">
+                                <td width="59"><img src="images/logo.gif"><img src="images/spacer.gif" onmouseover="ShowServerId(this)" width="10" height="10"></td>
+                                <td style="padding:0px 0px 0px 3px;">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tbody><tr>
+                                                    <td>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tbody><tr>
+                                                                <td valign="bottom">
+                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tbody><tr>
+                                                                            <td class="content" style="padding:0px 0px 0px 0px;"><span id="txtAccNo"></span></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="content" style="padding:0px 0px 2px 0px;"><span id="valueAccNo"></span></td>
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                                <td valign="top">
+                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tbody><tr>
+                                                                            <td style="padding:5px 0px 0px 0px;" align="right"><a href="javascript:;" style="cursor:help;"><img id="pic_help_login" onclick="OnClickHelp();return false;" hspace="3" border="0" align="absmiddle" src="./images/icon_help.gif?cv=L2.06R1" title="「投注區」使用指南"></a><a href="javascript:;" onclick="OnClickMinimize();return false;"><img src="images/icon_min.gif?cv=L2.06R1" border="0" align="absmiddle"></a></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td height="21" align="right" style="padding:4px 0px 1px 0px;"><a href="javascript:;" onclick="buttonLogout();return false;" onmouseout="loadMouseEventImage('pic_logout', 'pic_logout');" onmouseover="loadMouseEventImage('pic_logout', 'pic_logout_on');"><img id="pic_logout" border="0" src="./images/btn_logout_ch.gif?cv=L2.06R1" title="登出"></a></td>
+                                                                        </tr>
+                                                                    </tbody></table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tbody><tr>
+                                                                <td width="36" class="content"><span id="txtAccName"></span></td>
+                                                                <td class="content"><span id="valueAccName"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content"><span id="txtAccBal"></span></td>
+                                                                <td class="content"><span id="valueAccBal"></span>&nbsp;<span id="refresh_balance"></span></td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="21" style="padding:0px 2px 1px 2px;" valign="bottom">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tbody><tr valign="top">
+                                    <td align="center" valign="middle" style="padding: 0px 0px 0px 3px;"><a href="javascript:;" onclick="OnClickAccountRecord();return false;" class="slip_nav"><span id="txtAccStatLogin">戶口紀錄</span></a></td>
+                                    <td style="padding: 3px 0px 0px 0px;" valign="middle"><img src="images/stroke_gray.gif?cv=L2.06R1"></td>
+                    <td id="settingTd" align="center" valign="middle" onclick="slipNavOver('service', 1, 'settingTd');" tabindex="-1">
+                    <div style="position:absolute; cursor:pointer; visibility:hidden; width:55px; height:30px" id="navBtn_service"><img src="images/spacer.gif" width="55" height="25"></div>
+                    <a href="javascript:;" class="slip_nav" id="navTxt" onclick="return false;"><span id="txtAccInfoPersonalSettingsLogin">設定</span></a> </td>
+                                    <td style="padding: 3px 0px 0px 0px;" valign="middle"><img src="images/stroke_gray.gif?cv=L2.06R1"></td>
+                                    <td align="center" valign="middle"><a href="javascript:;" class="slip_nav" onclick="OnClickFundTransfer();return false;"><span id="txtFundTransferLogin">轉賬服務</span></a></td>
+                                </tr>
+                            </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <div id="divAccInfoMinimize" style="width:187px; height:30px; display:none">
+    <table id="tableMiniMize" style="width: 187px; height: 30px; background-image: url(&quot;./images/minimize_1024_ch.gif?cv=L2.06R1&quot;); background-repeat: no-repeat;" border="0" cellspacing="0" cellpadding="0" onclick="OnClickRestore();" title="放大">
+      <tbody><tr>
+        <td class="gray min_totalbet_td" valign="top"><span id="txtBetlineCount">總注數 : </span><span id="tdBetlineCount">0</span></td>
+      </tr>
+    </tbody></table>
+  </div>
+  </div>
+</div>
+
+    <iframe id="popupFrame" name="popupFrame" src="https://txn02.hkjc.com/BetSlipIB/popup.aspx?lang=1" style="position: absolute; display:none"></iframe>
+    <iframe id="helpFrame" name="helpFrame" src="" style="position: absolute; left: 0px; top: 0px; width: 0px; height: 0px; display: none;" border="0" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>    
+    
+
+<script>
+    idleAlertSoundPath = 'http://is.hkjc.com/jcbw/ekba/idleAlert/sound/Exclamation.wav?cv=L2.06R1';
+    var betSlipIBPath = 'https://txn02.hkjc.com/BetSlipIB/';
+</script>
+
+
+
+<script type="text/javascript" src="./js/slip.js?cv=L2.06R1"></script>
+<script type="text/javascript" src="./js/mm_common.js?cv=L2.06R1"></script>
+<script type="text/javascript" src="./js/block_keys.js?cv=L2.06R1"></script>
+<!--    handwrite script start  -->
+<script type="text/javascript">
+    var pphwReminderInterval = 604800000;
+    var pphwReminderMessage = '<p class="msgContent" style="padding-bottom: 20px">投注區手寫板功能已於2015年3月31日起停用。請使用電腦內置的手寫板功能代替。</p><p class="msgContent" style="padding-bottom: 25px">請<a class="msgContent" id="clickhere" href="javascript:;" target="_blank">按此</a>了解如何啓用電腦內置手寫板功能</p><p class="msgContent" style="padding-left: 175px;text-align: right;"><a id="continue2" href="javascript:;" onclick="pphwApp.hidePanel();$j(\'#pphw_btn_ekba\').toggleClass(\'pp_pen_btn_opened\');return false;">關閉</a></p><script type="text/javascript">var t = new Date();t.setTime(t.getTime() - 1);document.cookie="pphw=;path=/;domain=" + pphwCookieDomain + ";expires=" + t.toGMTString();<\/script>';
+
+    var pphwCookieDomain = '.hkjc.com';
+    var pphwCookieWarningPath = 'http://is.hkjc.com/special/notice/handwriting/index_c.html';
+</script>
+<script type="text/javascript" src="./js/excanvas.js?cv=L2.06R1"></script>
+<script type="text/javascript" src="./js/modernizr-2.6.2.js?cv=L2.06R1"></script>
+<script type="text/javascript" src="./js/penpower.hwApp.js?cv=L2.06R1"></script>
+
+<script type="text/javascript">
+  $j = jQuery.noConflict();
+  $j(document).ready(function() {
+    pphwApp = penpower.hwApp;
+    pphwApp.init({
+      selector: "#ekbaInputPPHWDiv",
+      lineWidth: 3,
+      recognizeUrl: 'https://txn02.hkjc.com/pphw/kernel/PPhwisapi.dll?&ot=1',
+      select: function(word) {
+        var text = $j("#ekbaDivInput").val();
+        text = text + word;
+        $j("#ekbaDivInput").val(text);
+      },
+      padBtnClick: function(id) {
+        if (id === "qmarkbtn") {
+          window.open('http://is.hkjc.com/jcbw/ekba/writingpad/helpmenu.asp', "FAQ", config = "width=1024,height=768,resizable=1");
+        }
+
+        if (id === "xmarkbtn") {
+          pphwApp.hidePanel();
+          $j("#pphw_btn_ekba").toggleClass("pp_pen_btn_opened");
+        }
+      },
+      textSetting: {
+        productLabel: "手寫板",
+        companyLabel: "蒙恬科技",
+        undoLabel: "還原",
+        rewriteLabel: "重寫"
+      }
+    });
+  });
+
+
+</script>
+
+<!--    handwrite script end    -->
+<div id="divSlip" style="background-color: transparent; position: absolute; display: block; left: 0px; top: 119px; width: 329px;" onkeydown="return onKeyDown(event, true, 'slip');" border="0">
+  <div style="position:absolute; left:0px; top:0px; width:221px; z-index:10; visibility:hidden" id="errMsgBlock" onclick="javascript:HideError(2)">
+    <div style="position:absolute; left:0px; top:0px; width:221px; z-index:10;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #8C8C8C;">
+        <tbody><tr><td bgcolor="#FFDE00" class="important" style="padding:3px 3px 0px 0px;text-align:right"><img id="pic_btn_error_close" border="0" src="./images/btn_error_close.gif?cv=L2.06R1" title="關閉"></td></tr>
+        <tr>
+          <td bgcolor="#FFDE00" class="important" style="padding:3px 8px 8px 8px;"><strong><span id="errMsgTxt"></span></strong></td>
+        </tr>
+      </tbody></table>
+    </div>
+    <div style="position:absolute; left:0px; top:0px; width:221px; height:100%; z-index:1;" id="errorMsgBg"></div> <!-- // Q209 Support 1024x600 original height:433px -->
+  </div>
+
+  <span id="spanallupbonus" style="position:absolute;top:225;left:85;width:50%;background-color:transparent;text-align:center;z-index:4;visibility:hidden" onclick="this.style.visibility='hidden'"></span>
+
+  <div style="position:absolute; left:56px; top:0px; width:160px; visibility:hidden; z-index:500;" id="pulldown_service">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#FFFFFF; border:2px solid #315172;">
+      <tbody><tr valign="top">
+        <td style="padding:8px 8px 10px 8px;">
+          <table width="100%" border="0" cellspacing="0" cellpadding="2">
+            <tbody><tr valign="top">
+              <td width="1" style="padding:7px 4px 0px 5px;"><img src="images/arrow_blue.gif?cv=L2.06R1"></td>
+              <td><a href="javascript:OnClickChgWebPassword();" class="content"><span id="txtChgWebPassword">更改密碼</span></a></td>
+            </tr>
+            <tr valign="top">
+              <td width="1" style="padding:7px 4px 0px 5px;"><img src="images/arrow_blue.gif?cv=L2.06R1"></td>
+              <td><a href="javascript:OnClickChgSecQuestion();" class="content"><span id="txtChgSecQuestion">更改登入答案</span></a></td>
+            </tr>
+            <tr valign="top">
+              <td width="1" style="padding:7px 4px 0px 5px;"><img src="images/arrow_blue.gif?cv=L2.06R1"></td>
+              <td><a href="javascript:OnClickChgWebProfile();" class="content"><span id="txtChgWebProfile">更改個人檔案</span></a></td>
+            </tr>
+            <tr valign="top">
+              <td width="1" style="padding:7px 4px 0px 5px;"><img src="images/arrow_blue.gif?cv=L2.06R1"></td>
+              <td><a href="javascript:return false;" class="content" onclick="OnClickPersonalSettings();return false;"><span id="txtPersonalSettings">「投注區」個人設定</span></a></td>
+            </tr>
+            <tr valign="top" id="FootballLiveCell" style="display:none;">
+              <td width="1" style="padding:7px 4px 0px 5px;"><img src="images/arrow_blue.gif?cv=L2.06R1"></td>
+              <td><a id="FootballLiveLink" href="" class="content" target="_blank"><span id="txtFootballLive">足智即場睇</span></a></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <div style="position:absolute; left:10px; top:0px; visibility:hidden; z-index:500; width:auto" id="pulldown_registration">
+    <table width="auto" border="0" cellspacing="0" cellpadding="0" style="background-color:#FFFFFF; border:2px solid #315172;">
+      <tbody><tr valign="top">
+        <td style="padding:8px 8px 10px 8px;">
+          <table width="100%" border="0" cellspacing="0" cellpadding="2">
+            <tbody><tr valign="top">
+              <td width="1" style="padding:7px 4px 0px 5px;"><img src="images/arrow_blue.gif?cv=L2.06R1"></td>
+              <td><a href="javascript:onClickRegonline();" class="content"><span id="regOnline">我已經持有投注戶口</span></a></td>
+            </tr>
+            <tr valign="top">
+              <td width="1" style="padding:7px 4px 0px 5px;"><img src="images/arrow_blue.gif?cv=L2.06R1"></td>
+              <td><a href="javascript:onClickApplybet();" class="content"><span id="regApply">我尚未持有投注戶口</span></a></td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <div id="divIdleAlert" style="position:absolute; left:11px; top:8px; width:100%; display:none; z-index:500;">
+    <table width="316px" bgcolor="#FFDE00" cellspacing="0" cellpadding="0" border="0">
+      <tbody><tr>
+        <td style="height:10px"><img src="images/spacer.gif" width="1" height="1" alt=""></td>
+      </tr>
+      <tr valign="middle">
+        <td align="center" id="divIdleAlertMsg"></td>
+      </tr>
+      <tr>
+        <td style="padding: 5px;" align="center">
+            <div style="width: 200px; text-align:center; margin: auto;">
+                <div id="divIdleAlertLogoutTips" style="text-align: left;">divIdleAlertLogoutTips</div>
+                <div id="divIdleAlertLogoutTimeTips" style="color:#f00;">divIdleAlertLogoutTimeTips</div>
+                <div style="display:none;">
+                    <input id="radIdleAlertM30" type="radio" value="30" name="idleAlertM"><label id="divIdleAlertM30" for="radIdleAlertM30">30 Mins</label>
+                    <input id="radIdleAlertM60" type="radio" value="60" name="idleAlertM"><label id="divIdleAlertM60" for="radIdleAlertM60">60 Mins</label>
+                    <a id="btnIdleAlertSave" href="javascript:;" onclick="SaveSessionIdleTime();return false;" class="LinkButton"><span id="divIdleAlertSave">Save</span></a>
+                </div>
+            </div>
+        </td>
+      </tr>
+      <tr valign="bottom">
+        <td align="center" valign="top" style="padding: 10px;">
+            <div style="margin: 10px 0px 10px 0px;"><a href="javascript:;" onclick="idleAlertClose();return false;" id="divIdleAlertStay"></a></div>
+            <div><a href="javascript:;" onclick="idleAlertLogout(false);return false;" id="divIdleAlertLogout"></a></div>
+        </td>
+       </tr>
+       <tr>
+        <td style="height:5px;"></td>
+      </tr>
+      <tr>
+      <td style="height:0;"><div id="divIdleAlertSound" style="height:0"></div></td>
+      </tr>
+    </tbody></table>    
+  </div>
+            
+  <div id="divEKBA" style="position: absolute; left: 0px; top: 0px; width: 100%; display: block; z-index: 500;">
+      <div id="divGrayBG">
+          <div class="container">
+              <h2><span id="ekbaDivTitle">登入問題</span></h2>
+              <p><span id="ekbaSeqQuestion">你最值得紀念的日子？</span></p>
+              <div class="fields"><input id="ekbaDivInput" name="ekbaDivInput" type="text" class="text" maxlength="50"><input type="button" id="pphw_btn_ekba" class="pp_pen_btn_closed"><a href="javascript:OnClickCannotLogin();" id="txtForgetWebPass" style="font-size: 12px;">忘記登入答案?</a>
+              <div id="ekbaInputPPHWDiv">               
+              <div id="pphw-panel"><div class="yellowTop"></div><div class="yellowBottom"></div><div class="hwBody"><div class="hwBody-left"><button id="hwCand1" class="pphw-candidate" disabled="disabled"></button><button id="hwCand2" class="pphw-candidate" disabled="disabled"></button><button id="hwCand3" class="pphw-candidate" disabled="disabled"></button><button id="hwCand4" class="pphw-candidate" disabled="disabled"></button><button id="hwCand5" class="pphw-candidate" disabled="disabled"></button><button id="hwCand6" class="pphw-candidate" disabled="disabled"></button></div><div class="hwBody-right"><div class="pphw-productLabel">手寫板</div><div class="pphw-companyLabel">蒙恬科技</div><button id="qmarkbtn" class="pphw-iconButton"></button><button id="xmarkbtn" class="pphw-iconButton"></button><button id="undobtn" class="pphw-function" disabled="disabled">還原</button><button id="rewritebtn" class="pphw-function" disabled="disabled">重寫</button><div class="pphw-canvas-container"><canvas id="pphw-canvas" width="180" height="180" style="width: 100%;height: 100%;"></canvas></div></div></div><div id="warning-panel"><p class="msgContent"><img class="msgContent" src="images/notice.jpg"></p><p class="msgContent" style="padding-bottom: 20px">投注區手寫板功能已於2015年3月31日起停用。請使用電腦內置的手寫板功能代替。</p><p class="msgContent" style="padding-bottom: 25px">請<a class="msgContent" id="clickhere" href="javascript:;" target="_blank">按此</a>了解如何啓用電腦內置手寫板功能</p><p class="msgContent" style="padding-left: 175px;text-align: right;"><a id="continue2" href="javascript:;" onclick="pphwApp.hidePanel();$j('#pphw_btn_ekba').toggleClass('pp_pen_btn_opened');return false;">關閉</a></p><script type="text/javascript">var t = new Date();t.setTime(t.getTime() - 1);document.cookie="pphw=;path=/;domain=" + pphwCookieDomain + ";expires=" + t.toGMTString();</script></div></div></div>
+              <div><a href="javascript:OnClickCannotLogin();" id="txtForgetWebPass2" style="font-size: 12px; display: none;">忘記登入答案?</a></div>                                  
+              <div class="alert" id="ekbaDivError"></div>
+              </div>
+              <div id="divEKBADefaultButton" class="BLfooter" style="display: none;">
+                <span style="float:left; margin-left:10px; margin-right:10px; display:inline;"><a href="#" onclick="OnClickLoginEKBACancel();return false;" onmouseout="loadMouseEventImage('pic_cancel', 'pic_cancel');" onmouseover="loadMouseEventImage('pic_cancel', 'pic_cancel_on');"><img id="pic_cancel" src="./images/btn_cancel_ch.gif?cv=L2.06R1" alt="" border="" title="取消"></a></span>
+                <span style="float:right; margin-left:10px; margin-right:10px; display:inline;"><a href="#" onclick="OnClickLoginEKBA();return false;" onmouseout="loadMouseEventImage('pic_confirm', 'pic_confirm');" onmouseover="loadMouseEventImage('pic_confirm', 'pic_confirm_on');"><img id="pic_confirm" src="./images/btn_confirm_ch.gif?cv=L2.06R1" alt="" border="" title="確定"></a></span>
+              </div>
+              <div id="divEKBASSOButton" class="BLfooter" style="display: block;">
+                <span style="float:left; margin-left:10px; margin-right:10px; display:inline;"><a href="#" onclick="OnClickLoginEKBABack();return false;" onmouseout="loadMouseEventImage('pic_backSSO', 'pic_sso_back');" onmouseover="loadMouseEventImage('pic_backSSO', 'pic_sso_back_on');"><img id="pic_backSSO" src="./images/btn_short_back_ch.gif?cv=L2.06R1" alt="" border="" title="返回"></a></span>
+                <span style="float:left; margin-left:10px; margin-right:10px; display:inline;"><a href="#" onclick="OnClickLoginEKBALogout();return false;" onmouseout="loadMouseEventImage('pic_logoutSSO', 'pic_logout');" onmouseover="loadMouseEventImage('pic_logoutSSO', 'pic_logout_on');"><img id="pic_logoutSSO" src="./images/btn_logout_ch.gif?cv=L2.06R1" alt="" border="" title="登出"></a></span>
+                <span style="float:right; margin-left:10px; margin-right:10px; display:inline;"><a href="#" onclick="OnClickLoginEKBA();return false;" onmouseout="loadMouseEventImage('pic_confirmSSO', 'pic_confirm');" onmouseover="loadMouseEventImage('pic_confirmSSO', 'pic_confirm_on');"><img id="pic_confirmSSO" src="./images/btn_confirm_ch.gif?cv=L2.06R1" alt="" border="" title="確定"></a></span>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div id="divSlipDefault" style="position: absolute; left: 108px; top: 0px; width: 221px; display: block;">    <!-- // Q209 Support 1024x600 original : height:430px; -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #8C8C8C; border-left:1px solid #8C8C8C; border-bottom:1px solid #8C8C8C; background-color:#B7BFC8;">
+      <tbody><tr>
+        <td id="slipOpenRod" onclick="slipOpen(document.getElementById('btnOpen'));RedrawBetlineTable();" onmouseout="slipOver(document.getElementById('btnOpen'), 0);" onmouseover="slipOver(document.getElementById('btnOpen'), 1);" rowspan="3" style="background: url(images/left_bg.gif?cv=L2.06R1) repeat-y;
+            cursor: pointer;" width="9" title="按此開關"><img src="./images/btn_open.gif?cv=L2.06R1" width="9" border="0" id="btnOpen"></td>
+        <td height="4"><img src="images/spacer.gif" width="208" height="4"></td>
+        <td width="3" rowspan="3"><img src="images/spacer.gif" width="3"></td>
+      </tr>
+      <tr valign="top">
+        <td>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+              <td colspan="2">
+                <div id="multiplePanel" style="display:none;">
+                    <table>
+                        <tbody><tr>
+                            <td width="25%" class="activePanel">A</td>
+                            <td width="25%" class="inactivePanel">B</td>
+                            <td width="25%" class="inactivePanel">C</td>
+                            <td width="25%" class="inactivePanel">D</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div id="divBetLayer" class="scroll1" style="overflow-y: auto; height: 292px;"><table id="betTbl" border="0" width="100%" height="100%" cellspacing="0" cellpadding="0" style="padding:1px 0px 2px 0px;"><tbody><tr><td colspan="4" style="background:url(./images/slip_bg0.gif?cv=L2.06R1) top #FFFFFF;"><img src="images/spacer.gif?cv=L2.06R1"></td></tr></tbody></table></div>
+              </td>
+            </tr>
+            <tr>
+              <td height="127" style="background: url(images/bot_bg.gif?cv=L2.06R1) repeat-x top #E1E4E8;
+                  border-left: 1px solid #A2A5AA; border-bottom: 1px solid #A2A5AA; padding: 4px 4px 5px 4px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody><tr>
+                    <td>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody><tr>
+                          <td><img src="images/stroke_orange.gif?cv=L2.06R1" hspace="2" align="absmiddle"> <span id="fldFormula">過關方式</span><a href="javascript:;" style="cursor:help;"><img id="pic_allup_help" onclick="OnClickAllupHelp();return false;" hspace="5" border="0" align="absmiddle" src="./images/icon_help.gif?cv=L2.06R1" title="過關投注示範"></a></td>
+                        </tr>
+                        <tr>
+                          <td style="padding:5px 0px 3px 2px;" align="right">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                              <tbody><tr>
+                                <td rowspan="2">
+                                  <select name="selFormula" id="sel_formula" class="select1" disabled="" style="width:60px" onmouseover="ShowAllupBonus(true)" onmouseout="ShowAllupBonus(false)"></select>
+                                </td>
+                                <td rowspan="2" style="padding:0px 1px 0px 2px;">
+                                  <input type="text" class="inputField1" style="width:45px; height:21px;" onblur="CheckAlupBoxUnitBet(this);" disabled="" id="inputAllUp">
+                                </td>
+                                <td style="padding:0px 2px 0px 0px;"><a href="javascript:;" onclick="inputAllUpValueChanged(10);return false;"><img src="images/btn_up.gif?cv=L2.06R1" border="0" alt=""></a></td>
+                                <td rowspan="2"><a href="javascript:;" onmouseout="loadMouseEventImage('btnAddAlupSlip', 'pic_addnew_all_up');" onmouseover="loadMouseEventImage('btnAddAlupSlip', 'pic_addnew_all_up_on');"><img id="btnAddAlupSlip" border="0" onclick="CreateAndAddAllUp();return false;" style="display:none;" src="./images/btn_addslip_ch.gif?cv=L2.06R1" title="加入過關注項"></a></td>
+                              </tr>
+                              <tr>
+                                <td><a href="javascript:;" onclick="inputAllUpValueChanged(-10);return false;"><img src="images/btn_down.gif?cv=L2.06R1" border="0" alt=""></a></td>
+                              </tr>
+                            </tbody></table>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background: url(images/dash1.gif?cv=L2.06R1) repeat-x center; padding: 3px;"><img src="images/spacer.gif" height="1" alt=""></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0px 0px 0px 3px;">
+                      <table width="100%" border="0" cellspacing="0" cellpadding="1">
+                        <tbody><tr>
+                          <td class="gray"><strong><span id="fldTotalNoOfBets">總注數</span></strong></td>
+                          <td id="total_no_of_bets" align="right" class="content" style="font-weight:bold;">0&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td class="gray"><strong><span id="fldTotalAmount">總投注金額</span></strong></td>
+                          <td id="fld_total_bet_amount" class="content" align="right" style="font-weight:bold;">$ 0.00&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="right" style="padding:3px 0px 0px 0px;"><a onclick="OnClickReset();" onmouseout="loadMouseEventImage('pic_clear', 'pic_clear');" onmouseover="loadMouseEventImage('pic_clear', 'pic_clear_on');"><img id="pic_clear" border="0" hspace="4" src="./images/btn_delbet_ch.gif?cv=L2.06R1" title="刪除注項"></a><a onclick="OnClickPreview();" onmouseout="loadMouseEventImage('pic_preview', 'pic_preview');" onmouseover="loadMouseEventImage('pic_preview', 'pic_preview_on');"><img id="pic_preview" border="0" src="./images/btn_submit_ch.gif?cv=L2.06R1" title="傳送注項"></a></td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr>
+        <td height="4"><img src="images/spacer.gif" height="4" alt=""></td>
+      </tr>
+    </tbody></table>    
+  </div>  
+
+  <div id="divDisclaimer" style="position: absolute; left: 0px; top: 0px; width: 100%; display: none; z-index: 500; height: 435px;">
+    <table width="500" border="0" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <td height="2" bgcolor="#FFDE00" style="border-bottom:1px solid #A2A5AA;"><img src="images/spacer.gif" width="1" height="2" alt=""></td>
+      </tr>
+      <tr>
+        <td height="4" bgcolor="#B7BFC8"><img src="images/spacer.gif" width="1" height="4" alt=""></td>
+      </tr>
+      <tr>
+        <td valign="top"><div id="tdText" style="height:100%;overflow-y:auto"></div></td>
+      </tr>
+      <tr>
+        <td height="4" bgcolor="#B7BFC8"><img src="images/spacer.gif" width="1" height="4" alt=""></td>
+      </tr>
+      <tr>
+        <td height="4" bgcolor="#FFDE00" style="border-top:1px solid #A2A5AA;"><img src="images/spacer.gif" width="1" height="4" alt=""></td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <div id="divBetPreview" style="width:100%;height:435px;display:none;z-index:100;background-color:#FFFFFF">
+      <table id="divBetPreviewTable" border="0" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <td height="2" bgcolor="#FFDE00" style="border-bottom:1px solid #A2A5AA;"><img src="images/spacer.gif" width="1" height="2"></td>
+      </tr>
+      <tr>
+        <td height="4" bgcolor="#B7BFC8"><img src="images/spacer.gif" width="1" height="4"></td>
+      </tr>
+      <tr>
+        <td valign="top">
+    <iframe id="previewFrame" name="previewFrame" src="https://txn02.hkjc.com/BetSlipIB/SlipBetPreview.aspx?lang=1" style="width:100%;height:400px;border:0;" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+        </td>
+      </tr>
+      <tr><td id="divMsgholder"></td></tr>
+      <tr>
+        <td height="4" bgcolor="#B7BFC8"><img src="images/spacer.gif" width="1" height="4"></td>
+      </tr>
+      <tr>
+        <td height="4" bgcolor="#FFDE00" style="border-top:1px solid #A2A5AA;"><img src="images/spacer.gif" width="1" height="4"></td>
+      </tr>
+    </tbody></table>
+  </div>
+
+  <div id="divPrint" class="noDisplay"></div>
+
+  <script type="text/javascript">
+    function checkFootballLiveDisplay() {
+      var footballLive = GetDataStore('football_live_ind');
+      if (GetLanguage() == 0) {
+        $('FootballLiveLink').href = 'http://football.hkjc.com/football/football/football-live/football-live-player.aspx?ci=en-us';
+      }
+      else {
+        $('FootballLiveLink').href = 'http://football.hkjc.com/football/football/football-live/football-live-player.aspx?ci=zh-hk';
+      }
+
+      if (footballLive != "Y") {
+        $('FootballLiveCell').style.display = 'none';
+      } else {
+        $('FootballLiveCell').style.display = '';
+      }
+    }
+  </script> 
+  </div>
+    <div id="divLogout" style="position: absolute; left: 0px; top: 107px; width: 778px;
+        height: 430px; display: none; z-index: 500;">
+
+      <div id="divLogoutBorder" style="position:absolute;width:758px; height:410px;border:10px solid #003B7F; filter:alpha (opacity=50);-moz-opacity:.50;opacity:.50;-khtml-opacity: 0.5"></div>
+    
+            <iframe id="logoutFrame" border="0" marginwidth="0" marginheight="0" src="" frameborder="0" scrolling="no" style="background-color: #fff; position:absolute; left:10px; top:10px; width:758px; height:358px;"></iframe>
+        <div id="logoutCloseDiv" style="position: absolute; background-color: #FFFFFF; left: 10px;
+            top: 368px; width: 758px; height: 52px">
+        </div>
+    </div>   
+
+    <!-- START Nielsen Online SiteCensus -->
+    <script src="http://bet.hkjc.com/info/include/wa/wa_tracker.js?cv=L2.06R1" type="text/javascript"></script>
+    <script src="http://bet.hkjc.com/info/include/wa/wa_tracker_config.js?cv=L2.06R1" type="text/javascript"></script>
+    <script type="text/javascript">
+      window["WATracker"] = window["WATracker"] || { trackClickEvent: function() { } };
+
+      function WATrackSendBetPreviewEvent() {
+        WATracker.trackClickEvent('betslip-sendbet-01');
+      }
+    
+    function WATrackClickEvent() {
+        WATracker.trackClickEvent('betlogoutbox-home-box');
+    }
+    
+    function WATrackLogoutCloseEvent() {
+        WATracker.trackClickEvent('betlogoutbox-home-button-close');
+    }
+
+    function WATrackClickEventAllUp() {
+        if (allUpBetlines[0].family == "FB") {
+            WATracker.trackClickEvent('betslip-fb-addbet-01');
+        }
+
+        if (allUpBetlines[0].family == "HB") {
+            WATracker.trackClickEvent('betslip-hr-addbet-01');
+        }
+    }
+
+    function onclickRefreshBal() {
+      if (GetDataStore('enablePPSEnquiry') == '1') {
+        OnClickRefreshBalance(true);
+      }
+    }
+
+    function WATrackLoginPassword() {
+        if (GetDataStore("save_password") == '1') {
+          WATracker.trackClickEvent('betslip-login-password');
+      }
+    }
+
+    function WATrackStmtConfirm() {
+      WATracker.trackClickEvent('betslip-statement-confirm');
+    }
+
+    function WATrackStmtNext() {
+        WATracker.trackClickEvent('betslip-statement-next');
+    }
+
+    function WATrackStmtExport() {
+        WATracker.trackClickEvent('betslip-statement-export');
+    }
+
+    function WATrackChiHW() {
+      WATracker.trackClickEvent('betslip-webloginque-pen');
+    }
+
+    function WATrackRegNow() {
+        WATracker.trackClickEvent('betslip-register-now');
+    }
+    
+    function WATrackRegOnline() { 
+        WATracker.trackClickEvent('betslip-register-exist');
+    }
+
+    function WATrackRegApplybet() {
+        WATracker.trackClickEvent('betslip-register-new');
+    }
+    
+    </script>
+    <!-- END Nielsen Online SiteCensus -->  
+    <iframe id="frmProxy" src="https://txn02.hkjc.com/BetSlipIB/proxy.aspx" width="0" height="0" style="display:none;visibility:hidden;"></iframe>
+
+
+</body></html>

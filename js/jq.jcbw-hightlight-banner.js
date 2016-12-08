@@ -13,7 +13,8 @@ function setBanner(var0, var1, var2, var3, var4){
     var tempEnd    = new Date(var4);
     
     if ((tempStart < banner_time) && (tempEnd > banner_time)){
-		bannerBig[bannerBig.length] = new Array (var0, var1, var2, tempStart, tempEnd, replaceAll("530x180","80x50",var1))				
+    	bannerBig[bannerBig.length] = new Array (var0, var1, var2, tempStart, tempEnd, replaceAll(var1))	
+		// bannerBig[bannerBig.length] = new Array (var0, var1, var2, tempStart, tempEnd, replaceAll("530x180","80x50",var1))				
     }
 
 }

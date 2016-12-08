@@ -82,7 +82,7 @@ function genBettingToolbar() {
 	tempHtml += '<div id="bettingToolbar">';
 	tempHtml += '	<table width="776" border="0" cellspacing="0" cellpadding="0">';
 	tempHtml += '		<tr>';
-	tempHtml += '			<td width="6" class="shadowLeft"><img src="/info/include/images/spacer.gif" width="6" height="1"></td>';
+	tempHtml += '			<td width="6" class="shadowLeft"><img src="images/spacer.gif" width="6" height="1"></td>';
 	tempHtml += '			<td width="764" style="padding:7px 7px 0px 7px;" bgcolor="#FFFFFF">';
 	tempHtml += '				<table width="100%" border="0" cellspacing="0" cellpadding="0">';
 	tempHtml += '					<tr>';
@@ -153,7 +153,7 @@ function genBettingToolbar() {
 	tempHtml += '					</tr>';
 	tempHtml += '				</table>';
 	tempHtml += '			</td>';
-	tempHtml += '			<td width="6" class="shadowRight"><img src="/info/include/images/spacer.gif" width="6" height="1"></td>';
+	tempHtml += '			<td width="6" class="shadowRight"><img src="images/spacer.gif" width="6" height="1"></td>';
 	tempHtml += '		</tr>';
 	tempHtml += '	</table>';
 	tempHtml += '</div>';
@@ -424,7 +424,7 @@ function genBetType() {
 		}
 		
 		tempHtml += '		<tr>';
-		tempHtml += '			<td colspan="3"><img src="/info/include/images/spacer.gif" height="10"></td>';
+		tempHtml += '			<td colspan="3"><img src="images/spacer.gif" height="10"></td>';
 		tempHtml += '		</tr>';
 	}
 	

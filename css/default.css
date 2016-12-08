@@ -257,11 +257,11 @@ span.oddsDown
 
 span.oddsUp
 {
-	background:url("/football/info/images/odds_up.gif") no-repeat;
+	background:url("/images/odds_up.gif") no-repeat;
 }
 span.oddsDown
 {
-	background:url("/football/info/images/odds_down.gif") no-repeat;
+	background:url("/images/odds_down.gif") no-repeat;
 }
 div#divLoadMix
 {
@@ -272,22 +272,22 @@ div#divLoadMix
 /* toggle coupon header start */
 .spBtnMinus, .mlBtnMinus
 {
-	background-image:url("/football/info/images/btn_close.gif");
+	background-image:url("/images/btn_close.gif");
 	background-repeat:no-repeat;
 }
 .spBtnPlus, .mlBtnPlus
 {
-	background-image:url("/football/info/images/btn_open.gif");
+	background-image:url("/images/btn_open.gif");
 	background-repeat:no-repeat;
 }
 .spMixBtnMinus
 {
 	background-repeat:no-repeat;
-	background-image:url("/football/info/images/mix_btn_close.gif");
+	background-image:url("/images/mix_btn_close.gif");
 }
 .spMixBtnPlus
 {
-	background-image:url("/football/info/images/mix_btn_open.gif");
+	background-image:url("/images/mix_btn_open.gif");
 	background-repeat:no-repeat;
 }
 /* toggle coupon header end */
@@ -308,7 +308,7 @@ div#divLoadMix
 	display:inline-block;	
 	cursor:pointer;
 	vertical-align:bottom;
-	background-image:url("/football/info/images/btn_next.gif");
+	background-image:url("/images/btn_next.gif");
 }
 .pointer
 {

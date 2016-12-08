@@ -1,5 +1,5 @@
 .pp_pen_btn_closed{
-	background:url('../images/pphw.png');
+	background:url('/images/pphw.png');
 	background-repeat:no-repeat;
 	height:23px;
 	width:23px;
@@ -11,7 +11,7 @@
 }
 
 .pp_pen_btn_closed_highlight{
-	background:url('../images/pphw1.png');
+	background:url('/images/pphw1.png');
 	background-repeat:no-repeat;
 	height:23px;
 	width:23px;
@@ -23,7 +23,7 @@
 }
 
 .pp_pen_btn_opened{
-	background:url('../images/pphw2.png');
+	background:url('/images/pphw2.png');
 	background-repeat:no-repeat;
 	height:23px;
 	width:23px;

@@ -4,7 +4,7 @@ var level2 = "";
 var level3 = "";
 var level4 = "";
 var path = "../";
-var imgPath = "/info/include/menu/images/";
+var imgPath = "images/";
 //var menuImgPath = "/football/info/images/menu/";
 //Q109 Content Server
 var menuImgPath = "/contentserver/jcbw/userimage/";

@@ -297,24 +297,24 @@ function genTopMenus() {
 	tempHtml += '	<table width="100%" border="0" cellspacing="0" cellpadding="0">';
 	tempHtml += '		<tr>';
 	tempHtml += '			<td style="padding:11px 5px 0px 5px;">';	
-	tempHtml += '				<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background:url(/info/include/images/topNav_bg.gif) repeat-x bottom;">';
+	tempHtml += '				<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background:url(images/topNav_bg.gif) repeat-x bottom;">';
 	tempHtml += '					<tr>';
-//	tempHtml += '						<td width="2" style="padding:0px 6px 0px 15px;" class="topMenu"><img src="/info/include/images/pt_blue.gif" width="2" height="2"></td>';
+//	tempHtml += '						<td width="2" style="padding:0px 6px 0px 15px;" class="topMenu"><img src="images/pt_blue.gif" width="2" height="2"></td>';
 	tempHtml += '						<td width="43" style="padding:0px 0px 0px 15px;"><a href="#" class="topMenu">English</a></td>';
-//	tempHtml += '						<td width="2" style="padding:0px 8px 0px 0px;" class="topMenu"><img src="/info/include/images/pt_blue.gif" width="2" height="2"></td>';
+//	tempHtml += '						<td width="2" style="padding:0px 8px 0px 0px;" class="topMenu"><img src="images/pt_blue.gif" width="2" height="2"></td>';
 	tempHtml += '						<td width="45" style="padding:0px 0px 0px 15px;"><a href="#" class="topMenu">主 頁</a></td>';
-	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'corporate\',\'\',\'/info/include/images/ch/topmenu_corporate_over.gif\',1);"><img src="/info/include/images/ch/topmenu_corporate_off.gif" name="corporate" width="107" height="28" border="0" title="馬會概況"></a></td>';
-	tempHtml += '						<td width="1"><img src="/info/include/images/topmenu_line_v.gif" width="1" height="11"></td>';
-	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'hrc\',\'\',\'/info/include/images/ch/topmenu_hrc_over.gif\',1);"><img src="/info/include/images/ch/topmenu_hrc_off.gif" name="hrc" width="107" height="28" border="0" title="賽馬資訊"></a></td>';
-	tempHtml += '						<td width="1"><img src="/info/include/images/spacer.gif" width="1" height="11"></td>';
-	tempHtml += '						<td width="107"><a href="/default.asp" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'bet\',\'\',\'/info/include/images/ch/topmenu_bet_on.gif\',1);"><img src="/info/include/images/ch/topmenu_bet_on.gif" name="bet" width="107" height="28" border="0" title="博彩娛樂"></a></td>';
-	tempHtml += '						<td width="1"><img src="/info/include/images/spacer.gif" width="1" height="11"></td>';
-	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'charity\',\'\',\'/info/include/images/ch/topmenu_charity_over.gif\',1);"><img src="/info/include/images/ch/topmenu_charity_off.gif" name="charity" width="107" height="28" border="0" title="慈善事務"></a></td>';
-	tempHtml += '						<td width="1"><img src="/info/include/images/topmenu_line_v.gif" width="1" height="11"></td>';
-	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'member\',\'\',\'/info/include/images/ch/topmenu_member_over.gif\',1);"><img src="/info/include/images/ch/topmenu_member_off.gif" name="member" width="107" height="28" border="0" title="馬會會員"></a></td>';
-	tempHtml += '						<td width="1"><img src="/info/include/images/topmenu_line_v.gif" width="1" height="11"></td>';
-	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'come\',\'\',\'/info/include/images/ch/topmenu_come_over.gif\',1);"><img src="/info/include/images/ch/topmenu_come_off.gif" name="come" width="107" height="28" border="0" title="進場觀賽"></a></td>';
-	tempHtml += '						<td><img src="/info/include/images/spacer.gif" width="1" height="1"></td>';
+	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'corporate\',\'\',\'images/ch/topmenu_corporate_over.gif\',1);"><img src="images/ch/topmenu_corporate_off.gif" name="corporate" width="107" height="28" border="0" title="馬會概況"></a></td>';
+	tempHtml += '						<td width="1"><img src="images/topmenu_line_v.gif" width="1" height="11"></td>';
+	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'hrc\',\'\',\'images/ch/topmenu_hrc_over.gif\',1);"><img src="images/ch/topmenu_hrc_off.gif" name="hrc" width="107" height="28" border="0" title="賽馬資訊"></a></td>';
+	tempHtml += '						<td width="1"><img src="images/spacer.gif" width="1" height="11"></td>';
+	tempHtml += '						<td width="107"><a href="/default.asp" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'bet\',\'\',\'images/ch/topmenu_bet_on.gif\',1);"><img src="images/ch/topmenu_bet_on.gif" name="bet" width="107" height="28" border="0" title="博彩娛樂"></a></td>';
+	tempHtml += '						<td width="1"><img src="images/spacer.gif" width="1" height="11"></td>';
+	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'charity\',\'\',\'images/ch/topmenu_charity_over.gif\',1);"><img src="images/ch/topmenu_charity_off.gif" name="charity" width="107" height="28" border="0" title="慈善事務"></a></td>';
+	tempHtml += '						<td width="1"><img src="images/topmenu_line_v.gif" width="1" height="11"></td>';
+	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'member\',\'\',\'images/ch/topmenu_member_over.gif\',1);"><img src="images/ch/topmenu_member_off.gif" name="member" width="107" height="28" border="0" title="馬會會員"></a></td>';
+	tempHtml += '						<td width="1"><img src="images/topmenu_line_v.gif" width="1" height="11"></td>';
+	tempHtml += '						<td width="107"><a href="#" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\'come\',\'\',\'images/ch/topmenu_come_over.gif\',1);"><img src="images/ch/topmenu_come_off.gif" name="come" width="107" height="28" border="0" title="進場觀賽"></a></td>';
+	tempHtml += '						<td><img src="images/spacer.gif" width="1" height="1"></td>';
 	tempHtml += '					</tr>';
 	tempHtml += '				</table>';
 	tempHtml += '			</td>';
@@ -323,7 +323,7 @@ function genTopMenus() {
 	tempHtml += '			<td>';
 	tempHtml += '				<table width="100%" border="0" cellspacing="0" cellpadding="0">';
 	tempHtml += '					<tr valign="top">';
-	tempHtml += '						<td width="6" style="background:url(/info/include/images/shadow_l.gif) repeat-y right;"><img src="/info/include/images/spacer.gif" width="6" height="1"></td>';
+	tempHtml += '						<td width="6" style="background:url(images/shadow_l.gif) repeat-y right;"><img src="images/spacer.gif" width="6" height="1"></td>';
 	tempHtml += '						<td width="750" bgcolor="#FFFFFF" style="padding:7px;">';
 	tempHtml += '							<table width="100%" border="0" cellspacing="0" cellpadding="0">';
 	tempHtml += '								<tr valign="top">';
@@ -335,10 +335,10 @@ function genTopMenus() {
 			tempStr2 = '';
 		} else {
 			tempStr1 = '_off';
-			tempStr2 = 'onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\''+obj[i].id+'\',\'\',\'/info/include/images/ch/btn_'+obj[i].id+'_over.gif\',1);"';
+			tempStr2 = 'onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage(\''+obj[i].id+'\',\'\',\'images/ch/btn_'+obj[i].id+'_over.gif\',1);"';
 		}
 		
-		tempHtml += '<td width="70" style="padding-right:1px;"><a href="'+genLink(obj[i].link)+'" target="'+obj[i].target+'" '+tempStr2+'><img src="/info/include/images/ch/btn_'+obj[i].id+tempStr1+'.gif" title="'+obj[i].name+'" width="70" height="40" border="0" name="'+obj[i].id+'"></a></td>';
+		tempHtml += '<td width="70" style="padding-right:1px;"><a href="'+genLink(obj[i].link)+'" target="'+obj[i].target+'" '+tempStr2+'><img src="images/ch/btn_'+obj[i].id+tempStr1+'.gif" title="'+obj[i].name+'" width="70" height="40" border="0" name="'+obj[i].id+'"></a></td>';
 	}
 	
 	tempHtml += '<td align="right"><span class="date">16/11/07 14:00 (五)</span></td>';
@@ -354,11 +354,11 @@ function genTopMenus() {
 		var color = mainColor;
 	}
 	
-	tempHtml += '<td colspan="4" bgcolor="'+color+'"><img src="/info/include/images/spacer.gif" width="1" height="3"></td>';
+	tempHtml += '<td colspan="4" bgcolor="'+color+'"><img src="images/spacer.gif" width="1" height="3"></td>';
 	tempHtml += '								</tr>';
 	tempHtml += '							</table>';
 	tempHtml += '						</td>';
-	tempHtml += '						<td width="6" style="background:url(/info/include/images/shadow_r.gif) repeat-y right;"><img src="/info/include/images/spacer.gif" width="6" height="1"></td>';
+	tempHtml += '						<td width="6" style="background:url(images/shadow_r.gif) repeat-y right;"><img src="images/spacer.gif" width="6" height="1"></td>';
 	tempHtml += '					</tr>';
 	tempHtml += '				</table>';
 	tempHtml += '			</td>';
@@ -416,7 +416,7 @@ function genBettingToolbar() {
 	tempHtml += '<div id="bettingToolbar">';
 	tempHtml += '	<table width="776" border="0" cellspacing="0" cellpadding="0">';
 	tempHtml += '		<tr>';
-	tempHtml += '			<td width="6" class="shadowLeft"><img src="/info/include/images/spacer.gif" width="6" height="1"></td>';
+	tempHtml += '			<td width="6" class="shadowLeft"><img src="images/spacer.gif" width="6" height="1"></td>';
 //	tempHtml += '			<td width="764" style="padding:7px 7px 0px 7px;" bgcolor="#FFFFFF">';
 	tempHtml += '			<td width="764" style="padding:0px 7px 0px 7px;" bgcolor="#FFFFFF">';
 	tempHtml += '				<table width="100%" border="0" cellspacing="0" cellpadding="0">';
@@ -489,7 +489,7 @@ function genBettingToolbar() {
 	tempHtml += '					</tr>';
 	tempHtml += '				</table>';
 	tempHtml += '			</td>';
-	tempHtml += '			<td width="6" class="shadowRight"><img src="/info/include/images/spacer.gif" width="6" height="1"></td>';
+	tempHtml += '			<td width="6" class="shadowRight"><img src="images/spacer.gif" width="6" height="1"></td>';
 	tempHtml += '		</tr>';
 	tempHtml += '	</table>';
 	tempHtml += '</div>';
@@ -601,7 +601,7 @@ function genBetType() {
 		}
 		
 		tempHtml += '		<tr>';
-		tempHtml += '			<td colspan="3"><img src="/info/include/images/spacer.gif" height="10"></td>';
+		tempHtml += '			<td colspan="3"><img src="images/spacer.gif" height="10"></td>';
 		tempHtml += '		</tr>';
 	}
 	

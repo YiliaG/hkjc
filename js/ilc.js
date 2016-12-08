@@ -2324,8 +2324,8 @@ function onEngineLost() {
 function autoRefreshIlcMatchesByPush() {
     //var masterWinRef = self.top.frames["push_engine"];
     var masterWinRef = top.document.getElementById('push_engine') ? top.document.getElementById('push_engine').contentWindow : null;
-    page = initializePushPage("/info/include/js/commons/custom/", oddsPushIconDisplay, onEngineReady, onEngineLost);
-    initializeEngine(page, "/info/include/js/commons/lightstreamer/", null, masterWinRef);
+    page = initializePushPage("js/", oddsPushIconDisplay, onEngineReady, onEngineLost);
+    initializeEngine(page, "js/", null, masterWinRef);
 
     var matchStatusList = new Array("MATCH_STATUS");
     var matchStatusSchemaList = new Array("EMS_STATUS");
