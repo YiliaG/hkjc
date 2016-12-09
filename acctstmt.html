@@ -1,0 +1,640 @@
+<!-- saved from url=(0053)https://txn02.hkjc.com/BetSlipIB/acctstmt.aspx?lang=1 -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>戶口紀錄</title>
+    <link rel="icon" href="https://txn02.hkjc.com/BetSlipIB/favicon.ico?cv=L2.06R1" type="image/x-icon">
+    <link rel="shortcut icon" href="https://txn02.hkjc.com/BetSlipIB/favicon.ico?cv=L2.06R1" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/styles_1.css">
+    <style type="text/css">
+    #export-warp {
+        display: none;
+        overflow: hidden;
+        position: absolute;
+        bottom: 21;
+        padding: 0;
+        margin: 0 0 0 3px;
+        outline: none;
+    }
+    
+    #btnExportHTML,
+    #btnExportText {
+        width: 71px;
+        height: 21px;
+        cursor: pointer;
+    }
+    </style>
+    <script type="text/javascript" src="js/stringbuffer.js"></script>
+    <script type="text/javascript" src="js/datastore_func.js"></script>
+    <script type="text/javascript" src="js/acctstmt_func.js"></script>
+    <script type="text/javascript" src="js/acctstmt_value.js"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <script type="text/javascript" src="js/common_func.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/proxy.js"></script>
+    <script type="text/javascript" src="js/svc.js"></script>
+    <script type="text/javascript" src="js/stmt_export_func.js"></script>
+    <script type="text/javascript" src="js/FileSaver.min.js"></script>
+    <script type="text/javascript">
+    $j = jQuery.noConflict();
+    document.domain = 'hkjc.com';
+    var staticCache = '?cv=L2.06R1';
+
+    var secId = 0;
+    var betslipUrl = 'http://txn02.hkjc.com/BetSlip/';
+    var betslipIBUrl = 'https://txn02.hkjc.com/BetSlipIB/';
+
+    var DATE_SEPARATOR = "/";
+
+    var IsProvided60DaysData = false;
+    var chgACTitle = IsProvided60DaysData && (8 > 30);
+
+    var g_maxAccRange = 60;
+    if (!chgACTitle)
+        g_maxAccRange = 31;
+
+    var g_select_day_range = '8';
+
+    var g_record_per_page = '10';
+
+    var g_dateRangeArr = new Array();
+
+    var g_page_num = 0;
+    var g_max_page_num = 0;
+
+    var isLastPage = false;
+    var showNextPage = false;
+
+    var svrDate = new Date(2016, 12 - 1, 9,
+        11, 7, 33);
+
+    var last8 = new Date(2016, 12 - 1, 2, 11, 7, 33);
+    var last15 = new Date(2016, 11 - 1, 25, 11, 7, 33);
+    var last30 = new Date(2016, 11 - 1, 10, 11, 7, 33);
+    var last60 = new Date(2016, 10 - 1, 11, 11, 7, 33);
+
+
+    var g_DateTime;
+    var g_DateTime_last8;
+    var g_DateTime_last15;
+    var g_DateTime_last30;
+    var g_DateTime_last60;
+    var g_year;
+    var g_month;
+    var g_day;
+    var g_hours;
+    var g_minutes;
+    var g_date_string;
+
+    var isProcessing = true;
+    var curAction = '';
+
+    var ACTION_SEARCH = 0;
+    var ACTION_NEXT = 1;
+    var ACTION_PREV = 2;
+    var ACTION_PRINT = 3;
+    var ACTION_EXPORT = 4;
+
+    var ssoEnabled = true;
+
+    var helpUrlEn = new Array('http://is.hkjc.com/Page_Redirect/eWin/faq/en/pastRecFAQ.asp', '', 'http://is.hkjc.com/Page_Redirect/eWin/faq/en/txnRecFAQ.asp');
+    var helpUrlCh = new Array('http://is.hkjc.com/Page_Redirect/eWin/faq/ch/pastRecFAQ.asp', '', 'http://is.hkjc.com/Page_Redirect/eWin/faq/ch/txnRecFAQ.asp');
+
+    var IsEnabledDDA = 1 == 1;
+
+    var language = '1';
+
+    var replyTimeoutInSec = 60;
+
+    var browser = navigator.userAgent.toLowerCase();
+    var browserAppVer = navigator.appVersion;
+
+    var acctstmtWorkerFilePath = "js/acctstmt_worker.js?cv=L2.06R1";
+    var acctstmtExportFuncPath = "stmt_export_func.js?cv=L2.06R1";
+    var acctMomentLibPath = "moment.min.js?cv=L2.06R1";
+
+    function exportFile() {
+
+        if ($j('#export-warp').is(':visible')) {
+            /*
+     if(browser.indexOf('msie 9') > -1 || browser.indexOf('msie 8') > -1) {
+      $j("#export-warp").animate({height: "1px"}, {duration: "slow", complete: function() {$j("#export-warp").hide().css("height", "")}});
+     } else {
+     */
+            $j("#export-warp").slideUp("slow");
+            // }
+            $j("#saveDiv").css("top", -81);
+            $j("#printDiv").css("top", -81);
+
+        } else {
+            $j("#export-warp").slideDown("slow");
+            $j("#saveDiv").css("top", -101);
+            $j("#printDiv").css("top", -101);
+            $j("#export-warp").focus();
+        }
+
+    }
+
+    $j(document).ready(function() {
+        /*
+        if(browser.indexOf('firefox') > -1) {
+          $j("#export-warp").css( "bottom", 61 );
+        }
+        */
+
+        sendExtendSessionRequest();
+
+        var hoveringExportType = null;
+        var isAlreadyMouseDown = false;
+
+        $j('#btnExportHTML').mouseover(function() {
+            if (!isMobileDevice()) {
+                hoveringExportType = "html";
+                $j('#btnExportHTML').css("background-image", "url(images/btn_export_html_on_ch.gif)");
+            }
+        }).mouseout(function() {
+            hoveringExportType = null;
+            $j('#btnExportHTML').css("background-image", "url(images/btn_export_html_ch.gif)");
+        });
+
+        $j('#btnExportHTML').mouseout();
+
+        $j('#btnExportText').mouseover(function() {
+            if (!isMobileDevice()) {
+                hoveringExportType = "text";
+                $j('#btnExportText').css("background-image", "url(images/btn_export_text_on_ch.gif)");
+            }
+        }).mouseout(function() {
+            hoveringExportType = null;
+            $j('#btnExportText').css("background-image", "url(images/btn_export_text_ch.gif)");
+        });
+
+        $j('#btnExportText').mouseout();
+
+        $j('#btnExportHTML').click(function(e) {
+            e.preventDefault();
+            if (browser.indexOf('msie') > -1 || (browserAppVer && browserAppVer.indexOf('Trident/') > -1)) {
+                if (isAlreadyMouseDown) {
+                    isAlreadyMouseDown = false;
+                    return false;
+                }
+            }
+            sendExtendSessionRequest();
+            fileExport('html');
+            exportFile();
+            return false;
+        });
+        $j('#btnExportText').click(function(e) {
+            e.preventDefault();
+            if (browser.indexOf('msie') > -1 || (browserAppVer && browserAppVer.indexOf('Trident/') > -1)) {
+                if (isAlreadyMouseDown) {
+                    isAlreadyMouseDown = false;
+                    return false;
+                }
+            }
+            sendExtendSessionRequest();
+            fileExport('txt');
+            exportFile();
+            return false;
+        });
+
+        $j('#export-warp').mouseover(function() {
+            showDiv('saveDiv', 1);
+        }).mouseout(function() {
+            showDiv('saveDiv', 0);
+        }).blur(function() {
+            hoveringExportType = null;
+            if (browser.indexOf('msie 9') > -1 || browser.indexOf('msie 8') > -1) {
+                setTimeout("if($j('#export-warp').is(':visible')){exportFile();}", 300);
+            } else {
+                if ($j('#export-warp').is(':visible')) {
+                    exportFile();
+                }
+            }
+        });
+
+        // handle ie issue
+        if (browser.indexOf('msie') > -1 || (browserAppVer && browserAppVer.indexOf('Trident/') > -1)) {
+            var targetHover = null;
+            $j('#export-warp').mousedown(function(e) {
+                targetHover = hoveringExportType;
+                if (targetHover != null) {
+                    e.preventDefault();
+                    isAlreadyMouseDown = true;
+                    if (targetHover == "html") {
+                        sendExtendSessionRequest();
+                        fileExport('html');
+                        exportFile();
+                    } else if (targetHover == "text") {
+                        sendExtendSessionRequest();
+                        fileExport('txt');
+                        exportFile();
+                    }
+                    return false;
+                }
+            });
+
+        }
+
+    });
+    </script>
+</head>
+
+<body oncontextmenu="return false" onkeydown="return onKeyDown(event);" style="background-color: rgb(183, 191, 200);" scroll="auto" onload="AcctStmtPageOnload();">
+    <iframe id="printf" src="print.html" width="1px" height="1px" style="padding:0px;border:0px"></iframe>
+    <table class="noPrint" width="790px" height="99%" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td height="100%" valign="top" style="padding:9px 7px 9px 7px;">
+                    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td width="3" height="100%" valign="top">
+                                    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="3" height="6">
+                                                    <img src="images/popup_shadow_top_l.gif" width="3" height="6">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="images/spacer.gif" width="3" height="1">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="3" height="6">
+                                                    <img src="images/popup_shadow_btm_l.gif" width="3" height="6">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td height="100%">
+                                    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                            <tr>
+                                                <td bgcolor="#b1b8c1">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td width="3">
+                                                                    <img src="images/popup_shadow_top_l2.gif" width="3" height="1">
+                                                                </td>
+                                                                <td>
+                                                                    <img src="images/spacer.gif" width="1" height="1">
+                                                                </td>
+                                                                <td width="3">
+                                                                    <img src="images/popup_shadow_top_r2.gif" width="3" height="1">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="100%" valign="top" bgcolor="#ffffff" style="border-top: 2px solid #FFDE00; border-bottom: 2px solid #FFDE00; padding:7px;">
+                                                    <div id="popupHeader">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="topTitleBar">
+                                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td width="1" style="padding-right:10px;">
+                                                                                                        <img src="images/stroke_yellow.gif">
+                                                                                                    </td>
+                                                                                                    <td class="titleWhite" id="asTitle" nowrap="">戶口紀錄</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding:2px 0px 4px 0px">
+                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="border-top:1px solid #E8E9EA; background-color:#FFFFFF;">
+                                                                                        <img src="images/spacer.gif" width="1" height="1">
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td height="30" style="background:url(images/popup_nav_bg.gif) repeat-x;">
+                                                                                        <table border="0" cellspacing="0" cellpadding="0">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td align="center" style="padding:0px 16px 0px 16px; font-weight:bold;">
+                                                                                                        <a href="javascript:OnClickType(0);" class="popupNav">過去30天戶口紀錄</a>
+                                                                                                        <a href="javascript:;" style="cursor:help;">
+                                                                                                            <img src="images/icon_help.gif" id="pic_help" onclick="OnClickHelp(0)" hspace="3" border="0" align="absmiddle" style="margin-bottom:3px;" title="戶口紀錄示範">
+                                                                                                        </a>
+                                                                                                    </td>
+                                                                                                    <td width="1">
+                                                                                                        <img src="images/popuo_stroke_gray.gif" width="1" height="14">
+                                                                                                    </td>
+                                                                                                    <td align="center" style="padding:0px 16px 0px 16px; ">
+                                                                                                        <a href="javascript:OnClickType(1);" class="popupNav">是次交易紀錄</a>
+                                                                                                    </td>
+                                                                                                    <td width="1">
+                                                                                                        <img src="images/popuo_stroke_gray.gif" width="1" height="14">
+                                                                                                    </td>
+                                                                                                    <td align="center" style="padding:0px 16px 0px 16px; ">
+                                                                                                        <a href="javascript:OnClickType(2);" class="popupNav">複查已納入彩池及轉賬交易</a>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td style="border-bottom:1px solid #E8E9EA; background-color:#FFFFFF;">
+                                                                                        <img src="images/spacer.gif" width="1" height="1">
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <table id="accStmtSearchBox" width="100%" border="0" cellspacing="0" cellpadding="0" class="grayBg" style="display:block;padding:7px 15px 1px 15px; border-top:2px solid #003B7F;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td width="30" class="content">
+                                                                                    <input id="DateType1" name="DateType" type="radio" value="0" checked="">
+                                                                                </td>
+                                                                                <td class="content" colspan="3" style="white-space:nowrap;">
+                                                                                    <label for="radio_1">
+                                                                                        <span id="asToday">今日戶口紀錄</span>
+                                                                                    </label>
+                                                                                </td>
+                                                                                <td width="100" class="content" align="right" style="padding-right:1px;white-space:nowrap">
+                                                                                    <span id="asTxnType">交易種類</span>&nbsp;:</td>
+                                                                                <td class="content" width="220px">
+                                                                                    <select class="select" style="width:220px;" id="BetType" onchange="ChangeBetType()" name="BetType">
+                                                                                        <option value="0">賽馬</option>
+                                                                                        <option value="1">足球</option>
+                                                                                        <option value="2">六合彩</option>
+                                                                                        <option value="4">其他</option>
+                                                                                        <option value="3">所有投注種類</option>
+                                                                                        <option value="5">自動轉賬存款紀錄</option>
+                                                                                    </select>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="content">
+                                                                                    <input id="DateType2" name="DateType" type="radio" value="1">
+                                                                                </td>
+                                                                                <td class="content" style="white-space:nowrap; width:14px">
+                                                                                    <label for="radio_2">
+                                                                                        <span id="asFrom">由</span> :</label>
+                                                                                </td>
+                                                                                <td class="content" style="white-space:nowrap; width:14px">
+                                                                                    <label for="radio_2">
+                                                                                        <span id="asFromDay">日</span>
+                                                                                    </label>
+                                                                                </td>
+                                                                                <td class="content" style="padding-right:10px;white-space:nowrap">
+                                                                                    <select class="select" style="width:40px;" id="frm_dd1" name="frm_dd1" onchange="$(&#39;DateType2&#39;).checked = true;">
+                                                                                        <option value="1">1</option>
+                                                                                        <option value="2">2</option>
+                                                                                        <option value="3">3</option>
+                                                                                        <option value="4">4</option>
+                                                                                        <option value="5">5</option>
+                                                                                        <option value="6">6</option>
+                                                                                        <option value="7">7</option>
+                                                                                        <option value="8">8</option>
+                                                                                        <option value="9">9</option>
+                                                                                    </select>/
+                                                                                    <span id="asFromMonth">月</span>
+                                                                                    <select class="select" style="width:40px;" id="frm_mm1" name="frm_mm1" onchange="resetDay(1,1)">
+                                                                                        <option value="11">11</option>
+                                                                                        <option value="12">12</option>
+                                                                                    </select>/
+                                                                                    <span id="asFromYear">年</span>
+                                                                                    <select class="select" id="frm_yyyy1" name="frm_yyyy1" onchange="resetDay(2,1)">
+                                                                                        <option value="2016">2016</option>
+                                                                                    </select>
+                                                                                </td>
+                                                                                <td class="content" align="right" style="padding-right:1px;">
+                                                                                    <span id="asDisplayType">顯示種類</span>&nbsp;:</td>
+                                                                                <td class="content">
+                                                                                    <select class="select" style="width:220px;" id="TransType" onchange="ChangeTransType()" name="TransType">
+                                                                                        <option value="0">已派彩/已退款/已回扣之交易</option>
+                                                                                        <option value="1">所有</option>
+                                                                                    </select>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="content" style="white-space:nowrap">&nbsp;</td>
+                                                                                <td class="content">
+                                                                                    <label for="radio_2">
+                                                                                        <span id="asTo">至</span> :</label>
+                                                                                </td>
+                                                                                <td class="content">
+                                                                                    <label for="radio_2">
+                                                                                        <span id="asTo_Day">日</span>
+                                                                                    </label>
+                                                                                </td>
+                                                                                <td class="content">
+                                                                                    <select class="select" style="width:40px;" id="frm_dd2" name="frm_dd2" onchange="$(&#39;DateType2&#39;).checked = true;">
+                                                                                        <option value="1">1</option>
+                                                                                        <option value="2">2</option>
+                                                                                        <option value="3">3</option>
+                                                                                        <option value="4">4</option>
+                                                                                        <option value="5">5</option>
+                                                                                        <option value="6">6</option>
+                                                                                        <option value="7">7</option>
+                                                                                        <option value="8">8</option>
+                                                                                        <option value="9">9</option>
+                                                                                    </select>/
+                                                                                    <span id="asToMonth">月</span>
+                                                                                    <select class="select" style="width:40px;" id="frm_mm2" name="frm_mm2" onchange="resetDay(1,2)">
+                                                                                        <option value="11">11</option>
+                                                                                        <option value="12">12</option>
+                                                                                    </select>/
+                                                                                    <span id="asToYear">年</span>
+                                                                                    <select class="select" id="frm_yyyy2" name="frm_yyyy2" onchange="resetDay(2,2)">
+                                                                                        <option value="2016">2016</option>
+                                                                                    </select>
+                                                                                </td>
+                                                                                <td width="100" class="content" align="right" style="padding-right:1px;white-space:nowrap">&nbsp;</td>
+                                                                                <td class="content">&nbsp;</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="content">
+                                                                                    <input id="DateType3" name="DateType" type="radio" value="2" style="display: none;">
+                                                                                </td>
+                                                                                <td class="content" style="white-space:nowrap" colspan="4">
+                                                                                    <span id="seekLastDay" style="display: none;">最&nbsp;&nbsp;近</span>
+                                                                                    <select class="select" style="width: 50px; display: none;" id="last_days" onchange="$(&#39;DateType3&#39;).checked = true;">
+                                                                                        <option value="8" selected="selected">8</option>
+                                                                                        <option value="15">15</option>
+                                                                                        <option value="30">30</option>
+                                                                                    </select>
+                                                                                    <span id="seekUnit" style="display: none;">日</span>
+                                                                                    <span id="asSelDtRange" style="display: inline;">(每次最多可搜尋過去30天內其中8天。)</span>
+                                                                                </td>
+                                                                                <td align="right" valign="bottom" class="content">
+                                                                                    <a style="cursor:hand;" onclick="InitStmt();" onmouseout="loadMouseEventImage('pic_ok', 'pic_ok');" onmouseover="loadMouseEventImage('pic_ok', 'pic_ok_on');">
+                                                                                        <img id="pic_ok" border="0" src="images/btn_ok_ch.gif" title="確定">
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:2px solid #003B7F;">
+                                                        <tbody>
+                                                            <tr class="yellowBar">
+                                                                <td class="content" id="txtPageNum"></td>
+                                                                <td align="right">
+                                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="content" style="padding-right:20px;">
+                                                                                    <span id="txtDateTime">時間: 09/12/2016 11:07</span>
+                                                                                </td>
+                                                                                <td class="content" style="padding-right:20px;">
+                                                                                    <span id="txtAccNo">投注戶口: 15339692</span>
+                                                                                </td>
+                                                                                <td class="content">
+                                                                                    <span id="txtAccBal">結餘: <strong>$265.80</strong></span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div id="stmtMsg" style="POSITION:absolute; DISPLAY:none; WIDTH:500px; HEIGHT:216px; LEFT:100px; TOP:250px; text-align:center" class="content"></div>
+                                                    <div id="stmtHeader" style="display:none"></div>
+                                                    <div id="stmtTable" style="overflow: hidden; width: 100%; height: 248px;"></div>
+                                                    <table id="accStmtResultButton" width="100%" border="0" cellspacing="0" cellpadding="0" style="display:none">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td height="1" style="padding: 10px 15px 3px 15px; BORDER-TOP: #003b7f 2px solid">
+                                                                    <div style="POSITION:absolute">
+                                                                        <div style="BORDER-RIGHT:#cccccc 1px solid; padding:7px 10px 7px 10px; BORDER-TOP:#cccccc 1px solid; DISPLAY:none; LEFT:359px; BORDER-LEFT:#cccccc 1px solid; WIDTH:310px; height:30px; BORDER-BOTTOM:#cccccc 1px solid; POSITION:absolute; TOP:-81px" class="yellowBar" id="saveDiv">只匯出本頁所顯示的交易紀錄。如要匯出全部紀錄，請到最後一頁按匯出檔案。</div>
+                                                                        <div style="BORDER-RIGHT:#cccccc 1px solid; padding:7px 10px 7px 10px; BORDER-TOP:#cccccc 1px solid; DISPLAY:none; LEFT:359px; BORDER-LEFT:#cccccc 1px solid; WIDTH:310px; height:30px; BORDER-BOTTOM:#cccccc 1px solid; POSITION:absolute; TOP:-81px" class="yellowBar" id="printDiv">只列印本頁所顯示的交易紀錄。如要列印全部紀錄，請到最後一頁按列印。</div>
+                                                                    </div>
+                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td align="left">
+                                                                                    <a href="javascript:;" onclick="top.close();" onmouseout="loadMouseEventImage(&#39;pic_close&#39;, &#39;pic_close&#39;);" onmouseover="loadMouseEventImage(&#39;pic_close&#39;, &#39;pic_close_on&#39;);">
+                                                                                        <img id="pic_close" border="0" src="images/btn_close_ch.gif" title="關閉">
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td align="right">
+                                                                                    <table border="0" cellspacing="0" cellpadding="0" style="float:right">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td id="btnSearch" style="cursor:hand;" onclick="openSearchBox();" onmouseout="loadMouseEventImage(&#39;pic_search&#39;, &#39;pic_search&#39;);" onmouseover="loadMouseEventImage(&#39;pic_search&#39;, &#39;pic_search_on&#39;);">
+                                                                                                    <img id="pic_search" border="0" src="images/btn_search_ch.gif" title="重新搜尋">
+                                                                                                </td>
+                                                                                                <td id="btnPrint" style="cursor:hand;" onclick="printPage();" onmouseout="loadMouseEventImage(&#39;pic_print&#39;, &#39;pic_print&#39;); showDiv(&#39;printDiv&#39;, 0);" onmouseover="loadMouseEventImage(&#39;pic_print&#39;, &#39;pic_print_on&#39;); showDiv(&#39;printDiv&#39;, 1);">
+                                                                                                    <img id="pic_print" hspace="3" border="0" src="images/btn_print_ch.gif" title="列印">
+                                                                                                </td>
+                                                                                                <td style="position:relative;">
+                                                                                                    <div id="export-warp" tabindex="-1">
+                                                                                                        <div id="btnExportHTML" style="background-image: url(&quot;images/btn_export_html_ch.gif&quot;);"></div>
+                                                                                                        <div id="btnExportText" style="background-image: url(&quot;images/btn_export_text_ch.gif&quot;);"></div>
+                                                                                                    </div>
+                                                                                                    <div id="btnExport" style="cursor:hand;" onclick="exportFile()" onmouseout="loadMouseEventImage(&#39;pic_save&#39;, &#39;pic_save&#39;); showDiv(&#39;saveDiv&#39;, 0);" onmouseover="loadMouseEventImage(&#39;pic_save&#39;, &#39;pic_save_on&#39;); showDiv(&#39;saveDiv&#39;, 1);">
+                                                                                                        <img id="pic_save" hspace="3" border="0" src="images/btn_export_ch.png" title="匯出檔案">
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td id="btnPrevPage" style="cursor:hand;" onclick="goPrevPage();" onmouseout="if ( g_page_num&gt;1 ) loadMouseEventImage(&#39;pic_prev&#39;, &#39;pic_prev&#39;);" onmouseover="if ( g_page_num&gt;1 ) loadMouseEventImage(&#39;pic_prev&#39;, &#39;pic_prev_on&#39;);">
+                                                                                                    <img id="pic_prev" hspace="3" border="0" src="images/btn_prev_ch.gif" title="上一頁">
+                                                                                                </td>
+                                                                                                <td id="btnNextPage" style="cursor:hand;" onclick="goNextPage();" onmouseout="if ( showNextPage ) loadMouseEventImage(&#39;pic_next&#39;, &#39;pic_next&#39;);" onmouseover="if ( showNextPage ) loadMouseEventImage(&#39;pic_next&#39;, &#39;pic_next_on&#39;);">
+                                                                                                    <img id="pic_next" border="0" src="images/btn_next_off_ch.gif" title="下一頁">
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td bgcolor="#b1b8c1">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td width="3">
+                                                                    <img src="images/popup_shadow_btm_l2.gif" width="3" height="1">
+                                                                </td>
+                                                                <td>
+                                                                    <img src="images/spacer.gif" width="1" height="1">
+                                                                </td>
+                                                                <td width="3">
+                                                                    <img src="images/popup_shadow_btm_r2.gif" width="3" height="1">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="3" height="100%" valign="top">
+                                    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="3" height="6">
+                                                    <img src="images/popup_shadow_top_r.gif" width="3" height="6">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <img src="images/spacer.gif" width="3" height="1">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="3" height="6">
+                                                    <img src="images/popup_shadow_btm_r.gif" width="3" height="6">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

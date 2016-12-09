@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://bet.hkjc.com/football/default.aspx -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE10">
+    <meta name="application-name" content="">
+    <title>香港馬會足球博彩有限公司</title>
+    <script type="text/javascript" src="js/secure.js"></script>
+    <script type="text/javascript" src="js/default.js"></script>
+    <script type="text/javascript">
+    chkHiJack();
+    </script>
+    <link rel="icon" href="http://bet.hkjc.com/football/favicon.ico?CV=L206R1b" type="image/x-icon">
+    <link rel="shortcut icon" href="http://bet.hkjc.com/football/favicon.ico?CV=L206R1b" type="image/x-icon">
+    <link rel="apple-touch-icon" href="http://bet.hkjc.com/ContentServer/jcbw/apple_touch_icons/icon_60x60.png?CV=L206R1b">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://bet.hkjc.com/ContentServer/jcbw/apple_touch_icons/icon_76x76.png?CV=L206R1b">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://bet.hkjc.com/ContentServer/jcbw/apple_touch_icons/icon_120x120.png?CV=L206R1b">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://bet.hkjc.com/ContentServer/jcbw/apple_touch_icons/icon_152x152.png?CV=L206R1b">
+    <link type="text/css" href="css/jquery-ui-1.8.20.custom.css" rel="stylesheet">
+    <style>
+    body {
+        height: 100%;
+        overflow: hidden;
+    }
+    </style>
+    <script type="text/javascript" src="js/clientfx.js"></script>
+    <script type="text/javascript" src="js/defaultLang.js"></script>
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        main();
+    });
+    </script>
+    <script language="JavaScript" type="text/javascript">
+    var status = "poll";
+    var racingEmsStatus = 1;
+    var matchEmsStatus = 1;
+    </script>
+</head>
+
+<body style="margin: 0px 0px 0px 0px;" scroll="no">
+    <div id="div_engine" style="position:absolute"></div>
+    <noscript>&lt;iframe src="*.html"&gt;&lt;/iframe&gt;</noscript>
+    <iframe src="index.html" frameborder="0" marginwidth="0" marginheight="0" id="info" name="info" width="100%" height="100%" onload="addMousedownEvent(&#39;info&#39;);"></iframe>
+    <iframe src="XAgent.html" frameborder="0" marginwidth="0" marginheight="0" id="xsellFrame" name="xsellFrame" width="0" height="0"></iframe>
+    <div id="iframeDisplay" style="display: block">
+        <iframe id="betSlipFrame" name="betSlipFrame" src="index(3).html" allowtransparency="true" style="position: absolute; top: 23px; left: 496px; width: 500px; height: 555px; z-index: 2;" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        <div id="betSlipFrame2" allowtransparency="true" scrolling="no" style="position: absolute;top: 39px; left: 775px; width: 187px; height: 50px; z-index: 1; display: none">
+            <div id="alt_bsloading_img">
+                <img id="bs_loading_faq_img" src="images/betslip_loading.gif" border="0">
+            </div>
+            <div id="alt_bsloading_faq">
+                <a href="http://is.hkjc.com/jcbw/ekba/faq/silverlightFAQC.asp">
+                    <img id="bs_loading_faq_img_tips" src="images/betslip_loading_text.gif" border="0">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="dialog" class="dialog">
+        <div class="message"></div>
+    </div>
+    <script type="text/javascript">
+    var uAgent = navigator.userAgent.toUpperCase();
+    var isMobileUSer = uAgent.indexOf('APPLEWEBKIT') >= 0 && uAgent.indexOf('MOBILE') >= 0 && (uAgent.indexOf('IPHONE') >= 0 || uAgent.indexOf('IPAD') >= 0 || uAgent.indexOf('IPOD') >= 0 || uAgent.indexOf('ANDROID') >= 0);
+    if (screen.width < 1024 || isMobileUSer) {
+        var alt_bsloading_faq = document.getElementById("alt_bsloading_faq");
+        alt_bsloading_faq.style.display = "none";
+        document.getElementById("alt_bsloading_img").style.display = "none";
+    }
+
+    var tmp = window.location.href.substr(7);
+    var SERVER_NAME = tmp.substr(0, tmp.indexOf("/"));
+    var domainName = SERVER_NAME.substr(SERVER_NAME.indexOf(".") + 1);
+    document.domain = domainName;
+    if (self != top) {
+        top.location.replace(self.location.href);
+    }
+    var showMode = "0";
+
+    if (/(iPad|iPhone)/g.test(navigator.userAgent)) {
+        document.body.style.height = "100%";
+        document.body.style.overflow = "auto";
+    }
+    showMode = "1";
+    if (screen.width < 1024 && screen.height < 768)
+        showMode = "2";
+    if (screen.width >= 1024 && screen.height < 768)
+        showMode = "3";
+    if (isMobileUSer) {
+        showMode = "3";
+    }
+    if (showMode == "1" || showMode == "3") {
+        $("#iframeDisplay").css({
+            'display': 'block'
+        });
+    } else if (showMode == "2") {
+        if (!isMobile()) {
+            $("#betSlipFrame").css({
+                'left': '560'
+            });
+            $("#betSlipFrame").css({
+                'top': '24'
+            });
+            $("#betSlipFrame2").css({
+                'left': '560'
+            });
+            $("#betSlipFrame2").css({
+                'top': '24'
+            });
+            $("#iframeDisplay").css({
+                'display': 'block'
+            });
+        }
+    }
+
+    function main() {}
+
+    //    var safecount = 0 ;
+    function changeBetslipLang(value) {
+        var count = 1000 * 60;
+        var interval = 200;
+        var changeSucc = true;
+        (function() {
+            if (count > 0) {
+                count -= interval;
+                if (top.betSlipFrame.isLoaded) {
+                    try {
+                        var succ = top.betSlipFrame.chgLang(value);
+                        changeSucc = changeSucc && (succ == 1);
+                        if (changeSucc == false)
+                            return;
+                    } catch (ex) {}
+                }
+                var args = arguments;
+                setTimeout(function() {
+                    args.callee(value);
+                }, interval);
+            }
+        })();
+    }
+
+    function getOffsetTime() {
+        return 0;
+    }
+
+    function getLanguage() {
+        var curLang = getUserLang() == "en" ? 0 : 1;
+        return curLang;
+    }
+
+
+    function getUserLang() {
+        var qs = $$.queryString();
+        var qsLang = qs["lang"];
+        var ckLang = $$.cookie("jcbwLangPreference");
+        var lang =
+            qsLang == "en" ? "en" : qsLang == "ch" ? "ch" : ckLang == "en" ? "en" : ckLang == "ch" ? "ch" : ckLang == "0" ? "en" : ckLang == "1" ? "ch" : "ch";
+        return lang;
+    }
+
+    function getMinBetStr() {
+        return ';ADT:10;CHL:10;CHP:10;CRS:10;DHC:10;FCS:10;FGS:10;FHA:10;FHL:10;FTS:10;GPF:10;GPW:10;HAD:10;HDC:200;HFM:10;HFT:10;HHA:10;HIL:10;NTS:10;OOE:10;SPC:10;TOF:10;TPS:10;TQL:10;TTG:10;ALUPX:10;JKC:10';
+    }
+
+    var lang = getUserLang();
+    var infoFrame = $$.$("info");
+    var bs_loading_faq_img = $$.$("bs_loading_faq_img");
+    var bs_loading_faq_img_tips = $$.$("bs_loading_faq_img_tips");
+
+    var oldLang = lang == "en" ? "ch" : "en";
+    var url = infoFrame.src;
+    url = url.replace("lang=" + oldLang, "lang=" + lang);
+    infoFrame.src = url;
+    bs_loading_faq_img.src = bs_loading_faq_img.src.replace("/" + oldLang, "/" + lang);
+    bs_loading_faq_img_tips.src = bs_loading_faq_img_tips.src.replace("/" + oldLang, "/" + lang);
+
+    var xsellurl = "http://xsell.hkjc.com/xsell/client/XAgent.aspx";
+
+    //*********For mobile popup only**********
+    //For the chinese characters which convert to Unicode 
+    //Reference : http://www.mikezilla.com/exp0012.html
+    $(document).ready(function() {
+        var isMobileSplashScreenEnable = true;
+        var isAppsPopupEnable = true;
+        var hasAccessBefore = ($$.queryString()["b"] == "1") || ($.cookie("accessed") == "1");
+        var hasAccessBeforeXP = ($$.queryString()["b"] == "1") || ($.cookie("accessedXP") == "1");
+
+        var redirectPath = "/";
+        if (window.location.href.indexOf("racing") > -1) {
+            redirectPath = "r";
+        } else if (window.location.href.indexOf("marksix") > -1) {
+            redirectPath = "m";
+        } else if (window.location.href.indexOf("football") > -1) {
+            redirectPath = "f";
+        }
+        var isMobileRedirectionEnable = false;
+        var isWinXP = navigator.userAgent.toLowerCase().indexOf('windows nt 5.1') > 0;
+        var isIE67 = (typeof sessionStorage == "undefined");
+        var isCheckWinXPEnable = true;
+        var isCheckIe67Enable = true;
+
+        if (isMobile() && isMobileSplashScreenEnable && isAppsPopupEnable) {
+            if (!hasAccessBefore) {
+                window.location = "http://is.hkjc.com/jcbw/SplashScn/mobile/js_ewin/Mass/ch.asp?redirect=" + redirectPath;
+            } else {
+                if ($$.queryString()["b"] == "1") {
+                    $.cookie("accessed", "1", {
+                        expires: 1000,
+                        path: '/',
+                        domain: domain
+                    });
+                }
+                if ($$.queryString()["lang"] == "en" || $$.queryString()["lang"] == "ch") {
+                    var domain = "." + location.hostname.split(".").slice(-2).join(".");
+                    $.cookie("jcbwLangPreference", ($$.queryString()["lang"] == "en" ? "0" : "1"), {
+                        expires: 1000,
+                        path: '/',
+                        domain: domain
+                    });
+                }
+                document.getElementById("betSlipFrame").src = "index(3).html";
+            }
+        } else if (isMobile() && isMobileRedirectionEnable) {
+            document.getElementById("betSlipFrame").src = "index(3).html";
+        } else if (isWinXP && isCheckWinXPEnable && !hasAccessBeforeXP) {
+            $.cookie("accessedXP", "1", {
+                expires: parseInt(7),
+                path: '/',
+                domain: domain
+            });
+            window.location = "http://is.hkjc.com/jcbw/SplashScn/WindowsXP/Mass/ch.asp";
+        } else if (isIE67 && isCheckIe67Enable && !hasAccessBefore) {
+            window.location = "http://is.hkjc.com/jcbw/SplashScn/legacy/Mass/ch.asp";
+        } else {
+            document.getElementById("betSlipFrame").src = "index(3).html";
+        }
+
+        return false;
+    });
+
+    if (isMobile()) {
+        $('#info').width('104%');
+        $('#info').height('104%');
+    }
+
+    window.onorientationchange = function(event) {
+        setTimeout(
+            function() {
+                top.betSlipFrame.OrientationChanged();
+            }, 500);
+    }
+    </script>
+    <!-- JW: ODDS PUSH -->
+    <!--<iframe name="SLD_LSCONTAINER" id="SLD_LSCONTAINER" src="engine_container.html" width="100" height="100" border="0" frameborder="0" marginwidth="0" marginheight="0" noresize scrolling="no" />-->
+</body>
+
+</html>
