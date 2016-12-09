@@ -68,12 +68,12 @@
     var showNextPage = false;
 
     var svrDate = new Date(2016, 12 - 1, 9,
-        11, 7, 33);
+        17, 37, 23);
 
-    var last8 = new Date(2016, 12 - 1, 2, 11, 7, 33);
-    var last15 = new Date(2016, 11 - 1, 25, 11, 7, 33);
-    var last30 = new Date(2016, 11 - 1, 10, 11, 7, 33);
-    var last60 = new Date(2016, 10 - 1, 11, 11, 7, 33);
+    var last8 = new Date(2016, 12 - 1, 2, 17, 37, 23);
+    var last15 = new Date(2016, 11 - 1, 25, 17, 37, 23);
+    var last30 = new Date(2016, 11 - 1, 10, 17, 37, 23);
+    var last60 = new Date(2016, 10 - 1, 11, 17, 37, 23);
 
 
     var g_DateTime;
@@ -119,10 +119,10 @@
 
         if ($j('#export-warp').is(':visible')) {
             /*
-     if(browser.indexOf('msie 9') > -1 || browser.indexOf('msie 8') > -1) {
-      $j("#export-warp").animate({height: "1px"}, {duration: "slow", complete: function() {$j("#export-warp").hide().css("height", "")}});
-     } else {
-     */
+         if(browser.indexOf('msie 9') > -1 || browser.indexOf('msie 8') > -1) {
+          $j("#export-warp").animate({height: "1px"}, {duration: "slow", complete: function() {$j("#export-warp").hide().css("height", "")}});
+         } else {
+         */
             $j("#export-warp").slideUp("slow");
             // }
             $j("#saveDiv").css("top", -81);

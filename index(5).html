@@ -19,13 +19,11 @@
         margin: 0;
     }
     </style>
+    <!-- 添加動態參數 -->
     <script type="text/javascript" language="javascript">
     <!--
     window["cacheVersion"] = "?cv=L2.06R1";
     //-->
-    </script>
-    <script type="text/javascript">
-    document.domain = 'hkjc.com';
     </script>
     <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="js/proxy.js"></script>
@@ -39,40 +37,6 @@
     };
     </script>
     <script type="text/javascript" src="js/datastore_func1.js"></script>
-    <script type="text/javascript">
-    var fullDomain = 'bet_hongkongjockeyclub_com';
-    var isNowLogon = false;
-    var bwId = '634';
-    var asId = '00';
-    var BetSlipPath = 'http://txn01.hkjc.com/BetSlip/';
-    var BetSlipIBPath = 'https://txn01.hkjc.com/BetSlipIB/';
-    var JCBWPath = 'http://bet.hkjc.com/';
-    var JCBWLeagueFlagPath = 'http://bet.hkjc.com/nas/jcbwinfo/football/info/images/';
-    var enableMultiSession = 'false';
-    var enableMultiSlipPanel = 'false';
-    var byPassEOD = false;
-    var isMobileUser = isMobileDevice();
-
-    var registerAppTimer;
-    var init_fail = false;
-
-    var isLoaded = false;
-    var customerSegment = '';
-
-    var cMaxBetlines = 30; // stage 2a changes from 15 to 30, configurable in web.config
-    var cMaxBetBuffer = 982; // stage 2a changes from 470 to 982, configurable in web.config
-
-    var ssoEnabled = true;
-    var tightSSOCheck = true;
-
-    var enableEdit = 'false';
-    var editFamily = 'HB';
-    var preeditTimeout = '60';
-
-    var enableWebcastAccess = 'false' == 'true';
-    var SSOAuthen4WebcastURLArray = ['https://elogin.hkjc.com/api/SSOWeb/GetToken?UIC=en-US', 'https://elogin.hkjc.com/api/SSOWeb/GetToken?UIC=zh-HK '];
-    var fbWebTVURLArray = ['http://football.hkjc.com/football/football/football-live/football-live-player.aspx?ci=en-us', 'http://football.hkjc.com/football/football/football-live/football-live-player.aspx?ci=zh-hk'];
-    </script>
     <script type="text/javascript" src="js/common_util.js"></script>
     <script type="text/javascript" src="js/block_keys.js"></script>
     <script type="text/javascript" src="js/index_allup.js"></script>
@@ -90,250 +54,6 @@
     <script type="text/javascript" src="js/BetPreview.js"></script>
     <script type="text/javascript" src="js/WATrackPlugin.js"></script>
     <script type="text/javascript" src="js/mobile_util.js"></script>
-    <script type="text/javascript">
-    $j(function() {
-        proxy.init($j('#frmProxy')[0], {
-                SVC: {
-                    preExecCallback: function(returnVal) {
-                        //add values to data store
-                        if (returnVal.result == proxy.CONST_SUCCESS) {
-                            $j.each(returnVal.content, function(idx, value) {
-                                SetDataStore(idx, value);
-                            });
-                        }
-                    }
-                },
-                SESSION_STORE: new SessionStorePlugin(),
-                PRE_TXN: {
-                    exec: function(funcName, data, callback, formatter, source) {
-                        if ('PRE_TXN' == funcName) {
-                            if (data != undefined && typeof data.LoadDummy != 'undefined' && data.LoadDummy == 'true')
-                                PreTxn(true);
-                            else
-                                PreTxn(false);
-                        }
-                        callback(formatter(true, {}), source);
-                    },
-                    para: function() {
-                        return {
-                            PRE_TXN: ['LoadDummy']
-                        };
-                    }
-                },
-                BET_PREVIEW: new BetPreviewPlugin(),
-                WA_TRACK: new WATrackPlugin(),
-                SSO: {
-                    exec: function(funcName, data, callback, formatter, source) {
-                        if ('ReceiveAndProcessTicketExtendResults' == funcName)
-                            ReceiveAndProcessTicketExtendResults(data.LastExtendStatus, data.LastExtendError, data.CheckStatus, data.SignInLevel, data.SsoWebID, data.SsoGUID);
-                        callback(formatter(true, {}), source);
-                    },
-                    para: function() {
-                        return {
-                            ReceiveAndProcessTicketExtendResults: ['LastExtendStatus', 'LastExtendError', 'CheckStatus', 'SignInLevel', 'SsoWebID', 'SsoGUID']
-                        };
-                    }
-                },
-                PING: {
-                    exec: function(funcName, data, callback, formatter, source) {
-                        if ('FrameLoaded' == funcName && data.FrameName == 'proxy') {
-                            proxyFrameLoaded = true;
-                        }
-                        callback(formatter(true, {}), source);
-                    },
-                    para: function() {
-                        return {
-                            FrameLoaded: ['FrameName']
-                        };
-                    }
-                },
-                REFRESH_BAL: {
-                    exec: function(funcName, data, callback, formatter, source) {
-                        if ('RefreshAccBal' == funcName) {
-                            if (isIDevice()) {
-                                //fix isbusy flag is not reset due the sendbalance callback is execute when the frame is not focus in iDevice
-                                setTimeout(function() {
-                                    if (data.ForceRefresh == 'true')
-                                        sendBalanceRequest(true);
-                                    else
-                                        sendBalanceRequest(false);
-                                }, 0);
-                            } else {
-                                if (data.ForceRefresh == 'true')
-                                    sendBalanceRequest(true);
-                                else
-                                    sendBalanceRequest(false);
-                            }
-                            callback(formatter(true, {}), source);
-                        }
-                    },
-                    para: function() {
-                        return {
-                            RefreshAccBal: ['ForceRefresh']
-                        };
-                    }
-                }
-            },
-            "https://txn01.hkjc.com", ["https://txn01.hkjc.com"]
-        );
-
-
-    });
-
-
-
-
-    var loadBetSlipFrameRetry = 0;
-
-
-    var count_init = 0;
-
-    function loadIframe(target, url) {
-        $j('#' + target).attr('src', url);
-    }
-
-    function loadIframes() {
-        $j.when(loadIframe('previewFrame', 'https://txn01.hkjc.com/BetSlipIB/SlipBetPreview.aspx?lang=' + GetLanguage()))
-            .then(loadIframe('popupFrame', 'https://txn01.hkjc.com/BetSlipIB/popup.aspx?lang=' + GetLanguage()));
-    }
-
-    function init() {
-        betslipFrame = $j('#betSlipFrame', window.top.document)[0];
-        try {
-            initLeft = parseInt(betslipFrame.style.left);
-            initTop = parseInt(betslipFrame.style.top);
-        } catch (e) {
-            initLeft = 0;
-            initTop = 0;
-        }
-        slip.startTopBSL = initLeft;
-
-        $j('#frmProxy').attr('src', 'https://txn01.hkjc.com/BetSlipIB/proxy.aspx');
-        setActiveStyleSheet(this);
-
-        var betSlipFrame = $$("frame:betSlipFrame");
-        betSlipFrame.style({
-            visibility: ""
-        });
-
-
-        InitDataStore();
-
-        try {
-            var loadingFrame = $$("frame:betSlipFrame2");
-            loadingFrame.display(false);
-        } catch (err) {}
-
-        //    if (!IsSupportBrowser()) {
-        //        init_fail = true;
-        //        return;
-        //    }
-
-        loadPara('|||HCSPp###0|||XWINp###1|||FlexiBet_qttp###1|||FORp###1|||WeiBop###0|||AXHFTp###1|||GBmt3p###0|||ShowHBWelcomeMessage###1|||XCWp###1|||AXFTSp###1|||AHADp###1|||FlexiBet_alupp###1|||FlexiBet_ttp###1|||eWinASDetection###192.168.119.116|||MLCSoundAlertEnabled###0|||AXTTGp###1|||SBRegisterIdx###0|||GlobalMaxTransferLimit###0.000000000000000e+000|||AOOEp###1|||ELVAButtons###1|||OnlineStmtRecPerPage###10|||FlexiBet_dblp###0|||HILp###1|||CHJCIntegration###0|||InPlaySpecial###0|||CurKeyGenDate###2016-12-06T02:00:00.970|||FlexiBet###1|||RCyclep###1|||AGPFp###1|||DHCPp###1|||ACRSp###1|||HFMP6p###1|||ELVAMessageID###0|||tblp###1|||AHILp###1|||AFGSp###1|||TBMaxDeposit###500000|||XPLAp###1|||eWinGWDetection###192.168.119.117|||dblp###1|||EFTReplyTimeout###16|||XHDCp###1|||MainPageLoadingTime###0|||MinGBNo###61|||ffp###1|||FlexiBet_winp###0|||AnchorsDisplaying###0|||FlexiBet_ffp###1|||BetReplyXSellMsgOption###1|||InitPage###1|||CRSPp###0|||AXFGSp###1|||MLCEnabled###0|||HHAp###1|||GoldballGame###0|||TTGp###1|||FaceBKp###1|||GBexnp###0|||ChHWp###1|||OnlineStatTimeFrame###8|||Emailp###0|||SessionIdleTime###30|||BannerHyperlink###0|||eWinMDDetection###1|||ANTSp###1|||OnlineStatTimeFrame4SpeedBet###30|||AXFCRSp###1|||AbsMK6Min###47|||WarningTimeout###2|||LSCMainEnabled###0|||plap###1|||HFMP8p###0|||XHHADp###1|||AFTSp###1|||B_Wp###0|||PreKeyGenDate###2016-12-05T02:00:00.537|||AXFHILp###1|||STB###0|||FlexiBet_trip###1|||CHLp###1|||AllowRegistration###1|||Mk6ByProdMulti###1|||InitPageDefault###0|||IsEnablePPSG###1|||GPWp###1|||cwp###1|||mhgp###0|||AXWinPla###1|||LSCEnabled###0|||MaxTransferLimit###0.000000000000000e+000|||BWCp###0|||Mk6PartialUnitBetAmount###5|||HFTPp###0|||TBMinDeposit###300|||XFB###1|||MLCSoundAlertUiAvailable###0|||BetReplyXSellMsgTimeout###5|||MaxBetUnit###999999|||Mk6DefaultUnitBetAmount###10|||MLCKeepAwakeUiAvailable###0|||AXCHLp###1|||FlexiBet_sixupp###1|||CRSp###1|||CHPPp###0|||XTRIp###0|||FlexiBet_qqpp###0|||DDATransferLowerRange###300|||QPTTGame20###1|||OddsRefreshInterval###60|||ExtraTime###1|||FaceBKOption###1|||CertExpiryWarningDays###30|||FlexiBet_qplp###0|||GPFp###1|||MLCRequireLogin###0|||MaxGBNo###88|||ChannelID###4|||AHAFUp###1|||DDATransferUpperRange###500000|||qplp###1|||MLCSpecificMatchEnabled###0|||GBougp###0|||MLCKeepAwakeEnabled###0|||AFHILp###1|||BetReplyTimeout###16|||FlexiBet_tcep###1|||IsEnabledDDA###1|||AHDCp###1|||NewUserDays###79|||AXCRSp###1|||Charge###1.000000000000000e+000|||JKCp###1|||HADp###1|||XRace###1|||InterXBWp###0|||AXNTSp###1|||MinutesAheadForAlert###5|||FlexiBet_plap###0|||RaceSimulator###0|||InPlay###1|||GBmhgp###0|||TBMaxAutoWithdrawal###999999|||LSCSpecificMatchEnabled###0|||CHPp###1|||FlexiBet_tblp###1|||qttp###1|||ShutDownTime###06:00|||exnp###0|||BetSuggestor###0|||CrossTourn###0|||MK6MultipleDraw###1|||mt3p###0|||AHHAp###1|||FBRaceSimulatorSharing###0|||AXFHADp###1|||TBMaxWithdrawal###50000|||HDCp###1|||OOEp###1|||THFPp###0|||ELVA###1|||TransferUpperRange###5.000000000000000e+004|||FlexiBet_qpttp###0|||MaxTransactionLimit###0|||eocp###0|||Speedmap###0|||BWDp###0|||Twitterp###0|||AbsMK6Max###49|||XB_Wp###0|||MK6SBDraw###1|||FlexiBet_dtp###1|||PreKey###00250216102515783|||EnterPassword###1|||qinp###1|||SBp###1|||tcep###1|||LastRunVideo###0|||XHADp###1|||FlexiBet_wpp###0|||mk6p###1|||BWBp###0|||Mk6TotalBetSpend###0|||FHADp###1|||InPlayDelaySec###0|||IsEnableProcessMR###1|||CurKey###0026021610237031|||FBAccountRecordsSharing###0|||MLCMainEnabled###0|||XQPLp###1|||InitPageStart###2012-04-26T06:31:00|||CAPDetection###1|||FCRSp###1|||wpp###1|||eWinLSDetection###1|||TPSp###1|||FHILp###1|||XQINp###1|||AGPWp###1|||TBMinAutoWithdrawal###1|||SPCp###1|||ACHLp###1|||OnlineParaRefreshInterval###25|||sixupp###1|||HFTp###1|||PPSTimeout###300|||FINPp###0|||ATTGp###1|||QPTTGame###1|||AFHADp###1|||AXQinQpl###1|||InitPageEnd###2012-04-26T06:31:00|||ShowSBWelcomeMessage###1|||HROSp###0|||TransferLowerRange###3.000000000000000e+002|||mightpay###0|||TBMinWithdrawal###500|||trip###1|||AFCRSp###1|||MLCAfterMatchEnd###0|||FlexiBet_cwp###0|||Mk6ByProdBanker###1|||GBeocp###0|||CurrentMK6Max###49|||qqpp###1|||AXOOEp###1|||MaxPrimaryNo###38|||winp###1|||ToQualify###1|||ttp###1|||AXHILp###1|||dtp###1|||MLCBeforeKickOff###0|||NTSp###1|||ougp###0|||FGSp###1|||FlexiBet_qinp###0|||PLAoddsAsRange###0|||FTSp###1');
-        loadOnlinePara('0|||||||||1|||5|||2016-12-07 06:35|||10|||1');
-
-        if (!byPassEOD && (GetPara('eWinASDetection') == '' || GetOnlinePara('OosMsgId') != '0')) {
-            init_fail = true;
-            langToShow = 1;
-            if (top.getLanguage) {
-                langToShow = top.getLanguage();
-            } else {
-                langToShow = GetLanguage();
-            }
-            document.location.replace(BetSlipPath + 'bsdimmed.aspx?lang=' + langToShow);
-            return;
-        }
-
-        registerAppTimer = setInterval("RegisterXSell()", 500);
-
-        requestTimeoutInSec = 16;
-        balTimeoutInSec = 10;
-        warningTimeout = MyParseInt(GetPara("WarningTimeout"), 2);
-        sessionIdleTime = MyParseInt($$.cookie("sessionIdleTime"), MyParseInt(GetPara("SessionIdleTime"), 30));
-        //test code: sessionIdleTime = 3;
-
-        initPSObj();
-        setMinBet();
-
-        if (isM6MultiDrawEnable() != 1) {
-            var today = new Date();
-            document.cookie = cookieM6DrawNo + '=1;domain=' + document.domain + ';expires=' + today.toGMTString();
-        }
-
-        // sync language with JCBW
-        try {
-            SetLanguage(top.getLanguage());
-        } catch (e) {}
-
-        // Support SSO
-        SetDataStore('sso_enabled', 'true');
-        SetDataStore('sso_check_return_status', 'SSO_NEW_SIGN_IN');
-        SetDataStore('sso_sign_in_level', '1');
-        SetDataStore('sso_guid', '0317e438-db8f-4e1f-b37a-0e61edecc600');
-        SetDataStore('sso_web_id', 'ted6ixlo');
-        // End Support SSO
-
-        initAccInfo();
-        initSlipFrame();
-
-        renewSession();
-
-        var panels = $j('#multiplePanel')[0].getElementsByTagName('td');
-        window['multiSlipPanel'] = new MultiSlipPanel(panels);
-
-        init_pos();
-
-        if (isAndroidDevice())
-            scrollUtil.init('.scroll1');
-
-        loadIframes();
-
-    }
-
-    var checkChangesEnabled = true;
-
-    function beforeUnload() {
-        var returnValue = undefined;
-        if (checkChangesEnabled) {
-            if (isNowLogon || isInEKBA()) {
-                returnValue = GetError("1303");
-            } else if (totalBetlines > 0 || (typeof(multiSlipPanel) != 'undefined' && multiSlipPanel.getTotalCount() > 0))
-                returnValue = GetError("refresh_warning");
-            disableCheck();
-        }
-        if (returnValue != undefined)
-            return returnValue;
-    }
-
-    function disableCheck() {
-        checkChangesEnabled = false;
-        setTimeout("enableCheck()", "100");
-    }
-
-    function enableCheck() {
-        checkChangesEnabled = true;
-    }
-
-
-    function unload() {
-        if (isNowLogon || isInEKBA()) {
-            forceLogout();
-        } else if (!init_fail) {
-            ProcessLogoutResult();
-        }
-    }
-
-    function ReloadBalance() {
-        if (isNowLogon && GetDataStore("flag_update_balance") == "1") {
-            SetDataStore("flag_update_balance", "0");
-            OnClickRefreshBalance();
-        }
-    }
-
-    function PreTxn(loadDummy) {
-        ResetIdleTimer(loadDummy); // Support SSO, reset idle timer for server action (sendbet, statement, recall)
-    }
-    </script>
     <link href="css/styles_ch.css" rel="stylesheet" type="text/css" title="style_ch">
     <link href="css/styles_ch.css" rel="alternate stylesheet" type="text/css" title="style_en">
     <link href="css/overlay.css" rel="stylesheet" type="text/css" media="screen">
@@ -343,53 +63,12 @@
     <link rel="stylesheet" type="text/css" href="css/ppstyle.css" media="screen">
 </head>
 
-<body style="background-color: transparent;" onload="BackgroundImageCache(); isLoaded=true ;init(); index_onload()" onkeydown="return onKeyDown(event, false, &#39;&#39;);" oncontextmenu="return false" onmouseover="ReloadBalance()" onbeforeunload="return beforeUnload();" onunload="unload()" marginwidth="0" marginheight="0">
+<body style="background-color: transparent;" onload="BackgroundImageCache(); isLoaded=true ;init(); index_onload()" onkeydown="return onKeyDown(event, false, '');" oncontextmenu="return false" onmouseover="ReloadBalance()" onbeforeunload="return beforeUnload();" onunload="unload()" marginwidth="0" marginheight="0">
     <script src="js/accInfo.js"></script>
     <script src="js/mm_common.js"></script>
     <script src="js/block_keys.js"></script>
-    <script language="javascript">
-    var url_register = new Array();
-    var url_regonline = new Array();
-    var url_applybet = new Array();
-    var url_cannotlogin = new Array();
-    var url_chg_web_pass = new Array();
-    var url_chg_sec_question = new Array();
-    var url_chg_web_profile = new Array();
-    var url_associate_account = new Array();
-    var url_faq = new Array();
-    var url_allup_faq = new Array();
-    var url_logout = new Array();
-    var url_login_timeout = new Array();
-    url_register[0] = 'http://is.hkjc.com/jcbw/ekba/register/en/register_now.asp';
-    url_register[1] = 'http://is.hkjc.com/jcbw/ekba/register/ch/register_now.asp';
-    url_regonline[0] = 'http://special.hkjc.com/infomenu/en/register/regonline.asp';
-    url_regonline[1] = 'http://special.hkjc.com/infomenu/ch/register/regonline.asp';
-    url_applybet[0] = 'http://special.hkjc.com/infomenu/en/register/applybet.asp';
-    url_applybet[1] = 'http://special.hkjc.com/infomenu/ch/register/applybet.asp';
-    url_cannotlogin[0] = 'https://wcip.hkjc.com/inputaccoremail.aspx?UIC=en-US&EP=BS';
-    url_cannotlogin[1] = 'https://wcip.hkjc.com/inputaccoremail.aspx?UIC=zh-HK&EP=BS';
-    url_chg_web_pass[0] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=LDEM&UIC=en-US&EP=BS';
-    url_chg_web_pass[1] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=LDEM&UIC=zh-HK&EP=BS';
-    url_chg_sec_question[0] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=LDEM&UIC=en-US&EP=BS';
-    url_chg_sec_question[1] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=LDEM&UIC=zh-HK&EP=BS';
-    url_chg_web_profile[0] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=BPU&UIC=en-US&EP=BS';
-    url_chg_web_profile[1] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=BPU&UIC=zh-HK&EP=BS';
-    url_associate_account[0] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=PA&UIC=en-US&EP=BS';
-    url_associate_account[1] = 'https://wcip.hkjc.com/loginform.aspx?NTAL=PA&UIC=zh-HK&EP=BS';
-    url_faq[0] = 'http://is.hkjc.com/jcbw/ekba/faq/en/betslipFAQ.asp';
-    url_faq[1] = 'http://is.hkjc.com/jcbw/ekba/faq/ch/betslipFAQ.asp';
-    url_allup_faq[0] = 'http://is.hkjc.com/jcbw/ekba/faq/en/allupFAQ.asp';
-    url_allup_faq[1] = 'http://is.hkjc.com/jcbw/ekba/faq/ch/allupFAQ.asp';
-    url_logout[0] = 'http://is.hkjc.com/jcbw/ekba/promo/betslip_logout/betslip_lpromo.asp?lang=en';
-    url_logout[1] = 'http://is.hkjc.com/jcbw/ekba/promo/betslip_logout/betslip_lpromo.asp?lang=ch';
-    url_login_timeout[0] = 'http://bclient.hkjc.com/OddsServer/bchk/BChk128.aspx?bhcp=1';
-    url_login_timeout[1] = 'http://bclient.hkjc.com/OddsServer/bchk/BChk128c.aspx?bhcp=1';
-
-    var refreshBalInterval = '3';
-    var refreshBalTimeout = '10';
-    </script>
-    <div id="divAccInfo" style="background-color: transparent; position: absolute; display: block; z-index: 100; left: 279px; top: 0px; width: 221px;" onkeydown="return onKeyDown(event, true, &#39;accInfo&#39;);">
-        <span id="errormsg" style="LEFT:0px;TOP:16px;VISIBILITY:hidden;WIDTH:100%;POSITION:absolute;BACKGROUND-COLOR:transparent;TEXT-ALIGN:center" onclick="javascript:HideError(1)"></span>
+    <div id="divAccInfo" style="background-color: transparent; position: absolute; display: block; z-index: 100; left: 0px; top: 0px; width: 221px;" onkeydown="return onKeyDown(event, true, 'accInfo');">
+        <span id="errormsg" style="left:0px;top:16px;visibility: hidden;width:100%;position:absolute;background-color:transparent;text-align:center" onclick="javascript:HideError(1)"></span>
         <div id="divAccInfoTop" style="text-align:right; width:221px;">
             <img id="pic_duelAuthent" src="images/betslip_top_ch.gif" alt="" border="0" title="雙重核對登入">
         </div>
@@ -576,7 +255,7 @@
                                                                                                         </tr>
                                                                                                         <tr>
                                                                                                             <td height="21" align="right" style="padding:4px 0px 1px 0px;">
-                                                                                                                <a href="javascript:;" onclick="buttonLogout();return false;" onmouseout="loadMouseEventImage(&#39;pic_logout&#39;, &#39;pic_logout&#39;);" onmouseover="loadMouseEventImage(&#39;pic_logout&#39;, &#39;pic_logout_on&#39;);">
+                                                                                                                <a href="javascript:;" onclick="buttonLogout();return false;" onmouseout="loadMouseEventImage('pic_logout', 'pic_logout');" onmouseover="loadMouseEventImage('pic_logout', 'pic_logout_on');">
                                                                                                                     <img id="pic_logout" border="0" src="images/btn_logout_ch.gif" title="登出">
                                                                                                                 </a>
                                                                                                             </td>
@@ -635,7 +314,7 @@
                                                             <td style="padding: 3px 0px 0px 0px;" valign="middle">
                                                                 <img src="images/stroke_gray.gif">
                                                             </td>
-                                                            <td id="settingTd" align="center" valign="middle" onclick="slipNavOver(&#39;service&#39;, 1, &#39;settingTd&#39;);" tabindex="-1">
+                                                            <td id="settingTd" align="center" valign="middle" onclick="slipNavOver('service', 1, 'settingTd');" tabindex="-1">
                                                                 <div style="position:absolute; cursor:pointer; visibility:hidden; width:55px; height:30px" id="navBtn_service">
                                                                     <img src="images/spacer(3).gif" width="55" height="25">
                                                                 </div>
@@ -686,51 +365,13 @@
     <script type="text/javascript" src="js/slip.js"></script>
     <script type="text/javascript" src="js/mm_common.js"></script>
     <script type="text/javascript" src="js/block_keys.js"></script>
-    <!--    handwrite script start  -->
-    <script type="text/javascript">
-    var pphwReminderInterval = 604800000;
-    var pphwReminderMessage = '<p class="msgContent" style="padding-bottom: 20px">投注區手寫板功能已於2015年3月31日起停用。請使用電腦內置的手寫板功能代替。</p><p class="msgContent" style="padding-bottom: 25px">請<a class="msgContent" id="clickhere" href="javascript:;" target="_blank">按此</a>了解如何啓用電腦內置手寫板功能</p><p class="msgContent" style="padding-left: 175px;text-align: right;"><a id="continue2" href="javascript:;" onclick="pphwApp.hidePanel();$j(\'#pphw_btn_ekba\').toggleClass(\'pp_pen_btn_opened\');return false;">關閉</a></p><script type="text/javascript">var t = new Date();t.setTime(t.getTime() - 1);document.cookie="pphw=;path=/;domain=" + pphwCookieDomain + ";expires=" + t.toGMTString();<\/script>';
 
-    var pphwCookieDomain = '.hkjc.com';
-    var pphwCookieWarningPath = 'http://is.hkjc.com/special/notice/handwriting/index_c.html';
-    </script>
     <script type="text/javascript" src="js/excanvas.js"></script>
     <script type="text/javascript" src="js/modernizr-2.6.2.js"></script>
     <script type="text/javascript" src="js/penpower.hwApp.js"></script>
-    <script type="text/javascript">
-    $j = jQuery.noConflict();
-    $j(document).ready(function() {
-        pphwApp = penpower.hwApp;
-        pphwApp.init({
-            selector: "#ekbaInputPPHWDiv",
-            lineWidth: 3,
-            recognizeUrl: 'https://txn01.hkjc.com/pphw/kernel/PPhwisapi.dll?&ot=1',
-            select: function(word) {
-                var text = $j("#ekbaDivInput").val();
-                text = text + word;
-                $j("#ekbaDivInput").val(text);
-            },
-            padBtnClick: function(id) {
-                if (id === "qmarkbtn") {
-                    window.open('http://is.hkjc.com/jcbw/ekba/writingpad/helpmenu.asp', "FAQ", config = "width=1024,height=768,resizable=1");
-                }
 
-                if (id === "xmarkbtn") {
-                    pphwApp.hidePanel();
-                    $j("#pphw_btn_ekba").toggleClass("pp_pen_btn_opened");
-                }
-            },
-            textSetting: {
-                productLabel: "手寫板",
-                companyLabel: "蒙恬科技",
-                undoLabel: "還原",
-                rewriteLabel: "重寫"
-            }
-        });
-    });
-    </script>
     <!--    handwrite script end    -->
-    <div id="divSlip" style="background-color: transparent; position: absolute; display: block; left: 0px; top: 119px; width: 221px;" onkeydown="return onKeyDown(event, true, &#39;slip&#39;);" border="0">
+    <div id="divSlip" style="background-color: transparent; position: absolute; display: block; left: 0px; top: 119px; width: 221px;" onkeydown="return onKeyDown(event, true, 'slip');" border="0">
         <div style="position:absolute; left:0px; top:0px; width:221px; z-index:10; visibility:hidden" id="errMsgBlock" onclick="javascript:HideError(2)">
             <div style="position:absolute; left:0px; top:0px; width:221px; z-index:10;">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #8C8C8C;">
@@ -741,15 +382,14 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#FFDE00" class="important" style="padding:3px 8px 8px 8px;"><strong><span id="errMsgTxt"></span></strong></td>
+                            <td bgcolor="#FFDE00" class="important" style="padding:3px 8px 8px 8px;"><strong><span id="errMsgTxt">登入資料不正確，請重新儲入。<br>(1) 忘記密碼，請<a href="#" onclick="OnClickCannotLogin()">按此</a>重設。<br>(2) 客戶若未註冊登入名稱，請<a href="#" onclick="OnClickRegisterNow()">按此</a>註冊。</span></strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div style="position:absolute; left:0px; top:0px; width:221px; height:100%; z-index:1;" id="errorMsgBg"></div>
-            <!-- // Q209 Support 1024x600 original height:433px -->
         </div>
-        <span id="spanallupbonus" style="position:absolute;top:225;left:85;width:50%;background-color:transparent;text-align:center;z-index:4;visibility:hidden" onclick="this.style.visibility=&#39;hidden&#39;"></span>
+        <span id="spanallupbonus" style="position:absolute;top:225;left:85;width:50%;background-color:transparent;text-align:center;z-index:4;visibility:hidden" onclick="this.style.visibility='hidden'"></span>
         <div style="position:absolute; left:56px; top:0px; width:160px; visibility:hidden; z-index:500;" id="pulldown_service">
             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color:#FFFFFF; border:2px solid #315172;">
                 <tbody>
@@ -940,7 +580,7 @@
                                     <p class="msgContent" style="padding-bottom: 25px">請
                                         <a class="msgContent" id="clickhere" href="javascript:;" target="_blank">按此</a>了解如何啓用電腦內置手寫板功能</p>
                                     <p class="msgContent" style="padding-left: 175px;text-align: right;">
-                                        <a id="continue2" href="javascript:;" onclick="pphwApp.hidePanel();$j(&#39;#pphw_btn_ekba&#39;).toggleClass(&#39;pp_pen_btn_opened&#39;);return false;">關閉</a>
+                                        <a id="continue2" href="javascript:;" onclick="pphwApp.hidePanel();$j('#pphw_btn_ekba').toggleClass('pp_pen_btn_opened');return false;">關閉</a>
                                     </p>
                                     <script type="text/javascript">
                                     var t = new Date();
@@ -957,29 +597,29 @@
                     </div>
                     <div id="divEKBADefaultButton" class="BLfooter" style="display:block">
                         <span style="float:left; margin-left:10px; margin-right:10px; display:inline;">
-                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBACancel();return false;" onmouseout="loadMouseEventImage(&#39;pic_cancel&#39;, &#39;pic_cancel&#39;);" onmouseover="loadMouseEventImage(&#39;pic_cancel&#39;, &#39;pic_cancel_on&#39;);">
+                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBACancel();return false;" onmouseout="loadMouseEventImage('pic_cancel', 'pic_cancel');" onmouseover="loadMouseEventImage('pic_cancel', 'pic_cancel_on');">
                                 <img id="pic_cancel" src="images/btn_cancel_ch.gif" alt="" border="" title="取消">
                             </a>
                         </span>
                         <span style="float:right; margin-left:10px; margin-right:10px; display:inline;">
-                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBA();return false;" onmouseout="loadMouseEventImage(&#39;pic_confirm&#39;, &#39;pic_confirm&#39;);" onmouseover="loadMouseEventImage(&#39;pic_confirm&#39;, &#39;pic_confirm_on&#39;);">
+                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBA();return false;" onmouseout="loadMouseEventImage('pic_confirm', 'pic_confirm');" onmouseover="loadMouseEventImage('pic_confirm', 'pic_confirm_on');">
                                 <img id="pic_confirm" src="images/btn_confirm_ch.gif" alt="" border="" title="確定">
                             </a>
                         </span>
                     </div>
                     <div id="divEKBASSOButton" class="BLfooter" style="display:none">
                         <span style="float:left; margin-left:10px; margin-right:10px; display:inline;">
-                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBABack();return false;" onmouseout="loadMouseEventImage(&#39;pic_backSSO&#39;, &#39;pic_sso_back&#39;);" onmouseover="loadMouseEventImage(&#39;pic_backSSO&#39;, &#39;pic_sso_back_on&#39;);">
+                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBABack();return false;" onmouseout="loadMouseEventImage('pic_backSSO', 'pic_sso_back');" onmouseover="loadMouseEventImage('pic_backSSO', 'pic_sso_back_on');">
                                 <img id="pic_backSSO" src="images/btn_short_back_ch.gif" alt="" border="" title="返回">
                             </a>
                         </span>
                         <span style="float:left; margin-left:10px; margin-right:10px; display:inline;">
-                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBALogout();return false;" onmouseout="loadMouseEventImage(&#39;pic_logoutSSO&#39;, &#39;pic_logout&#39;);" onmouseover="loadMouseEventImage(&#39;pic_logoutSSO&#39;, &#39;pic_logout_on&#39;);">
+                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBALogout();return false;" onmouseout="loadMouseEventImage('pic_logoutSSO', 'pic_logout');" onmouseover="loadMouseEventImage('pic_logoutSSO', 'pic_logout_on');">
                                 <img id="pic_logoutSSO" src="images/btn_logout_ch.gif" alt="" border="" title="登出">
                             </a>
                         </span>
                         <span style="float:right; margin-left:10px; margin-right:10px; display:inline;">
-                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBA();return false;" onmouseout="loadMouseEventImage(&#39;pic_confirmSSO&#39;, &#39;pic_confirm&#39;);" onmouseover="loadMouseEventImage(&#39;pic_confirmSSO&#39;, &#39;pic_confirm_on&#39;);">
+                            <a href="http://txn01.hkjc.com/BetSlip/index.aspx#" onclick="OnClickLoginEKBA();return false;" onmouseout="loadMouseEventImage('pic_confirmSSO', 'pic_confirm');" onmouseover="loadMouseEventImage('pic_confirmSSO', 'pic_confirm_on');">
                                 <img id="pic_confirmSSO" src="images/btn_confirm_ch.gif" alt="" border="" title="確定">
                             </a>
                         </span>
@@ -1069,7 +709,7 @@
                                                                                             </a>
                                                                                         </td>
                                                                                         <td rowspan="2">
-                                                                                            <a href="javascript:;" onmouseout="loadMouseEventImage(&#39;btnAddAlupSlip&#39;, &#39;pic_addnew_all_up&#39;);" onmouseover="loadMouseEventImage(&#39;btnAddAlupSlip&#39;, &#39;pic_addnew_all_up_on&#39;);">
+                                                                                            <a href="javascript:;" onmouseout="loadMouseEventImage('btnAddAlupSlip', 'pic_addnew_all_up');" onmouseover="loadMouseEventImage('btnAddAlupSlip', 'pic_addnew_all_up_on');">
                                                                                                 <img id="btnAddAlupSlip" border="0" onclick="CreateAndAddAllUp();return false;" style="display:none;" src="images/btn_addslip_ch.gif" title="加入過關注項">
                                                                                             </a>
                                                                                         </td>
@@ -1108,10 +748,10 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td colspan="2" align="right" style="padding:3px 0px 0px 0px;">
-                                                                            <a onclick="OnClickReset();" onmouseout="loadMouseEventImage(&#39;pic_clear&#39;, &#39;pic_clear&#39;);" onmouseover="loadMouseEventImage(&#39;pic_clear&#39;, &#39;pic_clear_on&#39;);">
+                                                                            <a onclick="OnClickReset();" onmouseout="loadMouseEventImage('pic_clear', 'pic_clear');" onmouseover="loadMouseEventImage('pic_clear', 'pic_clear_on');">
                                                                                 <img id="pic_clear" border="0" hspace="4" src="images/btn_delbet_ch.gif" title="刪除注項">
                                                                             </a>
-                                                                            <a onclick="OnClickPreview();" onmouseout="loadMouseEventImage(&#39;pic_preview&#39;, &#39;pic_preview&#39;);" onmouseover="loadMouseEventImage(&#39;pic_preview&#39;, &#39;pic_preview_on&#39;);">
+                                                                            <a onclick="OnClickPreview();" onmouseout="loadMouseEventImage('pic_preview', 'pic_preview');" onmouseover="loadMouseEventImage('pic_preview', 'pic_preview_on');">
                                                                                 <img id="pic_preview" border="0" src="images/btn_submit_ch.gif" title="傳送注項">
                                                                             </a>
                                                                         </td>
@@ -1136,36 +776,221 @@
                 </tbody>
             </table>
         </div>
-        <div id="divDisclaimer" style="position: absolute; left: 0px; top: 0px; width: 100%; display: block; z-index: 500; height: 435px;">
+        <div id="divDisclaimer" style="position: absolute; left: 0px; top: 0px; width: 100%; display: none; z-index: 500; height: 435px;">
             <table width="500" border="0" cellpadding="0" cellspacing="0">
                 <tbody>
                     <tr>
                         <td height="2" bgcolor="#FFDE00" style="border-bottom:1px solid #A2A5AA;">
-                            <img src="images/spacer(3).gif" width="1" height="2" alt="">
+                            <img src="images/spacer.gif" width="1" height="2" alt="">
                         </td>
                     </tr>
                     <tr>
                         <td height="4" bgcolor="#B7BFC8">
-                            <img src="images/spacer(3).gif" width="1" height="4" alt="">
+                            <img src="images/spacer.gif" width="1" height="4" alt="">
                         </td>
                     </tr>
                     <tr>
                         <td valign="top">
-                            <div id="tdText" style="height:100%;overflow-y:auto"></div>
+                            <div id="tdText" style="height:100%;overflow-y:auto">
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:1px solid #A2A5AA; border-left:1px solid #A2A5AA; border-bottom:1px solid #A2A5AA; background-color:#FFFFFF;">
+                                    <tbody>
+                                        <tr>
+                                            <td height="26" class="titleBlue" style="padding:7px 7px 7px 7px;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="titleBlue" style="padding:0px 0px 7px 13px; border-bottom:1px solid #A2A5AA;"><strong>條款及細則</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top" class="content">
+                                                <div id="divDisclaimerDetail" class="scroll1" style="padding:11px 22px 10px 22px;position:relative;width:450px;height:315px;overflow-y:scroll; overflow-x:hidden;">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">1.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">使用規例</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">1.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">使用網上投注服務「投注區」（簡稱「服務」），須受香港賽馬會（簡稱「馬會」）的《博彩設施規例》、香港馬會賽馬博彩有限公司的《賽馬博彩規例》、香港馬會足球博彩有限公司的《足球博彩規例》及/或香港馬會獎券有限公司的《獎券規例》（統稱「規例」）所約制。此等規例可從馬會網站(
+                                                                    <a href="http://www.hkjc.com/chinese/" target="_blank">www.hkjc.com</a>)下載，印本亦可在香港特別行政區（簡稱「香港」）跑馬地體育道一號馬會總部及任何投注地點索閱。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">1.2</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">此服務僅供 (i) 成功登記成為本會之用戶（簡稱「用戶」）﹔(ii)持有馬會投注戶口（簡稱「投注戶口」）﹔及(iii)正式把戶口登入連接投注戶口之香港居民使用（簡稱「戶口持有人」）。該投注戶口及戶口登入只供戶口持有人作個人使用。假如戶口持有人容許他人使用其戶口登入資料及/或投注戶口，戶口持有人便須承擔一切後果。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">1.3</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">任何人士如透過此服務進行投注或交易，即視作已閱悉此等規例，且同意受其約束。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">1.4</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">凡使用此服務的戶口持有人均須承諾，確保傳送、分發或其他經由此服務傳達的任何訊息，不含任何病毒或可能影響馬會網站或此服務運作的元素，又或對馬會、其附屬公司或第三者的資料或系統造成損害、干擾或刪減。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">1.5</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">凡未滿十八歲的人士，均不得透過此服務進行投注或交易。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">1.6</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">馬會及/或其附屬公司可隨時拒絕接受任何戶口持有人注項的權利，而毋須給予理由。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">1.7</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">在下載任何軟件以使用服務，戶口持有人須保證不會，亦不會允許第三者, 對部分或整個軟件應用進行：-
+                                                                    <br>(i) 修改，增刪或製作衍生軟件，或
+                                                                    <br>(ii) 複製，分發，提供，出售，再授權或以其它方式篡改。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">2.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">本地使用</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">2.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">此服務只限在香港使用。戶口持有人首要遵守只在香港境內使用此服務的條件，始會獲准享用此服務。在香港境外使用此服務所引致的任何後果，馬會及其附屬公司均毋須負責。不論戶口持有人或第三者是否在其知情、同意或授權下在本港或以外地方使用此服務，戶口持有人均須對使用此服務所引致的一切後果承擔全部責任。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">2.2</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">所有透過此服務進行的投注及交易，均視為在香港境內進行，並受香港法律約制。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">2.3</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">馬會概不歡迎自美國或其附屬領土地區以互聯網、電話、其他電子或電線通訊系統方式進行的投注或交易。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">3.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">保安</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">3.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">使用此服務的戶口持有人，須將有關其投注戶口資料及細節保密，包括（但不僅限於）戶口號碼、保安密碼及個人資料與其戶口登入之保密細節（如登入名稱、密碼、登入問題及登入答案）（統稱「機密資料」）。無論交易有否得到戶口持有人授權，所有使用正確機密資料而進行的交易，對戶口持有人而言，均具約束力。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">3.2</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">在不損害規則3.1的一般適用性，戶口持有人須確保登入答案是屬私人、獨特及不被第三者知悉的。戶口持有人明白及同意，如其所選之登入答案被第三者知悉，有關投注戶口的保安程度將會受到損害。任何因第三者正確地提供有關戶口持有人的登入答案因而能够使用戶口持有人的投注戶口所引起之損失，馬會及/或其附屬公司一概不負責。本會不建議戶口持有人於其他網頁、登入及/或戶口使用相同的登入問題及/登入答案。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">3.3</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">戶口持有人若決定撤銷使用此服務的戶口登入，必須事先致函通知馬會。戶口持有人確認及同意，於馬會確認收到及接納上述撤銷通知函之前，所有透過該戶口登入所作出的指示及進行的交易，均視為對該戶口持有人具約束力的。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">3.4</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">戶口持有人一經發現或懷疑(i) 任何機密資料遭洩露或由未獲授權人士取得，或 (ii)任何交易在未經授權的情況下進行，須即時致電熱線通知馬會，並致函馬會顧客服務部確證此項通知。儘管如此，在馬會確認收到及接納書面通知之前，所有透過有關投注戶口、戶口登入及／或項服務完成的交易，不論是否經戶口持有人授權，對戶口持有人而言，均絕對具約束力。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">3.5</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">戶口持有人須提防意圖假扮馬會網頁之偽冒網站。戶口持有人於提交任何個人資料（包括但不僅限於機密資料）之前，必須確保該有關服務確實由香港賽馬會或其附屬公司所提供。如有懷疑，戶口持有人應立即與馬會及／或其附屬公司聯絡，以核證該有關服務提供者的真偽。戶口持有人聯絡或向任何虛假或偽冒服務提供者提供任何資料所引致的一切後果，馬會及其附屬公司概不負責。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">4.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">責任</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">4.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">任何戶口持有人確認及同意馬會及其附屬公司對以下並不負責:
+                                                                    <br>
+                                                                    <br>(i)本服務、或任何其他資料、服務或設施，如不論何故引致損失或損害，包括（但不僅限於）在傳送、進行操作或通訊時出現失靈、延誤或干擾等情況；資料或指示遭盜取、歪曲或刪減；以及服務內容有任何錯誤或遺漏。
+                                                                    <br>
+                                                                    <br>(ii) 任何拒絕或未能確認、接納或完成戶口持有人使用此服務所進行的交易。
+                                                                    <br>
+                                                                    <br>(iii) 第三方提供之產品或服務相關的描述或資料，是否準確、完整或合時。
+                                                                    <br>
+                                                                    <br>(iv) 當戶口持有人使用服務時，不管任何理由而造成之損失或損害。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">4.2</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">使用此服務的戶口持有人對任何因其違反此等使用條款及細則所引起對馬會、香港馬會賽馬博彩有限公司、香港馬會足球博彩有限公司及/或香港馬會獎券有限公司的一切索償及損失（包括所有法律費用）均須負責所有賠償責任。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">5.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">使用個人資料作直接促銷</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">5.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">當馬會獲得戶口持有人的同意後或根據《個人資料（私隱）條例》有所豁免的情況下，馬會及其附屬公司（在《私隱政策聲明》中合稱「馬會」，而各自稱「馬會機構」）可根據《私隱政策聲明》（刊登於
+                                                                    <a href="http://www.hkjc.com/chinese/corporate/corp_privacy.asp" target="_blank">http://www.hkjc.com/chinese/corporate/corp_privacy.asp</a> ）使用戶口持有人的姓名、聯絡資料和人口統計資料以作促銷由馬會或馬會機構或馬會業務伙伴不時提供或安排在馬會私隱政策聲明內「直接促銷」部分指定種類的設施、服務、支援及相關項目及活動之用。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">5.2</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">戶口持有人可經由馬會網頁
+                                                                    <a href="https://ssl.hkjc.com/2013-opt-out/2013-opt-out.aspx" target="_blank">https://ssl.hkjc.com/2013-opt-out/2013-opt-out.aspx</a> 或致電顧客服務熱線1818更改有關設定。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">6.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">終止</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">6.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">馬會可隨時通知戶口持有人暫停或終止其戶口登入或/及投注戶口或撤銷向戶口持有人提供此服務，而毋須給予任何理由。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">6.2</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">在無損前文的一般性下，馬會可不時檢討投注戶口，並可在懷疑有任何不正常、洗黑錢或非法行為時中止或終止有關戶口。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">7.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">修訂</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">7.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">馬會得全權決定增補、刪除、修訂或更改此等使用條款及細則。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">7.2</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">馬會網站登出有關此等增刪修改的內容及生效日期的通告，即視為已給予每一戶口持有人充分通知。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">7.3</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">戶口持有人於馬會所公佈此等增刪修改生效日期當日或之後使用此服務，即視為完全接納該等增刪修改。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">8.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">違反此等使用條件</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">8.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">假如馬會因戶口持有人違反此等使用條款及細則而終止其使用此服務的權利，馬會亦可（但不是必須）取消其投注戶口或/及戶口登入。</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">9.</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">中英文版本</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding:0px 8px 0px 0px;">9.1</td>
+                                                                <td class="content" style="padding:0px 0px 20px 0px;">如條款及細則的中文譯本於英文原本有任何出入之處，一切條款及細則概以英文原本為準。</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="31" align="right" style="padding:10px 7px 10px 0px; border-top:1px solid #A2A5AA;">
+                                                <a href="#" onclick="ShowDisclaimer(false);" onmouseout=" loadMouseEventImage('btn_enter', 'btn_enter'); " onmouseover=" loadMouseEventImage('btn_enter', 'btn_enter_on'); ">
+                                                    <img src="./images/btn_enter_ch.gif?cv=L2.06R1" title="進入主頁" name="btn_enter" id="btn_enter" width="71" height="21" border="0">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td height="4" bgcolor="#B7BFC8">
-                            <img src="images/spacer(3).gif" width="1" height="4" alt="">
+                            <img src="images/spacer.gif" width="1" height="4" alt="">
                         </td>
                     </tr>
                     <tr>
                         <td height="4" bgcolor="#FFDE00" style="border-top:1px solid #A2A5AA;">
-                            <img src="images/spacer(3).gif" width="1" height="4" alt="">
+                            <img src="images/spacer.gif" width="1" height="4" alt="">
                         </td>
                     </tr>
                 </tbody>
-                
             </table>
         </div>
         <div id="divBetPreview" style="width:100%;height:435px;display:none;z-index:100;background-color:#FFFFFF">

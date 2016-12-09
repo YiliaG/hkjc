@@ -69,8 +69,7 @@
     var editFamily = 'HB';
     var preeditTimeout = '60';
 
-    var enableWebcastAccess = 'false' == 'true';
-    var SSOAuthen4WebcastURLArray = ['https://elogin.hkjc.com/api/SSOWeb/GetToken?UIC=en-US', 'https://elogin.hkjc.com/api/SSOWeb/GetToken?UIC=zh-HK '];
+    var enableWebcastAccess = 'false' == 'true'; var SSOAuthen4WebcastURLArray = ['https://elogin.hkjc.com/api/SSOWeb/GetToken?UIC=en-US', 'https://elogin.hkjc.com/api/SSOWeb/GetToken?UIC=zh-HK '];
     var fbWebTVURLArray = ['http://football.hkjc.com/football/football/football-live/football-live-player.aspx?ci=en-us', 'http://football.hkjc.com/football/football/football-live/football-live-player.aspx?ci=zh-hk'];
     </script>
     <script type="text/javascript" src="js/common_util.js"></script>
@@ -607,7 +606,7 @@
                                                                                             </td>
                                                                                             <td class="content">
                                                                                                 <span id="valueAccBal">$ 265.80</span>&nbsp;
-                                                                                                <span id="refresh_balance"></span>
+                                                                                                <span id="refresh_balance"><a href="javascript:;" onclick="OnClickRefreshBalance();return false;"><img border="0" align="absmiddle" src="images/icon_refresh.gif?cv=L2.06R1" alt="更新結餘"></a></span>
                                                                                             </td>
                                                                                         </tr>
                                                                                     </tbody>
