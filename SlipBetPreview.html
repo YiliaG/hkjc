@@ -6,28 +6,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Bet Transaction</title>
     <script type="text/javascript">
-    document.domain = 'hkjc.com';
     var staticCache = '?cv=L2.06R1';
     </script>
     <script type="text/javascript" src="js/jquery-1.10.2(1).js"></script>
-    <script type="text/javascript" src="js/proxy(1).js"></script>
     <script type="text/javascript" src="js/BetPreview(1).js"></script>
     <script type="text/javascript" src="js/svc.js"></script>
     <script type="text/javascript" src="js/logDataAccessor.js"></script>
     <script type="text/javascript" src="js/common_func.js"></script>
     <script type="text/javascript" src="js/index_str_table(1).js"></script>
-    <script type="text/javascript">
-    svc.init(GetError);
-    $j = jQuery.noConflict();
-    $j(function() {
-        proxy.init(parent, {
-                BET_PREVIEW: new BetPreviewPlugin(false)
-            },
-            'http://txn01.hkjc.com', ['http://txn01.hkjc.com']);
-
-
-    });
-    </script>
+   
     <script type="text/javascript">
     String.prototype.startsWith = function(str) {
         return (this.match("^" + str) == str)

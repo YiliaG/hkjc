@@ -125,16 +125,16 @@ function callAllUpComb(_langCode) {
 }
 
 //check login betslip
-function isLoginBetSlip() {
+// function isLoginBetSlip() {
 
     //    if (top.betSlipFrame) {
     //        return top.betSlipFrame.isLogon();
     //    }
-    if (top.document.getElementById('betSlipFrame')) {
-        return top.document.getElementById('betSlipFrame').contentWindow.isLogon();
-    }
-    return false;
-}
+//     if (top.document.getElementById('betSlipFrame')) {
+//         return top.document.getElementById('betSlipFrame').contentWindow.isLogon();
+//     }
+//     return false;
+// }
 
 //refresh odds content
 function refreshOddsContent() {

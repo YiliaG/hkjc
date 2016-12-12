@@ -16,8 +16,8 @@ var initTop;
 var cUpperFrameTopDefault       = 16;
 var cUpperFrameLeftDefault      = 0;
 var cUpperFrameWidthDefault     = 221;
-var cUpperFrameHeightDefault    = 555;		
-var cUpperFrameHeight800x600    = 400;		// Q209 Support 1024x600 (433)
+var cUpperFrameHeightDefault    = 555;    
+var cUpperFrameHeight800x600    = 400;    // Q209 Support 1024x600 (433)
 
 var cUpperFrameHeightMinized    = 126;
 var cUpperFrameHeightLogon      = 119;
@@ -28,7 +28,7 @@ var cLowerFrameLeftDefault      = cUpperFrameLeftDefault;
 var cLowerFrameWidthDefault     = cUpperFrameWidthDefault;
 var cLowerFrameHeightDefault    = 435;
 
-var cLowerFrameWidthPreview     = 500;	
+var cLowerFrameWidthPreview     = 500;  
 var cLowerFrameHeight800x600    = 285;
 
 var cUpperFrameLeftEKBA         = 108;
@@ -69,7 +69,7 @@ function heightReduct() {
 }
 
 function isResolution800x600() {
-  return screen.width < 1024 && screen.height < 768; 	// Q209 support 1024x600  
+  return screen.width < 1024 && screen.height < 768;  // Q209 support 1024x600  
 }
 
 function isResolution1024x600() {
@@ -135,7 +135,7 @@ function setMainFrameSize(state) {
       width = cUpperFrameWidthDefault + cLowerFrameWidthLogout;
       if ( screen.height <= 600 && !isMobileDevice() ){
         top = initTop > cUpperFrameTopLogout600 ? initTop - cUpperFrameTopLogout600 : 0;
-	     	height = height + 33;		// +33 to ensure the betslipframe large enough for the logout box height 430 
+        height = height + 33;   // +33 to ensure the betslipframe large enough for the logout box height 430 
       }
       break;
     case stateEKBA:
@@ -164,7 +164,7 @@ function setMainFrameSize(state) {
 function setAccInfoFrameSize(state) {
   var left=cUpperFrameLeftDefault, top=0,
     width = cUpperFrameWidthDefault,
-    height = cUpperFrameHeightDefault - heightReduct(), display = "block";	    
+    height = cUpperFrameHeightDefault - heightReduct(), display = "block";      
   
   switch(state) {
     case stateDefault :
@@ -213,7 +213,7 @@ function setSlipFrameSize(state) {
       $j('#previewFrame').height(height - 17);
     case stateDisclaimer :
       width = cLowerFrameWidthPreview;
-  	case stateDefault:
+    case stateDefault:
       top = cLowerFrameTopDefault;    
       $j('#divSlipDefault').css({ left: 0, width: cLowerFrameWidthDefault });
       break;
@@ -243,9 +243,9 @@ function setSlipFrameSize(state) {
 }
 
 function DebugFramesPos() {
-	alert(DebugFramePos(betslipFrame) + '\n\n'
-	    + DebugFramePos($('accInfoFrame')) + '\n\n'
-	    + DebugFramePos($('slipFrame')));
+  alert(DebugFramePos(betslipFrame) + '\n\n'
+      + DebugFramePos($('accInfoFrame')) + '\n\n'
+      + DebugFramePos($('slipFrame')));
 }
 
 function DebugFramePos(frameObj) {
@@ -277,7 +277,7 @@ function slipOpen(obj, noMotion) {
   if (!isSlipOpen) {
     slip.L = slip.startL + slip.distance;
     slip.W = slip.startW + slip.distance;
-    slip.BL = (isResolution800x600() && !isMobileUser) ? (slip.startTop800x600 - slip.distance) : (slip.startTopBSL - slip.distance);	
+    slip.BL = (isResolution800x600() && !isMobileUser) ? (slip.startTop800x600 - slip.distance) : (slip.startTopBSL - slip.distance); 
     slip.BW = slip.startTopBSW + slip.distance;
     slip.speed = 3;
     slipMotion(noMotion);
@@ -353,16 +353,16 @@ function slipMotion(noMotion) {
 }
 
 (function() {
-	if (typeof window.navigatorType == 'undefined')
-	{
+  if (typeof window.navigatorType == 'undefined')
+  {
   window.navigatorType = {};
-		var navigators = ["msie", "firefox", "safari", "chrome", "opera"];
+    var navigators = ["msie", "firefox", "safari", "chrome", "opera"];
   var userAgent = window.navigator.userAgent.toLowerCase();
   for (var i in navigators) {
     var name = navigators[i];
     navigatorType[name] = userAgent.indexOf(name) != -1;
   }
-	}
+  }
 })();
 
 
@@ -451,7 +451,7 @@ function betRowClick(i) {
     var item = betTblTr[i];
     var itemHeight=item.offsetHeight;
     if(item.offsetTop-divBetLayerScrollTop+itemHeight > divBetLayerHeight){
-		divBetLayer.scrollTop=divBetLayer.scrollTop+(item.offsetTop-divBetLayerScrollTop+itemHeight-divBetLayerHeight);
+    divBetLayer.scrollTop=divBetLayer.scrollTop+(item.offsetTop-divBetLayerScrollTop+itemHeight-divBetLayerHeight);
     }
 
 

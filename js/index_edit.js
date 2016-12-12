@@ -64,11 +64,11 @@ var editInfo = {
 };
 
 /******** retrive meeting dates start *****/
-var meetings = new Array();
+// var meetings = new Array();
 
-if (enableEdit.toLowerCase() == 'true') {
-	getMeetings();
-}
+// if (enableEdit.toLowerCase() == 'true') {
+// 	getMeetings();
+// }
 
 function getMeetings(callbacks) {
     $j.ajax({

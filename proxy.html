@@ -7,7 +7,7 @@
     <title></title>
 </head>
 
-<body onunload="unloadProxy();">
+<body>
     <script type="text/javascript" src="js/json2(3).js"></script>
     <script type="text/javascript" src="js/jquery-1.10.2(1).js"></script>
     <script type="text/javascript" src="js/proxy(1).js"></script>
@@ -17,9 +17,8 @@
     <script type="text/javascript" src="js/popup.js"></script>
     <script type="text/javascript" src="js/pphwPlugin.js"></script>
     <script type="text/javascript" src="js/index_str_table(1).js"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     $j(function() {
-        document.domain = 'hkjc.com';
         svc.init(GetError);
         proxy.init(parent, {
                 SVC: {
@@ -55,10 +54,9 @@
     });
 
     function unloadProxy() {
-        //clear HTTPS sessionStore onunload
         sessionStorage.clear();
     }
-    </script>
+    </script> -->
 </body>
 
 </html>

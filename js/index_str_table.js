@@ -1086,8 +1086,8 @@ array_ch_name["alt_close"]						= "關閉";
 array_en_name["alt_cs_records_text1"]			= "Current Session Records would be cleared after logging off.";
 array_ch_name["alt_cs_records_text1"]			= "複查是次登入之每項交易細節。客戶登出「投注區」後，此處紀錄亦將被清除。";
 
-array_en_name["alt_cs_records_text2"]			= "Please use <span onclick=\"location.href = '" + BetSlipIBPath + "recall.aspx?lang=0'\" onmouseover=\"change_cursor_hand(this)\" onmouseout=\"change_cursor_default(this)\"><u>Transaction Record</u></span> function to confirm whether the transactions with status <b>Unknown</b> have been accepted.";
-array_ch_name["alt_cs_records_text2"]			= "*如 閣下發現狀況「<b>不明</b>」之交易紀錄，請按此查閱 <span onclick=\"location.href = '" + BetSlipIBPath + "recall.aspx'\"  onmouseover=\"change_cursor_hand(this)\" onmouseout=\"change_cursor_default(this)\"><u>複查已納入彩池及轉賬交易</u></span>。";
+// array_en_name["alt_cs_records_text2"]			= "Please use <span onclick=\"location.href = '" + BetSlipIBPath + "recall.aspx?lang=0'\" onmouseover=\"change_cursor_hand(this)\" onmouseout=\"change_cursor_default(this)\"><u>Transaction Record</u></span> function to confirm whether the transactions with status <b>Unknown</b> have been accepted.";
+// array_ch_name["alt_cs_records_text2"]			= "*如 閣下發現狀況「<b>不明</b>」之交易紀錄，請按此查閱 <span onclick=\"location.href = '" + BetSlipIBPath + "recall.aspx'\"  onmouseover=\"change_cursor_hand(this)\" onmouseout=\"change_cursor_default(this)\"><u>複查已納入彩池及轉賬交易</u></span>。";
 
 array_en_name["alt_no_cs_records"]				= "No records in current session.";
 array_ch_name["alt_no_cs_records"]				= "是節未有交易紀錄。";

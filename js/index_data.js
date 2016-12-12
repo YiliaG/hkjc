@@ -151,15 +151,16 @@
   }  
 }
 
-var betlines = new Array(cMaxBetlines);
-for (var i = 0; i < betlines.length; i++) {
-	betlines[i] = new BetlineInfo();
-}
+// var betlines = new Array(cMaxBetlines);
+// for (var i = 0; i < betlines.length; i++) {
+// 	betlines[i] = new BetlineInfo();
+// }
 
-var allUpBetlines = new Array(cMaxBetlines);	// for format allup bet
-for (var i = 0; i < allUpBetlines.length; i++) {
-	allUpBetlines[i] = new BetlineInfo();
-}
+// var allUpBetlines = new Array(cMaxBetlines);	
+// // for format allup bet
+// for (var i = 0; i < allUpBetlines.length; i++) {
+// 	allUpBetlines[i] = new BetlineInfo();
+// }
 
 var totalBetlines = 0;
 var totalAllUpBetlines = 0;
@@ -864,13 +865,13 @@ MultiSlipPanel.prototype =
 	  var self = this["Self"] || this;
 	  self.init(self.panelList);
 	}
-	, buildBetlines: function() {
-	  var blines = new Array(cMaxBetlines);
-	  for (var i = 0; i < blines.length; i++) {
-	    blines[i] = new BetlineInfo();
-	  }
-	  return blines;
-	}
+	// , buildBetlines: function() {
+	//   var blines = new Array(cMaxBetlines);
+	//   for (var i = 0; i < blines.length; i++) {
+	//     blines[i] = new BetlineInfo();
+	//   }
+	//   return blines;
+	// }
 	, getTotalCount: function() {
 	  var count = 0;
 	  for (var i = 0; i < this.slipList.length; i++) {

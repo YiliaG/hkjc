@@ -7,20 +7,16 @@
     <title></title>
 </head>
 
-<body onunload="CloseAllPopup();TryLogout();">
-    <script type="text/javascript">
-    document.domain = 'hkjc.com';
-    </script>
+<body>
     <script type="text/javascript" src="js/json2(3).js"></script>
     <script type="text/javascript" src="js/jquery-1.10.2(1).js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
     <script type="text/javascript" src="js/datastore_func.js"></script>
     <script type="text/javascript" src="js/common_func.js"></script>
-    <script type="text/javascript" src="js/proxy(1).js"></script>
     <script type="text/javascript" src="js/index_str_table(1).js"></script>
     <script type="text/javascript" src="js/svc.js"></script>
     <script type="text/javascript" src="js/logDataAccessor.js"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     var oPopup = new Array();
     var sCurURL = [];
     var currentWindow;
@@ -43,7 +39,6 @@
     function GetDataStoreValue(x, win, fn) {
         currentWindow = win;
         nextFunctionName = fn;
-        //$post("popup:::GetDataStore:::" + x, indexContext);
         proxy.sendMessage('SESSION_STORE', 'GetValue', {
             Keys: x
         }, function(msg) {
@@ -52,7 +47,6 @@
     }
 
     function WATrack(key) {
-        //$post("popup:::WATrack:::" + key, indexContext);
         proxy.sendMessage('WA_TRACK', key, {}, proxy.NO_CALLBACK);
     }
 
@@ -119,13 +113,12 @@
             xhr.open("GET", "https://txn01.hkjc.com/BetSlipIB/forcelogout.aspx" + "?a=" + acc + "&g=" + gu_id, false);
             xhr.send();
             var dummy = xhr.responseText;
-            //alert(dummy);
             SetDataStore('account', '');
             SetDataStore('gu_id', '');
             SetDataStore('doneLogout', '');
         }
     }
-    </script>
+    </script> -->
 </body>
 
 </html>

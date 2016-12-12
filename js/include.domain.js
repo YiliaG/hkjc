@@ -1,1 +1,1 @@
-document.domain = "hkjc.com";
+// document.domain = "hkjc.com";
