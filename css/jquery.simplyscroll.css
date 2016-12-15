@@ -182,7 +182,7 @@ Note all DIVs are generated and should not be hard-coded
 	width: 110px;
 	height: 180px;
 	margin-bottom: 1.5em;
-	background: url(scbanner_bg.png);
+	background: url(/images/scbanner_bg.png);
 }
 
 	.vert .simply-scroll-clip {
