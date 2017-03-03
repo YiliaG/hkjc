@@ -1,5 +1,4 @@
-﻿<!--
-
+﻿
 var cLangENG = 0;
 var cLangCHT = 1;
 
