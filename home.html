@@ -2422,11 +2422,12 @@
 
     <div id="iframeDisplay" style="display: block">
         <div id="betSlipFrame" name="betSlipFrame" allowtransparency="true" style="position: absolute; top: 23px; left: 775px; width: 221px; height: 555px; z-index: 2;" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
-            <div style="background-color: transparent;" marginwidth="0" marginheight="0">
+            <div style="background-color: transparent;position: relative" marginwidth="0" marginheight="0">
                 <script src="js/accInfo.js"></script>
                 <script src="js/mm_common.js"></script>
                 <script src="js/block_keys.js"></script>
                 <div id="divAccInfo" style="background-color: transparent; position: absolute; display: block; z-index: 100; left: 0px; top: 0px; width: 221px;">
+                    <!--TODO:關閉條款及細則之後，彈出提示框提示幾秒，調用setTimeout(); -->
                     <span id="errormsg" style="left: 0px; top: 16px; visibility: hidden; width: 100%; position: absolute; background-color: transparent; text-align: center;" onclick="javascript:HideError(1)">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tbody>
@@ -2469,6 +2470,7 @@
                         <img id="pic_duelAuthent" src="images/betslip_top_ch.gif" alt="" border="0" title="雙重核對登入">
                     </div>
                     <div id="editBetMask">
+                        <!--TODO:彈出細則的同時，隱藏該div，調用 $("#divAccInfoDefault").hide();同時調用 $("#divAccInfoLogin").show(); -->
                         <div id="divAccInfoDefault" style="width:100%; height:100%; display:block">
                             <table width="221" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
                                 <tbody>
@@ -2586,6 +2588,7 @@
                                 </tbody>
                             </table>
                         </div>
+
                         <div id="divAccInfoLogin" style="width:100%; height:100%; display:none">
                             <table width="221" border="0" cellspacing="0" cellpadding="0" bgcolor="#EBEBEB">
                                 <tbody>
@@ -2765,7 +2768,8 @@
                 <script type="text/javascript" src="js/penpower.hwApp.js"></script>
                 <!--    handwrite script end    -->
                 <div id="divSlip" style="background-color: transparent; position: absolute; display: block; left: 0px; top: 119px; width: 221px;" onkeydown="return onKeyDown(event, true, 'slip');" border="0">
-                    <div style="position:absolute; left:0px; top:0px; width:221px; z-index:10; visibility:hidden" id="errMsgBlock" onclick="javascript:HideError(2)">
+                    <!--TODO:密碼報錯，調用 $("#errMsgBlock").show();-->
+                    <div style="position:absolute; left:0px; top:0px; width:221px; z-index:10; display: none" id="errMsgBlock" onclick="javascript:HideError(2)">
                         <div style="position:absolute; left:0px; top:0px; width:221px; z-index:10;">
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #8C8C8C;">
                                 <tbody>
@@ -2935,7 +2939,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="divEKBA" style="position: absolute; left: 0px; top: 0px; width: 100%; display: none; z-index: 500;">
+                    <!--TODO:彈出問題驗證，調用 $("#divEKBA").show();-->
+                    <div id="divEKBA" style="position: absolute; right: 0px; top: 0px; display: none; z-index: 500;">
                         <div id="divGrayBG">
                             <div class="container">
                                 <h2><span id="ekbaDivTitle">登入問題</span></h2>
@@ -3173,7 +3178,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="divDisclaimer" style="position: absolute; left: 0px; top: 0px; width: 100%; display: none; z-index: 500; height: 435px;">
+                    <!--TODO:驗證之後，顯示條款及細則，調用 $("#divDisclaimer").show();-->
+                    <div id="divDisclaimer" style="position: absolute; right: 0px; top: 0px;display: none; z-index: 500; height: 435px;">
                         <table width="500" border="0" cellpadding="0" cellspacing="0">
                             <tbody>
                             <tr>
@@ -3459,7 +3465,6 @@
                 <iframe id="frmProxy" src="proxy.html" width="0" height="0" style="display:none;visibility:hidden;"></iframe>
             </div>
         </div>
-        <!--<iframe id="betSlipFrame" name="betSlipFrame" src="index(5).html" allowtransparency="true" style="position: absolute; top: 23px; left: 775px; width: 221px; height: 555px; z-index: 2;" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>-->
         <div id="betSlipFrame2" allowtransparency="true" scrolling="no" style="position: absolute;top: 39px; left: 775px; width: 187px; height: 50px; z-index: 1; display: none">
             <div id="alt_bsloading_img">
                 <img id="bs_loading_faq_img" src="images/betslip_loading.gif" border="0">
@@ -3575,23 +3580,23 @@
             return lang;
         }
 
-//        function getMinBetStr() {
-//            return ';ADT:10;CHL:10;CHP:10;CRS:10;DHC:10;FCS:10;FGS:10;FHA:10;FHL:10;FTS:10;GPF:10;GPW:10;HAD:10;HDC:200;HFM:10;HFT:10;HHA:10;HIL:10;NTS:10;OOE:10;SPC:10;TOF:10;TPS:10;TQL:10;TTG:10;ALUPX:10;JKC:10';
-//        }
+        //        function getMinBetStr() {
+        //            return ';ADT:10;CHL:10;CHP:10;CRS:10;DHC:10;FCS:10;FGS:10;FHA:10;FHL:10;FTS:10;GPF:10;GPW:10;HAD:10;HDC:200;HFM:10;HFT:10;HHA:10;HIL:10;NTS:10;OOE:10;SPC:10;TOF:10;TPS:10;TQL:10;TTG:10;ALUPX:10;JKC:10';
+        //        }
 
-//        var lang = getUserLang();
-//        var infoFrame = $$.$("info");
-//        var bs_loading_faq_img = $$.$("bs_loading_faq_img");
-//        var bs_loading_faq_img_tips = $$.$("bs_loading_faq_img_tips");
-//
-//        var oldLang = lang == "en" ? "ch" : "en";
-//        var url = infoFrame.src;
-//        url = url.replace("lang=" + oldLang, "lang=" + lang);
-//        infoFrame.src = url;
-//        bs_loading_faq_img.src = bs_loading_faq_img.src.replace("/" + oldLang, "/" + lang);
-//        bs_loading_faq_img_tips.src = bs_loading_faq_img_tips.src.replace("/" + oldLang, "/" + lang);
-//
-//        var xsellurl = "http://xsell.hkjc.com/xsell/client/XAgent.aspx";
+        //        var lang = getUserLang();
+        //        var infoFrame = $$.$("info");
+        //        var bs_loading_faq_img = $$.$("bs_loading_faq_img");
+        //        var bs_loading_faq_img_tips = $$.$("bs_loading_faq_img_tips");
+        //
+        //        var oldLang = lang == "en" ? "ch" : "en";
+        //        var url = infoFrame.src;
+        //        url = url.replace("lang=" + oldLang, "lang=" + lang);
+        //        infoFrame.src = url;
+        //        bs_loading_faq_img.src = bs_loading_faq_img.src.replace("/" + oldLang, "/" + lang);
+        //        bs_loading_faq_img_tips.src = bs_loading_faq_img_tips.src.replace("/" + oldLang, "/" + lang);
+        //
+        //        var xsellurl = "http://xsell.hkjc.com/xsell/client/XAgent.aspx";
 
         //*********For mobile popup only**********
         //For the chinese characters which convert to Unicode
