@@ -1,4 +1,4 @@
-﻿<!--
+﻿
 var int_minimize_flag = 0;
 var array_en_name = new Array();
 var array_ch_name = new Array();
@@ -56,10 +56,10 @@ function get_image_lang(inval)
 {
 	switch (flag_lang())
 	{
-		case (int_lang_eng) :	return array_en_name["pic_path"] + array_en_name[inval] + staticCache;
+		case (int_lang_eng) :	return array_en_name["pic_path"] + array_en_name[inval] + '?'+ staticCache;
 									break ;
 									
-		case (int_lang_cht) :	return array_ch_name["pic_path"] + array_ch_name[inval] + staticCache;
+		case (int_lang_cht) :	return array_ch_name["pic_path"] + array_ch_name[inval] + '?'+ staticCache;
 									break ;
 	}
 	return '';
@@ -646,8 +646,8 @@ function syncTableColumnWidth() {
 }
 
 // ***************************** Image **************************************
-array_en_name["pic_path"] = "./images/";
-array_ch_name["pic_path"] = "./images/";
+array_en_name["pic_path"] = "images/";
+array_ch_name["pic_path"] = "images/";
 
 array_en_name["pic_ok"]				= "btn_ok_en.gif";
 array_ch_name["pic_ok"]				= "btn_ok_ch.gif";

@@ -89,10 +89,10 @@
     <link rel="stylesheet" type="text/css" href="css/penpower.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/ppstyle.css" media="screen">
 </head>
-
+<body>
 <div style="margin: 0px 0px 0px 0px;" scroll="no">
     <div id="div_engine" style="position:absolute"></div>
-    <noscript>&lt;iframe src="*.html"&gt;&lt;/iframe&gt;</noscript>
+    <noscript><iframe src="*.html"></iframe></noscript>
 
     <div marginwidth="0" marginheight="0">
         <form name="aspnetForm" method="post" action="http://bet.hkjc.com/football/index.aspx?lang=ch" id="aspnetForm">
@@ -605,7 +605,8 @@
                                         <img src="images/spacer(1).gif" width="6" height="1">
                                     </td>
                                     <td width="764" bgcolor="#ffffff">
-                                        <iframe width="764" height="186" frameborder="0" scrolling="no" name="fb_promo_top" src="fb_info_top.html" id="fb_promo_top"></iframe>
+                                        <!--<iframe width="764" height="186" frameborder="0" scrolling="no" name="fb_promo_top" src="fb_info_top.html" id="fb_promo_top"></iframe>-->
+                                        <iframe width="764" height="186" frameborder="0" scrolling="no" name="fb_promo_top" src="http://bet.hkjc.com/football/fb_info_top.aspx?lang=ch" id="fb_promo_top"></iframe>
                                     </td>
                                     <td width="6">
                                         <!--<td--></td>
@@ -626,7 +627,7 @@
                             }
                         </script>
                         <div id="1" style="DISPLAY:none"></div>
-                        <iframe scrolling="no" frameborder="0" allowtransparency="true" width="100%" height="39" id="homeSNFrame" name="homeSNFrame" src="importantNotices.html">&amp;nbsp;</iframe>
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true" width="100%" height="0" id="homeSNFrame" name="homeSNFrame" src="http://bet.hkjc.com/importantNotices.aspx?type=football&amp;lang=CH" style="display: none;">&amp;nbsp;</iframe>
                         <div id="thirdMenu">
                             <table width="776" border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
@@ -968,7 +969,8 @@
                                                                 <img src="images/arrow.gif" width="4" height="5">
                                                             </td>
                                                             <td width="99%" class="leftNav" onmouseover="changeClass('leftTxtFB1207','leftNavOver')" onmouseout="changeClass('leftTxtFB1207','leftNav')" onclick="location.href='/football/odds/tournament.aspx?tournid=1207'" style="cursor:pointer;">
-                                                                <a class="leftNav" target="_self" id="leftTxtFB1207">墨超首階段 <br>季後賽
+                                                                <a class="leftNav" target="_self" id="leftTxtFB1207">墨超首階段
+                                                                    <br>季後賽
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -2412,7 +2414,6 @@
         </script>
     </div>
 
-    <!--<iframe src="index.html" frameborder="0" marginwidth="0" marginheight="0" id="info" name="info" width="100%" height="100%" onload="addMousedownEvent('info');"></iframe>-->
     <iframe src="XAgent.html" frameborder="0" marginwidth="0" marginheight="0" id="xsellFrame" name="xsellFrame" width="0" height="0"></iframe>
 
     <div id="iframeDisplay" style="display: block">
@@ -2422,7 +2423,44 @@
                 <script src="js/mm_common.js"></script>
                 <script src="js/block_keys.js"></script>
                 <div id="divAccInfo" style="background-color: transparent; position: absolute; display: block; z-index: 100; left: 0px; top: 0px; width: 221px;">
-                    <span id="errormsg" style="left:0px;top:16px;visibility: hidden;width:100%;position:absolute;background-color:transparent;text-align:center" onclick="javascript:HideError(1)"></span>
+                    <span id="errormsg" style="left: 0px; top: 16px; visibility: hidden; width: 100%; position: absolute; background-color: transparent; text-align: center;" onclick="javascript:HideError(1)">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                            <tr>
+                                <td bgcolor="#FFDE00" style="padding:6px 7px 8px 0px;">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                        <tr valign="top">
+                                            <td width="59" style="padding:0px 7px 0px 0px;">
+                                                <img src="images/logo_last_login.gif?cv=L2.07R3c"></td>
+                                            <td colspan="2" style="padding:3px 0px 0px 3px;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td colspan="2" class="brown2"><strong>歡迎使用「投注區」</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" class="brown3" style="padding:1px 0px 0px 0px;">上次成功登入</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="37" class="green" style="padding:1px 0px 0px 0px;">日期 :</td>
+                                                        <td class="green" style="padding:1px 0px 0px 0px;">2017-03-03</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="green" style="padding:1px 0px 0px 0px;">時間 :</td>
+                                                        <td class="green" style="padding:1px 0px 0px 0px;">10:11:25(香港時間)</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </span>
                     <div id="divAccInfoTop" style="text-align:right; width:221px;">
                         <img id="pic_duelAuthent" src="images/betslip_top_ch.gif" alt="" border="0" title="雙重核對登入">
                     </div>
@@ -2473,12 +2511,12 @@
                                                             <td align="right">
                                                                 <div id="divAccInfoDefaultLoginButton" style="display:inline">
                                                                     <a href="#" onclick="OnClickLogin();return false;" onmouseout="if ( !isInSSOChecking() &amp;&amp; !isInEKBA() &amp;&amp; EnableAccInfo() ) { loadMouseEventImage('pic_login', 'pic_login'); }" onmouseover="if ( !isInSSOChecking() &amp;&amp; !isInEKBA() &amp;&amp; EnableAccInfo() ) { loadMouseEventImage('pic_login', 'pic_login_on'); }">
-                                                                        <img id="pic_login" border="0" src="./images/btn_login_ch.gif?cv=L2.06R1" title="登入">
+                                                                        <img id="pic_login" border="0" src="images/btn_login_ch.gif?cv=L2.06R1" title="登入">
                                                                     </a>
                                                                 </div>
                                                                 <div id="divAccInfoSSONextButton" style="display:none">
                                                                     <a href="#" onclick="OnClickNext();return false;" onmouseout="if ( !isInSSOChecking() &amp;&amp; !isInEKBA() &amp;&amp; EnableAccInfo() ) { loadMouseEventImage('pic_nextSSO', 'pic_next'); }" onmouseover="if ( !isInSSOChecking() &amp;&amp; !isInEKBA() &amp;&amp; EnableAccInfo() ) { loadMouseEventImage('pic_nextSSO', 'pic_next_on'); }">
-                                                                        <img id="pic_nextSSO" border="0" src="./images/btn_next_ch.gif?cv=L2.06R1" title="下一步">
+                                                                        <img id="pic_nextSSO" border="0" src="images/btn_next_ch.gif?cv=L2.06R1" title="下一步">
                                                                     </a>
                                                                 </div>
                                                             </td>
@@ -2640,7 +2678,7 @@
                                                                                     </td>
                                                                                     <td class="content">
                                                                                         <span id="valueAccBal">$ 265.80</span>&nbsp;
-                                                                                        <span id="refresh_balance"></span>
+                                                                                        <span id="refresh_balance"><a href="javascript:;" onclick="OnClickRefreshBalance();return false;"><img border="0" align="absmiddle" src="images/icon_refresh.gif?cv=L2.07R3c" alt="更新結餘"></a></span>
                                                                                     </td>
                                                                                 </tr>
                                                                                 </tbody>
@@ -2893,15 +2931,13 @@
                             </tbody>
                         </table>
                     </div>
-                    <div id="divEKBA" style="position:absolute; left:0px; top:0px; width:100%; display:none; z-index:500;">
+                    <div id="divEKBA" style="position: absolute; left: 0px; top: 0px; width: 100%; display: none; z-index: 500;">
                         <div id="divGrayBG">
                             <div class="container">
                                 <h2><span id="ekbaDivTitle">登入問題</span></h2>
-                                <p>
-                                    <span id="ekbaSeqQuestion"></span>
-                                </p>
+                                <p><span id="ekbaSeqQuestion">你的護照/回鄉卡的有效期至? </span></p>
                                 <div class="fields">
-                                    <input id="ekbaDivInput" name="ekbaDivInput" type="text" class="text" maxlength="50">
+                                    <input id="ekbaDivInput" name="ekbaDivInput" type="text" class="text" maxlength="50"><input type="button" id="pphw_btn_ekba" class="pp_pen_btn_closed">
                                     <a href="javascript:OnClickCannotLogin();" id="txtForgetWebPass" style="font-size: 12px;">忘記登入答案?</a>
                                     <div id="ekbaInputPPHWDiv">
                                         <div id="pphw-panel">
@@ -2928,10 +2964,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="warning-panel">
-                                                <p class="msgContent">
-                                                    <img class="msgContent" src="images/notice.jpg">
-                                                </p>
+                                            <div id="warning-panel"><p class="msgContent">
+                                                <img class="msgContent" src="images/notice.jpg"></p>
                                                 <p class="msgContent" style="padding-bottom: 20px">投注區手寫板功能已於2015年3月31日起停用。請使用電腦內置的手寫板功能代替。</p>
                                                 <p class="msgContent" style="padding-bottom: 25px">請
                                                     <a class="msgContent" id="clickhere" href="javascript:;" target="_blank">按此</a>
@@ -2944,36 +2978,39 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <a href="javascript:OnClickCannotLogin();" id="txtForgetWebPass2" style="font-size: 12px;">忘記登入答案?</a>
+                                        <a href="javascript:OnClickCannotLogin();" id="txtForgetWebPass2" style="font-size: 12px; display: none;">忘記登入答案?</a>
                                     </div>
-                                    <div class="alert" id="ekbaDivError"></div>
+                                    <div class="alert" id="ekbaDivError" style="display: none;">登入答案不正確，請重新儲入。如閣下已忘記登入答案，請
+                                        <a href="#" onclick="OnClickCannotLogin()">按此</a>
+                                        重設。 [第 2 次嘗試，共有 3 次機會]
+                                    </div>
                                 </div>
-                                <div id="divEKBADefaultButton" class="BLfooter" style="display:block">
+                                <div id="divEKBADefaultButton" class="BLfooter" style="display: block;">
                                     <span style="float:left; margin-left:10px; margin-right:10px; display:inline;">
                                         <a href="#" onclick="OnClickLoginEKBACancel();return false;" onmouseout="loadMouseEventImage('pic_cancel', 'pic_cancel');" onmouseover="loadMouseEventImage('pic_cancel', 'pic_cancel_on');">
-                                            <img id="pic_cancel" src="images/btn_cancel_ch.gif" alt="" border="" title="取消">
+                                            <img id="pic_cancel" src="images/btn_cancel_ch.gif?cv=L2.07R3c" alt="" border="" title="取消">
                                         </a>
                                     </span>
                                     <span style="float:right; margin-left:10px; margin-right:10px; display:inline;">
                                         <a href="#" onclick="OnClickLoginEKBA();return false;" onmouseout="loadMouseEventImage('pic_confirm', 'pic_confirm');" onmouseover="loadMouseEventImage('pic_confirm', 'pic_confirm_on');">
-                                            <img id="pic_confirm" src="images/btn_confirm_ch.gif" alt="" border="" title="確定">
+                                            <img id="pic_confirm" src="images/btn_confirm_ch.gif?cv=L2.07R3c" alt="" border="" title="確定">
                                         </a>
                                     </span>
                                 </div>
-                                <div id="divEKBASSOButton" class="BLfooter" style="display:none">
+                                <div id="divEKBASSOButton" class="BLfooter" style="display: none;">
                                     <span style="float:left; margin-left:10px; margin-right:10px; display:inline;">
                                         <a href="#" onclick="OnClickLoginEKBABack();return false;" onmouseout="loadMouseEventImage('pic_backSSO', 'pic_sso_back');" onmouseover="loadMouseEventImage('pic_backSSO', 'pic_sso_back_on');">
-                                            <img id="pic_backSSO" src="images/btn_short_back_ch.gif" alt="" border="" title="返回">
+                                            <img id="pic_backSSO" src="images/btn_short_back_ch.gif?cv=L2.07R3c" alt="" border="" title="返回">
                                         </a>
                                     </span>
                                     <span style="float:left; margin-left:10px; margin-right:10px; display:inline;">
                                         <a href="#" onclick="OnClickLoginEKBALogout();return false;" onmouseout="loadMouseEventImage('pic_logoutSSO', 'pic_logout');" onmouseover="loadMouseEventImage('pic_logoutSSO', 'pic_logout_on');">
-                                            <img id="pic_logoutSSO" src="images/btn_logout_ch.gif" alt="" border="" title="登出">
+                                            <img id="pic_logoutSSO" src="images/btn_logout_ch.gif?cv=L2.07R3c" alt="" border="" title="登出">
                                         </a>
                                     </span>
                                     <span style="float:right; margin-left:10px; margin-right:10px; display:inline;">
                                         <a href="#" onclick="OnClickLoginEKBA();return false;" onmouseout="loadMouseEventImage('pic_confirmSSO', 'pic_confirm');" onmouseover="loadMouseEventImage('pic_confirmSSO', 'pic_confirm_on');">
-                                            <img id="pic_confirmSSO" src="images/btn_confirm_ch.gif" alt="" border="" title="確定">
+                                            <img id="pic_confirmSSO" src="images/btn_confirm_ch.gif?cv=L2.07R3c" alt="" border="" title="確定">
                                         </a>
                                     </span>
                                 </div>
@@ -3332,7 +3369,7 @@
                                             <tr>
                                                 <td height="31" align="right" style="padding:10px 7px 10px 0px; border-top:1px solid #A2A5AA;">
                                                     <a href="#" onclick="ShowDisclaimer(false);" onmouseout=" loadMouseEventImage('btn_enter', 'btn_enter'); " onmouseover=" loadMouseEventImage('btn_enter', 'btn_enter_on'); ">
-                                                        <img src="./images/btn_enter_ch.gif?cv=L2.06R1" title="進入主頁" name="btn_enter" id="btn_enter" width="71" height="21" border="0">
+                                                        <img src="images/btn_enter_ch.gif?cv=L2.06R1" title="進入主頁" name="btn_enter" id="btn_enter" width="71" height="21" border="0">
                                                     </a>
                                                 </td>
                                             </tr>
@@ -3394,9 +3431,22 @@
                 <div id="divLogout" style="position: absolute; left: 0px; top: 107px; width: 778px;
         height: 430px; display: none; z-index: 500;">
                     <div id="divLogoutBorder" style="position:absolute;width:758px; height:410px;border:10px solid #003B7F;-moz-opacity:.50;opacity:.50;-khtml-opacity: 0.5"></div>
-                    <iframe id="logoutFrame" border="0" marginwidth="0" marginheight="0" src="saved_resource(1).html" frameborder="0" scrolling="no" style="background-color: #fff; position:absolute; left:10px; top:10px; width:758px; height:358px;"></iframe>
-                    <div id="logoutCloseDiv" style="position: absolute; background-color: #FFFFFF; left: 10px;
-            top: 368px; width: 758px; height: 52px">
+                    <iframe id="logoutFrame" border="0" marginwidth="0" marginheight="0" src="http://is.hkjc.com/jcbw/ekba/promo/betslip_logout/betslip_lpromo.asp?lang=ch&amp;new=n" frameborder="0" scrolling="no" style="background-color: #fff;position:absolute;left:10px;top:10px;width:758px;height:358px;display: block;"></iframe>
+                    <div id="logoutCloseDiv" style="position: absolute; background-color: #FFFFFF; left: 10px;top: 368px; width: 758px; height: 52px">
+                        <table style="color: #333333; font-family: Arial, Verdana, Helvetica, sans-serif; font-size: 12px;padding:0px 10px 0px 10px" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td colspan="2"><img src="images/spacer.gif" ?cv="L2.07R3c" height="10px"></td>
+                            </tr>
+                            <tr>
+                                <td class="text" width="702" valign="top"></td>
+                                <td width="56" rowspan="3">
+                                    <a href="javascript:WATrackLogoutCloseEvent();CloseLogoutPopup(stateDefault);" onmouseout="loadMouseEventImage('pic_close', 'pic_popup_closewin');" onmouseover="loadMouseEventImage('pic_close', 'pic_popup_closewin_on');">
+                                        <img id="pic_close" border="0" src="images/btn_close_ch.gif?cv=L2.07R3c"></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <!-- START Nielsen Online SiteCensus -->
@@ -3521,23 +3571,23 @@
             return lang;
         }
 
-        function getMinBetStr() {
-            return ';ADT:10;CHL:10;CHP:10;CRS:10;DHC:10;FCS:10;FGS:10;FHA:10;FHL:10;FTS:10;GPF:10;GPW:10;HAD:10;HDC:200;HFM:10;HFT:10;HHA:10;HIL:10;NTS:10;OOE:10;SPC:10;TOF:10;TPS:10;TQL:10;TTG:10;ALUPX:10;JKC:10';
-        }
+//        function getMinBetStr() {
+//            return ';ADT:10;CHL:10;CHP:10;CRS:10;DHC:10;FCS:10;FGS:10;FHA:10;FHL:10;FTS:10;GPF:10;GPW:10;HAD:10;HDC:200;HFM:10;HFT:10;HHA:10;HIL:10;NTS:10;OOE:10;SPC:10;TOF:10;TPS:10;TQL:10;TTG:10;ALUPX:10;JKC:10';
+//        }
 
-        var lang = getUserLang();
-        var infoFrame = $$.$("info");
-        var bs_loading_faq_img = $$.$("bs_loading_faq_img");
-        var bs_loading_faq_img_tips = $$.$("bs_loading_faq_img_tips");
-
-        var oldLang = lang == "en" ? "ch" : "en";
-        var url = infoFrame.src;
-        url = url.replace("lang=" + oldLang, "lang=" + lang);
-        infoFrame.src = url;
-        bs_loading_faq_img.src = bs_loading_faq_img.src.replace("/" + oldLang, "/" + lang);
-        bs_loading_faq_img_tips.src = bs_loading_faq_img_tips.src.replace("/" + oldLang, "/" + lang);
-
-        var xsellurl = "http://xsell.hkjc.com/xsell/client/XAgent.aspx";
+//        var lang = getUserLang();
+//        var infoFrame = $$.$("info");
+//        var bs_loading_faq_img = $$.$("bs_loading_faq_img");
+//        var bs_loading_faq_img_tips = $$.$("bs_loading_faq_img_tips");
+//
+//        var oldLang = lang == "en" ? "ch" : "en";
+//        var url = infoFrame.src;
+//        url = url.replace("lang=" + oldLang, "lang=" + lang);
+//        infoFrame.src = url;
+//        bs_loading_faq_img.src = bs_loading_faq_img.src.replace("/" + oldLang, "/" + lang);
+//        bs_loading_faq_img_tips.src = bs_loading_faq_img_tips.src.replace("/" + oldLang, "/" + lang);
+//
+//        var xsellurl = "http://xsell.hkjc.com/xsell/client/XAgent.aspx";
 
         //*********For mobile popup only**********
         //For the chinese characters which convert to Unicode
@@ -3613,6 +3663,7 @@
                 }, 500);
         }
     </script>
-    </body>
+</div>
+</body>
 
 </html>

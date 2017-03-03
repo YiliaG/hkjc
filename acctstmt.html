@@ -12,7 +12,7 @@
         display: none;
         overflow: hidden;
         position: absolute;
-        bottom: 21;
+        bottom: 21px;
         padding: 0;
         margin: 0 0 0 3px;
         outline: none;
@@ -381,7 +381,7 @@
                                                                                     <input id="DateType1" name="DateType" type="radio" value="0" checked="">
                                                                                 </td>
                                                                                 <td class="content" colspan="3" style="white-space:nowrap;">
-                                                                                    <label for="radio_1">
+                                                                                    <label>
                                                                                         <span id="asToday">今日戶口紀錄</span>
                                                                                     </label>
                                                                                 </td>
@@ -403,16 +403,16 @@
                                                                                     <input id="DateType2" name="DateType" type="radio" value="1">
                                                                                 </td>
                                                                                 <td class="content" style="white-space:nowrap; width:14px">
-                                                                                    <label for="radio_2">
+                                                                                    <label>
                                                                                         <span id="asFrom">由</span> :</label>
                                                                                 </td>
                                                                                 <td class="content" style="white-space:nowrap; width:14px">
-                                                                                    <label for="radio_2">
+                                                                                    <label>
                                                                                         <span id="asFromDay">日</span>
                                                                                     </label>
                                                                                 </td>
                                                                                 <td class="content" style="padding-right:10px;white-space:nowrap">
-                                                                                    <select class="select" style="width:40px;" id="frm_dd1" name="frm_dd1" onchange="$(&#39;DateType2&#39;).checked = true;">
+                                                                                    <select class="select" style="width:40px;" id="frm_dd1" name="frm_dd1" onchange="$('DateType2').checked = true;">
                                                                                         <option value="1">1</option>
                                                                                         <option value="2">2</option>
                                                                                         <option value="3">3</option>
@@ -445,16 +445,16 @@
                                                                             <tr>
                                                                                 <td class="content" style="white-space:nowrap">&nbsp;</td>
                                                                                 <td class="content">
-                                                                                    <label for="radio_2">
+                                                                                    <label>
                                                                                         <span id="asTo">至</span> :</label>
                                                                                 </td>
                                                                                 <td class="content">
-                                                                                    <label for="radio_2">
+                                                                                    <label>
                                                                                         <span id="asTo_Day">日</span>
                                                                                     </label>
                                                                                 </td>
                                                                                 <td class="content">
-                                                                                    <select class="select" style="width:40px;" id="frm_dd2" name="frm_dd2" onchange="$(&#39;DateType2&#39;).checked = true;">
+                                                                                    <select class="select" style="width:40px;" id="frm_dd2" name="frm_dd2" onchange="$('DateType2').checked = true;">
                                                                                         <option value="1">1</option>
                                                                                         <option value="2">2</option>
                                                                                         <option value="3">3</option>
@@ -484,7 +484,7 @@
                                                                                 </td>
                                                                                 <td class="content" style="white-space:nowrap" colspan="4">
                                                                                     <span id="seekLastDay" style="display: none;">最&nbsp;&nbsp;近</span>
-                                                                                    <select class="select" style="width: 50px; display: none;" id="last_days" onchange="$(&#39;DateType3&#39;).checked = true;">
+                                                                                    <select class="select" style="width: 50px; display: none;" id="last_days" onchange="$('DateType3').checked = true;">
                                                                                         <option value="8" selected="selected">8</option>
                                                                                         <option value="15">15</option>
                                                                                         <option value="30">30</option>
@@ -543,7 +543,7 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td align="left">
-                                                                                    <a href="javascript:;" onclick="top.close();" onmouseout="loadMouseEventImage(&#39;pic_close&#39;, &#39;pic_close&#39;);" onmouseover="loadMouseEventImage(&#39;pic_close&#39;, &#39;pic_close_on&#39;);">
+                                                                                    <a href="javascript:;" onclick="top.close();" onmouseout="loadMouseEventImage('pic_close', 'pic_close');" onmouseover="loadMouseEventImage('pic_close', 'pic_close_on');">
                                                                                         <img id="pic_close" border="0" src="images/btn_close_ch.gif" title="關閉">
                                                                                     </a>
                                                                                 </td>
@@ -551,25 +551,25 @@
                                                                                     <table border="0" cellspacing="0" cellpadding="0" style="float:right">
                                                                                         <tbody>
                                                                                             <tr>
-                                                                                                <td id="btnSearch" style="cursor:hand;" onclick="openSearchBox();" onmouseout="loadMouseEventImage(&#39;pic_search&#39;, &#39;pic_search&#39;);" onmouseover="loadMouseEventImage(&#39;pic_search&#39;, &#39;pic_search_on&#39;);">
+                                                                                                <td id="btnSearch" style="cursor:hand;" onclick="openSearchBox();" onmouseout="loadMouseEventImage('pic_search', 'pic_search');" onmouseover="loadMouseEventImage('pic_search', 'pic_search_on');">
                                                                                                     <img id="pic_search" border="0" src="images/btn_search_ch.gif" title="重新搜尋">
                                                                                                 </td>
-                                                                                                <td id="btnPrint" style="cursor:hand;" onclick="printPage();" onmouseout="loadMouseEventImage(&#39;pic_print&#39;, &#39;pic_print&#39;); showDiv(&#39;printDiv&#39;, 0);" onmouseover="loadMouseEventImage(&#39;pic_print&#39;, &#39;pic_print_on&#39;); showDiv(&#39;printDiv&#39;, 1);">
+                                                                                                <td id="btnPrint" style="cursor:hand;" onclick="printPage();" onmouseout="loadMouseEventImage('pic_print', 'pic_print'); showDiv('printDiv', 0);" onmouseover="loadMouseEventImage('pic_print', 'pic_print_on'); showDiv('printDiv', 1);">
                                                                                                     <img id="pic_print" hspace="3" border="0" src="images/btn_print_ch.gif" title="列印">
                                                                                                 </td>
                                                                                                 <td style="position:relative;">
                                                                                                     <div id="export-warp" tabindex="-1">
-                                                                                                        <div id="btnExportHTML" style="background-image: url(&quot;images/btn_export_html_ch.gif&quot;);"></div>
-                                                                                                        <div id="btnExportText" style="background-image: url(&quot;images/btn_export_text_ch.gif&quot;);"></div>
+                                                                                                        <div id="btnExportHTML" style="background-image: url('images/btn_export_html_ch.gif');"></div>
+                                                                                                        <div id="btnExportText" style="background-image: url('images/btn_export_text_ch.gif');"></div>
                                                                                                     </div>
-                                                                                                    <div id="btnExport" style="cursor:hand;" onclick="exportFile()" onmouseout="loadMouseEventImage(&#39;pic_save&#39;, &#39;pic_save&#39;); showDiv(&#39;saveDiv&#39;, 0);" onmouseover="loadMouseEventImage(&#39;pic_save&#39;, &#39;pic_save_on&#39;); showDiv(&#39;saveDiv&#39;, 1);">
+                                                                                                    <div id="btnExport" style="cursor:hand;" onclick="exportFile()" onmouseout="loadMouseEventImage('pic_save', 'pic_save'); showDiv('saveDiv', 0);" onmouseover="loadMouseEventImage('pic_save', 'pic_save_on'); showDiv('saveDiv', 1);">
                                                                                                         <img id="pic_save" hspace="3" border="0" src="images/btn_export_ch.png" title="匯出檔案">
                                                                                                     </div>
                                                                                                 </td>
-                                                                                                <td id="btnPrevPage" style="cursor:hand;" onclick="goPrevPage();" onmouseout="if ( g_page_num&gt;1 ) loadMouseEventImage(&#39;pic_prev&#39;, &#39;pic_prev&#39;);" onmouseover="if ( g_page_num&gt;1 ) loadMouseEventImage(&#39;pic_prev&#39;, &#39;pic_prev_on&#39;);">
+                                                                                                <td id="btnPrevPage" style="cursor:hand;" onclick="goPrevPage();" onmouseout="if ( g_page_num&gt;1 ) loadMouseEventImage('pic_prev', 'pic_prev');" onmouseover="if ( g_page_num&gt;1 ) loadMouseEventImage('pic_prev', 'pic_prev_on');">
                                                                                                     <img id="pic_prev" hspace="3" border="0" src="images/btn_prev_ch.gif" title="上一頁">
                                                                                                 </td>
-                                                                                                <td id="btnNextPage" style="cursor:hand;" onclick="goNextPage();" onmouseout="if ( showNextPage ) loadMouseEventImage(&#39;pic_next&#39;, &#39;pic_next&#39;);" onmouseover="if ( showNextPage ) loadMouseEventImage(&#39;pic_next&#39;, &#39;pic_next_on&#39;);">
+                                                                                                <td id="btnNextPage" style="cursor:hand;" onclick="goNextPage();" onmouseout="if ( showNextPage ) loadMouseEventImage('pic_next', 'pic_next');" onmouseover="if ( showNextPage ) loadMouseEventImage('pic_next', 'pic_next_on');">
                                                                                                     <img id="pic_next" border="0" src="images/btn_next_off_ch.gif" title="下一頁">
                                                                                                 </td>
                                                                                             </tr>
